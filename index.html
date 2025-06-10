@@ -22,89 +22,85 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- Badge Removal Script -->
+    <!-- Improved Badge Removal Script -->
     <script>
-      // Function to remove Lovable badge
+      // Function to safely remove Lovable badge
       function removeLovableBadge() {
-        // Remove badge by ID
-        const badgeById = document.getElementById('lovable-badge');
-        if (badgeById) {
-          badgeById.remove();
-          console.log('Lovable badge removed by ID');
+        try {
+          // Only target specific lovable badge elements
+          const badgeById = document.getElementById('lovable-badge');
+          if (badgeById && badgeById.href && badgeById.href.includes('lovable.dev')) {
+            badgeById.remove();
+            console.log('Lovable badge removed by ID');
+          }
+          
+          // Remove links that specifically point to lovable.dev
+          const lovableLinks = document.querySelectorAll('a[href*="lovable.dev"]');
+          lovableLinks.forEach(link => {
+            try {
+              // Only remove if it contains the edit text or lovable badge specific content
+              if (link.textContent && (
+                link.textContent.includes('Edit with') || 
+                link.id === 'lovable-badge' ||
+                link.innerHTML.includes('lovable')
+              )) {
+                link.remove();
+                console.log('Lovable badge link removed');
+              }
+            } catch (e) {
+              // Silently handle any errors with individual elements
+            }
+          });
+          
+        } catch (error) {
+          // Silently handle errors to prevent breaking the app
+          console.warn('Badge removal error (non-critical):', error.message);
         }
-        
-        // Remove badge by searching for specific attributes and content
-        const allLinks = document.querySelectorAll('a[href*="lovable.dev"]');
-        allLinks.forEach(link => {
-          if (link.href.includes('lovable.dev')) {
-            link.remove();
-            console.log('Lovable badge link removed');
-          }
-        });
-        
-        // Remove any elements containing "Edit with" text
-        const allElements = document.querySelectorAll('*');
-        allElements.forEach(element => {
-          if (element.textContent && element.textContent.includes('Edit with') && 
-              element.innerHTML.includes('lovable')) {
-            element.remove();
-            console.log('Lovable badge element removed by content');
-          }
-        });
-        
-        // Remove elements with lovable-badge class or similar
-        const badgeClasses = document.querySelectorAll('[class*="lovable"], [id*="lovable"]');
-        badgeClasses.forEach(element => {
-          element.remove();
-          console.log('Lovable badge removed by class/id pattern');
-        });
       }
       
-      // Run immediately when DOM is ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', removeLovableBadge);
-      } else {
+      // Run after React has mounted
+      setTimeout(() => {
         removeLovableBadge();
-      }
+      }, 1000);
       
-      // Run after page is fully loaded
-      window.addEventListener('load', removeLovableBadge);
-      
-      // Create a MutationObserver to detect and remove badges that might be added dynamically
+      // Create a more conservative MutationObserver
       const observer = new MutationObserver((mutations) => {
         let shouldCheck = false;
-        mutations.forEach((mutation) => {
-          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-            mutation.addedNodes.forEach((node) => {
-              if (node.nodeType === 1) { // Element node
-                // Check if the added node or its children contain lovable badge
-                if (node.id === 'lovable-badge' || 
-                    (node.querySelector && node.querySelector('#lovable-badge')) ||
-                    (node.href && node.href.includes('lovable.dev')) ||
-                    (node.textContent && node.textContent.includes('Edit with') && 
-                     node.innerHTML && node.innerHTML.includes('lovable'))) {
+        
+        try {
+          mutations.forEach((mutation) => {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+              mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === 1 && node.id === 'lovable-badge') {
                   shouldCheck = true;
                 }
-              }
-            });
+              });
+            }
+          });
+          
+          if (shouldCheck) {
+            setTimeout(removeLovableBadge, 500);
           }
-        });
-        
-        if (shouldCheck) {
-          setTimeout(removeLovableBadge, 100); // Small delay to ensure DOM is updated
+        } catch (error) {
+          // Silently handle observer errors
         }
       });
       
-      // Start observing
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true
-      });
+      // Start observing only after React has had time to mount
+      setTimeout(() => {
+        try {
+          if (document.body) {
+            observer.observe(document.body, {
+              childList: true,
+              subtree: true
+            });
+          }
+        } catch (error) {
+          console.warn('Observer setup error (non-critical):', error.message);
+        }
+      }, 2000);
       
-      // Also run periodically as a fallback
-      setInterval(removeLovableBadge, 2000); // Check every 2 seconds
-      
-      console.log('Lovable badge removal script initialized');
+      console.log('Improved badge removal script initialized');
     </script>
   </body>
 </html>
