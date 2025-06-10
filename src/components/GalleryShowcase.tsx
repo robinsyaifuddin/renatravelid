@@ -1,50 +1,35 @@
-
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const GalleryShowcase = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const showcaseImages = [
-    {
-      url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      alt: "Mountain landscape view"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", 
-      alt: "River between mountains"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      alt: "Ocean wave at beach"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      alt: "Pine trees forest"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      alt: "Deer in nature"
-    }
-  ];
-
+  const showcaseImages = [{
+    url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "Mountain landscape view"
+  }, {
+    url: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "River between mountains"
+  }, {
+    url: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "Ocean wave at beach"
+  }, {
+    url: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "Pine trees forest"
+  }, {
+    url: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    alt: "Deer in nature"
+  }];
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % showcaseImages.length);
+    setCurrentImageIndex(prev => (prev + 1) % showcaseImages.length);
   };
-
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + showcaseImages.length) % showcaseImages.length);
+    setCurrentImageIndex(prev => (prev - 1 + showcaseImages.length) % showcaseImages.length);
   };
-
-  return (
-    <section className="py-16 bg-white">
+  return <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Discover Amazing Places
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Plan, Explore, Enjoy</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Explore breathtaking destinations and capture unforgettable moments in the world's most beautiful locations
           </p>
@@ -55,39 +40,23 @@ const GalleryShowcase = () => {
           {/* Large Image Slider */}
           <div className="relative group">
             <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden">
-              <img
-                src={showcaseImages[currentImageIndex].url}
-                alt={showcaseImages[currentImageIndex].alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+              <img src={showcaseImages[currentImageIndex].url} alt={showcaseImages[currentImageIndex].alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               
               {/* Navigation Arrows */}
-              <Button
-                variant="secondary"
-                size="sm"
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 transition-all duration-200"
-                onClick={prevImage}
-              >
+              <Button variant="secondary" size="sm" className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 transition-all duration-200" onClick={prevImage}>
                 <ChevronLeft className="w-6 h-6" />
               </Button>
               
-              <Button
-                variant="secondary"
-                size="sm"
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 transition-all duration-200"
-                onClick={nextImage}
-              >
+              <Button variant="secondary" size="sm" className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 transition-all duration-200" onClick={nextImage}>
                 <ChevronRight className="w-6 h-6" />
               </Button>
 
               {/* Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Button
-                  className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 transition-all duration-200"
-                >
+                <Button className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 transition-all duration-200">
                   <Play className="w-8 h-8 ml-1" />
                 </Button>
               </div>
@@ -95,17 +64,7 @@ const GalleryShowcase = () => {
 
             {/* Image Indicators */}
             <div className="flex justify-center space-x-2 mt-6">
-              {showcaseImages.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                    index === currentImageIndex
-                      ? 'bg-emerald-600 scale-110'
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                  onClick={() => setCurrentImageIndex(index)}
-                />
-              ))}
+              {showcaseImages.map((_, index) => <button key={index} className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentImageIndex ? 'bg-emerald-600 scale-110' : 'bg-gray-300 hover:bg-gray-400'}`} onClick={() => setCurrentImageIndex(index)} />)}
             </div>
           </div>
 
@@ -148,28 +107,12 @@ const GalleryShowcase = () => {
 
         {/* Small Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {showcaseImages.map((image, index) => (
-            <div
-              key={index}
-              className="relative h-32 md:h-40 rounded-xl overflow-hidden cursor-pointer group"
-              onClick={() => setCurrentImageIndex(index)}
-            >
-              <img
-                src={image.url}
-                alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-              />
-              <div className={`absolute inset-0 transition-all duration-200 ${
-                index === currentImageIndex
-                  ? 'ring-4 ring-emerald-500 ring-offset-2'
-                  : 'group-hover:bg-black/20'
-              }`}></div>
-            </div>
-          ))}
+          {showcaseImages.map((image, index) => <div key={index} className="relative h-32 md:h-40 rounded-xl overflow-hidden cursor-pointer group" onClick={() => setCurrentImageIndex(index)}>
+              <img src={image.url} alt={image.alt} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+              <div className={`absolute inset-0 transition-all duration-200 ${index === currentImageIndex ? 'ring-4 ring-emerald-500 ring-offset-2' : 'group-hover:bg-black/20'}`}></div>
+            </div>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default GalleryShowcase;
