@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,5 +21,90 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Badge Removal Script -->
+    <script>
+      // Function to remove Lovable badge
+      function removeLovableBadge() {
+        // Remove badge by ID
+        const badgeById = document.getElementById('lovable-badge');
+        if (badgeById) {
+          badgeById.remove();
+          console.log('Lovable badge removed by ID');
+        }
+        
+        // Remove badge by searching for specific attributes and content
+        const allLinks = document.querySelectorAll('a[href*="lovable.dev"]');
+        allLinks.forEach(link => {
+          if (link.href.includes('lovable.dev')) {
+            link.remove();
+            console.log('Lovable badge link removed');
+          }
+        });
+        
+        // Remove any elements containing "Edit with" text
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(element => {
+          if (element.textContent && element.textContent.includes('Edit with') && 
+              element.innerHTML.includes('lovable')) {
+            element.remove();
+            console.log('Lovable badge element removed by content');
+          }
+        });
+        
+        // Remove elements with lovable-badge class or similar
+        const badgeClasses = document.querySelectorAll('[class*="lovable"], [id*="lovable"]');
+        badgeClasses.forEach(element => {
+          element.remove();
+          console.log('Lovable badge removed by class/id pattern');
+        });
+      }
+      
+      // Run immediately when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', removeLovableBadge);
+      } else {
+        removeLovableBadge();
+      }
+      
+      // Run after page is fully loaded
+      window.addEventListener('load', removeLovableBadge);
+      
+      // Create a MutationObserver to detect and remove badges that might be added dynamically
+      const observer = new MutationObserver((mutations) => {
+        let shouldCheck = false;
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+            mutation.addedNodes.forEach((node) => {
+              if (node.nodeType === 1) { // Element node
+                // Check if the added node or its children contain lovable badge
+                if (node.id === 'lovable-badge' || 
+                    (node.querySelector && node.querySelector('#lovable-badge')) ||
+                    (node.href && node.href.includes('lovable.dev')) ||
+                    (node.textContent && node.textContent.includes('Edit with') && 
+                     node.innerHTML && node.innerHTML.includes('lovable'))) {
+                  shouldCheck = true;
+                }
+              }
+            });
+          }
+        });
+        
+        if (shouldCheck) {
+          setTimeout(removeLovableBadge, 100); // Small delay to ensure DOM is updated
+        }
+      });
+      
+      // Start observing
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+      
+      // Also run periodically as a fallback
+      setInterval(removeLovableBadge, 2000); // Check every 2 seconds
+      
+      console.log('Lovable badge removal script initialized');
+    </script>
   </body>
 </html>
