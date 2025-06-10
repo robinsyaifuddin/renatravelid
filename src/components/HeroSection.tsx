@@ -28,18 +28,18 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         {/* Breadcrumb */}
         <div className="flex items-center justify-center space-x-2 text-sm mb-8 opacity-90">
-          <span>Home</span>
+          <span>Beranda</span>
           <span className="text-orange-400">›</span>
-          <span className="text-orange-400">Explore Tours</span>
+          <span className="text-orange-400">Jelajahi Destinasi</span>
         </div>
 
         {/* Main Heading */}
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          Explore Your Place
+          Jelajahi Tempat Impianmu
         </h1>
         
         <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-2xl mx-auto">
-          Discover amazing destinations and create unforgettable memories with our curated travel experiences
+          Temukan destinasi menakjubkan dan ciptakan kenangan tak terlupakan dengan pengalaman wisata terpilih kami
         </p>
 
         {/* Booking Form */}
@@ -48,15 +48,15 @@ const HeroSection = () => {
             {/* Check In */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 block text-left">
-                Check In
+                Tanggal Masuk
               </label>
               <div className="relative">
                 <Input
                   type="date"
                   value={checkIn}
                   onChange={(e) => setCheckIn(e.target.value)}
-                  className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500"
-                  placeholder="Select Date"
+                  className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900"
+                  placeholder="Pilih Tanggal"
                 />
                 <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
               </div>
@@ -65,15 +65,15 @@ const HeroSection = () => {
             {/* Check Out */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 block text-left">
-                Check Out
+                Tanggal Keluar
               </label>
               <div className="relative">
                 <Input
                   type="date"
                   value={checkOut}
                   onChange={(e) => setCheckOut(e.target.value)}
-                  className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500"
-                  placeholder="Select Date"
+                  className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900"
+                  placeholder="Pilih Tanggal"
                 />
                 <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
               </div>
@@ -82,19 +82,19 @@ const HeroSection = () => {
             {/* Guests */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 block text-left">
-                Guests
+                Tamu
               </label>
               <div className="relative">
                 <Select value={guests} onValueChange={setGuests}>
-                  <SelectTrigger className="h-12 pl-10 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500">
-                    <SelectValue placeholder="2 Adults" />
+                  <SelectTrigger className="h-12 pl-10 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900">
+                    <SelectValue placeholder="2 Orang Dewasa" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="1">1 Adult</SelectItem>
-                    <SelectItem value="2">2 Adults</SelectItem>
-                    <SelectItem value="3">3 Adults</SelectItem>
-                    <SelectItem value="4">4 Adults</SelectItem>
-                    <SelectItem value="5">5+ Adults</SelectItem>
+                    <SelectItem value="1">1 Orang Dewasa</SelectItem>
+                    <SelectItem value="2">2 Orang Dewasa</SelectItem>
+                    <SelectItem value="3">3 Orang Dewasa</SelectItem>
+                    <SelectItem value="4">4 Orang Dewasa</SelectItem>
+                    <SelectItem value="5">5+ Orang Dewasa</SelectItem>
                   </SelectContent>
                 </Select>
                 <User className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
@@ -104,19 +104,19 @@ const HeroSection = () => {
             {/* Accommodations */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 block text-left">
-                Accommodations
+                Akomodasi
               </label>
               <div className="relative">
                 <Select value={accommodation} onValueChange={setAccommodation}>
-                  <SelectTrigger className="h-12 pl-10 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500">
-                    <SelectValue placeholder="Tour Company" />
+                  <SelectTrigger className="h-12 pl-10 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900">
+                    <SelectValue placeholder="Paket Wisata" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="hotel">Hotel</SelectItem>
                     <SelectItem value="villa">Villa</SelectItem>
                     <SelectItem value="resort">Resort</SelectItem>
-                    <SelectItem value="apartment">Apartment</SelectItem>
-                    <SelectItem value="tour">Tour Package</SelectItem>
+                    <SelectItem value="apartment">Apartemen</SelectItem>
+                    <SelectItem value="tour">Paket Wisata</SelectItem>
                   </SelectContent>
                 </Select>
                 <MapPin className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
@@ -129,7 +129,7 @@ const HeroSection = () => {
                 className="w-full h-12 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
               >
                 <Search className="w-5 h-5" />
-                <span>CHECK AVAILABILITY</span>
+                <span>CEK KETERSEDIAAN</span>
               </Button>
             </div>
           </div>

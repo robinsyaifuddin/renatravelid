@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Menu, X, Phone, Mail, MapPin, User, Search } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ const Header = () => {
 
   const menuItems = [
     { name: 'Beranda', href: '/' },
-    { name: 'Tour', href: '/tour' },
+    { name: 'Destinasi', href: '/tour' },
     { name: 'Blog', href: '/blog' },
     { name: 'Tentang Kami', href: '/tentang' }
   ];
@@ -117,26 +117,16 @@ const Header = () => {
             <Button
               variant="outline"
               size="sm"
-              className="hidden sm:flex items-center space-x-2 border-emerald-200 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300 hover:shadow-md"
+              className="hidden sm:flex items-center border-emerald-200 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300 hover:shadow-md w-10 h-10 p-0"
               onClick={() => setIsSearchOpen(true)}
             >
               <Search className="w-4 h-4" />
-              <span className="hidden md:block">Cari Destinasi</span>
             </Button>
 
             <Button 
               className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 hover:from-orange-600 hover:via-orange-700 hover:to-red-600 text-white px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hidden sm:flex"
             >
               Pesan Sekarang
-            </Button>
-
-            <Button
-              variant="outline"
-              size="sm"
-              className="hidden sm:flex items-center space-x-2 border-emerald-200 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300 hover:shadow-md"
-            >
-              <User className="w-4 h-4" />
-              <span>Masuk</span>
             </Button>
 
             {/* Mobile Search Button */}
@@ -182,9 +172,6 @@ const Header = () => {
               <div className="pt-6 space-y-3 border-t border-gray-200 mt-6">
                 <Button className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-xl font-semibold py-3 shadow-lg hover:shadow-xl transition-all duration-300">
                   Pesan Sekarang
-                </Button>
-                <Button variant="outline" className="w-full border-emerald-200 text-emerald-600 hover:bg-emerald-50 rounded-xl font-semibold py-3 transition-all duration-300">
-                  Masuk
                 </Button>
               </div>
             </nav>
