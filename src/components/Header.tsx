@@ -74,7 +74,7 @@ const Header = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2 group">
                 <Phone className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span>+62 361 123 456</span>
+                <span>+62 812-9573-5703</span>
               </div>
             </div>
           </div>
