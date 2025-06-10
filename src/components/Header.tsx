@@ -1,16 +1,8 @@
 
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, Phone, Mail, MapPin, User } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,46 +10,9 @@ const Header = () => {
 
   const menuItems = [
     { name: 'Beranda', href: '/' },
-    { 
-      name: 'Akomodasi', 
-      href: '/akomodasi',
-      dropdown: [
-        { name: 'Hotel Mewah', href: '/akomodasi?type=hotel' },
-        { name: 'Villa Eksklusif', href: '/akomodasi?type=villa' },
-        { name: 'Resort Premium', href: '/akomodasi?type=resort' },
-        { name: 'Apartemen', href: '/akomodasi?type=apartment' }
-      ]
-    },
-    { 
-      name: 'Galeri', 
-      href: '/galeri',
-      dropdown: [
-        { name: 'Semua Foto', href: '/galeri' },
-        { name: 'Alam & Pemandangan', href: '/galeri?category=nature' },
-        { name: 'Petualangan', href: '/galeri?category=adventure' },
-        { name: 'Budaya Lokal', href: '/galeri?category=culture' }
-      ]
-    },
-    { 
-      name: 'Blog', 
-      href: '/blog',
-      dropdown: [
-        { name: 'Tips Perjalanan', href: '/blog?category=tips' },
-        { name: 'Destinasi Favorit', href: '/blog?category=destinations' },
-        { name: 'Ulasan & Review', href: '/blog?category=reviews' }
-      ]
-    },
-    { 
-      name: 'Tentang Kami', 
-      href: '/tentang',
-      dropdown: [
-        { name: 'Profil Perusahaan', href: '/tentang#profil' },
-        { name: 'Layanan Kami', href: '/tentang#layanan' },
-        { name: 'Tim Profesional', href: '/tentang#tim' },
-        { name: 'Kebijakan Privasi', href: '/tentang#privasi' }
-      ]
-    },
-    { name: 'Kontak', href: '/kontak' }
+    { name: 'Tour', href: '/tour' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Tentang Kami', href: '/tentang' }
   ];
 
   const isActive = (href: string) => {
@@ -111,48 +66,17 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden lg:flex">
-            <NavigationMenuList>
-              {menuItems.map((item) => (
-                <NavigationMenuItem key={item.name}>
-                  {item.dropdown ? (
-                    <>
-                      <NavigationMenuTrigger 
-                        className={`${isActive(item.href) ? 'text-emerald-600 bg-emerald-50' : 'text-gray-700 hover:text-emerald-600'} transition-colors duration-200 font-medium`}
-                      >
-                        {item.name}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <div className="w-64 p-4">
-                          <div className="space-y-3">
-                            {item.dropdown.map((subItem) => (
-                              <NavigationMenuLink key={subItem.name} asChild>
-                                <Link
-                                  to={subItem.href}
-                                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-600 focus:bg-emerald-50 focus:text-emerald-600"
-                                >
-                                  <div className="text-sm font-medium leading-none">{subItem.name}</div>
-                                </Link>
-                              </NavigationMenuLink>
-                            ))}
-                          </div>
-                        </div>
-                      </NavigationMenuContent>
-                    </>
-                  ) : (
-                    <NavigationMenuLink asChild>
-                      <Link
-                        to={item.href}
-                        className={`${isActive(item.href) ? 'text-emerald-600 bg-emerald-50' : 'text-gray-700 hover:text-emerald-600'} transition-colors duration-200 font-medium px-4 py-2 rounded-md`}
-                      >
-                        {item.name}
-                      </Link>
-                    </NavigationMenuLink>
-                  )}
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+          <nav className="hidden lg:flex space-x-8">
+            {menuItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={`${isActive(item.href) ? 'text-emerald-600 bg-emerald-50' : 'text-gray-700 hover:text-emerald-600'} transition-colors duration-200 font-medium px-4 py-2 rounded-md`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-4">
@@ -187,33 +111,18 @@ const Header = () => {
           <div className="lg:hidden mt-4 py-4 border-t border-gray-200 bg-white rounded-lg shadow-lg">
             <nav className="space-y-2">
               {menuItems.map((item) => (
-                <div key={item.name}>
-                  <Link
-                    to={item.href}
-                    className={`block px-4 py-3 rounded-lg transition-colors duration-200 font-medium ${
-                      isActive(item.href) 
-                        ? 'text-emerald-600 bg-emerald-50' 
-                        : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50'
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                  {item.dropdown && (
-                    <div className="ml-4 space-y-1 mt-2">
-                      {item.dropdown.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          to={subItem.href}
-                          className="block px-4 py-2 text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors duration-200"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`block px-4 py-3 rounded-lg transition-colors duration-200 font-medium ${
+                    isActive(item.href) 
+                      ? 'text-emerald-600 bg-emerald-50' 
+                      : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
               ))}
               <div className="pt-4 space-y-2 border-t border-gray-200 mt-4">
                 <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white">

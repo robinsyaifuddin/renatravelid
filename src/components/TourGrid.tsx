@@ -2,120 +2,81 @@
 import React, { useState } from 'react';
 import { Star, MapPin, Calendar, Users, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Link } from 'react-router-dom';
 
 const TourGrid = () => {
-  const [sortBy, setSortBy] = useState('popular');
-  const [currentPage, setCurrentPage] = useState(1);
-
   const tours = [
     {
       id: 1,
-      title: "Boathouse Neighborhood",
-      location: "North Province, Maldives",
-      duration: "06 Days",
-      groupSize: "2k",
+      title: "Eksplorasi Raja Ampat",
+      location: "Papua Barat, Indonesia",
+      duration: "5 Hari 4 Malam",
+      groupSize: "8-12 orang",
       rating: 4.9,
-      reviews: 63,
-      price: "From $9165",
-      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Popular"
+      reviews: 127,
+      price: "Rp 8.500.000",
+      image: "/placeholder.svg",
+      category: "Alam"
     },
     {
       id: 2,
-      title: "Camping Tent Near Coastline",
-      location: "Koh Rong, Maldives",
-      duration: "05 Days",
-      groupSize: "2k", 
-      rating: 4.9,
-      reviews: 63,
-      price: "From $3165",
-      image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Adventure"
+      title: "Pendakian Gunung Bromo",
+      location: "Jawa Timur, Indonesia",
+      duration: "3 Hari 2 Malam",
+      groupSize: "10-15 orang", 
+      rating: 4.8,
+      reviews: 89,
+      price: "Rp 2.750.000",
+      image: "/placeholder.svg",
+      category: "Petualangan"
     },
     {
       id: 3,
-      title: "Sitting on Boat Spreading Her Arms",
-      location: "Tantiaw Anisang Sok, Thailand",
-      duration: "05 Days",
-      groupSize: "25",
-      rating: 4.9,
-      reviews: 63,
-      price: "From $6165",
-      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Nature"
+      title: "Wisata Budaya Yogyakarta",
+      location: "Yogyakarta, Indonesia",
+      duration: "4 Hari 3 Malam",
+      groupSize: "6-10 orang",
+      rating: 4.7,
+      reviews: 156,
+      price: "Rp 1.850.000",
+      image: "/placeholder.svg",
+      category: "Budaya"
     },
     {
       id: 4,
-      title: "Man Standing on a Rock",
-      location: "North Province, Maldives",
-      duration: "06 Days",
-      groupSize: "2k",
+      title: "Petualangan Komodo Island",
+      location: "Nusa Tenggara Timur, Indonesia",
+      duration: "4 Hari 3 Malam",
+      groupSize: "8-12 orang",
       rating: 4.9,
-      reviews: 63,
-      price: "From $9165",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Adventure"
+      reviews: 203,
+      price: "Rp 5.200.000",
+      image: "/placeholder.svg",
+      category: "Petualangan"
     },
     {
       id: 5,
-      title: "Huts in the Middle Of Beach",
-      location: "Sovalye, French Polynesia",
-      duration: "05 Days",
-      groupSize: "2k",
-      rating: 4.9,
-      reviews: 63,
-      price: "From $9165",
-      image: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Luxury"
+      title: "Pesona Danau Toba",
+      location: "Sumatera Utara, Indonesia",
+      duration: "3 Hari 2 Malam",
+      groupSize: "6-12 orang",
+      rating: 4.6,
+      reviews: 94,
+      price: "Rp 2.100.000",
+      image: "/placeholder.svg",
+      category: "Alam"
     },
     {
       id: 6,
-      title: "Beautiful Floating Villa",
-      location: "Gaafu Dhaalu Atoll, Maldives",
-      duration: "06 Days",
-      groupSize: "25",
-      rating: 4.9,
-      reviews: 63,
-      price: "From $9165",
-      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Luxury"
-    },
-    {
-      id: 7,
-      title: "Man and Woman Walks on Dock",
-      location: "Maldives",
-      duration: "05 Days",
-      groupSize: "2k",
-      rating: 4.9,
-      reviews: 63,
-      price: "From $7165",
-      image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Romantic"
-    },
-    {
-      id: 8,
-      title: "Trees Under White Clouds during Daytime",
-      location: "Yogyakar, French Polynesia",
-      duration: "06 Days",
-      groupSize: "25",
-      rating: 4.9,
-      reviews: 63,
-      price: "From $9165",
-      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Culture"
-    },
-    {
-      id: 9,
-      title: "Body of Water Near Mountain",
-      location: "Bali, Indonesia",
-      duration: "05 Days",
-      groupSize: "2k",
-      rating: 4.9,
-      reviews: 63,
-      price: "From $8165",
-      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Nature"
+      title: "Pantai Pink Lombok",
+      location: "Nusa Tenggara Barat, Indonesia",
+      duration: "3 Hari 2 Malam",
+      groupSize: "8-14 orang",
+      rating: 4.8,
+      reviews: 112,
+      price: "Rp 3.400.000",
+      image: "/placeholder.svg",
+      category: "Pantai"
     }
   ];
 
@@ -123,25 +84,11 @@ const TourGrid = () => {
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <p className="text-gray-600 mb-2">Showing Results 09 Of 55</p>
-          </div>
-          <div className="flex items-center space-x-4">
-            <span className="text-gray-600">Sort By</span>
-            <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-40">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="popular">Popular</SelectItem>
-                <SelectItem value="price-low">Price: Low to High</SelectItem>
-                <SelectItem value="price-high">Price: High to Low</SelectItem>
-                <SelectItem value="rating">Rating</SelectItem>
-                <SelectItem value="newest">Newest</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">Tour Populer</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Jelajahi keindahan Indonesia dengan paket tour terpilih dan berpengalaman
+          </p>
         </div>
 
         {/* Tour Grid */}
@@ -213,52 +160,31 @@ const TourGrid = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="text-lg font-bold text-emerald-600">{tour.price}</span>
+                    <div className="text-xs text-gray-500">per orang</div>
                   </div>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-emerald-200 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-200 group/btn"
-                  >
-                    <span>Details</span>
-                    <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform duration-200" />
-                  </Button>
+                  <Link to={`/tour/${tour.id}`}>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-emerald-200 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-200 group/btn"
+                    >
+                      <span>Detail</span>
+                      <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Pagination */}
-        <div className="flex justify-center items-center space-x-4">
-          <Button variant="outline" size="sm" disabled>
-            Previous
-          </Button>
-          
-          <div className="flex space-x-2">
-            {[1, 2, 3, 4].map((page) => (
-              <Button
-                key={page}
-                variant={currentPage === page ? "default" : "outline"}
-                size="sm"
-                className={`w-10 h-10 ${
-                  currentPage === page
-                    ? 'bg-emerald-600 text-white'
-                    : 'border-gray-300 text-gray-600 hover:border-emerald-600 hover:text-emerald-600'
-                }`}
-                onClick={() => setCurrentPage(page)}
-              >
-                {page}
-              </Button>
-            ))}
-          </div>
-          
-          <Button 
-            variant="outline" 
-            size="sm"
-            className="border-gray-300 text-gray-600 hover:border-emerald-600 hover:text-emerald-600"
-          >
-            Next
-          </Button>
+        {/* View All Button */}
+        <div className="text-center">
+          <Link to="/tour">
+            <Button className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-3 rounded-full hover:from-emerald-600 hover:to-teal-600 transition-all duration-200">
+              Lihat Semua Tour
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

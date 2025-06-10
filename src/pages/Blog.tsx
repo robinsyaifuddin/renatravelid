@@ -22,7 +22,7 @@ const Blog = () => {
     {
       id: 1,
       title: "10 Tips Hemat Liburan ke Bali untuk Backpacker",
-      excerpt: "Panduan lengkap untuk menikmati keindahan Bali dengan budget terbatas. Mulai dari transportasi, akomodasi, hingga kuliner murah meriah.",
+      excerpt: "Panduan lengkap untuk menikmati keindahan Bali dengan budget terbatas. Mulai dari transportasi, akomodasi, hingga kuliner murah meriah yang tetap nikmat dan berkesan.",
       category: "tips",
       author: "Ahmad Susanto",
       date: "15 Maret 2024",
@@ -30,7 +30,8 @@ const Blog = () => {
       views: 1234,
       comments: 23,
       image: "/placeholder.svg",
-      featured: true
+      featured: true,
+      content: "Bali memang menjadi destinasi impian banyak orang. Namun, bukan berarti Anda harus menguras tabungan untuk menikmati keindahan Pulau Dewata ini. Dengan perencanaan yang tepat dan tips-tips jitu, Anda bisa berlibur hemat namun tetap berkesan..."
     },
     {
       id: 2,
@@ -43,7 +44,8 @@ const Blog = () => {
       views: 987,
       comments: 15,
       image: "/placeholder.svg",
-      featured: false
+      featured: false,
+      content: "Raja Ampat, yang secara harfiah berarti 'Empat Raja', adalah surga bagi para penyelam dan pecinta alam bawah laut. Terletak di ujung barat laut Papua, kepulauan ini menawarkan keanekaragaman hayati laut yang tak tertandingi..."
     },
     {
       id: 3,
@@ -56,7 +58,8 @@ const Blog = () => {
       views: 756,
       comments: 31,
       image: "/placeholder.svg",
-      featured: false
+      featured: false,
+      content: "Mengunjungi Candi Borobudur saat sunrise adalah pengalaman yang tak terlupakan. Namun, untuk mendapatkan pengalaman terbaik, ada beberapa hal yang perlu Anda ketahui sebelum booking..."
     },
     {
       id: 4,
@@ -69,7 +72,8 @@ const Blog = () => {
       views: 645,
       comments: 18,
       image: "/placeholder.svg",
-      featured: false
+      featured: false,
+      content: "Nyepi adalah salah satu tradisi paling unik di Bali yang jarang ditemukan di tempat lain. Hari Raya Saka ini tidak hanya tentang keheningan, tapi juga tentang refleksi diri dan kedamaian batin..."
     },
     {
       id: 5,
@@ -82,7 +86,8 @@ const Blog = () => {
       views: 892,
       comments: 27,
       image: "/placeholder.svg",
-      featured: false
+      featured: false,
+      content: "Yogyakarta tidak hanya terkenal sebagai kota budaya, tapi juga surga kuliner. Dari gudeg yang manis hingga bakpia yang legit, setiap sudut kota ini menyimpan cita rasa yang tak terlupakan..."
     },
     {
       id: 6,
@@ -95,7 +100,8 @@ const Blog = () => {
       views: 1456,
       comments: 42,
       image: "/placeholder.svg",
-      featured: true
+      featured: true,
+      content: "Gunung Rinjani adalah salah satu gunung tertinggi di Indonesia yang menawarkan pemandangan spektakuler. Namun, pendakian ini membutuhkan persiapan yang matang..."
     }
   ];
 
@@ -233,7 +239,7 @@ const Blog = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
-              <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+              <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group cursor-pointer">
                 <div className="relative">
                   <img 
                     src={post.image} 
@@ -254,7 +260,7 @@ const Blog = () => {
                     <span>{post.readTime} baca</span>
                   </div>
                   
-                  <h3 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-emerald-600 transition-colors cursor-pointer line-clamp-2">
+                  <h3 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-emerald-600 transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                   
