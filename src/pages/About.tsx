@@ -1,66 +1,50 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Users, Award, Globe, Heart, Shield, Star, Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const About = () => {
-  const features = [
-    {
-      icon: Award,
-      title: "Pengalaman 15+ Tahun",
-      description: "Kami telah melayani ribuan wisatawan dengan pengalaman tak terlupakan di seluruh Nusantara."
-    },
-    {
-      icon: Users,
-      title: "Tim Profesional",
-      description: "Guide berpengalaman dan tim customer service yang siap membantu 24/7."
-    },
-    {
-      icon: Shield,
-      title: "Terpercaya & Aman",
-      description: "Perjalanan Anda dijamin aman dengan asuransi perjalanan dan protokol keselamatan terbaik."
-    },
-    {
-      icon: Globe,
-      title: "Destinasi Lengkap",
-      description: "Dari Sabang sampai Merauke, kami menyediakan paket wisata ke seluruh Indonesia."
-    }
-  ];
-
-  const team = [
-    {
-      name: "Ahmad Susanto",
-      position: "CEO & Founder",
-      image: "/placeholder.svg",
-      description: "Pendiri dengan passion tinggi untuk pariwisata Indonesia"
-    },
-    {
-      name: "Sari Dewi",
-      position: "Head of Operations",
-      image: "/placeholder.svg",
-      description: "Ahli dalam operasional dan manajemen perjalanan"
-    },
-    {
-      name: "Budi Hartono",
-      position: "Senior Travel Consultant",
-      image: "/placeholder.svg",
-      description: "Konsultan perjalanan dengan pengalaman 12+ tahun"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen">
+  const features = [{
+    icon: Award,
+    title: "Pengalaman 15+ Tahun",
+    description: "Kami telah melayani ribuan wisatawan dengan pengalaman tak terlupakan di seluruh Nusantara."
+  }, {
+    icon: Users,
+    title: "Tim Profesional",
+    description: "Guide berpengalaman dan tim customer service yang siap membantu 24/7."
+  }, {
+    icon: Shield,
+    title: "Terpercaya & Aman",
+    description: "Perjalanan Anda dijamin aman dengan asuransi perjalanan dan protokol keselamatan terbaik."
+  }, {
+    icon: Globe,
+    title: "Destinasi Lengkap",
+    description: "Dari Sabang sampai Merauke, kami menyediakan paket wisata ke seluruh Indonesia."
+  }];
+  const team = [{
+    name: "Ahmad Susanto",
+    position: "CEO & Founder",
+    image: "/placeholder.svg",
+    description: "Pendiri dengan passion tinggi untuk pariwisata Indonesia"
+  }, {
+    name: "Sari Dewi",
+    position: "Head of Operations",
+    image: "/placeholder.svg",
+    description: "Ahli dalam operasional dan manajemen perjalanan"
+  }, {
+    name: "Budi Hartono",
+    position: "Senior Travel Consultant",
+    image: "/placeholder.svg",
+    description: "Konsultan perjalanan dengan pengalaman 12+ tahun"
+  }];
+  return <div className="min-h-screen">
       <Header />
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Tentang WisataNusantara
-            </h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Tentang Renatravel.id</h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90">
               Menjelajahi Keindahan Indonesia Bersama Ahlinya
             </p>
@@ -108,15 +92,13 @@ const About = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center group">
+            {features.map((feature, index) => <div key={index} className="text-center group">
                 <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -132,25 +114,17 @@ const About = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                <img 
-                  src={member.image} 
-                  alt={member.name}
-                  className="w-full h-64 object-cover"
-                />
+            {team.map((member, index) => <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                <img src={member.image} alt={member.name} className="w-full h-64 object-cover" />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-800 mb-1">{member.name}</h3>
                   <p className="text-emerald-600 font-medium mb-3">{member.position}</p>
                   <p className="text-gray-600">{member.description}</p>
                   <div className="flex mt-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />
-                    ))}
+                    {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />)}
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -191,11 +165,7 @@ const About = () => {
             </div>
             
             <div className="relative">
-              <img 
-                src="/placeholder.svg" 
-                alt="Tim WisataNusantara"
-                className="w-full h-96 object-cover rounded-xl shadow-lg"
-              />
+              <img src="/placeholder.svg" alt="Tim WisataNusantara" className="w-full h-96 object-cover rounded-xl shadow-lg" />
             </div>
           </div>
         </div>
@@ -275,44 +245,24 @@ const About = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                      placeholder="Masukkan nama lengkap"
-                    />
+                    <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="Masukkan nama lengkap" />
                   </div>
                   <div>
                     <label className="block text-gray-700 font-medium mb-2">Email</label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                      placeholder="Masukkan email"
-                    />
+                    <input type="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="Masukkan email" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">Nomor Telepon</label>
-                  <input
-                    type="tel"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                    placeholder="Masukkan nomor telepon"
-                  />
+                  <input type="tel" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="Masukkan nomor telepon" />
                 </div>
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">Subjek</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                    placeholder="Masukkan subjek"
-                  />
+                  <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="Masukkan subjek" />
                 </div>
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">Pesan</label>
-                  <textarea
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                    placeholder="Tulis pesan Anda..."
-                  ></textarea>
+                  <textarea rows={5} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent" placeholder="Tulis pesan Anda..."></textarea>
                 </div>
                 <Button className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 rounded-lg font-medium hover:from-emerald-600 hover:to-teal-600 transition-all duration-200">
                   Kirim Pesan
@@ -324,8 +274,6 @@ const About = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default About;
