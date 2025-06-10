@@ -64,7 +64,7 @@ const Header = () => {
               <div className="flex items-center space-x-2 group">
                 <MapPin className="w-4 h-4 group-hover:scale-110 transition-transform" />
                 <span className="hidden sm:block">Ciputat, Tangerang Selatan</span>
-                <span className="sm:hidden">Ciputat, Tangerang Selatan</span>
+                <span className="sm:hidden font-thin">Ciputat, Tangerang Selatan</span>
               </div>
               <div className="hidden md:flex items-center space-x-2 group">
                 <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
