@@ -40,19 +40,19 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Alamat Kantor",
-      details: ["Jl. Raya Kuta No. 123", "Kuta, Badung, Bali 80361", "Indonesia"],
+      details: ["Jl. IR. H. Juanda No. 95", "Ciputat, Tangerang Selatan 15412", "Indonesia"],
       color: "bg-emerald-100 text-emerald-600"
     },
     {
       icon: Phone,
       title: "Telepon & WhatsApp",
-      details: ["+62 361 123 456", "+62 812 3456 7890 (WA)", "Tersedia 24/7"],
+      details: ["+62 812-9573-5703", "+62 812-9573-5703 (WA)", "Tersedia 24/7"],
       color: "bg-blue-100 text-blue-600"
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@wisatanusantara.com", "booking@wisatanusantara.com", "support@wisatanusantara.com"],
+      details: ["info@renatravel.id", "booking@renatravel.id", "support@renatravel.id"],
       color: "bg-orange-100 text-orange-600"
     },
     {
@@ -277,7 +277,7 @@ const Contact = () => {
               <div className="text-center text-gray-500">
                 <MapPin className="w-16 h-16 mx-auto mb-4" />
                 <p className="text-lg font-medium">Peta Google Maps</p>
-                <p className="text-sm">Jl. Raya Kuta No. 123, Kuta, Badung, Bali</p>
+                <p className="text-sm">Jl. IR. H. Juanda No. 95, Ciputat, Tangerang Selatan</p>
               </div>
             </div>
           </div>
