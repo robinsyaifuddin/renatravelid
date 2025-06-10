@@ -60,7 +60,7 @@ const Header = () => {
               </div>
               <div className="hidden md:flex items-center space-x-2 group">
                 <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span>info@wisatanusantara.com</span>
+                <span>info@renatravel.id</span>
               </div>
             </div>
             <div className="flex items-center space-x-4">
@@ -78,15 +78,19 @@ const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-              <span className="text-white font-bold text-xl">W</span>
+            <div className="relative group-hover:scale-105 transition-all duration-300">
+              <img 
+                src="/lovable-uploads/e10b370d-5966-446b-84d2-b975e27bf503.png" 
+                alt="Renatravel.id Logo" 
+                className="h-12 w-auto sm:h-14 object-contain"
+              />
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                WisataNusantara
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                Renatravel.id
               </span>
               <span className="text-xs text-gray-500 hidden sm:block font-medium">
-                Jelajahi Keindahan Indonesia
+                Plan, Explore, Enjoy
               </span>
             </div>
           </Link>
@@ -121,12 +125,6 @@ const Header = () => {
               onClick={() => setIsSearchOpen(true)}
             >
               <Search className="w-4 h-4" />
-            </Button>
-
-            <Button 
-              className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 hover:from-orange-600 hover:via-orange-700 hover:to-red-600 text-white px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 hidden sm:flex"
-            >
-              Pesan Sekarang
             </Button>
 
             {/* Mobile Search Button */}
@@ -169,11 +167,6 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-6 space-y-3 border-t border-gray-200 mt-6">
-                <Button className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-xl font-semibold py-3 shadow-lg hover:shadow-xl transition-all duration-300">
-                  Pesan Sekarang
-                </Button>
-              </div>
             </nav>
           </div>
         )}
