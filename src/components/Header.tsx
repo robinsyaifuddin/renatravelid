@@ -64,7 +64,7 @@ const Header = () => {
               <div className="flex items-center space-x-2 group">
                 <MapPin className="w-4 h-4 group-hover:scale-110 transition-transform" />
                 <span className="hidden sm:block">Ciputat, Tangerang Selatan</span>
-                <span className="sm:hidden font-thin">Ciputat, Tangerang Selatan</span>
+                <span className="sm:hidden font-thin text-sm">Ciputat, Tangerang Selatan</span>
               </div>
               <div className="hidden md:flex items-center space-x-2 group">
                 <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -74,7 +74,7 @@ const Header = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2 group">
                 <Phone className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span>+62 812-9573-5703</span>
+                <span className="text-xs">+62 812-9573-5703</span>
               </div>
             </div>
           </div>
