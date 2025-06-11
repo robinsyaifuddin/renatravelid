@@ -171,15 +171,7 @@ const GalleryShowcase = () => {
         </div>
 
         {/* Small Gallery Grid */}
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-4">
-          {showcaseImages.map((image, index) => <div key={index} className="relative h-20 sm:h-24 md:h-32 lg:h-40 rounded-lg md:rounded-xl overflow-hidden cursor-pointer group transition-transform duration-200 hover:scale-105" onClick={() => goToImage(index)}>
-              
-              
-              
-              {/* Image Title Overlay for larger screens */}
-              
-            </div>)}
-        </div>
+        
       </div>
     </section>;
 };
