@@ -11,7 +11,7 @@ const Footer = () => {
     // Add newsletter subscription logic here
   };
   const supportLinks = ['Pusat Bantuan', 'Informasi Keamanan', 'Opsi Pembatalan', 'Ulasan Pelanggan', 'Syarat & Ketentuan'];
-  return <footer className="relative bg-gradient-to-r from-emerald-600 to-teal-600">
+  return <footer className="relative bg-gradient-to-r from-teal-600 to-black-600">
       {/* Main Footer Content */}
       <div className="container mx-auto px-2 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
