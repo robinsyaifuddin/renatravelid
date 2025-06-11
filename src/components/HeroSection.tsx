@@ -3,33 +3,44 @@ import { Calendar, MapPin, User, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
 const HeroSection = () => {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [guests, setGuests] = useState('');
   const [accommodation, setAccommodation] = useState('');
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: `url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')`
-    }}>
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image with Overlay and Shadow Effect */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat shadow-2xl md:shadow-[0_35px_80px_rgba(13,148,136,0.4)] shadow-[0_20px_50px_rgba(13,148,136,0.3)]" 
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')`,
+          filter: 'drop-shadow(0 25px 60px rgba(5,150,105,0.25)) drop-shadow(0 10px 30px rgba(13,148,136,0.35))'
+        }}
+      >
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+        
+        {/* Additional Shadow Layers for Enhanced Effect */}
+        <div className="absolute inset-0 shadow-inner"></div>
+        <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-emerald-500/20 blur-xl opacity-60 md:opacity-80"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white py-[10px]">
         {/* Main Heading */}
-        <h1 className="md:text-7xl font-bold mb-6 leading-tight text-4xl">
+        <h1 className="md:text-7xl font-bold mb-6 leading-tight text-4xl drop-shadow-2xl">
           Jelajahi Tempat Impianmu
         </h1>
         
-        <p className="md:text-2xl mb-12 opacity-90 max-w-2xl mx-auto text-lg">
+        <p className="md:text-2xl mb-12 opacity-90 max-w-2xl mx-auto text-lg drop-shadow-lg">
           Temukan destinasi menakjubkan dan ciptakan kenangan tak terlupakan dengan pengalaman wisata terpilih kami
         </p>
 
-        {/* Booking Form */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl max-w-6xl mx-auto">
+        {/* Booking Form with Enhanced Shadow */}
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl shadow-emerald-500/20 max-w-6xl mx-auto border border-white/20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
             {/* Check In */}
             <div className="space-y-2">
@@ -99,7 +110,7 @@ const HeroSection = () => {
 
             {/* Search Button */}
             <div className="lg:col-span-1">
-              <Button className="w-full h-12 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+              <Button className="w-full h-12 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-emerald-500/25 flex items-center justify-center space-x-2">
                 <Search className="w-5 h-5" />
                 <span>CEK KETERSEDIAAN</span>
               </Button>
@@ -107,13 +118,15 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="mt-16 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+        {/* Scroll Indicator with Enhanced Shadow */}
+        <div className="mt-16 animate-bounce drop-shadow-lg">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center shadow-lg shadow-emerald-500/20">
             <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
