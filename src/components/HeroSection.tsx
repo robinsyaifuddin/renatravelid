@@ -23,11 +23,11 @@ const HeroSection = () => {
         
 
         {/* Main Heading */}
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+        <h1 className="md:text-7xl font-bold mb-6 leading-tight text-4xl">
           Jelajahi Tempat Impianmu
         </h1>
         
-        <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-2xl mx-auto">
+        <p className="md:text-2xl mb-12 opacity-90 max-w-2xl mx-auto text-lg">
           Temukan destinasi menakjubkan dan ciptakan kenangan tak terlupakan dengan pengalaman wisata terpilih kami
         </p>
 
