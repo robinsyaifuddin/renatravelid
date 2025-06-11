@@ -186,20 +186,21 @@ const TourDetail = () => {
                 </div>
               </div>
 
-              <div className="border-t border-b border-gray-200 py-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <div className="flex items-center space-x-3">
-                      <span className="text-3xl font-bold text-emerald-600">{tour.price}</span>
+              {/* Enhanced Mobile-Responsive Pricing Section */}
+              <div className="border-t border-b border-gray-200 py-4 sm:py-6">
+                <div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+                  <div className="text-center sm:text-left">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3">
+                      <span className="text-2xl sm:text-3xl font-bold text-emerald-600">{tour.price}</span>
                       {tour.originalPrice && (
-                        <span className="text-xl text-gray-500 line-through">{tour.originalPrice}</span>
+                        <span className="text-lg sm:text-xl text-gray-500 line-through mt-1 sm:mt-0">{tour.originalPrice}</span>
                       )}
                     </div>
-                    <span className="text-gray-600">per orang</span>
+                    <span className="text-sm sm:text-base text-gray-600 block mt-1">per orang</span>
                   </div>
-                  <div className="text-right">
-                    <div className="text-sm text-green-600 font-medium">Hemat Rp 1.500.000</div>
-                    <div className="text-xs text-gray-500">Promo terbatas!</div>
+                  <div className="text-center sm:text-right">
+                    <div className="text-sm sm:text-base text-green-600 font-medium">Hemat Rp 1.500.000</div>
+                    <div className="text-xs sm:text-sm text-gray-500">Promo terbatas!</div>
                   </div>
                 </div>
               </div>
