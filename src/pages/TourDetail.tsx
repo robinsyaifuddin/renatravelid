@@ -4,9 +4,10 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Star, MapPin, Calendar, Users, CheckCircle, Phone, MessageCircle, ArrowLeft, Clock, Shield, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const TourDetail = () => {
-  const { id } = useParams();
+  const {
+    id
+  } = useParams();
   const navigate = useNavigate();
 
   // Mock data - dalam implementasi nyata, ini akan diambil dari API berdasarkan ID
@@ -20,83 +21,38 @@ const TourDetail = () => {
     reviews: 127,
     price: "Rp 8.500.000",
     originalPrice: "Rp 10.000.000",
-    images: [
-      "/placeholder.svg",
-      "/placeholder.svg",
-      "/placeholder.svg",
-      "/placeholder.svg"
-    ],
+    images: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],
     description: "Raja Ampat, yang berarti 'Empat Raja', adalah destinasi diving dan snorkeling terbaik di dunia. Terletak di ujung barat laut Papua, kawasan ini menawarkan keanekaragaman hayati laut yang luar biasa dengan lebih dari 1.500 spesies ikan dan 75% dari seluruh spesies karang yang dikenal di dunia.",
-    highlights: [
-      "Diving di 4 spot terbaik Raja Ampat",
-      "Snorkeling di laguna tersembunyi",
-      "Trekking ke Piaynemo (Wayag Kecil)",
-      "Sunset di Arborek Island",
-      "Interaksi dengan manta ray",
-      "Fotografi underwater professional"
-    ],
-    facilities: [
-      "Akomodasi resort bintang 4",
-      "Boat charter private",
-      "Peralatan diving lengkap",
-      "Guide profesional bersertifikat",
-      "Makan 3x sehari",
-      "Dokumentasi foto & video",
-      "Asuransi perjalanan",
-      "Transfer airport"
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: "Arrival & Check-in",
-        activities: ["Penjemputan di bandara", "Check-in resort", "Briefing program", "Welcome dinner"]
-      },
-      {
-        day: 2,
-        title: "Diving Cape Kri & Sawandarek",
-        activities: ["Diving spot Cape Kri", "Lunch di boat", "Diving Sawandarek", "Snorkeling sore hari"]
-      },
-      {
-        day: 3,
-        title: "Piaynemo & Arborek",
-        activities: ["Trekking Piaynemo", "Snorkeling laguna", "Kunjungan Arborek Village", "Sunset photography"]
-      },
-      {
-        day: 4,
-        title: "Manta Point",
-        activities: ["Diving Manta Point", "Swimming with manta", "Relaxing di pantai", "BBQ dinner"]
-      },
-      {
-        day: 5,
-        title: "Departure",
-        activities: ["Check-out resort", "Last minute shopping", "Transfer ke bandara"]
-      }
-    ],
-    included: [
-      "Tiket pesawat Jakarta - Sorong PP",
-      "Akomodasi 4 malam di resort",
-      "Semua makan sesuai program",
-      "Boat charter selama program",
-      "Peralatan diving & snorkeling",
-      "Guide profesional",
-      "Dokumentasi foto",
-      "Asuransi perjalanan"
-    ],
-    notIncluded: [
-      "Pengeluaran pribadi",
-      "Tips guide & crew",
-      "Laundry",
-      "Minuman beralkohol",
-      "Aktivitas tambahan di luar program"
-    ]
+    highlights: ["Diving di 4 spot terbaik Raja Ampat", "Snorkeling di laguna tersembunyi", "Trekking ke Piaynemo (Wayag Kecil)", "Sunset di Arborek Island", "Interaksi dengan manta ray", "Fotografi underwater professional"],
+    facilities: ["Akomodasi resort bintang 4", "Boat charter private", "Peralatan diving lengkap", "Guide profesional bersertifikat", "Makan 3x sehari", "Dokumentasi foto & video", "Asuransi perjalanan", "Transfer airport"],
+    itinerary: [{
+      day: 1,
+      title: "Arrival & Check-in",
+      activities: ["Penjemputan di bandara", "Check-in resort", "Briefing program", "Welcome dinner"]
+    }, {
+      day: 2,
+      title: "Diving Cape Kri & Sawandarek",
+      activities: ["Diving spot Cape Kri", "Lunch di boat", "Diving Sawandarek", "Snorkeling sore hari"]
+    }, {
+      day: 3,
+      title: "Piaynemo & Arborek",
+      activities: ["Trekking Piaynemo", "Snorkeling laguna", "Kunjungan Arborek Village", "Sunset photography"]
+    }, {
+      day: 4,
+      title: "Manta Point",
+      activities: ["Diving Manta Point", "Swimming with manta", "Relaxing di pantai", "BBQ dinner"]
+    }, {
+      day: 5,
+      title: "Departure",
+      activities: ["Check-out resort", "Last minute shopping", "Transfer ke bandara"]
+    }],
+    included: ["Tiket pesawat Jakarta - Sorong PP", "Akomodasi 4 malam di resort", "Semua makan sesuai program", "Boat charter selama program", "Peralatan diving & snorkeling", "Guide profesional", "Dokumentasi foto", "Asuransi perjalanan"],
+    notIncluded: ["Pengeluaran pribadi", "Tips guide & crew", "Laundry", "Minuman beralkohol", "Aktivitas tambahan di luar program"]
   };
-
   const handleBookNow = () => {
     navigate(`/booking/${id}`);
   };
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
       
       {/* Breadcrumb */}
@@ -124,22 +80,12 @@ const TourDetail = () => {
             {/* Image Gallery */}
             <div className="space-y-4">
               <div className="aspect-video rounded-xl overflow-hidden">
-                <img 
-                  src={tour.images[0]} 
-                  alt={tour.title}
-                  className="w-full h-full object-cover"
-                />
+                <img src={tour.images[0]} alt={tour.title} className="w-full h-full object-cover" />
               </div>
               <div className="grid grid-cols-3 gap-4">
-                {tour.images.slice(1).map((image, index) => (
-                  <div key={index} className="aspect-video rounded-lg overflow-hidden">
-                    <img 
-                      src={image} 
-                      alt={`${tour.title} ${index + 2}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"
-                    />
-                  </div>
-                ))}
+                {tour.images.slice(1).map((image, index) => <div key={index} className="aspect-video rounded-lg overflow-hidden">
+                    <img src={image} alt={`${tour.title} ${index + 2}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer" />
+                  </div>)}
               </div>
             </div>
 
@@ -153,16 +99,7 @@ const TourDetail = () => {
                     <span className="text-gray-600">{tour.location}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 ${
-                          i < Math.floor(tour.rating)
-                            ? 'text-yellow-400 fill-current'
-                            : 'text-gray-300'
-                        }`}
-                      />
-                    ))}
+                    {[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < Math.floor(tour.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />)}
                     <span className="text-sm font-medium ml-1">{tour.rating}</span>
                     <span className="text-gray-500 text-sm">({tour.reviews} ulasan)</span>
                   </div>
@@ -192,9 +129,7 @@ const TourDetail = () => {
                   <div className="text-center sm:text-left">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3">
                       <span className="text-2xl sm:text-3xl font-bold text-emerald-600">{tour.price}</span>
-                      {tour.originalPrice && (
-                        <span className="text-lg sm:text-xl text-gray-500 line-through mt-1 sm:mt-0">{tour.originalPrice}</span>
-                      )}
+                      {tour.originalPrice && <span className="text-lg sm:text-xl text-gray-500 line-through mt-1 sm:mt-0">{tour.originalPrice}</span>}
                     </div>
                     <span className="text-sm sm:text-base text-gray-600 block mt-1">per orang</span>
                   </div>
@@ -206,10 +141,7 @@ const TourDetail = () => {
               </div>
 
               <div className="space-y-3">
-                <Button 
-                  onClick={handleBookNow}
-                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-4 text-lg font-semibold hover:from-orange-600 hover:to-orange-700"
-                >
+                <Button onClick={handleBookNow} className="w-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white py-4 text-lg font-semibold hover:from-teal-600 hover:to-emerald-700">
                   <MessageCircle className="w-5 h-5 mr-2" />
                   Pesan Sekarang
                 </Button>
@@ -253,12 +185,10 @@ const TourDetail = () => {
               <div className="p-8 bg-gray-50">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Highlight Tour</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {tour.highlights.map((highlight, index) => (
-                    <div key={index} className="flex items-center space-x-3">
+                  {tour.highlights.map((highlight, index) => <div key={index} className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                       <span className="text-gray-700">{highlight}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
 
@@ -266,24 +196,20 @@ const TourDetail = () => {
               <div className="p-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Itinerary</h2>
                 <div className="space-y-6">
-                  {tour.itinerary.map((day, index) => (
-                    <div key={index} className="flex space-x-4">
+                  {tour.itinerary.map((day, index) => <div key={index} className="flex space-x-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
                         <span className="text-emerald-600 font-bold">{day.day}</span>
                       </div>
                       <div className="flex-1">
                         <h3 className="font-semibold text-gray-800 mb-2">Hari {day.day}: {day.title}</h3>
                         <ul className="space-y-1">
-                          {day.activities.map((activity, actIndex) => (
-                            <li key={actIndex} className="text-gray-600 text-sm flex items-center space-x-2">
+                          {day.activities.map((activity, actIndex) => <li key={actIndex} className="text-gray-600 text-sm flex items-center space-x-2">
                               <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0"></div>
                               <span>{activity}</span>
-                            </li>
-                          ))}
+                            </li>)}
                         </ul>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
 
@@ -291,12 +217,10 @@ const TourDetail = () => {
               <div className="p-8 bg-gray-50">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Fasilitas</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {tour.facilities.map((facility, index) => (
-                    <div key={index} className="flex items-center space-x-3">
+                  {tour.facilities.map((facility, index) => <div key={index} className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                       <span className="text-gray-700">{facility}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
 
@@ -306,23 +230,19 @@ const TourDetail = () => {
                   <div>
                     <h3 className="text-xl font-bold text-gray-800 mb-4">Termasuk dalam Paket</h3>
                     <div className="space-y-2">
-                      {tour.included.map((item, index) => (
-                        <div key={index} className="flex items-start space-x-3">
+                      {tour.included.map((item, index) => <div key={index} className="flex items-start space-x-3">
                           <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                           <span className="text-gray-700 text-sm">{item}</span>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-800 mb-4">Tidak Termasuk</h3>
                     <div className="space-y-2">
-                      {tour.notIncluded.map((item, index) => (
-                        <div key={index} className="flex items-start space-x-3">
+                      {tour.notIncluded.map((item, index) => <div key={index} className="flex items-start space-x-3">
                           <div className="w-5 h-5 border-2 border-red-300 rounded-full flex-shrink-0 mt-0.5"></div>
                           <span className="text-gray-700 text-sm">{item}</span>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </div>
                 </div>
@@ -338,10 +258,7 @@ const TourDetail = () => {
           <h2 className="text-3xl font-bold mb-4">Siap Memulai Petualangan?</h2>
           <p className="text-xl mb-8 opacity-90">Jangan lewatkan kesempatan untuk menjelajahi keindahan Raja Ampat</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <Button 
-              onClick={handleBookNow}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold"
-            >
+            <Button onClick={handleBookNow} className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold">
               Pesan Sekarang
             </Button>
             <Button variant="outline" className="border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-4 text-lg font-semibold">
@@ -352,8 +269,6 @@ const TourDetail = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default TourDetail;
