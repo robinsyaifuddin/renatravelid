@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Star, MapPin, Calendar, Users, CheckCircle, Phone, MessageCircle, ArrowLeft, Clock, Shield, Award } from 'lucide-react';
@@ -8,6 +7,7 @@ import { Button } from '@/components/ui/button';
 
 const TourDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   // Mock data - dalam implementasi nyata, ini akan diambil dari API berdasarkan ID
   const tour = {
@@ -89,6 +89,10 @@ const TourDetail = () => {
       "Minuman beralkohol",
       "Aktivitas tambahan di luar program"
     ]
+  };
+
+  const handleBookNow = () => {
+    navigate(`/booking/${id}`);
   };
 
   return (
@@ -201,7 +205,10 @@ const TourDetail = () => {
               </div>
 
               <div className="space-y-3">
-                <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-4 text-lg font-semibold hover:from-orange-600 hover:to-orange-700">
+                <Button 
+                  onClick={handleBookNow}
+                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-4 text-lg font-semibold hover:from-orange-600 hover:to-orange-700"
+                >
                   <MessageCircle className="w-5 h-5 mr-2" />
                   Pesan Sekarang
                 </Button>
@@ -330,7 +337,10 @@ const TourDetail = () => {
           <h2 className="text-3xl font-bold mb-4">Siap Memulai Petualangan?</h2>
           <p className="text-xl mb-8 opacity-90">Jangan lewatkan kesempatan untuk menjelajahi keindahan Raja Ampat</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold">
+            <Button 
+              onClick={handleBookNow}
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold"
+            >
               Pesan Sekarang
             </Button>
             <Button variant="outline" className="border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-4 text-lg font-semibold">

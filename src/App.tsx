@@ -3,30 +3,20 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import About from "./pages/About";
 import Tour from "./pages/Tour";
 import TourDetail from "./pages/TourDetail";
+import BookingForm from "./pages/BookingForm";
+import PaymentPage from "./pages/PaymentPage";
 import Blog from "./pages/Blog";
+import Gallery from "./pages/Gallery";
+import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Accommodation from "./pages/Accommodation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
-
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [pathname]);
-
-  return null;
-};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -34,15 +24,17 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/tentang" element={<About />} />
           <Route path="/tour" element={<Tour />} />
           <Route path="/tour/:id" element={<TourDetail />} />
+          <Route path="/booking/:id" element={<BookingForm />} />
+          <Route path="/payment/:id" element={<PaymentPage />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/tentang" element={<About />} />
           <Route path="/kontak" element={<Contact />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/akomodasi" element={<Accommodation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
