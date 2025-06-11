@@ -172,7 +172,7 @@ const About = () => {
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Heart className="w-6 h-6 text-brand-600" />
+                    <Heart className="w-6 h-6 text-emerald-600 " />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">Visi</h3>
