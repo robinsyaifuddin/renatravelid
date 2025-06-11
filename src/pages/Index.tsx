@@ -6,7 +6,6 @@ import TourGrid from '@/components/TourGrid';
 import GalleryShowcase from '@/components/GalleryShowcase';
 import SupportSection from '@/components/SupportSection';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
 
 const Index = () => {
   return (
@@ -19,7 +18,6 @@ const Index = () => {
         <SupportSection />
       </main>
       <Footer />
-      <ChatBot />
     </div>
   );
 };
