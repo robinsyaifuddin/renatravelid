@@ -1,9 +1,8 @@
 
 import React from 'react';
 import Header from '@/components/Header';
-import HeroSection from '@/components/HeroSection';
-import TourGrid from '@/components/TourGrid';
 import GalleryShowcase from '@/components/GalleryShowcase';
+import TourGrid from '@/components/TourGrid';
 import SupportSection from '@/components/SupportSection';
 import Footer from '@/components/Footer';
 
@@ -12,9 +11,8 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <main>
-        <HeroSection />
-        <TourGrid />
         <GalleryShowcase />
+        <TourGrid />
         <SupportSection />
       </main>
       <Footer />
