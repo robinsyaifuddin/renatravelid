@@ -1,5 +1,5 @@
 
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,12 +25,12 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
-    --radius: 0.75rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -67,97 +67,64 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Ensure font rendering is consistent across all devices */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 }
 
-/* Mobile font preservation and optimization */
+/* Mobile font preservation */
 @media (max-width: 768px) {
   * {
-    /* Force font weight preservation on mobile */
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
     font-weight: inherit !important;
     font-style: inherit !important;
   }
   
-  /* Ensure bold text stays bold on mobile */
-  .font-bold, 
-  b, 
-  strong,
-  [class*="font-bold"],
-  h1, h2, h3, h4, h5, h6 {
+  .font-bold {
     font-weight: 700 !important;
-    -webkit-font-smoothing: antialiased !important;
   }
   
-  /* Ensure medium font weight is preserved */
-  .font-medium,
-  [class*="font-medium"] {
+  .font-semibold {
+    font-weight: 600 !important;
+  }
+  
+  .font-medium {
     font-weight: 500 !important;
-    -webkit-font-smoothing: antialiased !important;
   }
   
-  /* Ensure semibold font weight is preserved */
-  .font-semibold,
-  [class*="font-semibold"] {
-    font-weight: 600 !important;
-    -webkit-font-smoothing: antialiased !important;
-  }
-  
-  /* Ensure regular font weight is preserved */
-  .font-normal,
-  [class*="font-normal"] {
+  .font-normal {
     font-weight: 400 !important;
-    -webkit-font-smoothing: antialiased !important;
   }
   
-  /* Prevent font weight changes on mobile webkit browsers */
-  input, 
-  button, 
-  textarea, 
-  select {
-    -webkit-appearance: none !important;
-    font-weight: inherit !important;
-  }
-}
-
-/* Date label specific styles for mobile visibility */
-@media (max-width: 768px) {
-  .date-label-mobile {
+  /* Date text styling for mobile */
+  .date-text-mobile {
     color: #000000 !important;
-    font-weight: 600 !important;
-    -webkit-font-smoothing: antialiased !important;
-    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   }
 }
 
-/* Hide Lovable badge permanently */
-#lovable-badge,
-a[id="lovable-badge"],
-[data-testid="lovable-badge"],
-a[href*="lovable.dev"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  position: absolute !important;
-  left: -9999px !important;
-  top: -9999px !important;
-  width: 0 !important;
-  height: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
+/* Marquee animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-/* Additional selectors to ensure complete hiding */
-a[href*="utm_source=gpt-engineer-badge"],
-a[href*="lovable.dev/projects"],
-*[style*="Edit with"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
+@keyframes marquee-slow {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+  
+  .animate-marquee-slow {
+    animation: marquee-slow 15s linear infinite;
+  }
+}
