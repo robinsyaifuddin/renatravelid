@@ -14,36 +14,19 @@ const Footer = () => {
     // Add newsletter subscription logic here
   };
 
-  const footerLinks = {
-    services: [
-      'Paket Wisata Keluarga',
-      'Wisata Budaya & Sejarah',
-      'Petualangan Alam',
-      'Lihat Semua Destinasi',
-      'Akomodasi Terbaik'
-    ],
-    about: [
-      'Tentang renatravel.id',
-      'Panduan Perjalanan',
-      'Kebijakan Data', 
-      'Kebijakan Cookie',
-      'Syarat & Ketentuan',
-      'Kontak'
-    ],
-    support: [
-      'Pusat Bantuan',
-      'Informasi Keamanan',
-      'Opsi Pembatalan',
-      'Ulasan Pelanggan',
-      'Syarat & Ketentuan'
-    ]
-  };
+  const supportLinks = [
+    'Pusat Bantuan',
+    'Informasi Keamanan',
+    'Opsi Pembatalan',
+    'Ulasan Pelanggan',
+    'Syarat & Ketentuan'
+  ];
 
   return (
     <footer className="bg-gray-900 text-white">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Company Info */}
           <div className="space-y-6">
             <div>
@@ -77,28 +60,11 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Support */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Layanan</h3>
+            <h3 className="text-xl font-semibold mb-6">Dukungan</h3>
             <ul className="space-y-3">
-              {footerLinks.services.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-emerald-400 transition-colors duration-200 block py-1"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* About */}
-          <div>
-            <h3 className="text-xl font-semibold mb-6">Tentang</h3>
-            <ul className="space-y-3">
-              {footerLinks.about.map((link, index) => (
+              {supportLinks.map((link, index) => (
                 <li key={index}>
                   <a
                     href="#"

@@ -77,33 +77,33 @@ const SupportSection = () => {
           ))}
         </div>
 
-        {/* Contact Options */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center group cursor-pointer" onClick={() => window.open('tel:+6281234567890', '_self')}>
-            <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Phone className="w-8 h-8 text-white" />
+        {/* Contact Options - Optimized for mobile */}
+        <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
+          <div className="text-center group cursor-pointer flex-1 max-w-xs" onClick={() => window.open('tel:+6281234567890', '_self')}>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+              <Phone className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
             </div>
-            <h4 className="text-xl font-semibold text-white mb-2">Telepon Kami</h4>
-            <p className="text-gray-300">+62 812-3456-7890</p>
-            <p className="text-gray-400 text-sm mt-1">Tersedia 24/7</p>
+            <h4 className="text-sm sm:text-xl font-semibold text-white mb-1 sm:mb-2">Telepon Kami</h4>
+            <p className="text-xs sm:text-base text-gray-300">+62 812-3456-7890</p>
+            <p className="text-xs text-gray-400 mt-1 hidden sm:block">Tersedia 24/7</p>
           </div>
 
-          <div className="text-center group cursor-pointer" onClick={() => window.open('mailto:support@gowilds.com', '_blank')}>
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Mail className="w-8 h-8 text-white" />
+          <div className="text-center group cursor-pointer flex-1 max-w-xs" onClick={() => window.open('mailto:support@gowilds.com', '_blank')}>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+              <Mail className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
             </div>
-            <h4 className="text-xl font-semibold text-white mb-2">Email Kami</h4>
-            <p className="text-gray-300">support@gowilds.com</p>
-            <p className="text-gray-400 text-sm mt-1">Respon Cepat</p>
+            <h4 className="text-sm sm:text-xl font-semibold text-white mb-1 sm:mb-2">Email Kami</h4>
+            <p className="text-xs sm:text-base text-gray-300">support@gowilds.com</p>
+            <p className="text-xs text-gray-400 mt-1 hidden sm:block">Respon Cepat</p>
           </div>
 
-          <div className="text-center group cursor-pointer" onClick={() => navigate('/kontak')}>
-            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <MessageCircle className="w-8 h-8 text-white" />
+          <div className="text-center group cursor-pointer flex-1 max-w-xs" onClick={() => navigate('/kontak')}>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+              <MessageCircle className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
             </div>
-            <h4 className="text-xl font-semibold text-white mb-2">Chat Langsung</h4>
-            <p className="text-gray-300">Hubungi kami sekarang</p>
-            <p className="text-gray-400 text-sm mt-1">Bantuan Instan</p>
+            <h4 className="text-sm sm:text-xl font-semibold text-white mb-1 sm:mb-2">Chat Langsung</h4>
+            <p className="text-xs sm:text-base text-gray-300">Hubungi kami sekarang</p>
+            <p className="text-xs text-gray-400 mt-1 hidden sm:block">Bantuan Instan</p>
           </div>
         </div>
       </div>
