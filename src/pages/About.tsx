@@ -1,15 +1,9 @@
+
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Users, Award, Globe, Heart, Shield, Star, Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 const About = () => {
   const features = [{
@@ -29,6 +23,7 @@ const About = () => {
     title: "Destinasi Lengkap",
     description: "Dari Sabang sampai Merauke, kami menyediakan paket wisata ke seluruh Indonesia."
   }];
+  
   const team = [{
     name: "Ahmad Susanto",
     position: "CEO & Founder",
@@ -45,6 +40,7 @@ const About = () => {
     image: "/placeholder.svg",
     description: "Konsultan perjalanan dengan pengalaman 12+ tahun"
   }];
+
   return <div className="min-h-screen">
       <Header />
       
@@ -112,31 +108,21 @@ const About = () => {
             ))}
           </div>
 
-          {/* Mobile Carousel View */}
+          {/* Mobile Marquee View */}
           <div className="lg:hidden">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full max-w-sm mx-auto"
-            >
-              <CarouselContent>
-                {features.map((feature, index) => (
-                  <CarouselItem key={index}>
-                    <div className="text-center group p-4">
-                      <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <feature.icon className="w-8 h-8 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">{feature.title}</h3>
-                      <p className="text-gray-600">{feature.description}</p>
+            <div className="overflow-hidden">
+              <div className="features-marquee">
+                {[...features, ...features].map((feature, index) => (
+                  <div key={index} className="flex-shrink-0 w-80 text-center group p-4 mx-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <feature.icon className="w-8 h-8 text-white" />
                     </div>
-                  </CarouselItem>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{feature.title}</h3>
+                    <p className="text-gray-600">{feature.description}</p>
+                  </div>
                 ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -151,18 +137,42 @@ const About = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+          {/* Desktop Grid View */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((member, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
                 <img src={member.image} alt={member.name} className="w-full h-64 object-cover" />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-800 mb-1">{member.name}</h3>
                   <p className="text-emerald-600 font-medium mb-3">{member.position}</p>
                   <p className="text-gray-600">{member.description}</p>
                   <div className="flex mt-4">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />)}
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />
+                    ))}
                   </div>
                 </div>
-              </div>)}
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Single Profile View - Centered */}
+          <div className="md:hidden">
+            <div className="max-w-sm mx-auto">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <img src={team[0].image} alt={team[0].name} className="w-full h-64 object-cover" />
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-1">{team[0].name}</h3>
+                  <p className="text-emerald-600 font-medium mb-3">{team[0].position}</p>
+                  <p className="text-gray-600 mb-4">{team[0].description}</p>
+                  <div className="flex justify-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -314,4 +324,5 @@ const About = () => {
       <Footer />
     </div>;
 };
+
 export default About;

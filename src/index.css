@@ -1,5 +1,4 @@
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -135,6 +134,22 @@
   }
 }
 
+/* Features Marquee Animation */
+.features-marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* Hide Lovable badge permanently */
 #lovable-badge,
 a[id="lovable-badge"],
@@ -160,4 +175,3 @@ a[href*="lovable.dev/projects"],
   visibility: hidden !important;
   opacity: 0 !important;
 }
-
