@@ -21,7 +21,7 @@ const SupportSection = () => {
     textColor: "text-white",
     action: () => navigate('/tour')
   }];
-  return <section className="py-16 bg-teal-900">
+  return <section className="py-16 bg-emerald-900">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {supportCards.map((card, index) => <div key={index} className={`bg-gradient-to-r ${card.bgColor} rounded-2xl p-8 text-center relative overflow-hidden group hover:shadow-2xl transition-all duration-300`}>
