@@ -8,7 +8,7 @@ import { generateInvoicePDF } from '@/utils/pdfUtils';
 import { 
   Download, 
   CreditCard, 
-  BankIcon as Bank, 
+  Banknote as Bank, 
   QrCode, 
   MessageCircle,
   CheckCircle,
