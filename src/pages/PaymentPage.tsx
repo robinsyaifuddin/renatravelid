@@ -8,7 +8,7 @@ import { generateInvoicePDF } from '@/utils/pdfUtils';
 import { 
   Download, 
   CreditCard, 
-  Banknote as Bank, 
+  Banknote, 
   QrCode, 
   MessageCircle,
   CheckCircle,
@@ -37,7 +37,7 @@ const PaymentPage = () => {
     {
       id: 'transfer',
       name: 'Transfer Bank',
-      icon: Bank,
+      icon: Banknote,
       details: {
         bank: 'BCA',
         accountNumber: '1234567890',
