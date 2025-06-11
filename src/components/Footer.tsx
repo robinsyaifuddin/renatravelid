@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { MapPin, Phone, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -47,15 +47,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                <span className="text-gray-300">Jl. IR. H. Juanda No. 95, Ciputat, Tangerang Selatan</span>
+                <span className="text-gray-300">Jl. Poncol Indah V 87, Ciputat, Tangerang Selatan 15411</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                <span className="text-gray-300">+62 812-9573-5703</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                <span className="text-gray-300">support@renatravel.id</span>
+                <span className="text-gray-300">+62 813-1602-9038</span>
               </div>
             </div>
           </div>

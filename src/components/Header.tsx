@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Menu, X, Phone, Mail, MapPin, Search, Plane, Compass, Calendar, Heart } from 'lucide-react';
+import { Menu, X, Phone, MapPin, Search, Plane, Compass, Calendar, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -52,7 +51,7 @@ Mohon informasi lebih lanjut tentang:
 🎯 Rekomendasi sesuai budget
 
 Terima kasih! 😊`;
-    const whatsappUrl = `https://wa.me/6281295735703?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/6281316029038?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

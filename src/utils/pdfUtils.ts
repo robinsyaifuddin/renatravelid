@@ -111,7 +111,6 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
         <div class="customer-details">
           <div class="section-title">Data Pemesan</div>
           <div class="detail-row"><strong>Nama:</strong> ${bookingData.customer.fullName}</div>
-          <div class="detail-row"><strong>Email:</strong> ${bookingData.customer.email}</div>
           <div class="detail-row"><strong>Telepon:</strong> ${bookingData.customer.phone}</div>
           <div class="detail-row"><strong>Jumlah Peserta:</strong> ${bookingData.customer.participants} orang</div>
         </div>
@@ -159,8 +158,8 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
 
       <div class="footer">
         <p><strong>Renatravel.id</strong></p>
-        <p>Email: info@renatravel.id | Telepon: +62 812-9573-5703</p>
-        <p>Ciputat, Tangerang Selatan</p>
+        <p>Telepon: +62 813-1602-9038</p>
+        <p>Jl. Poncol Indah V 87, Ciputat, Tangerang Selatan 15411</p>
         <p style="margin-top: 10px; font-style: italic;">Terima kasih telah memilih Renatravel.id untuk petualangan Anda!</p>
       </div>
     </body>

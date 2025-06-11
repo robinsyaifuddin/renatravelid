@@ -87,7 +87,6 @@ Saya ingin mengkonfirmasi pembayaran untuk booking berikut:
 📋 DETAIL BOOKING
 • ID Booking: ${bookingData.bookingId}
 • Nama: ${bookingData.customer.fullName}
-• Email: ${bookingData.customer.email}
 • Telepon: ${bookingData.customer.phone}
 
 🏝️ DETAIL TOUR
@@ -103,7 +102,7 @@ ${selectedPaymentMethod === 'transfer' ? `• Bank: ${paymentMethod?.details.ban
 
 Mohon konfirmasi pembayaran ini. Terima kasih!`;
 
-    const whatsappUrl = `https://wa.me/6281295735703?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/6281316029038?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -257,10 +256,6 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                   <div className="flex flex-col sm:flex-row">
                     <span className="text-gray-600 sm:w-16">Nama:</span>
                     <span className="font-medium break-words">{bookingData.customer.fullName}</span>
-                  </div>
-                  <div className="flex flex-col sm:flex-row">
-                    <span className="text-gray-600 sm:w-16">Email:</span>
-                    <span className="break-all">{bookingData.customer.email}</span>
                   </div>
                   <div className="flex flex-col sm:flex-row">
                     <span className="text-gray-600 sm:w-16">Telepon:</span>
