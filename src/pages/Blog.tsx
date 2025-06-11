@@ -1,11 +1,12 @@
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Calendar, User, Eye, MessageCircle, Search, Filter } from 'lucide-react';
+import { Calendar, User, Eye, MessageCircle, Search, Filter, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Blog = () => {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('semua');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -114,6 +115,10 @@ const Blog = () => {
 
   const featuredPosts = blogPosts.filter(post => post.featured);
 
+  const handleReadMore = (postId: number) => {
+    navigate(`/blog/${postId}`);
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -198,6 +203,12 @@ const Blog = () => {
                         </div>
                       </div>
                     </div>
+                    <Button 
+                      onClick={() => handleReadMore(post.id)}
+                      className="w-full mt-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white"
+                    >
+                      Baca Selengkapnya <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
                   </div>
                 </div>
               ))}
@@ -266,7 +277,7 @@ const Blog = () => {
                   
                   <p className="text-gray-600 mb-4 line-clamp-3 text-sm">{post.excerpt}</p>
                   
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-2">
                       <User className="w-4 h-4 text-gray-400" />
                       <span className="text-sm text-gray-600">{post.author}</span>
@@ -282,6 +293,13 @@ const Blog = () => {
                       </div>
                     </div>
                   </div>
+                  
+                  <Button 
+                    onClick={() => handleReadMore(post.id)}
+                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white"
+                  >
+                    Baca Selengkapnya <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
                 </div>
               </article>
             ))}
