@@ -130,6 +130,15 @@ export default {
 				'8xl': '88rem',
 				'9xl': '96rem',
 			},
+			// Custom gradient background utilities
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+				'grid-pattern': 'linear-gradient(rgba(250, 191, 51, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(250, 191, 51, 0.05) 1px, transparent 1px)',
+				// Customizable gradient backgrounds
+				'btn-primary': 'linear-gradient(to right, var(--gradient-from, #059669), var(--gradient-to, #0d9488))',
+				'btn-primary-hover': 'linear-gradient(to right, var(--gradient-from-hover, #047857), var(--gradient-to-hover, #0f766e))',
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -276,13 +285,42 @@ export default {
 			},
 			backdropBlur: {
 				'xs': '2px',
-			},
-			backgroundImage: {
-				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-				'grid-pattern': 'linear-gradient(rgba(250, 191, 51, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(250, 191, 51, 0.05) 1px, transparent 1px)',
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		// Add custom utility plugin for gradient backgrounds
+		function({ addUtilities, theme }) {
+			const gradientUtilities = {
+				// Primary gradient button
+				'.bg-gradient-primary': {
+					'background': 'linear-gradient(to right, #059669, #0d9488)',
+					'&:hover': {
+						'background': 'linear-gradient(to right, #047857, #0f766e)',
+					}
+				},
+				// Customizable gradient classes
+				'.bg-gradient-emerald-teal': {
+					'background': 'linear-gradient(to right, var(--emerald-600, #059669), var(--teal-600, #0d9488))',
+					'&:hover': {
+						'background': 'linear-gradient(to right, var(--emerald-700, #047857), var(--teal-700, #0f766e))',
+					}
+				},
+				// Base button style that can be extended
+				'.btn-gradient-base': {
+					'background': 'linear-gradient(to right, var(--gradient-from, #059669), var(--gradient-to, #0d9488))',
+					'color': 'white',
+					'font-weight': '600',
+					'padding': '0.75rem 1rem',
+					'border-radius': '0.5rem',
+					'transition': 'all 0.2s ease-in-out',
+					'&:hover': {
+						'background': 'linear-gradient(to right, var(--gradient-from-hover, #047857), var(--gradient-to-hover, #0f766e))',
+					}
+				}
+			};
+			addUtilities(gradientUtilities);
+		}
+	],
 } satisfies Config;

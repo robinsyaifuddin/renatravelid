@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MapPin, Phone, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -91,7 +90,13 @@ const Footer = () => {
               />
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-3 rounded-lg transition-all duration-200"
+                className="w-full btn-gradient-base text-white font-semibold py-3 rounded-lg transition-all duration-200"
+                style={{
+                  '--gradient-from': '#059669',
+                  '--gradient-to': '#0d9488',
+                  '--gradient-from-hover': '#047857',
+                  '--gradient-to-hover': '#0f766e'
+                } as React.CSSProperties}
               >
                 Berlangganan
               </Button>
