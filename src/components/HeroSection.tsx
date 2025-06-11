@@ -1,27 +1,28 @@
+
 import React, { useState } from 'react';
 import { Calendar, MapPin, User, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
 const HeroSection = () => {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [guests, setGuests] = useState('');
   const [accommodation, setAccommodation] = useState('');
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: `url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')`
-    }}>
+        backgroundImage: `url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')`
+      }}>
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white py-[10px]">
-        {/* Breadcrumb */}
-        
-
         {/* Main Heading */}
         <h1 className="md:text-7xl font-bold mb-6 leading-tight text-4xl">
           Jelajahi Tempat Impianmu
@@ -36,22 +37,34 @@ const HeroSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
             {/* Check In */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 block text-left">
+              <label className="text-sm font-medium text-gray-700 block text-left date-label-mobile">
                 Tanggal Masuk
               </label>
               <div className="relative">
-                <Input type="date" value={checkIn} onChange={e => setCheckIn(e.target.value)} className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900" placeholder="Pilih Tanggal" />
+                <Input 
+                  type="date" 
+                  value={checkIn} 
+                  onChange={e => setCheckIn(e.target.value)} 
+                  className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900" 
+                  placeholder="Pilih Tanggal" 
+                />
                 <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
               </div>
             </div>
 
             {/* Check Out */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 block text-left">
+              <label className="text-sm font-medium text-gray-700 block text-left date-label-mobile">
                 Tanggal Keluar
               </label>
               <div className="relative">
-                <Input type="date" value={checkOut} onChange={e => setCheckOut(e.target.value)} className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900" placeholder="Pilih Tanggal" />
+                <Input 
+                  type="date" 
+                  value={checkOut} 
+                  onChange={e => setCheckOut(e.target.value)} 
+                  className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900" 
+                  placeholder="Pilih Tanggal" 
+                />
                 <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
               </div>
             </div>
@@ -117,6 +130,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
