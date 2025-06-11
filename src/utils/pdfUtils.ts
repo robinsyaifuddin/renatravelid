@@ -17,14 +17,17 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
         }
         .header {
           text-align: center;
-          border-bottom: 2px solid #059669;
+          border-bottom: 2px solid #10b981;
           padding-bottom: 20px;
           margin-bottom: 30px;
         }
         .logo {
           font-size: 24px;
           font-weight: bold;
-          color: #059669;
+          background: linear-gradient(to right, #10b981, #14b8a6);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           margin-bottom: 5px;
         }
         .tagline {
@@ -41,7 +44,10 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
         }
         .section-title {
           font-weight: bold;
-          color: #059669;
+          background: linear-gradient(to right, #10b981, #14b8a6);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           margin-bottom: 10px;
           font-size: 16px;
         }
@@ -50,10 +56,11 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
           font-size: 14px;
         }
         .tour-section {
-          background: #f0fdf4;
+          background: linear-gradient(to right, #ecfdf5, #f0fdfa);
           padding: 20px;
           border-radius: 8px;
           margin-bottom: 20px;
+          border-left: 4px solid #10b981;
         }
         .calculation-table {
           width: 100%;
@@ -66,13 +73,17 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
           border-bottom: 1px solid #ddd;
         }
         .calculation-table th {
-          background: #f9fafb;
+          background: linear-gradient(to right, #f0fdf4, #f0fdfa);
           font-weight: bold;
+          color: #065f46;
         }
         .total-row {
           font-weight: bold;
           font-size: 18px;
-          color: #059669;
+          background: linear-gradient(to right, #10b981, #14b8a6);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
         .footer {
           margin-top: 40px;
@@ -83,13 +94,27 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
           padding-top: 20px;
         }
         .payment-info {
-          background: #fef3c7;
+          background: linear-gradient(to right, #fef3c7, #fef7ed);
           padding: 15px;
           border-radius: 8px;
           margin-top: 20px;
+          border-left: 4px solid #14b8a6;
+        }
+        .btn-gradient {
+          background: linear-gradient(to right, #10b981, #14b8a6);
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 6px;
+          font-weight: 500;
+          box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
         }
         @media print {
           body { margin: 0; }
+          .btn-gradient {
+            background: #10b981 !important;
+            -webkit-print-color-adjust: exact;
+          }
         }
       </style>
     </head>
@@ -170,7 +195,6 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
   const blob = new Blob([invoiceHTML], { type: 'text/html' });
   const url = URL.createObjectURL(blob);
   
-  // Create temporary link and trigger download
   const link = document.createElement('a');
   link.href = url;
   link.download = `Invoice-${bookingData.bookingId}.html`;
@@ -178,16 +202,13 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
   link.click();
   document.body.removeChild(link);
   
-  // Clean up the URL
   URL.revokeObjectURL(url);
   
-  // Also open in new tab for immediate viewing/printing
   const printWindow = window.open('', '_blank');
   if (printWindow) {
     printWindow.document.write(invoiceHTML);
     printWindow.document.close();
     
-    // Wait for content to load then trigger print
     printWindow.onload = () => {
       setTimeout(() => {
         printWindow.print();
