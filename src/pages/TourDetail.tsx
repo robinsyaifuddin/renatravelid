@@ -258,7 +258,7 @@ const TourDetail = () => {
           <h2 className="text-3xl font-bold mb-4">Siap Memulai Petualangan?</h2>
           <p className="text-xl mb-8 opacity-90">Jangan lewatkan kesempatan untuk menjelajahi keindahan Raja Ampat</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <Button onClick={handleBookNow} className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold">
+            <Button onClick={handleBookNow} className="w-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white py-4 text-lg font-semibold hover:from-teal-600 hover:to-emerald-700">
               Pesan Sekarang
             </Button>
             <Button variant="outline" className="border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-4 text-lg font-semibold">
