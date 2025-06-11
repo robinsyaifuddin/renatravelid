@@ -19,6 +19,7 @@ import Accommodation from "./pages/Accommodation";
 import NotFound from "./pages/NotFound";
 import ChatBot from "./components/ChatBot";
 
+// Create a client
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,21 +29,23 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/tour" element={<Tour />} />
-          <Route path="/tour/:id" element={<TourDetail />} />
-          <Route path="/booking/:id" element={<BookingForm />} />
-          <Route path="/payment/:id" element={<PaymentPage />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogDetail />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/tentang" element={<About />} />
-          <Route path="/kontak" element={<Contact />} />
-          <Route path="/akomodasi" element={<Accommodation />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <ChatBot />
+        <div className="font-sans text-foreground bg-background">
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/tour" element={<Tour />} />
+            <Route path="/tour/:id" element={<TourDetail />} />
+            <Route path="/booking/:id" element={<BookingForm />} />
+            <Route path="/payment/:id" element={<PaymentPage />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/tentang" element={<About />} />
+            <Route path="/kontak" element={<Contact />} />
+            <Route path="/akomodasi" element={<Accommodation />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <ChatBot />
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

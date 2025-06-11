@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -16,7 +17,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 158 64% 52%;
+    /* Updated primary color to match logo emerald/teal */
+    --primary: 160 84% 39%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -33,7 +35,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 158 64% 52%;
+    --ring: 160 84% 39%;
 
     --radius: 0.75rem;
 
@@ -57,7 +59,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 158 64% 52%;
+    --primary: 160 84% 39%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -74,7 +76,7 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 158 64% 52%;
+    --ring: 160 84% 39%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -104,6 +106,27 @@
   body {
     overflow-x: hidden;
   }
+  
+  /* Font weight utilities */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+  
+  /* Mobile typography improvements */
+  @media (max-width: 640px) {
+    h1 {
+      @apply text-2xl;
+    }
+    h2 {
+      @apply text-xl;
+    }
+    h3 {
+      @apply text-lg;
+    }
+    body {
+      @apply text-sm;
+    }
+  }
 }
 
 @layer components {
@@ -111,8 +134,9 @@
     @apply bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent;
   }
   
+  /* Updated style to match logo colors */
   .glass-effect {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+    @apply bg-white/10 backdrop-blur-md border border-emerald-100 shadow-xl;
   }
   
   .card-hover {
@@ -120,38 +144,39 @@
   }
   
   .btn-primary {
-    @apply bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105;
+    @apply bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 hover:from-emerald-700 hover:via-teal-700 hover:to-emerald-600 text-white font-medium px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105;
   }
   
   .btn-secondary {
-    @apply bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 hover:from-orange-600 hover:via-orange-700 hover:to-red-600 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105;
+    @apply bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 hover:from-orange-600 hover:via-orange-700 hover:to-red-600 text-white font-medium px-6 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105;
   }
 
   .modern-card {
-    @apply bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:border-emerald-200;
+    @apply bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-xl md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:border-emerald-200;
   }
 
   .floating-card {
-    @apply bg-white/90 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2;
+    @apply bg-white/90 backdrop-blur-md border border-white/20 rounded-xl md:rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2;
   }
 
   .gradient-border {
-    @apply relative before:absolute before:inset-0 before:rounded-2xl before:p-[1px] before:bg-gradient-to-r before:from-emerald-500 before:via-teal-500 before:to-cyan-500;
+    @apply relative before:absolute before:inset-0 before:rounded-xl md:before:rounded-2xl before:p-[1px] before:bg-gradient-to-r before:from-emerald-500 before:via-teal-500 before:to-cyan-500;
   }
 
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
+  /* Mobile-friendly section padding */
   .section-padding {
-    @apply px-4 py-16 sm:px-6 lg:px-8 lg:py-20;
+    @apply px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-20;
   }
 
   .container-custom {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-7xl px-3 sm:px-6 lg:px-8;
   }
 
-  /* Responsive navigation improvements */
+  /* Enhanced responsive navigation */
   .nav-smooth {
     @apply transition-all duration-300 ease-in-out;
   }
@@ -162,7 +187,12 @@
   }
 
   .mobile-spacing {
-    @apply px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4;
+    @apply px-3 py-2 sm:px-4 sm:py-2 lg:px-6 lg:py-3;
+  }
+  
+  /* Touch-friendly buttons */
+  .touch-friendly {
+    @apply min-h-[44px] min-w-[44px] p-3;
   }
 }
 
@@ -332,15 +362,15 @@
 
 /* Enhanced typography */
 .heading-xl {
-  @apply text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
-}
-
-.heading-lg {
   @apply text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight;
 }
 
-.heading-md {
+.heading-lg {
   @apply text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight;
+}
+
+.heading-md {
+  @apply text-xl sm:text-2xl lg:text-3xl font-bold leading-tight tracking-tight;
 }
 
 .text-balanced {
@@ -355,14 +385,25 @@
   }
   
   .touch-target {
-    padding: 12px;
+    padding: 10px;
+  }
+  
+  input, 
+  select, 
+  textarea {
+    font-size: 16px; /* Prevents zoom on focus in iOS */
   }
 }
 
-/* Prevent horizontal scroll on mobile */
+/* Prevent horizontal scroll and add safe-area insets for mobile */
 @media (max-width: 640px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  
+  /* Bottom padding for elements at screen bottom to account for navigation bars */
+  .mobile-bottom-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
   }
 }

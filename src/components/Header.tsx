@@ -5,12 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const menuItems = [
     { name: 'Beranda', href: '/' },
@@ -59,34 +61,34 @@ Terima kasih! 😊`;
   };
 
   return (
-    <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-100">
+    <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-100 w-full">
       {/* Top Bar */}
-      <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white py-2">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center items-center text-sm">
-            <span className="hidden sm:inline">✈️ Jelajahi Indonesia bersama Renatravel - Paket wisata terbaik menanti Anda!</span>
-            <span className="sm:hidden">✈️ Jelajahi Indonesia bersama Renatravel</span>
+      <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white py-1.5 sm:py-2">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="flex justify-center items-center text-xs sm:text-sm">
+            <span className="hidden xs:inline">✈️ Jelajahi Indonesia bersama Renatravel - Paket wisata terbaik menanti Anda!</span>
+            <span className="xs:hidden">✈️ Jelajahi Indonesia bersama Renatravel</span>
           </div>
         </div>
       </div>
 
       {/* Main Header */}
-      <div className="container mx-auto px-4 py-3 lg:py-4">
+      <div className="container mx-auto px-3 sm:px-4 py-2 lg:py-3">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 lg:space-x-3 group" onClick={handleNavClick}>
+          <Link to="/" className="flex items-center space-x-1.5 lg:space-x-2.5 group" onClick={handleNavClick}>
             <div className="relative group-hover:scale-105 transition-all duration-300">
               <img 
                 src="/lovable-uploads/e10b370d-5966-446b-84d2-b975e27bf503.png" 
                 alt="Renatravel.id Logo" 
-                className="h-10 w-auto sm:h-12 lg:h-14 object-contain" 
+                className="h-8 w-auto sm:h-10 lg:h-12 object-contain" 
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              <span className="text-base sm:text-lg lg:text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 Renatravel.id
               </span>
-              <span className="text-xs text-gray-500 hidden sm:block font-medium">
+              <span className="text-[10px] sm:text-xs text-gray-500 hidden xs:block font-medium">
                 Plan, Explore, Enjoy
               </span>
             </div>
@@ -102,7 +104,7 @@ Terima kasih! 😊`;
                   isActive(item.href)
                     ? 'text-emerald-600 bg-emerald-50 shadow-sm'
                     : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50/50'
-                } transition-all duration-300 font-semibold px-4 xl:px-6 py-2 lg:py-3 rounded-xl relative group`}
+                } transition-all duration-300 font-semibold px-3 xl:px-5 py-2 lg:py-2.5 rounded-xl relative group`}
               >
                 {item.name}
                 <span
@@ -115,10 +117,10 @@ Terima kasih! 😊`;
           </nav>
 
           {/* Right Side Actions */}
-          <div className="flex items-center space-x-2 lg:space-x-3">
+          <div className="flex items-center space-x-1.5 sm:space-x-2 lg:space-x-3">
             {/* Konsultasi Gratis Button - Desktop */}
             <Button
-              className="hidden lg:flex items-center bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold px-4 xl:px-6 py-2 lg:py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm lg:text-base"
+              className="hidden lg:flex items-center bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold px-3 xl:px-5 py-2 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 text-sm lg:text-base"
               onClick={handleConsultation}
             >
               <span className="hidden xl:inline">Konsultasi Gratis</span>
@@ -129,7 +131,7 @@ Terima kasih! 😊`;
             <Button
               variant="outline"
               size="sm"
-              className="hidden sm:flex items-center border-emerald-200 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300 hover:shadow-md w-9 h-9 lg:w-10 lg:h-10 p-0"
+              className="hidden sm:flex items-center border-emerald-200 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300 hover:shadow-md w-8 h-8 lg:w-9 lg:h-9 p-0"
               onClick={() => setIsSearchOpen(true)}
             >
               <Search className="w-4 h-4" />
@@ -139,17 +141,17 @@ Terima kasih! 😊`;
             <Button
               variant="ghost"
               size="sm"
-              className="sm:hidden text-emerald-600 w-9 h-9 p-0"
+              className="sm:hidden touch-friendly text-emerald-600 w-8 h-8 p-0"
               onClick={() => setIsSearchOpen(true)}
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-4 h-4" />
             </Button>
 
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="sm"
-              className="lg:hidden text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-300 w-9 h-9 p-0"
+              className="lg:hidden touch-friendly text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-300 w-8 h-8 p-0"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -159,13 +161,13 @@ Terima kasih! 😊`;
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 border-t border-gray-200 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl animate-fade-in">
-            <nav className="space-y-1">
+          <div className="lg:hidden mt-3 py-3 border-t border-gray-200 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg animate-fade-in">
+            <nav className="space-y-0.5">
               {menuItems.map(item => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`block px-4 py-3 rounded-xl transition-all duration-300 font-semibold ${
+                  className={`block px-4 py-2.5 rounded-lg transition-all duration-300 font-medium ${
                     isActive(item.href)
                       ? 'text-emerald-600 bg-emerald-50 shadow-sm'
                       : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50/70'
@@ -177,9 +179,9 @@ Terima kasih! 😊`;
               ))}
               
               {/* Konsultasi Gratis Button - Mobile */}
-              <div className="px-4 pt-3">
+              <div className="px-4 pt-2 mt-1">
                 <Button
-                  className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-lg"
+                  className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-medium py-2.5 rounded-lg transition-all duration-300 shadow-md"
                   onClick={() => {
                     handleConsultation();
                     setIsMobileMenuOpen(false);
