@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -41,7 +42,7 @@ const About = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-20">
+      <section className="relative bg-gradient-to-r from-brand-600 to-emerald-600 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Tentang Renatravel.id</h1>
@@ -62,19 +63,19 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-600 mb-2">15+</div>
+              <div className="text-4xl font-bold text-brand-600 mb-2">15+</div>
               <div className="text-gray-600">Tahun Pengalaman</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-600 mb-2">10K+</div>
+              <div className="text-4xl font-bold text-brand-600 mb-2">10K+</div>
               <div className="text-gray-600">Wisatawan Puas</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-600 mb-2">200+</div>
+              <div className="text-4xl font-bold text-brand-600 mb-2">200+</div>
               <div className="text-gray-600">Destinasi</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-emerald-600 mb-2">98%</div>
+              <div className="text-4xl font-bold text-brand-600 mb-2">98%</div>
               <div className="text-gray-600">Tingkat Kepuasan</div>
             </div>
           </div>
@@ -94,7 +95,7 @@ const About = () => {
           {/* Desktop Grid View */}
           <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => <div key={index} className="text-center group">
-                <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-brand-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{feature.title}</h3>
@@ -107,7 +108,7 @@ const About = () => {
             <div className="overflow-hidden">
               <div className="features-marquee">
                 {[...features, ...features].map((feature, index) => <div key={index} className="flex-shrink-0 w-80 text-center group p-4 mx-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-r from-brand-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <feature.icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{feature.title}</h3>
@@ -135,7 +136,7 @@ const About = () => {
                 <img src={member.image} alt={member.name} className="w-full h-64 object-cover" />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-800 mb-1">{member.name}</h3>
-                  <p className="text-emerald-600 font-medium mb-3">{member.position}</p>
+                  <p className="text-brand-600 font-medium mb-3">{member.position}</p>
                   <p className="text-gray-600">{member.description}</p>
                   <div className="flex mt-4">
                     {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />)}
@@ -151,7 +152,7 @@ const About = () => {
                 <img src={team[0].image} alt={team[0].name} className="w-full h-64 object-cover" />
                 <div className="p-6 text-center">
                   <h3 className="text-xl font-semibold text-gray-800 mb-1">{team[0].name}</h3>
-                  <p className="text-emerald-600 font-medium mb-3">{team[0].position}</p>
+                  <p className="text-brand-600 font-medium mb-3">{team[0].position}</p>
                   <p className="text-gray-600 mb-4">{team[0].description}</p>
                   <div className="flex justify-center">
                     {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />)}
@@ -171,8 +172,8 @@ const About = () => {
               <h2 className="text-4xl font-bold text-gray-800 mb-6">Visi & Misi Kami</h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Heart className="w-6 h-6 text-emerald-600" />
+                  <div className="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Heart className="w-6 h-6 text-brand-600" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">Visi</h3>
