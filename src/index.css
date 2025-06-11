@@ -73,6 +73,119 @@
   }
 }
 
+/* 3D Transform Utilities */
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+  
+  .hover\:scale-102:hover {
+    transform: scale(1.02);
+  }
+  
+  .hover\:scale-110:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Enhanced 3D Button Effects */
+  .btn-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .btn-3d:hover {
+    transform: translateY(-2px) rotateX(5deg);
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+  }
+  
+  .btn-3d:active {
+    transform: translateY(0) rotateX(0deg);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
+  }
+  
+  /* Navbar 3D Effects */
+  .nav-item-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .nav-item-3d:hover {
+    transform: translateY(-1px) rotateX(2deg);
+  }
+  
+  .nav-item-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-item-3d:hover::before {
+    opacity: 1;
+  }
+  
+  /* Glass Morphism Effect */
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Enhanced Gradient Text */
+  .gradient-text-3d {
+    background: linear-gradient(135deg, #10b981, #14b8a6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+    position: relative;
+  }
+  
+  .gradient-text-3d::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: -1;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(20, 184, 166, 0.3), rgba(6, 182, 212, 0.3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: blur(1px);
+  }
+}
+
 /* Mobile font preservation and optimization */
 @media (max-width: 768px) {
   * {
@@ -121,6 +234,23 @@
   select {
     -webkit-appearance: none !important;
     font-weight: inherit !important;
+  }
+  
+  /* Enhanced mobile touch targets for 3D elements */
+  .touch-friendly {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Reduce 3D effects on mobile for performance */
+  .nav-item-3d:hover {
+    transform: translateY(-0.5px);
+  }
+  
+  .btn-3d:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
   }
 }
 
