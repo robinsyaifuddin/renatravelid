@@ -98,6 +98,11 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 }
 
@@ -145,11 +150,25 @@
   .container-custom {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
+
+  /* Responsive navigation improvements */
+  .nav-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Mobile-first responsive utilities */
+  .mobile-optimized {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+
+  .mobile-spacing {
+    @apply px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4;
+  }
 }
 
 /* Enhanced scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -204,6 +223,22 @@
 
 .glow-effect {
   animation: glow 2s ease-in-out infinite;
+}
+
+/* Enhanced fade-in animation for mobile menu */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
 }
 
 /* Parallax effect enhanced */
@@ -310,4 +345,24 @@
 
 .text-balanced {
   text-wrap: balance;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .touch-target {
+    padding: 12px;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
