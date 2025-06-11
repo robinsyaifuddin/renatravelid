@@ -58,12 +58,12 @@ const Footer = () => {
             
             <form onSubmit={handleNewsletterSubmit} className="space-y-4">
               <Input type="email" placeholder="Alamat Email" value={email} onChange={e => setEmail(e.target.value)} className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-emerald-500 focus:ring-emerald-500" required />
-              <Button type="submit" className="w-full btn-gradient-base text-white font-semibold py-3 rounded-lg transition-all duration-200" style={{
+              <Button type="submit" style={{
               '--gradient-from': '#059669',
               '--gradient-to': '#0d9488',
               '--gradient-from-hover': '#047857',
               '--gradient-to-hover': '#0f766e'
-            } as React.CSSProperties}>
+            } as React.CSSProperties} className="hidden lg:flex items-center bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold px-3 xl:px-5 py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 text-sm lg:text-base space-x-2 group border border-emerald-400/20">
                 Berlangganan
               </Button>
             </form>
