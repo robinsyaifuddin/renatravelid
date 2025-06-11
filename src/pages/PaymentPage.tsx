@@ -117,20 +117,20 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-4 md:py-8">
         <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
             
             {/* Payment Methods */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Pilih Metode Pembayaran</h2>
+            <div className="lg:col-span-2 space-y-4 md:space-y-6">
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Pilih Metode Pembayaran</h2>
                 
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                   {paymentMethods.map((method) => (
                     <div
                       key={method.id}
-                      className={`border rounded-lg p-4 cursor-pointer transition-all ${
+                      className={`border rounded-lg p-3 md:p-4 cursor-pointer transition-all ${
                         selectedPaymentMethod === method.id
                           ? 'border-emerald-500 bg-emerald-50'
                           : 'border-gray-200 hover:border-emerald-300'
@@ -138,10 +138,10 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                       onClick={() => setSelectedPaymentMethod(method.id)}
                     >
                       <div className="flex items-center space-x-3">
-                        <method.icon className="w-6 h-6 text-emerald-600" />
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-gray-800">{method.name}</h3>
-                          <p className="text-sm text-gray-600">
+                        <method.icon className="w-5 h-5 md:w-6 md:h-6 text-emerald-600" />
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-gray-800 text-sm md:text-base">{method.name}</h3>
+                          <p className="text-xs md:text-sm text-gray-600 truncate">
                             {method.id === 'transfer' && (
                               <>Bank: {method.details.bank} - {method.details.accountNumber}</>
                             )}
@@ -149,7 +149,7 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                           </p>
                         </div>
                         {selectedPaymentMethod === method.id && (
-                          <CheckCircle className="w-5 h-5 text-emerald-500" />
+                          <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-500 flex-shrink-0" />
                         )}
                       </div>
                     </div>
@@ -157,9 +157,9 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                 </div>
 
                 {selectedPaymentMethod === 'transfer' && (
-                  <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <h4 className="font-semibold text-blue-800 mb-2">Informasi Transfer Bank</h4>
-                    <div className="space-y-1 text-sm text-blue-700">
+                  <div className="mt-4 md:mt-6 p-3 md:p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-2 text-sm md:text-base">Informasi Transfer Bank</h4>
+                    <div className="space-y-1 text-xs md:text-sm text-blue-700">
                       <p>Bank: BCA</p>
                       <p>No. Rekening: 1234567890</p>
                       <p>Atas Nama: PT Renatravel Indonesia</p>
@@ -169,21 +169,21 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                 )}
 
                 {selectedPaymentMethod === 'qris' && (
-                  <div className="mt-6 p-4 bg-purple-50 border border-purple-200 rounded-lg text-center">
-                    <h4 className="font-semibold text-purple-800 mb-4">Scan QR Code</h4>
-                    <div className="w-48 h-48 bg-white border mx-auto rounded-lg flex items-center justify-center">
-                      <QrCode className="w-32 h-32 text-gray-400" />
+                  <div className="mt-4 md:mt-6 p-3 md:p-4 bg-purple-50 border border-purple-200 rounded-lg text-center">
+                    <h4 className="font-semibold text-purple-800 mb-3 md:mb-4 text-sm md:text-base">Scan QR Code</h4>
+                    <div className="w-32 h-32 md:w-48 md:h-48 bg-white border mx-auto rounded-lg flex items-center justify-center">
+                      <QrCode className="w-20 h-20 md:w-32 md:h-32 text-gray-400" />
                     </div>
-                    <p className="text-sm text-purple-700 mt-2">Scan dengan aplikasi banking atau e-wallet</p>
+                    <p className="text-xs md:text-sm text-purple-700 mt-2">Scan dengan aplikasi banking atau e-wallet</p>
                   </div>
                 )}
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                 <Button 
                   onClick={handleDownloadInvoice}
                   variant="outline"
-                  className="flex-1"
+                  className="flex-1 text-sm md:text-base py-2 md:py-3"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Invoice
@@ -192,7 +192,7 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                 <Button 
                   onClick={handleConfirmPayment}
                   disabled={!selectedPaymentMethod}
-                  className="flex-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-white"
+                  className="flex-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-sm md:text-base py-2 md:py-3"
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Konfirmasi via WhatsApp
@@ -201,8 +201,8 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
             </div>
 
             {/* Booking Summary */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="space-y-4 md:space-y-6">
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
                 <h3 className="text-lg font-bold text-gray-800 mb-4">Ringkasan Booking</h3>
                 
                 <div className="space-y-4">
@@ -210,40 +210,40 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                     <img 
                       src={bookingData.tour.image} 
                       alt={bookingData.tour.title}
-                      className="w-full h-32 object-cover rounded-lg mb-3"
+                      className="w-full h-24 md:h-32 object-cover rounded-lg mb-3"
                     />
-                    <h4 className="font-semibold text-gray-800">{bookingData.tour.title}</h4>
+                    <h4 className="font-semibold text-gray-800 text-sm md:text-base">{bookingData.tour.title}</h4>
                   </div>
 
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-xs md:text-sm">
                     <div className="flex items-center space-x-2 text-gray-600">
-                      <MapPin className="w-4 h-4" />
-                      <span>{bookingData.tour.location}</span>
+                      <MapPin className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
+                      <span className="truncate">{bookingData.tour.location}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-gray-600">
-                      <Clock className="w-4 h-4" />
+                      <Clock className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
                       <span>{bookingData.tour.duration}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-gray-600">
-                      <Users className="w-4 h-4" />
+                      <Users className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
                       <span>{bookingData.customer.participants} peserta</span>
                     </div>
                     <div className="flex items-center space-x-2 text-gray-600">
-                      <Calendar className="w-4 h-4" />
+                      <Calendar className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
                       <span>ID: {bookingData.bookingId}</span>
                     </div>
                   </div>
 
                   <div className="border-t pt-4">
-                    <div className="flex justify-between items-center mb-2">
+                    <div className="flex justify-between items-center mb-2 text-xs md:text-sm">
                       <span className="text-gray-600">Harga per orang</span>
                       <span>{bookingData.tour.price}</span>
                     </div>
-                    <div className="flex justify-between items-center mb-2">
+                    <div className="flex justify-between items-center mb-2 text-xs md:text-sm">
                       <span className="text-gray-600">Jumlah peserta</span>
                       <span>{bookingData.customer.participants} orang</span>
                     </div>
-                    <div className="flex justify-between items-center font-bold text-lg border-t pt-2">
+                    <div className="flex justify-between items-center font-bold text-base md:text-lg border-t pt-2">
                       <span>Total</span>
                       <span className="text-emerald-600">Rp {total.toLocaleString('id-ID')}</span>
                     </div>
@@ -251,20 +251,20 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
                 <h3 className="text-lg font-bold text-gray-800 mb-4">Data Pemesan</h3>
-                <div className="space-y-2 text-sm">
-                  <div>
-                    <span className="text-gray-600">Nama:</span>
-                    <span className="ml-2 font-medium">{bookingData.customer.fullName}</span>
+                <div className="space-y-2 text-xs md:text-sm">
+                  <div className="flex flex-col sm:flex-row">
+                    <span className="text-gray-600 sm:w-16">Nama:</span>
+                    <span className="font-medium break-words">{bookingData.customer.fullName}</span>
                   </div>
-                  <div>
-                    <span className="text-gray-600">Email:</span>
-                    <span className="ml-2">{bookingData.customer.email}</span>
+                  <div className="flex flex-col sm:flex-row">
+                    <span className="text-gray-600 sm:w-16">Email:</span>
+                    <span className="break-all">{bookingData.customer.email}</span>
                   </div>
-                  <div>
-                    <span className="text-gray-600">Telepon:</span>
-                    <span className="ml-2">{bookingData.customer.phone}</span>
+                  <div className="flex flex-col sm:flex-row">
+                    <span className="text-gray-600 sm:w-16">Telepon:</span>
+                    <span>{bookingData.customer.phone}</span>
                   </div>
                 </div>
               </div>

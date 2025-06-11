@@ -1,61 +1,62 @@
+
 import React, { useState } from 'react';
 import { Menu, X, Phone, Mail, MapPin, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const menuItems = [{
-    name: 'Beranda',
-    href: '/'
-  }, {
-    name: 'Destinasi',
-    href: '/tour'
-  }, {
-    name: 'Blog',
-    href: '/blog'
-  }, {
-    name: 'Tentang Kami',
-    href: '/tentang'
-  }];
-  const tourDestinations = [{
-    id: '1',
-    name: 'Bali - Pulau Dewata',
-    location: 'Bali'
-  }, {
-    id: '2',
-    name: 'Yogyakarta - Kota Budaya',
-    location: 'Yogyakarta'
-  }, {
-    id: '3',
-    name: 'Raja Ampat - Surga Bawah Laut',
-    location: 'Papua Barat'
-  }, {
-    id: '4',
-    name: 'Komodo - Petualangan Eksotis',
-    location: 'NTT'
-  }, {
-    id: '5',
-    name: 'Borobudur - Warisan Dunia',
-    location: 'Jawa Tengah'
-  }, {
-    id: '6',
-    name: 'Bromo - Pesona Sunrise',
-    location: 'Jawa Timur'
-  }];
+
+  const menuItems = [
+    { name: 'Beranda', href: '/' },
+    { name: 'Destinasi', href: '/tour' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Tentang Kami', href: '/tentang' }
+  ];
+
+  const tourDestinations = [
+    { id: '1', name: 'Bali - Pulau Dewata', location: 'Bali' },
+    { id: '2', name: 'Yogyakarta - Kota Budaya', location: 'Yogyakarta' },
+    { id: '3', name: 'Raja Ampat - Surga Bawah Laut', location: 'Papua Barat' },
+    { id: '4', name: 'Komodo - Petualangan Eksotis', location: 'NTT' },
+    { id: '5', name: 'Borobudur - Warisan Dunia', location: 'Jawa Tengah' },
+    { id: '6', name: 'Bromo - Pesona Sunrise', location: 'Jawa Timur' }
+  ];
+
   const isActive = (href: string) => {
     if (href === '/') return location.pathname === '/';
     return location.pathname.startsWith(href);
   };
+
   const handleSearch = (destinationId: string) => {
     navigate(`/tour/${destinationId}`);
     setIsSearchOpen(false);
   };
-  return <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-100">
+
+  const handleConsultation = () => {
+    const message = `Halo Admin Renatravel! 👋
+
+Saya tertarik untuk berkonsultasi mengenai paket wisata yang tersedia.
+
+Mohon informasi lebih lanjut tentang:
+🏝️ Destinasi terbaik
+💰 Paket dan harga
+📅 Jadwal ketersediaan
+🎯 Rekomendasi sesuai budget
+
+Terima kasih! 😊`;
+
+    const whatsappUrl = `https://wa.me/6281295735703?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  return (
+    <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-100">
       {/* Top Bar */}
       <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white py-2.5">
         <div className="container mx-auto px-4">
@@ -87,7 +88,11 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative group-hover:scale-105 transition-all duration-300">
-              <img src="/lovable-uploads/e10b370d-5966-446b-84d2-b975e27bf503.png" alt="Renatravel.id Logo" className="h-12 w-auto sm:h-14 object-contain" />
+              <img 
+                src="/lovable-uploads/e10b370d-5966-446b-84d2-b975e27bf503.png" 
+                alt="Renatravel.id Logo" 
+                className="h-12 w-auto sm:h-14 object-contain" 
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
@@ -101,7 +106,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-1">
-            {menuItems.map(item => (
+            {menuItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
@@ -124,7 +129,7 @@ const Header = () => {
             {/* Konsultasi Gratis Button - Desktop */}
             <Button 
               className="hidden lg:flex items-center bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-              onClick={() => navigate('/kontak')}
+              onClick={handleConsultation}
             >
               Konsultasi Gratis
             </Button>
@@ -165,7 +170,7 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden mt-6 py-6 border-t border-gray-200 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl animate-fade-in">
             <nav className="space-y-2">
-              {menuItems.map(item => (
+              {menuItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
@@ -185,7 +190,7 @@ const Header = () => {
                 <Button 
                   className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-lg"
                   onClick={() => {
-                    navigate('/kontak');
+                    handleConsultation();
                     setIsMobileMenuOpen(false);
                   }}
                 >
@@ -203,16 +208,24 @@ const Header = () => {
         <CommandList>
           <CommandEmpty>Tidak ada destinasi yang ditemukan.</CommandEmpty>
           <CommandGroup heading="Destinasi Populer">
-            {tourDestinations.map(destination => <CommandItem key={destination.id} onSelect={() => handleSearch(destination.id)} className="cursor-pointer">
+            {tourDestinations.map((destination) => (
+              <CommandItem 
+                key={destination.id} 
+                onSelect={() => handleSearch(destination.id)} 
+                className="cursor-pointer"
+              >
                 <MapPin className="mr-2 h-4 w-4 text-emerald-600" />
                 <div className="flex flex-col">
                   <span className="font-medium">{destination.name}</span>
                   <span className="text-sm text-gray-500">{destination.location}</span>
                 </div>
-              </CommandItem>)}
+              </CommandItem>
+            ))}
           </CommandGroup>
         </CommandList>
       </CommandDialog>
-    </header>;
+    </header>
+  );
 };
+
 export default Header;

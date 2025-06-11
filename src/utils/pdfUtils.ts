@@ -167,7 +167,22 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
     </html>
   `;
 
-  // Create a new window for printing
+  // Create blob and download link
+  const blob = new Blob([invoiceHTML], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  
+  // Create temporary link and trigger download
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `Invoice-${bookingData.bookingId}.html`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // Clean up the URL
+  URL.revokeObjectURL(url);
+  
+  // Also open in new tab for immediate viewing/printing
   const printWindow = window.open('', '_blank');
   if (printWindow) {
     printWindow.document.write(invoiceHTML);
@@ -177,7 +192,6 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
     printWindow.onload = () => {
       setTimeout(() => {
         printWindow.print();
-        printWindow.close();
       }, 250);
     };
   }
