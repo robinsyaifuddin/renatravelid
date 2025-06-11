@@ -2,24 +2,29 @@
 import React from 'react';
 import { Phone, Mail, MessageCircle, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const SupportSection = () => {
+  const navigate = useNavigate();
+
   const supportCards = [
     {
       icon: <Headphones className="w-8 h-8" />,
-      title: "Need Any Support For Tour & Travels ?",
-      description: "Our 24/7 customer support team is here to help you with all your travel needs and questions.",
-      buttonText: "Get Support",
+      title: "Butuh Bantuan untuk Wisata & Perjalanan?",
+      description: "Tim dukungan pelanggan 24/7 kami siap membantu Anda dengan semua kebutuhan perjalanan dan pertanyaan wisata Anda.",
+      buttonText: "Dapatkan Bantuan",
       bgColor: "from-blue-500 to-blue-600",
-      textColor: "text-white"
+      textColor: "text-white",
+      action: () => navigate('/kontak')
     },
     {
       icon: <MessageCircle className="w-8 h-8" />,
-      title: "Ready to Get Started With Vacations!",
-      description: "Start planning your dream vacation today with our expert travel consultants and exclusive packages.",
-      buttonText: "Get Started",
+      title: "Siap Memulai Liburan Impian Anda?",
+      description: "Mulai rencanakan liburan impian Anda hari ini dengan konsultan perjalanan ahli kami dan paket eksklusif yang menawan.",
+      buttonText: "Mulai Sekarang",
       bgColor: "from-orange-500 to-orange-600", 
-      textColor: "text-white"
+      textColor: "text-white",
+      action: () => navigate('/tour')
     }
   ];
 
@@ -58,6 +63,7 @@ const SupportSection = () => {
 
                 {/* Button */}
                 <Button
+                  onClick={card.action}
                   className="bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white hover:text-gray-800 transition-all duration-300 px-8 py-3 rounded-full font-semibold text-lg group-hover:scale-105"
                 >
                   {card.buttonText}
@@ -73,31 +79,31 @@ const SupportSection = () => {
 
         {/* Contact Options */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center group">
+          <div className="text-center group cursor-pointer" onClick={() => window.open('tel:+6281234567890', '_self')}>
             <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <Phone className="w-8 h-8 text-white" />
             </div>
-            <h4 className="text-xl font-semibold text-white mb-2">Call Us</h4>
-            <p className="text-gray-300">+000 (123) 456 88</p>
-            <p className="text-gray-400 text-sm mt-1">24/7 Available</p>
+            <h4 className="text-xl font-semibold text-white mb-2">Telepon Kami</h4>
+            <p className="text-gray-300">+62 812-3456-7890</p>
+            <p className="text-gray-400 text-sm mt-1">Tersedia 24/7</p>
           </div>
 
-          <div className="text-center group">
+          <div className="text-center group cursor-pointer" onClick={() => window.open('mailto:support@gowilds.com', '_blank')}>
             <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <Mail className="w-8 h-8 text-white" />
             </div>
-            <h4 className="text-xl font-semibold text-white mb-2">Email Us</h4>
+            <h4 className="text-xl font-semibold text-white mb-2">Email Kami</h4>
             <p className="text-gray-300">support@gowilds.com</p>
-            <p className="text-gray-400 text-sm mt-1">Quick Response</p>
+            <p className="text-gray-400 text-sm mt-1">Respon Cepat</p>
           </div>
 
-          <div className="text-center group">
+          <div className="text-center group cursor-pointer" onClick={() => navigate('/kontak')}>
             <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <MessageCircle className="w-8 h-8 text-white" />
             </div>
-            <h4 className="text-xl font-semibold text-white mb-2">Live Chat</h4>
-            <p className="text-gray-300">Chat with us now</p>
-            <p className="text-gray-400 text-sm mt-1">Instant Support</p>
+            <h4 className="text-xl font-semibold text-white mb-2">Chat Langsung</h4>
+            <p className="text-gray-300">Hubungi kami sekarang</p>
+            <p className="text-gray-400 text-sm mt-1">Bantuan Instan</p>
           </div>
         </div>
       </div>
