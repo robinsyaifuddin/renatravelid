@@ -3,7 +3,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Users, Award, Globe, Heart, Shield, Star, Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const About = () => {
   const features = [{
     icon: Award,
@@ -38,8 +37,7 @@ const About = () => {
     image: "/placeholder.svg",
     description: "Konsultan perjalanan dengan pengalaman 12+ tahun"
   }];
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
       
       {/* Hero Section */}
@@ -96,7 +94,7 @@ const About = () => {
           {/* Desktop Grid View */}
           <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => <div key={index} className="text-center group">
-                <div className="w-16 h-16 bg-gradient-to-r from-brand-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{feature.title}</h3>
@@ -211,8 +209,6 @@ const About = () => {
       
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default About;
