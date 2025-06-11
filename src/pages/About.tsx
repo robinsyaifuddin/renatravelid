@@ -171,7 +171,7 @@ const About = () => {
               <h2 className="text-4xl font-bold text-gray-800 mb-6">Visi & Misi Kami</h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
                     <Heart className="w-6 h-6 text-brand-600" />
                   </div>
                   <div>
