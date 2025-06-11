@@ -63,7 +63,7 @@ const Footer = () => {
               '--gradient-to': '#0d9488',
               '--gradient-from-hover': '#047857',
               '--gradient-to-hover': '#0f766e'
-            } as React.CSSProperties} className="hidden lg:flex items-center bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold px-3 xl:px-5 py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 text-sm lg:text-base space-x-2 group border border-emerald-400/20">
+            } as React.CSSProperties} className="hidden lg:flex items-center bg-gradient-to-r from-emerald- to-teal- hover:from-emerald- hover:to-teal- text-white font-semibold px-3 xl:px-5 py-2 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 text-sm lg:text-base space-x-2 group border border-emerald-400/20">
                 Berlangganan
               </Button>
             </form>
