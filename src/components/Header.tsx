@@ -101,39 +101,100 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-1">
-            {menuItems.map(item => <Link key={item.name} to={item.href} className={`${isActive(item.href) ? 'text-emerald-600 bg-emerald-50 shadow-sm' : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50/50'} transition-all duration-300 font-semibold px-6 py-3 rounded-xl relative group`}>
+            {menuItems.map(item => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={`${
+                  isActive(item.href)
+                    ? 'text-emerald-600 bg-emerald-50 shadow-sm'
+                    : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50/50'
+                } transition-all duration-300 font-semibold px-6 py-3 rounded-xl relative group`}
+              >
                 {item.name}
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transform transition-transform duration-300 ${isActive(item.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
-              </Link>)}
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 transform transition-transform duration-300 ${
+                  isActive(item.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                }`} />
+              </Link>
+            ))}
           </nav>
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3">
+            {/* Konsultasi Gratis Button - Desktop */}
+            <Button 
+              className="hidden lg:flex items-center bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              onClick={() => navigate('/kontak')}
+            >
+              Konsultasi Gratis
+            </Button>
+
             {/* Search Button */}
-            <Button variant="outline" size="sm" className="hidden sm:flex items-center border-emerald-200 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300 hover:shadow-md w-10 h-10 p-0" onClick={() => setIsSearchOpen(true)}>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="hidden sm:flex items-center border-emerald-200 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300 hover:shadow-md w-10 h-10 p-0" 
+              onClick={() => setIsSearchOpen(true)}
+            >
               <Search className="w-4 h-4" />
             </Button>
 
             {/* Mobile Search Button */}
-            <Button variant="ghost" size="sm" className="sm:hidden text-emerald-600" onClick={() => setIsSearchOpen(true)}>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="sm:hidden text-emerald-600" 
+              onClick={() => setIsSearchOpen(true)}
+            >
               <Search className="w-5 h-5" />
             </Button>
 
             {/* Mobile Menu Button */}
-            <Button variant="ghost" size="sm" className="lg:hidden text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-300" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="lg:hidden text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-300" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        {isMobileMenuOpen && <div className="lg:hidden mt-6 py-6 border-t border-gray-200 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl animate-fade-in">
+        {isMobileMenuOpen && (
+          <div className="lg:hidden mt-6 py-6 border-t border-gray-200 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl animate-fade-in">
             <nav className="space-y-2">
-              {menuItems.map(item => <Link key={item.name} to={item.href} className={`block px-6 py-4 rounded-xl transition-all duration-300 font-semibold ${isActive(item.href) ? 'text-emerald-600 bg-emerald-50 shadow-sm' : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50/70'}`} onClick={() => setIsMobileMenuOpen(false)}>
+              {menuItems.map(item => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`block px-6 py-4 rounded-xl transition-all duration-300 font-semibold ${
+                    isActive(item.href)
+                      ? 'text-emerald-600 bg-emerald-50 shadow-sm'
+                      : 'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50/70'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   {item.name}
-                </Link>)}
+                </Link>
+              ))}
+              
+              {/* Konsultasi Gratis Button - Mobile */}
+              <div className="px-6 pt-4">
+                <Button 
+                  className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-lg"
+                  onClick={() => {
+                    navigate('/kontak');
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  Konsultasi Gratis
+                </Button>
+              </div>
             </nav>
-          </div>}
+          </div>
+        )}
       </div>
 
       {/* Search Dialog */}
