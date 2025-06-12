@@ -57,7 +57,7 @@ const Footer = () => {
             </p>
             
             <form onSubmit={handleNewsletterSubmit} className="space-y-4">
-              <Input type="email" placeholder="Alamat Email" value={email} onChange={e => setEmail(e.target.value)} className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-emerald-500 focus:ring-emerald-500" required />
+              <Input type="email" placeholder="Alamat Email" value={email} onChange={e => setEmail(e.target.value)} required className="bg-white-800 border-teal-700 text-black placeholder-white-400 focus:border-emerald-500 focus:ring-emerald-500" />
               <Button type="submit" className="w-full btn-gradient-base text-white font-semibold py-3 rounded-lg transition-all duration-200" style={{
               '--gradient-from': '#059669',
               '--gradient-to': '#0d9488',
