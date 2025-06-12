@@ -104,7 +104,7 @@ const GalleryShowcase = () => {
               </div>
               
               {/* Navigation Arrows */}
-              <Button variant="secondary" size="sm" className="absolute left-2 sm:left-3 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30 transition-all duration-200 z-20" onClick={prevImage}>
+              <Button variant="secondary" size="sm" onClick={prevImage} className="absolute left-2 sm:left-3 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm border-white/30 text-teal hover:text-teal transition-all duration-200 z-20">
                 <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6" />
               </Button>
               
