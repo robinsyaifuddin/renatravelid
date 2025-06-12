@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Bot, X, Send, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -179,21 +178,33 @@ const ChatBot = () => {
 
   return (
     <>
-      {/* Chat Button */}
+      {/* Chat Button dengan Teks Keterangan */}
       <div className="fixed bottom-4 right-4 z-50 md:bottom-6 md:right-6">
         {!isOpen && (
-          <div className="relative group">
-            <Button
-              onClick={() => setIsOpen(true)}
-              className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
-            >
-              <Bot className="w-5 h-5 md:w-6 md:h-6 text-white" />
-            </Button>
-            
-            {/* Tooltip */}
-            <div className="absolute bottom-16 right-0 bg-gray-900 text-white text-xs px-2 py-1 md:text-sm md:px-3 md:py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap max-w-[200px] text-center">
-              Punya Pertanyaan? Klik disini ya!
-              <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+          <div className="flex flex-col items-end space-y-3">
+            {/* Teks Keterangan */}
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-3 md:p-4 max-w-[200px] md:max-w-[280px] animate-bounce-slow">
+              <div className="flex items-center space-x-2 mb-2">
+                <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-600" />
+                <span className="text-xs md:text-sm font-semibold text-gray-800">Butuh Bantuan?</span>
+              </div>
+              <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+                Chat dengan asisten virtual kami untuk informasi tour dan perjalanan
+              </p>
+              <div className="absolute bottom-0 right-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-white transform translate-y-full"></div>
+            </div>
+
+            {/* Chat Button */}
+            <div className="relative group">
+              <Button
+                onClick={() => setIsOpen(true)}
+                className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 group-hover:rotate-12"
+              >
+                <Bot className="w-6 h-6 md:w-7 md:h-7 text-white" />
+              </Button>
+              
+              {/* Pulse Animation Ring */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 opacity-30 animate-ping"></div>
             </div>
           </div>
         )}
@@ -310,6 +321,23 @@ const ChatBot = () => {
           </div>
         </>
       )}
+
+      <style jsx>{`
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 3s ease-in-out infinite;
+        }
+        @keyframes scale-in {
+          0% { transform: scale(0.8); opacity: 0; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-scale-in {
+          animation: scale-in 0.3s ease-out;
+        }
+      `}</style>
     </>
   );
 };
