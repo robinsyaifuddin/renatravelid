@@ -156,20 +156,20 @@ const Tour = () => {
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 bg-white sticky top-[88px] z-40 border-b">
+      <section className="py-8 bg-white border-b">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center space-x-4 flex-wrap">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full lg:w-auto">
               <div className="flex items-center space-x-2">
                 <Filter className="w-5 h-5 text-gray-600" />
                 <span className="text-gray-600 font-medium">Kategori:</span>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 w-full sm:w-auto">
                 {categories.map((category) => (
                   <button
                     key={category.id}
                     onClick={() => setSelectedCategory(category.id)}
-                    className={`px-4 py-2 rounded-full transition-colors duration-200 ${
+                    className={`px-3 py-2 text-sm rounded-full transition-colors duration-200 whitespace-nowrap ${
                       selectedCategory === category.id
                         ? 'bg-emerald-600 text-white'
                         : 'bg-gray-100 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600'
@@ -180,12 +180,12 @@ const Tour = () => {
                 ))}
               </div>
             </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-gray-600">Urutkan:</span>
+            <div className="flex items-center space-x-4 w-full sm:w-auto">
+              <span className="text-gray-600 text-sm">Urutkan:</span>
               <select 
                 value={sortBy} 
                 onChange={(e) => setSortBy(e.target.value)}
-                className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-emerald-500"
+                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-emerald-500 w-full sm:w-auto"
               >
                 <option value="popular">Terpopuler</option>
                 <option value="price-low">Harga: Rendah ke Tinggi</option>
