@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Bot, X, Send, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -183,7 +184,7 @@ const ChatBot = () => {
         {!isOpen && (
           <div className="flex flex-col items-end space-y-3">
             {/* Teks Keterangan */}
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-3 md:p-4 max-w-[200px] md:max-w-[280px] animate-bounce-slow">
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-3 md:p-4 max-w-[200px] md:max-w-[280px] animate-bounce-gentle">
               <div className="flex items-center space-x-2 mb-2">
                 <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-600" />
                 <span className="text-xs md:text-sm font-semibold text-gray-800">Butuh Bantuan?</span>
@@ -321,23 +322,6 @@ const ChatBot = () => {
           </div>
         </>
       )}
-
-      <style jsx>{`
-        @keyframes bounce-slow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        .animate-bounce-slow {
-          animation: bounce-slow 3s ease-in-out infinite;
-        }
-        @keyframes scale-in {
-          0% { transform: scale(0.8); opacity: 0; }
-          100% { transform: scale(1); opacity: 1; }
-        }
-        .animate-scale-in {
-          animation: scale-in 0.3s ease-out;
-        }
-      `}</style>
     </>
   );
 };
