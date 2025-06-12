@@ -19,30 +19,6 @@ const TourGrid = () => {
       category: "Alam"
     },
     {
-      id: 2,
-      title: "Pendakian Gunung Bromo",
-      location: "Jawa Timur, Indonesia",
-      duration: "3 Hari 2 Malam",
-      groupSize: "10-15 orang", 
-      rating: 4.8,
-      reviews: 89,
-      price: "Rp 2.750.000",
-      image: "/placeholder.svg",
-      category: "Petualangan"
-    },
-    {
-      id: 3,
-      title: "Wisata Budaya Yogyakarta",
-      location: "Yogyakarta, Indonesia",
-      duration: "4 Hari 3 Malam",
-      groupSize: "6-10 orang",
-      rating: 4.7,
-      reviews: 156,
-      price: "Rp 1.850.000",
-      image: "/placeholder.svg",
-      category: "Budaya"
-    },
-    {
       id: 4,
       title: "Petualangan Komodo Island",
       location: "Nusa Tenggara Timur, Indonesia",
@@ -53,18 +29,6 @@ const TourGrid = () => {
       price: "Rp 5.200.000",
       image: "/placeholder.svg",
       category: "Petualangan"
-    },
-    {
-      id: 5,
-      title: "Pesona Danau Toba",
-      location: "Sumatera Utara, Indonesia",
-      duration: "3 Hari 2 Malam",
-      groupSize: "6-12 orang",
-      rating: 4.6,
-      reviews: 94,
-      price: "Rp 2.100.000",
-      image: "/placeholder.svg",
-      category: "Alam"
     },
     {
       id: 6,
@@ -85,7 +49,7 @@ const TourGrid = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Tour Populer</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">Destinasi Terbaik</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Jelajahi keindahan Indonesia dengan paket tour terpilih dan berpengalaman
           </p>
@@ -166,7 +130,7 @@ const TourGrid = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-emerald-200 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-200 group/btn"
+                      className="border-gray-300 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-200 group/btn"
                     >
                       <span>Detail</span>
                       <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform duration-200" />
