@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -40,19 +39,19 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Alamat Kantor",
-      details: ["Jl. IR. H. Juanda No. 95", "Ciputat, Tangerang Selatan 15412", "Indonesia"],
+      details: ["Jl. Poncol Indah V 87", "Ciputat Tangerang Selatan", "South Tangerang"],
       color: "bg-emerald-100 text-emerald-600"
     },
     {
       icon: Phone,
       title: "Telepon & WhatsApp",
-      details: ["+62 812-9573-5703", "+62 812-9573-5703 (WA)", "Tersedia 24/7"],
+      details: ["0813-1602-9038", "0813-1602-9038 (WA)", "Tersedia 24/7"],
       color: "bg-blue-100 text-blue-600"
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@renatravel.id", "booking@renatravel.id", "support@renatravel.id"],
+      details: ["renatravel.id@gmail.com", "renatravel.id@gmail.com", "support@renatravel.id"],
       color: "bg-orange-100 text-orange-600"
     },
     {
@@ -213,7 +212,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-colors"
-                      placeholder="+62 812 3456 7890"
+                      placeholder="0813-1602-9038"
                     />
                   </div>
                   <div>
@@ -277,7 +276,7 @@ const Contact = () => {
               <div className="text-center text-gray-500">
                 <MapPin className="w-16 h-16 mx-auto mb-4" />
                 <p className="text-lg font-medium">Peta Google Maps</p>
-                <p className="text-sm">Jl. IR. H. Juanda No. 95, Ciputat, Tangerang Selatan</p>
+                <p className="text-sm">Jl. Poncol Indah V 87, Ciputat Tangerang Selatan</p>
               </div>
             </div>
           </div>
