@@ -23,8 +23,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Company Info */}
           <div className="space-y-6">
-            <div>
-              {/* Logo */}
+            {/* Logo */}
+            <div className="mb-6">
+              <img 
+                src="/lovable-uploads/b601ee98-9814-4475-9547-1043c24ddbbe.png" 
+                alt="Renatravel.id Logo" 
+                className="h-12 w-auto object-contain"
+              />
             </div>
 
             {/* Contact Info */}
