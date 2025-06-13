@@ -1,26 +1,33 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Users, Award, Globe, Heart, Shield, Star, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Users, Award, Globe, Heart, Shield, Star, Phone, Mail, MapPin, Clock, Plane, Truck, Compass, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
 const About = () => {
-  const features = [{
-    icon: Award,
-    title: "Pengalaman 15+ Tahun",
-    description: "Kami telah melayani ribuan wisatawan dengan pengalaman tak terlupakan di seluruh Nusantara."
-  }, {
-    icon: Users,
-    title: "Tim Profesional",
-    description: "Guide berpengalaman dan tim customer service yang siap membantu 24/7."
-  }, {
-    icon: Shield,
-    title: "Terpercaya & Aman",
-    description: "Perjalanan Anda dijamin aman dengan asuransi perjalanan dan protokol keselamatan terbaik."
-  }, {
-    icon: Globe,
-    title: "Destinasi Lengkap",
-    description: "Dari Sabang sampai Merauke, kami menyediakan paket wisata ke seluruh Indonesia."
-  }];
+  const features = [
+    {
+      icon: Plane,
+      title: "Open Trip",
+      description: "Gabungan peserta dari berbagai kalangan untuk pengalaman wisata yang lebih berkesan dan hemat."
+    },
+    {
+      icon: Truck,
+      title: "Privat Trip", 
+      description: "Perjalanan eksklusif bersama keluarga, sahabat, atau komunitas dengan kenyamanan maksimal."
+    },
+    {
+      icon: Compass,
+      title: "Jasa Tour Guide Bersertifikat",
+      description: "Guide berpengalaman dan memahami destinasi untuk memberikan informasi terbaik selama perjalanan."
+    },
+    {
+      icon: Users,
+      title: "Family Gathering & Corporate Trip",
+      description: "Konsep seru, edukatif, dan menyatukan untuk acara keluarga atau perusahaan yang berkesan."
+    }
+  ];
+
   const team = [{
     name: "Ahmad Susanto",
     position: "CEO & Founder",
@@ -37,6 +44,7 @@ const About = () => {
     image: "/placeholder.svg",
     description: "Konsultan perjalanan dengan pengalaman 12+ tahun"
   }];
+
   return <div className="min-h-screen">
       <Header />
       
@@ -81,9 +89,9 @@ const About = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Mengapa Memilih Kami?</h2>
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">Layanan Wisata Kami</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Kami berkomitmen memberikan pengalaman wisata terbaik dengan layanan profesional dan harga terjangkau
+              Kami menyediakan berbagai jenis paket wisata yang disesuaikan dengan kebutuhan dan preferensi Anda
             </p>
           </div>
           
@@ -207,4 +215,5 @@ const About = () => {
       <Footer />
     </div>;
 };
+
 export default About;
