@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Bot, X, Send, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,7 +17,6 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const commonQuestions = [
@@ -179,18 +179,12 @@ const ChatBot = () => {
 
   return (
     <>
-      {/* Chat Button dengan Teks Keterangan yang muncul saat hover/touch */}
+      {/* Chat Button dengan Teks Keterangan */}
       <div className="fixed bottom-4 right-4 z-50 md:bottom-6 md:right-6">
         {!isOpen && (
           <div className="flex flex-col items-end space-y-3">
-            {/* Teks Keterangan - hanya muncul saat hover atau touch */}
-            <div 
-              className={`bg-white rounded-2xl shadow-lg border border-gray-200 p-3 md:p-4 max-w-[200px] md:max-w-[280px] transition-all duration-300 transform ${
-                showTooltip 
-                  ? 'opacity-100 translate-y-0 scale-100' 
-                  : 'opacity-0 translate-y-2 scale-95 pointer-events-none'
-              }`}
-            >
+            {/* Teks Keterangan */}
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-3 md:p-4 max-w-[200px] md:max-w-[280px] animate-bounce-gentle">
               <div className="flex items-center space-x-2 mb-2">
                 <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-600" />
                 <span className="text-xs md:text-sm font-semibold text-gray-800">Butuh Bantuan?</span>
@@ -201,14 +195,8 @@ const ChatBot = () => {
               <div className="absolute bottom-0 right-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-white transform translate-y-full"></div>
             </div>
 
-            {/* Chat Button dengan hover/touch handlers */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => setShowTooltip(true)}
-              onMouseLeave={() => setShowTooltip(false)}
-              onTouchStart={() => setShowTooltip(true)}
-              onTouchEnd={() => setTimeout(() => setShowTooltip(false), 3000)}
-            >
+            {/* Chat Button */}
+            <div className="relative group">
               <Button
                 onClick={() => setIsOpen(true)}
                 className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 group-hover:rotate-12"
