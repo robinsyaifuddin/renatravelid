@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { useIsMobile } from '@/hooks/use-mobile';
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -96,14 +97,11 @@ Terima kasih! 😊`;
       {/* Main Header with emerald to teal theme */}
       <div className="container mx-auto px-3 sm:px-4 py-2 lg:py-3">
         <div className="flex justify-between items-center">
-          {/* Logo with emerald to teal effects */}
+          {/* Logo with emerald to teal effects - shadow removed */}
           <Link to="/" className="flex items-center group" onClick={handleNavClick}>
             <div className="relative group-hover:scale-110 transition-all duration-500 transform-gpu perspective-1000">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-              <img src="/lovable-uploads/b601ee98-9814-4475-9547-1043c24ddbbe.png" alt="Renatravel.id Logo" style={{
-              filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))',
-              transform: 'translateZ(0)'
-            }} className="h-10 w-auto sm:h-12 lg:h-14 object-contain relative z-10 drop-lg group-hover:drop-2xl transition-all duration-500" />
+              <img src="/lovable-uploads/b601ee98-9814-4475-9547-1043c24ddbbe.png" alt="Renatravel.id Logo" className="h-10 w-auto sm:h-12 lg:h-14 object-contain relative z-10 group-hover:scale-105 transition-all duration-500" />
             </div>
           </Link>
 
@@ -210,4 +208,5 @@ Terima kasih! 😊`;
       </CommandDialog>
     </header>;
 };
+
 export default Header;
