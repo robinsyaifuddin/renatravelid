@@ -189,7 +189,7 @@ const About = () => {
             </div>
             
             <div className="relative">
-              <img src="/placeholder.svg" alt="Tim WisataNusantara" className="w-full h-96 object-cover rounded-xl shadow-lg" />
+              <img alt="Tim WisataNusantara" className="w-full h-96 object-cover rounded-xl shadow-lg" src="/lovable-uploads/bd9ccebb-458f-4792-9693-ae5237525d91.jpg" />
             </div>
           </div>
         </div>
