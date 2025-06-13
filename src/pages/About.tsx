@@ -182,10 +182,7 @@ const About = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">Misi</h3>
-                    <p className="text-gray-600">
-                      Memberikan pengalaman wisata yang tak terlupakan melalui layanan berkualitas tinggi, 
-                      harga terjangkau, dan komitmen terhadap kelestarian alam serta budaya lokal.
-                    </p>
+                    <p className="text-gray-600">Mendukung pertumbuhan UMKM lokal dengan menjadikan mereka bagian dari ekosistem wisata serta menjaga kelestarian alam dan budaya dengan menerapkan prinsip wisata bertanggung jawab serta edukasi kepada peserta agar ikut serta dalam pelestarian lingkungan.</p>
                   </div>
                 </div>
               </div>
