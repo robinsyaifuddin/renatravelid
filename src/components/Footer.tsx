@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -93,20 +92,20 @@ const Footer = () => {
               </Button>
             </form>
 
-            {/* Social Media */}
+            {/* Social Media dengan warna background teal putih awal, emerald putih saat diklik */}
             <div className="mt-8">
               <h4 className="text-lg font-semibold mb-4">Ikuti Kami</h4>
               <div className="flex space-x-4">
                 {[
-                  { Icon: Facebook, href: '#', color: 'hover:bg-blue-600' },
-                  { Icon: Instagram, href: '#', color: 'hover:bg-pink-600' },
-                  { Icon: Twitter, href: '#', color: 'hover:bg-blue-400' },
-                  { Icon: Youtube, href: '#', color: 'hover:bg-red-600' }
-                ].map(({ Icon, href, color }, index) => (
+                  { Icon: Facebook, href: '#', specificHover: 'hover:bg-blue-600' },
+                  { Icon: Instagram, href: '#', specificHover: 'hover:bg-pink-600' },
+                  { Icon: Twitter, href: '#', specificHover: 'hover:bg-blue-400' },
+                  { Icon: Youtube, href: '#', specificHover: 'hover:bg-red-600' }
+                ].map(({ Icon, href, specificHover }, index) => (
                   <a 
                     key={index} 
                     href={href} 
-                    className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-white transition-all duration-200 ${color}`}
+                    className={`w-10 h-10 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 active:bg-emerald-200 active:text-emerald-700 transition-all duration-200 transform hover:scale-110 ${specificHover}`}
                   >
                     <Icon className="w-5 h-5" />
                   </a>
