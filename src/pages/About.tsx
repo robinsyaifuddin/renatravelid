@@ -48,7 +48,7 @@ const About = () => {
             <p className="text-xl md:text-2xl mb-8 opacity-90">
               Menjelajahi Keindahan Indonesia Bersama Ahlinya
             </p>
-            <p className="text-lg opacity-80 max-w-3xl mx-auto">RENATRAVEL.ID adalah perusahaan penyedia layanan perjalanan wisata yang berkomitmen untuk menghadirkan pengalaman liburan yang menyenangkan, aman, dan bermakna. Kami menyediakan berbagai jenis paket wisata, mulai dari:</p>
+            <p className="text-lg opacity-80 max-w-3xl mx-auto">RENATRAVEL.ID - adalah perusahaan penyedia layanan perjalanan wisata yang berkomitmen untuk menghadirkan pengalaman liburan yang menyenangkan, aman, dan bermakna. Kami menyediakan berbagai jenis paket wisata, mulai dari:</p>
           </div>
         </div>
       </section>
