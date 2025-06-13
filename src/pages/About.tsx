@@ -3,31 +3,24 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Users, Award, Globe, Heart, Shield, Star, Phone, Mail, MapPin, Clock, Plane, Truck, Compass, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const About = () => {
-  const features = [
-    {
-      icon: Plane,
-      title: "Open Trip",
-      description: "Gabungan peserta dari berbagai kalangan untuk pengalaman wisata yang lebih berkesan dan hemat."
-    },
-    {
-      icon: Truck,
-      title: "Privat Trip", 
-      description: "Perjalanan eksklusif bersama keluarga, sahabat, atau komunitas dengan kenyamanan maksimal."
-    },
-    {
-      icon: Compass,
-      title: "Jasa Tour Guide Bersertifikat",
-      description: "Guide berpengalaman dan memahami destinasi untuk memberikan informasi terbaik selama perjalanan."
-    },
-    {
-      icon: Users,
-      title: "Family Gathering & Corporate Trip",
-      description: "Konsep seru, edukatif, dan menyatukan untuk acara keluarga atau perusahaan yang berkesan."
-    }
-  ];
-
+  const features = [{
+    icon: Plane,
+    title: "Open Trip",
+    description: "Gabungan peserta dari berbagai kalangan untuk pengalaman wisata yang lebih berkesan dan hemat."
+  }, {
+    icon: Truck,
+    title: "Privat Trip",
+    description: "Perjalanan eksklusif bersama keluarga, sahabat, atau komunitas dengan kenyamanan maksimal."
+  }, {
+    icon: Compass,
+    title: "Jasa Tour Guide Bersertifikat",
+    description: "Guide berpengalaman dan memahami destinasi untuk memberikan informasi terbaik selama perjalanan."
+  }, {
+    icon: Users,
+    title: "Family Gathering & Corporate Trip",
+    description: "Konsep seru, edukatif, dan menyatukan untuk acara keluarga atau perusahaan yang berkesan."
+  }];
   const team = [{
     name: "Ahmad Susanto",
     position: "CEO & Founder",
@@ -44,7 +37,6 @@ const About = () => {
     image: "/placeholder.svg",
     description: "Konsultan perjalanan dengan pengalaman 12+ tahun"
   }];
-
   return <div className="min-h-screen">
       <Header />
       
@@ -180,10 +172,7 @@ const About = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">Visi</h3>
-                    <p className="text-gray-600">
-                      Menjadi perusahaan travel terdepan yang memperkenalkan keindahan dan keragaman budaya Indonesia 
-                      kepada dunia, sambil mendukung pengembangan pariwisata berkelanjutan.
-                    </p>
+                    <p className="text-gray-600">Menjadi pelaku wisata lokal yang menginspirasi, memberdayakan, dan berkontribusi nyata dalam memajukan daya tarik pariwisata Indonesia, serta menjadi jembatan penggerak UMKM lokal melalui perjalanan wisata yang edukatif, inklusif, dan berkelanjutan.</p>
                   </div>
                 </div>
                 
@@ -215,5 +204,4 @@ const About = () => {
       <Footer />
     </div>;
 };
-
 export default About;
