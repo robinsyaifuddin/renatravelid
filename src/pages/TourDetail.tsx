@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -220,6 +219,7 @@ const TourDetail = () => {
   };
 
   const tour = tours[id as keyof typeof tours] || tours["1"];
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const handleBookNow = () => {
     navigate(`/booking/${id}`);
@@ -254,13 +254,33 @@ const TourDetail = () => {
             {/* Image Gallery */}
             <div className="space-y-4">
               <div className="aspect-video rounded-xl overflow-hidden">
-                <img src={tour.images[0]} alt={tour.title} className="w-full h-full object-cover" />
+                <img
+                  src={tour.images[selectedImageIndex]}
+                  alt={tour.title}
+                  className="w-full h-full object-cover transition-all duration-300"
+                />
               </div>
               <div className="grid grid-cols-3 gap-4">
-                {tour.images.slice(1).map((image, index) => (
-                  <div key={index} className="aspect-video rounded-lg overflow-hidden">
-                    <img src={image} alt={`${tour.title} ${index + 2}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer" />
-                  </div>
+                {tour.images.map((image, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className={`aspect-video rounded-lg overflow-hidden ring-2 transition 
+                      ${selectedImageIndex === index
+                        ? 'ring-emerald-500'
+                        : 'ring-transparent hover:ring-emerald-200'}
+                    `}
+                    aria-label={`Tampilkan gambar ke-${index + 1}`}
+                    onClick={() => setSelectedImageIndex(index)}
+                  >
+                    <img
+                      src={image}
+                      alt={`${tour.title} ${index + 1}`}
+                      className={`w-full h-full object-cover transition-transform duration-300 
+                        ${selectedImageIndex === index ? 'scale-105' : 'hover:scale-105'}`
+                      }
+                    />
+                  </button>
                 ))}
               </div>
             </div>
