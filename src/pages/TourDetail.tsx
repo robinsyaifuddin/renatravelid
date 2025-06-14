@@ -385,9 +385,9 @@ const TourDetail = () => {
 
       {/* Content Tabs */}
       <section className="py-16 bg-gray-50">
-        <div className="w-full px-0">
-          <div className="w-full max-w-none">
-            <div className="bg-white rounded-none shadow-lg overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               {/* Description */}
               <div className="p-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Deskripsi Tour</h2>
