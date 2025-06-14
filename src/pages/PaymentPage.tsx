@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -7,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { generateInvoicePDF } from '@/utils/pdfUtils';
 import { 
   Download, 
-  CreditCard, 
   Banknote, 
   QrCode, 
   MessageCircle,
@@ -39,9 +37,9 @@ const PaymentPage = () => {
       name: 'Transfer Bank',
       icon: Banknote,
       details: {
-        bank: 'BCA',
-        accountNumber: '1234567890',
-        accountName: 'PT Renatravel Indonesia'
+        bank: 'Bank Mandiri',
+        accountNumber: '1200013152082',
+        accountName: 'RENDY KURNIAWAN'
       }
     },
     {
@@ -50,14 +48,6 @@ const PaymentPage = () => {
       icon: QrCode,
       details: {
         note: 'Scan QR Code untuk pembayaran instant'
-      }
-    },
-    {
-      id: 'credit',
-      name: 'Kartu Kredit',
-      icon: CreditCard,
-      details: {
-        note: 'Pembayaran aman dengan kartu kredit'
       }
     }
   ];
@@ -111,6 +101,7 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
   }
 
   const total = calculateTotal();
+  const transferDetails = paymentMethods.find(m => m.id === 'transfer')?.details;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -155,13 +146,13 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                   ))}
                 </div>
 
-                {selectedPaymentMethod === 'transfer' && (
+                {selectedPaymentMethod === 'transfer' && transferDetails && (
                   <div className="mt-4 md:mt-6 p-3 md:p-4 bg-blue-50 border border-blue-200 rounded-lg">
                     <h4 className="font-semibold text-blue-800 mb-2 text-sm md:text-base">Informasi Transfer Bank</h4>
                     <div className="space-y-1 text-xs md:text-sm text-blue-700">
-                      <p>Bank: BCA</p>
-                      <p>No. Rekening: 1234567890</p>
-                      <p>Atas Nama: PT Renatravel Indonesia</p>
+                      <p>Bank: {transferDetails.bank}</p>
+                      <p>No. Rekening: {transferDetails.accountNumber}</p>
+                      <p>Atas Nama: {transferDetails.accountName}</p>
                       <p className="font-medium mt-2">Total: Rp {total.toLocaleString('id-ID')}</p>
                     </div>
                   </div>
@@ -170,8 +161,12 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                 {selectedPaymentMethod === 'qris' && (
                   <div className="mt-4 md:mt-6 p-3 md:p-4 bg-purple-50 border border-purple-200 rounded-lg text-center">
                     <h4 className="font-semibold text-purple-800 mb-3 md:mb-4 text-sm md:text-base">Scan QR Code</h4>
-                    <div className="w-32 h-32 md:w-48 md:h-48 bg-white border mx-auto rounded-lg flex items-center justify-center">
-                      <QrCode className="w-20 h-20 md:w-32 md:h-32 text-gray-400" />
+                    <div className="w-32 h-32 md:w-48 md:h-48 bg-white border mx-auto rounded-lg flex items-center justify-center overflow-hidden">
+                      <img 
+                        src="/lovable-uploads/c688c126-ba00-4009-8b64-92dcd9d7489e.png" 
+                        alt="QR Code Pembayaran" 
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                     <p className="text-xs md:text-sm text-purple-700 mt-2">Scan dengan aplikasi banking atau e-wallet</p>
                   </div>
