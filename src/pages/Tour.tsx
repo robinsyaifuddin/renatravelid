@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Star, MapPin, Calendar, Users, ChevronRight, Filter, Search } from 'lucide-react';
+import { Star, MapPin, Calendar, Users, ChevronRight, Filter, Search, Shield, Mountain, Waves } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -13,103 +13,183 @@ const Tour = () => {
 
   const categories = [
     { id: 'semua', name: 'Semua Tour' },
-    { id: 'adventure', name: 'Petualangan' },
-    { id: 'culture', name: 'Budaya' },
-    { id: 'nature', name: 'Alam' },
-    { id: 'beach', name: 'Pantai' },
-    { id: 'mountain', name: 'Pegunungan' }
+    { id: 'pantai', name: 'Pantai & Pulau' },
+    { id: 'pegunungan', name: 'Pegunungan' },
+    { id: 'alam', name: 'Wisata Alam' },
+    { id: 'budaya', name: 'Wisata Budaya' },
+    { id: 'petualangan', name: 'Petualangan' }
   ];
 
   const tours = [
     {
       id: 1,
-      title: "Eksplorasi Raja Ampat",
-      location: "Papua Barat, Indonesia",
-      duration: "5 Hari 4 Malam",
-      groupSize: "8-12 orang",
-      rating: 4.9,
-      reviews: 127,
-      price: "Rp 8.500.000",
-      originalPrice: "Rp 10.000.000",
-      image: "/placeholder.svg",
-      category: "nature",
+      title: "Pulau Tidung Adventure",
+      location: "Kepulauan Seribu, Jakarta",
+      duration: "2 Hari 1 Malam",
+      groupSize: "15-25 orang",
+      rating: 4.8,
+      reviews: 142,
+      price: "Rp 450.000",
+      originalPrice: "Rp 550.000",
+      image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format",
+      category: "pantai",
       featured: true,
-      description: "Jelajahi keindahan bawah laut Raja Ampat yang memukau dengan keanekaragaman hayati terlengkap di dunia."
+      difficulty: "Mudah",
+      minAge: "5 tahun",
+      description: "Nikmati keindahan Pulau Tidung dengan aktivitas snorkeling, sepeda keliling pulau, dan jembatan cinta yang ikonik. Pulau terdekat dari Jakarta dengan pemandangan laut yang memukau."
     },
     {
       id: 2,
-      title: "Pendakian Gunung Bromo",
-      location: "Jawa Timur, Indonesia",
-      duration: "3 Hari 2 Malam",
-      groupSize: "10-15 orang",
-      rating: 4.8,
-      reviews: 89,
-      price: "Rp 2.750.000",
-      originalPrice: "Rp 3.200.000",
-      image: "/placeholder.svg",
-      category: "mountain",
+      title: "Pulau Pramuka Eksplorasi",
+      location: "Kepulauan Seribu, Jakarta",
+      duration: "2 Hari 1 Malam",
+      groupSize: "10-20 orang",
+      rating: 4.7,
+      reviews: 98,
+      price: "Rp 385.000",
+      originalPrice: "Rp 485.000",
+      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
+      category: "alam",
       featured: false,
-      description: "Nikmati sunrise spektakuler dari kawah Gunung Bromo dan jelajahi lautan pasir yang menakjubkan."
+      difficulty: "Mudah",
+      minAge: "8 tahun",
+      description: "Jelajahi Pulau Pramuka sebagai pusat administrasi Kepulauan Seribu dengan aktivitas penangkaran penyu sisik, snorkeling, dan wisata mangrove yang menarik."
     },
     {
       id: 3,
-      title: "Wisata Budaya Yogyakarta",
-      location: "Yogyakarta, Indonesia",
-      duration: "4 Hari 3 Malam",
-      groupSize: "6-10 orang",
-      rating: 4.7,
-      reviews: 156,
-      price: "Rp 1.850.000",
-      originalPrice: "Rp 2.100.000",
-      image: "/placeholder.svg",
-      category: "culture",
+      title: "Pulau Peucang Eksotis",
+      location: "Ujung Kulon, Banten",
+      duration: "3 Hari 2 Malam",
+      groupSize: "8-15 orang",
+      rating: 4.9,
+      reviews: 76,
+      price: "Rp 1.250.000",
+      originalPrice: "Rp 1.450.000",
+      image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&h=600&fit=crop&auto=format",
+      category: "alam",
       featured: true,
-      description: "Rasakan kekayaan budaya Jogja dengan mengunjungi Borobudur, Prambanan, dan Keraton Yogyakarta."
+      difficulty: "Sedang",
+      minAge: "12 tahun",
+      description: "Eksplorasi Pulau Peucang di Taman Nasional Ujung Kulon dengan wildlife watching, trekking hutan, dan pantai perawan yang menakjubkan. Habitat badak bercula satu."
     },
     {
       id: 4,
-      title: "Petualangan Komodo Island",
-      location: "Nusa Tenggara Timur, Indonesia",
-      duration: "4 Hari 3 Malam",
-      groupSize: "8-12 orang",
-      rating: 4.9,
-      reviews: 203,
-      price: "Rp 5.200.000",
-      originalPrice: "Rp 6.000.000",
-      image: "/placeholder.svg",
-      category: "adventure",
+      title: "Pulau Sebesi Adventure",
+      location: "Selat Sunda, Lampung",
+      duration: "2 Hari 1 Malam",
+      groupSize: "10-18 orang",
+      rating: 4.6,
+      reviews: 84,
+      price: "Rp 650.000",
+      originalPrice: "Rp 750.000",
+      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop&auto=format",
+      category: "petualangan",
       featured: false,
-      description: "Bertemu langsung dengan komodo di habitat aslinya dan snorkeling di perairan yang jernih."
+      difficulty: "Sedang",
+      minAge: "15 tahun",
+      description: "Petualangan seru di Pulau Sebesi dengan pendakian gunung berapi, eksplorasi gua vulkanik, dan diving di perairan jernih dengan terumbu karang yang indah."
     },
     {
       id: 5,
-      title: "Pesona Danau Toba",
-      location: "Sumatera Utara, Indonesia",
-      duration: "3 Hari 2 Malam",
-      groupSize: "6-12 orang",
-      rating: 4.6,
-      reviews: 94,
-      price: "Rp 2.100.000",
-      originalPrice: "Rp 2.500.000",
-      image: "/placeholder.svg",
-      category: "nature",
-      featured: false,
-      description: "Jelajahi danau vulkanik terbesar di dunia dan pelajari budaya Batak yang unik."
+      title: "TWA Papandayan",
+      location: "Garut, Jawa Barat",
+      duration: "1 Hari (Day Trip)",
+      groupSize: "8-20 orang",
+      rating: 4.8,
+      reviews: 156,
+      price: "Rp 225.000",
+      originalPrice: "Rp 275.000",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&auto=format",
+      category: "alam",
+      featured: true,
+      difficulty: "Mudah",
+      minAge: "10 tahun",
+      description: "Jelajahi keunikan Taman Wisata Alam Papandayan dengan kawah aktif, sumber air panas, dan fenomena geologi yang menakjubkan. Cocok untuk family trip."
     },
     {
       id: 6,
-      title: "Pantai Pink Lombok",
-      location: "Nusa Tenggara Barat, Indonesia",
-      duration: "3 Hari 2 Malam",
-      groupSize: "8-14 orang",
-      rating: 4.8,
-      reviews: 112,
-      price: "Rp 3.400.000",
-      originalPrice: "Rp 4.000.000",
-      image: "/placeholder.svg",
-      category: "beach",
+      title: "Wisata Budaya Baduy",
+      location: "Lebak, Banten",
+      duration: "2 Hari 1 Malam",
+      groupSize: "6-12 orang",
+      rating: 4.7,
+      reviews: 89,
+      price: "Rp 485.000",
+      originalPrice: "Rp 585.000",
+      image: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&h=600&fit=crop&auto=format",
+      category: "budaya",
+      featured: false,
+      difficulty: "Sedang",
+      minAge: "12 tahun",
+      description: "Rasakan pengalaman autentik dengan suku Baduy dalam. Trekking melintasi hutan, belajar kearifan lokal, dan merasakan kehidupan tradisional yang masih terjaga."
+    },
+    {
+      id: 7,
+      title: "Kawah Ratu Mystical",
+      location: "Gunung Salak, Bogor",
+      duration: "1 Hari (Day Trip)",
+      groupSize: "8-15 orang",
+      rating: 4.5,
+      reviews: 67,
+      price: "Rp 195.000",
+      originalPrice: "Rp 245.000",
+      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
+      category: "alam",
+      featured: false,
+      difficulty: "Sedang",
+      minAge: "16 tahun",
+      description: "Eksplorasi Kawah Ratu dengan pemandangan kawah vulkanik yang mistis, trekking hutan hujan tropis, dan suasana spiritual yang menenangkan jiwa."
+    },
+    {
+      id: 8,
+      title: "Gunung Prau Sunrise",
+      location: "Wonosobo, Jawa Tengah",
+      duration: "2 Hari 1 Malam",
+      groupSize: "8-15 orang",
+      rating: 4.9,
+      reviews: 203,
+      price: "Rp 325.000",
+      originalPrice: "Rp 425.000",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&auto=format",
+      category: "pegunungan",
       featured: true,
-      description: "Nikmati keindahan pantai berpasir pink yang langka dan snorkeling di perairan kristal."
+      difficulty: "Sedang",
+      minAge: "15 tahun",
+      description: "Saksikan sunrise spektakuler dari puncak Gunung Prau dengan pemandangan 360 derajat. Trekking yang ramah untuk pemula dengan savana yang memukau."
+    },
+    {
+      id: 9,
+      title: "Gunung Aseupan Adventure",
+      location: "Sukabumi, Jawa Barat",
+      duration: "2 Hari 1 Malam",
+      groupSize: "6-12 orang",
+      rating: 4.6,
+      reviews: 91,
+      price: "Rp 375.000",
+      originalPrice: "Rp 475.000",
+      image: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&h=600&fit=crop&auto=format",
+      category: "pegunungan",
+      featured: false,
+      difficulty: "Menantang",
+      minAge: "17 tahun",
+      description: "Pendakian menantang Gunung Aseupan dengan jalur terjal namun pemandangan yang luar biasa. Cocok untuk pendaki yang sudah berpengalaman dan menyukai tantangan."
+    },
+    {
+      id: 10,
+      title: "Gunung Pulosari Eksotis",
+      location: "Pandeglang, Banten",
+      duration: "2 Hari 1 Malam",
+      groupSize: "8-16 orang",
+      rating: 4.7,
+      reviews: 124,
+      price: "Rp 295.000",
+      originalPrice: "Rp 395.000",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&auto=format",
+      category: "pegunungan",
+      featured: false,
+      difficulty: "Sedang",
+      minAge: "14 tahun",
+      description: "Jelajahi Gunung Pulosari dengan pemandangan Selat Sunda yang menakjubkan. Trekking melewati hutan tropis dengan flora fauna yang beragam."
     }
   ];
 
@@ -120,6 +200,19 @@ const Tour = () => {
     return matchesCategory && matchesSearch;
   });
 
+  const getDifficultyIcon = (difficulty: string) => {
+    switch (difficulty) {
+      case 'Mudah':
+        return <Shield className="w-4 h-4 text-green-500" />;
+      case 'Sedang':
+        return <Mountain className="w-4 h-4 text-yellow-500" />;
+      case 'Menantang':
+        return <Waves className="w-4 h-4 text-red-500" />;
+      default:
+        return <Shield className="w-4 h-4 text-gray-500" />;
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -129,10 +222,10 @@ const Tour = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Paket Tour Nusantara
+              Paket Tour RenaTravel.id
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Jelajahi keindahan Indonesia dengan paket tour terpilih dan berpengalaman
+              Jelajahi destinasi terbaik Indonesia dengan pengalaman tak terlupakan
             </p>
             
             {/* Search Bar */}
@@ -229,10 +322,16 @@ const Tour = () => {
                       </span>
                     </div>
                   )}
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-4 right-4 flex space-x-2">
                     <span className="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium">
                       {categories.find(cat => cat.id === tour.category)?.name}
                     </span>
+                  </div>
+                  <div className="absolute bottom-4 right-4">
+                    <div className="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full">
+                      {getDifficultyIcon(tour.difficulty)}
+                      <span className="text-xs font-medium text-gray-700">{tour.difficulty}</span>
+                    </div>
                   </div>
                 </div>
 
@@ -280,6 +379,11 @@ const Tour = () => {
                       <Users className="w-4 h-4" />
                       <span>{tour.groupSize}</span>
                     </div>
+                  </div>
+
+                  {/* Additional Info */}
+                  <div className="text-xs text-gray-500 mb-4">
+                    Minimal usia: {tour.minAge} • Tingkat kesulitan: {tour.difficulty}
                   </div>
 
                   {/* Price and Button */}

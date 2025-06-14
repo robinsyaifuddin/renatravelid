@@ -8,39 +8,42 @@ const TourGrid = () => {
   const tours = [
     {
       id: 1,
-      title: "Eksplorasi Raja Ampat",
-      location: "Papua Barat, Indonesia",
-      duration: "5 Hari 4 Malam",
-      groupSize: "8-12 orang",
-      rating: 4.9,
-      reviews: 127,
-      price: "Rp 8.500.000",
-      image: "/placeholder.svg",
-      category: "Alam"
+      title: "Pulau Tidung Adventure",
+      location: "Kepulauan Seribu, Jakarta",
+      duration: "2 Hari 1 Malam",
+      groupSize: "15-25 orang",
+      rating: 4.8,
+      reviews: 142,
+      price: "Rp 450.000",
+      image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format",
+      category: "Pantai",
+      difficulty: "Mudah"
     },
     {
-      id: 4,
-      title: "Petualangan Komodo Island",
-      location: "Nusa Tenggara Timur, Indonesia",
-      duration: "4 Hari 3 Malam",
-      groupSize: "8-12 orang",
+      id: 2,
+      title: "Pulau Pramuka Eksplorasi",
+      location: "Kepulauan Seribu, Jakarta",
+      duration: "2 Hari 1 Malam", 
+      groupSize: "10-20 orang",
+      rating: 4.7,
+      reviews: 98,
+      price: "Rp 385.000",
+      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
+      category: "Alam",
+      difficulty: "Mudah"
+    },
+    {
+      id: 3,
+      title: "Gunung Prau Sunrise",
+      location: "Wonosobo, Jawa Tengah",
+      duration: "2 Hari 1 Malam",
+      groupSize: "8-15 orang", 
       rating: 4.9,
       reviews: 203,
-      price: "Rp 5.200.000",
-      image: "/placeholder.svg",
-      category: "Petualangan"
-    },
-    {
-      id: 6,
-      title: "Pantai Pink Lombok",
-      location: "Nusa Tenggara Barat, Indonesia",
-      duration: "3 Hari 2 Malam",
-      groupSize: "8-14 orang",
-      rating: 4.8,
-      reviews: 112,
-      price: "Rp 3.400.000",
-      image: "/placeholder.svg",
-      category: "Pantai"
+      price: "Rp 325.000",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&auto=format",
+      category: "Pegunungan",
+      difficulty: "Sedang"
     }
   ];
 
@@ -51,7 +54,7 @@ const TourGrid = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">Destinasi Terbaik</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Jelajahi keindahan Indonesia dengan paket tour terpilih dan berpengalaman
+            Jelajahi keindahan Indonesia dengan paket tour terpilih dari RenaTravel.id
           </p>
         </div>
 
@@ -72,6 +75,11 @@ const TourGrid = () => {
                 <div className="absolute top-4 left-4">
                   <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
                     {tour.category}
+                  </span>
+                </div>
+                <div className="absolute top-4 right-4">
+                  <span className="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    {tour.difficulty}
                   </span>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
