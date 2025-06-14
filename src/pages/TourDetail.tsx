@@ -384,45 +384,45 @@ const TourDetail = () => {
       </section>
 
       {/* Content Tabs */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-8 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               {/* Description */}
-              <div className="p-8">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Deskripsi Tour</h2>
-                <p className="text-gray-600 leading-relaxed">{tour.description}</p>
+              <div className="p-4 md:p-8">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-3 md:mb-4">Deskripsi Tour</h2>
+                <p className="text-gray-600 leading-relaxed text-sm md:text-base">{tour.description}</p>
               </div>
 
               {/* Highlights */}
-              <div className="p-8 bg-gray-50">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Highlight Tour</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 md:p-8 bg-gray-50">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Highlight Tour</h2>
+                <div className="grid grid-cols-1 gap-3 md:gap-4">
                   {tour.highlights.map((highlight, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                      <span className="text-gray-700">{highlight}</span>
+                    <div key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm md:text-base leading-relaxed">{highlight}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Itinerary */}
-              <div className="p-8">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Itinerary Lengkap</h2>
-                <div className="space-y-6">
+              <div className="p-4 md:p-8">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Itinerary Lengkap</h2>
+                <div className="space-y-4 md:space-y-6">
                   {tour.itinerary.map((day, index) => (
-                    <div key={index} className="flex space-x-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
-                        <span className="text-emerald-600 font-bold">{day.day}</span>
+                    <div key={index} className="flex space-x-3 md:space-x-4">
+                      <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-emerald-100 rounded-full flex items-center justify-center">
+                        <span className="text-emerald-600 font-bold text-sm md:text-base">{day.day}</span>
                       </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-800 mb-2">Hari {day.day}: {day.title}</h3>
-                        <ul className="space-y-1">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-gray-800 mb-2 text-sm md:text-base">Hari {day.day}: {day.title}</h3>
+                        <ul className="space-y-1 md:space-y-2">
                           {day.activities.map((activity, actIndex) => (
-                            <li key={actIndex} className="text-gray-600 text-sm flex items-start space-x-2">
-                              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0 mt-2"></div>
-                              <span>{activity}</span>
+                            <li key={actIndex} className="text-gray-600 text-xs md:text-sm flex items-start space-x-2">
+                              <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-emerald-500 rounded-full flex-shrink-0 mt-1.5 md:mt-2"></div>
+                              <span className="leading-relaxed">{activity}</span>
                             </li>
                           ))}
                         </ul>
@@ -433,45 +433,45 @@ const TourDetail = () => {
               </div>
 
               {/* Facilities */}
-              <div className="p-8 bg-gray-50">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Fasilitas Disediakan</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 md:p-8 bg-gray-50">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Fasilitas Disediakan</h2>
+                <div className="grid grid-cols-1 gap-3 md:gap-4">
                   {tour.facilities.map((facility, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                      <span className="text-gray-700">{facility}</span>
+                    <div key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm md:text-base leading-relaxed">{facility}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Include/Exclude */}
-              <div className="p-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                      <CheckCircle className="w-6 h-6 text-green-500 mr-2" />
+              <div className="p-4 md:p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+                  <div className="space-y-4">
+                    <h3 className="text-lg md:text-xl font-bold text-gray-800 flex items-center">
+                      <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-green-500 mr-2" />
                       Termasuk dalam Paket
                     </h3>
-                    <div className="space-y-2">
+                    <div className="space-y-2 md:space-y-3">
                       {tour.included.map((item, index) => (
                         <div key={index} className="flex items-start space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700 text-sm">{item}</span>
+                          <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700 text-xs md:text-sm leading-relaxed">{item}</span>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                      <AlertTriangle className="w-6 h-6 text-red-500 mr-2" />
+                  <div className="space-y-4">
+                    <h3 className="text-lg md:text-xl font-bold text-gray-800 flex items-center">
+                      <AlertTriangle className="w-5 h-5 md:w-6 md:h-6 text-red-500 mr-2" />
                       Tidak Termasuk
                     </h3>
-                    <div className="space-y-2">
+                    <div className="space-y-2 md:space-y-3">
                       {tour.notIncluded.map((item, index) => (
                         <div key={index} className="flex items-start space-x-3">
-                          <div className="w-5 h-5 border-2 border-red-300 rounded-full flex-shrink-0 mt-0.5"></div>
-                          <span className="text-gray-700 text-sm">{item}</span>
+                          <div className="w-4 h-4 md:w-5 md:h-5 border-2 border-red-300 rounded-full flex-shrink-0 mt-0.5"></div>
+                          <span className="text-gray-700 text-xs md:text-sm leading-relaxed">{item}</span>
                         </div>
                       ))}
                     </div>
@@ -480,27 +480,27 @@ const TourDetail = () => {
               </div>
 
               {/* Requirements */}
-              <div className="p-8 bg-gray-50">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Persyaratan & Ketentuan</h2>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Persyaratan Peserta</h3>
-                    <div className="space-y-2">
+              <div className="p-4 md:p-8 bg-gray-50">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Persyaratan & Ketentuan</h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+                  <div className="space-y-4">
+                    <h3 className="text-base md:text-lg font-semibold text-gray-800">Persyaratan Peserta</h3>
+                    <div className="space-y-2 md:space-y-3">
                       {tour.requirements.map((req, index) => (
                         <div key={index} className="flex items-start space-x-3">
-                          <AlertTriangle className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700 text-sm">{req}</span>
+                          <AlertTriangle className="w-4 h-4 md:w-5 md:h-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700 text-xs md:text-sm leading-relaxed">{req}</span>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Kebijakan Pembatalan</h3>
-                    <div className="space-y-2">
+                  <div className="space-y-4">
+                    <h3 className="text-base md:text-lg font-semibold text-gray-800">Kebijakan Pembatalan</h3>
+                    <div className="space-y-2 md:space-y-3">
                       {tour.cancellationPolicy.map((policy, index) => (
                         <div key={index} className="flex items-start space-x-3">
-                          <Shield className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700 text-sm">{policy}</span>
+                          <Shield className="w-4 h-4 md:w-5 md:h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700 text-xs md:text-sm leading-relaxed">{policy}</span>
                         </div>
                       ))}
                     </div>
