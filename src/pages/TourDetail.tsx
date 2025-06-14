@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Star, MapPin, Calendar, Users, CheckCircle, Phone, MessageCircle, ArrowLeft, Clock, Shield, Award, AlertTriangle, Camera, Utensils, Car } from 'lucide-react';
+import { Star, MapPin, Calendar, Users, CheckCircle, Phone, MessageCircle, ArrowLeft, Clock, Shield, Award, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const TourDetail = () => {
   const { id } = useParams();
@@ -219,7 +228,30 @@ const TourDetail = () => {
   };
 
   const tour = tours[id as keyof typeof tours] || tours["1"];
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [api, setApi] = useState<CarouselApi>()
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return
+    }
+    
+    const onSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap())
+    }
+    
+    api.on("select", onSelect)
+    onSelect()
+    
+    return () => {
+      api.off("select", onSelect)
+    }
+  }, [api])
+
+  const handleThumbnailClick = (index: number) => {
+    if (!api) return;
+    api.scrollTo(index);
+  };
 
   const handleBookNow = () => {
     navigate(`/booking/${id}`);
@@ -253,31 +285,51 @@ const TourDetail = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Image Gallery */}
             <div className="space-y-4">
-              <div className="aspect-video rounded-xl overflow-hidden">
-                <img
-                  src={tour.images[selectedImageIndex]}
-                  alt={tour.title}
-                  className="w-full h-full object-cover transition-all duration-300"
-                />
-              </div>
-              <div className="grid grid-cols-3 gap-4">
+               <Carousel
+                setApi={setApi}
+                plugins={[
+                  Autoplay({
+                    delay: 3000,
+                    stopOnInteraction: true,
+                  }),
+                ]}
+                className="w-full relative"
+              >
+                <CarouselContent>
+                  {tour.images.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="aspect-video rounded-xl overflow-hidden">
+                        <img
+                          src={image}
+                          alt={`${tour.title} ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="absolute left-4 bg-white/50 hover:bg-white/80 text-gray-800 border-none" />
+                <CarouselNext className="absolute right-4 bg-white/50 hover:bg-white/80 text-gray-800 border-none" />
+              </Carousel>
+
+              <div className="grid grid-cols-4 gap-4">
                 {tour.images.map((image, index) => (
                   <button
                     key={index}
                     type="button"
                     className={`aspect-video rounded-lg overflow-hidden ring-2 transition 
-                      ${selectedImageIndex === index
+                      ${selectedIndex === index
                         ? 'ring-emerald-500'
                         : 'ring-transparent hover:ring-emerald-200'}
                     `}
                     aria-label={`Tampilkan gambar ke-${index + 1}`}
-                    onClick={() => setSelectedImageIndex(index)}
+                    onClick={() => handleThumbnailClick(index)}
                   >
                     <img
                       src={image}
                       alt={`${tour.title} ${index + 1}`}
                       className={`w-full h-full object-cover transition-transform duration-300 
-                        ${selectedImageIndex === index ? 'scale-105' : 'hover:scale-105'}`
+                        ${selectedIndex === index ? 'scale-105' : 'hover:scale-105'}`
                       }
                     />
                   </button>
