@@ -416,57 +416,6 @@ const TourDetail = () => {
                 </div>
               </div>
 
-              {/* Period & Age Info */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center space-x-2 p-3 bg-emerald-50 rounded-lg">
-                  <Calendar className="w-5 h-5 text-emerald-600" />
-                  <div>
-                    <div className="text-sm text-gray-600">Periode Tour</div>
-                    <div className="font-semibold text-emerald-600">{tour.availablePeriod}</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-2 p-3 bg-green-50 rounded-lg">
-                  <Users className="w-5 h-5 text-green-600" />
-                  <div>
-                    <div className="text-sm text-gray-600">Usia Minimal</div>
-                    <div className="font-semibold text-green-600">{tour.minAge}</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Tour Calendar */}
-              <div className="bg-white border border-gray-200 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-800 mb-3 flex items-center">
-                  <Calendar className="w-5 h-5 mr-2 text-emerald-500" />
-                  Kalender Tour
-                </h3>
-                <Popover open={showCalendar} onOpenChange={setShowCalendar}>
-                  <PopoverTrigger asChild>
-                    <Button variant="outline" className="w-full justify-start text-left font-normal">
-                      <Calendar className="mr-2 h-4 w-4" />
-                      {selectedDate ? format(selectedDate, "dd MMMM yyyy", { locale: id }) : "Pilih tanggal tour"}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <CalendarComponent
-                      mode="single"
-                      selected={selectedDate}
-                      onSelect={setSelectedDate}
-                      disabled={(date) => {
-                        return date < new Date() || !isDateAvailable(date);
-                      }}
-                      initialFocus
-                      className="pointer-events-auto"
-                    />
-                    <div className="p-3 border-t">
-                      <p className="text-xs text-gray-500">
-                        Tour tersedia: {tour.availablePeriod}
-                      </p>
-                    </div>
-                  </PopoverContent>
-                </Popover>
-              </div>
-
               <div className="space-y-3">
                 <Button 
                   onClick={handleBookNow} 
@@ -496,6 +445,209 @@ const TourDetail = () => {
                 <div className="p-4">
                   <Clock className="w-8 h-8 text-emerald-500 mx-auto mb-2" />
                   <div className="text-sm font-medium">24/7 Support</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tour Period, Age & Calendar Section */}
+      <section className="py-12 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Informasi Tour & Jadwal</h2>
+              <p className="text-lg text-gray-600">Periode ketersediaan dan informasi penting untuk trip ini</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              {/* Period Info */}
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
+                  <div className="flex items-center space-x-3 text-white">
+                    <Calendar className="w-8 h-8" />
+                    <div>
+                      <h3 className="text-xl font-bold">Periode Tour</h3>
+                      <p className="text-emerald-100">Waktu tersedia</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-emerald-600 mb-2">{tour.availablePeriod}</div>
+                    <p className="text-gray-600 mb-4">Tour tersedia pada bulan-bulan ini</p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {tour.availableMonths.slice(0, 4).map((month) => (
+                        <span key={month} className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
+                          {month}
+                        </span>
+                      ))}
+                      {tour.availableMonths.length > 4 && (
+                        <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
+                          +{tour.availableMonths.length - 4} lainnya
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Age Info */}
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div className="bg-gradient-to-r from-teal-600 to-emerald-600 p-6">
+                  <div className="flex items-center space-x-3 text-white">
+                    <Users className="w-8 h-8" />
+                    <div>
+                      <h3 className="text-xl font-bold">Usia Minimal</h3>
+                      <p className="text-teal-100">Persyaratan usia</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-teal-600 mb-2">{tour.minAge}</div>
+                    <p className="text-gray-600 mb-4">Usia minimum peserta</p>
+                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                      <p className="text-sm text-amber-700">
+                        <AlertTriangle className="w-4 h-4 inline mr-1" />
+                        Anak di bawah 10 tahun wajib didampingi
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Group Size */}
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div className="bg-gradient-to-r from-blue-600 to-emerald-600 p-6">
+                  <div className="flex items-center space-x-3 text-white">
+                    <Users className="w-8 h-8" />
+                    <div>
+                      <h3 className="text-xl font-bold">Ukuran Grup</h3>
+                      <p className="text-blue-100">Jumlah peserta</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 mb-2">{tour.groupSize}</div>
+                    <p className="text-gray-600 mb-4">Kapasitas maksimal grup</p>
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                      <p className="text-sm text-green-700">
+                        <CheckCircle className="w-4 h-4 inline mr-1" />
+                        Grup kecil untuk pengalaman optimal
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Tour Calendar */}
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
+                <div className="flex items-center space-x-3 text-white">
+                  <Calendar className="w-8 h-8" />
+                  <div>
+                    <h3 className="text-2xl font-bold">Kalender Tour</h3>
+                    <p className="text-emerald-100">Pilih tanggal keberangkatan yang sesuai</p>
+                  </div>
+                </div>
+              </div>
+              <div className="p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-800 mb-4">Pilih Tanggal Tour</h4>
+                    <Popover open={showCalendar} onOpenChange={setShowCalendar}>
+                      <PopoverTrigger asChild>
+                        <Button variant="outline" className="w-full justify-start text-left font-normal h-14 text-lg border-2 border-emerald-200 hover:border-emerald-300">
+                          <Calendar className="mr-3 h-5 w-5 text-emerald-500" />
+                          {selectedDate ? format(selectedDate, "dd MMMM yyyy", { locale: id }) : "Pilih tanggal tour"}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <CalendarComponent
+                          mode="single"
+                          selected={selectedDate}
+                          onSelect={setSelectedDate}
+                          disabled={(date) => {
+                            return date < new Date() || !isDateAvailable(date);
+                          }}
+                          initialFocus
+                          className="pointer-events-auto"
+                        />
+                        <div className="p-4 border-t bg-gray-50">
+                          <p className="text-sm text-gray-600 mb-2">
+                            <Calendar className="w-4 h-4 inline mr-1" />
+                            Tour tersedia: <span className="font-medium text-emerald-600">{tour.availablePeriod}</span>
+                          </p>
+                          <div className="flex items-center space-x-4 text-xs">
+                            <div className="flex items-center space-x-1">
+                              <div className="w-3 h-3 bg-emerald-500 rounded"></div>
+                              <span className="text-gray-600">Tersedia</span>
+                            </div>
+                            <div className="flex items-center space-x-1">
+                              <div className="w-3 h-3 bg-gray-300 rounded"></div>
+                              <span className="text-gray-600">Tidak tersedia</span>
+                            </div>
+                          </div>
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-800 mb-4">Informasi Ketersediaan</h4>
+                    <div className="space-y-4">
+                      <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-6 h-6 text-emerald-500" />
+                          <div>
+                            <h5 className="font-medium text-emerald-800">Ketersediaan Tinggi</h5>
+                            <p className="text-sm text-emerald-600">Banyak slot tersedia pada bulan-bulan tour</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <div className="flex items-center space-x-3">
+                          <Clock className="w-6 h-6 text-blue-500" />
+                          <div>
+                            <h5 className="font-medium text-blue-800">Konfirmasi Cepat</h5>
+                            <p className="text-sm text-blue-600">Konfirmasi booking dalam 2-4 jam</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                        <div className="flex items-center space-x-3">
+                          <AlertTriangle className="w-6 h-6 text-amber-500" />
+                          <div>
+                            <h5 className="font-medium text-amber-800">Booking Segera</h5>
+                            <p className="text-sm text-amber-600">Slot terbatas untuk tanggal premium</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button 
+                      onClick={handleBookNow} 
+                      className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-3 text-lg font-semibold hover:from-emerald-700 hover:to-teal-700"
+                    >
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      Pesan Tour Ini
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      className="w-full sm:w-auto border-emerald-200 text-emerald-600 px-8 py-3 text-lg font-semibold hover:bg-emerald-50"
+                    >
+                      <Phone className="w-5 h-5 mr-2" />
+                      Tanya Ketersediaan
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
