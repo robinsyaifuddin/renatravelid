@@ -2,41 +2,56 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Play, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+
 const GalleryShowcase = () => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const showcaseImages = [{
-    url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    alt: "Pemandangan gunung yang menakjubkan",
-    title: "Gunung Bromo",
-    location: "Jawa Timur",
-    description: "Saksi keagungan sunrise di puncak gunung berapi aktif"
-  }, {
-    url: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    alt: "Sungai di antara pegunungan",
-    title: "Green Canyon",
-    location: "Jawa Barat",
-    description: "Petualangan menyusuri sungai hijau yang eksotis"
-  }, {
-    url: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    alt: "Pantai dengan ombak yang indah",
-    title: "Pantai Kuta",
-    location: "Bali",
-    description: "Pantai legendaris dengan sunset yang memukau"
-  }, {
-    url: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    alt: "Hutan pinus yang asri",
-    title: "Hutan Pinus Mangunan",
-    location: "Yogyakarta",
-    description: "Hamparan pinus hijau dengan spot foto instagramable"
-  }, {
-    url: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-    alt: "Satwa liar di alam bebas",
-    title: "Taman Nasional Komodo",
-    location: "Nusa Tenggara Timur",
-    description: "Bertemu langsung dengan naga purba Indonesia"
-  }];
+  
+  const showcaseImages = [
+    {
+      url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      alt: "Pemandangan gunung yang menakjubkan",
+      title: "Gunung Bromo",
+      location: "Jawa Timur",
+      description: "Saksi keagungan sunrise di puncak gunung berapi aktif"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      alt: "Pantai Kuta yang eksotis",
+      title: "Pantai Kuta",
+      location: "Bali",
+      description: "Pantai legendaris dengan sunset yang memukau"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      alt: "Candi Borobudur yang megah",
+      title: "Candi Borobudur",
+      location: "Yogyakarta",
+      description: "Keajaiban arsitektur Buddha terbesar di dunia"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      alt: "Danau Toba yang menawan",
+      title: "Danau Toba",
+      location: "Sumatera Utara",
+      description: "Danau vulkanik terbesar di dunia dengan pesona tak terlupakan"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      alt: "Raja Ampat underwater paradise",
+      title: "Raja Ampat",
+      location: "Papua Barat",
+      description: "Surga bawah laut dengan keanekaragaman hayati terkaya"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1587213811864-677b5e3fdf44?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      alt: "Taman Nasional Komodo",
+      title: "Pulau Komodo",
+      location: "Nusa Tenggara Timur",
+      description: "Rumah bagi naga purba Indonesia yang legendaris"
+    }
+  ];
 
   // Auto-play functionality
   useEffect(() => {
@@ -176,4 +191,5 @@ const GalleryShowcase = () => {
       </div>
     </section>;
 };
+
 export default GalleryShowcase;
