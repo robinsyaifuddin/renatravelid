@@ -175,9 +175,9 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
 
       <div class="payment-info">
         <div class="section-title">Informasi Pembayaran</div>
-        <div class="detail-row"><strong>Bank:</strong> BCA</div>
-        <div class="detail-row"><strong>No. Rekening:</strong> 1234567890</div>
-        <div class="detail-row"><strong>Atas Nama:</strong> PT Renatravel Indonesia</div>
+        <div class="detail-row"><strong>Bank:</strong> Bank Mandiri</div>
+        <div class="detail-row"><strong>No. Rekening:</strong> 1200013152082</div>
+        <div class="detail-row"><strong>Atas Nama:</strong> RENDY KURNIAWAN</div>
         <div class="detail-row"><strong>Total yang harus dibayar:</strong> <strong>Rp ${total.toLocaleString('id-ID')}</strong></div>
       </div>
 

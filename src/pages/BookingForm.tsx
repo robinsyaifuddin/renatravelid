@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -20,6 +19,34 @@ interface BookingFormData {
   emergencyPhone: string;
 }
 
+// Tour data yang sesuai dengan TourDetail
+const tourData = {
+  "1": {
+    id: 1,
+    title: "Pulau Tidung Adventure",
+    location: "Kepulauan Seribu, Jakarta",
+    duration: "2 Hari 1 Malam",
+    groupSize: "15-25 orang",
+    rating: 4.8,
+    reviews: 142,
+    price: "Rp 450.000",
+    originalPrice: "Rp 550.000",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format"
+  },
+  "2": {
+    id: 2,
+    title: "Pulau Pramuka Eksplorasi",
+    location: "Kepulauan Seribu, Jakarta",
+    duration: "2 Hari 1 Malam",
+    groupSize: "10-20 orang",
+    rating: 4.7,
+    reviews: 98,
+    price: "Rp 385.000",
+    originalPrice: "Rp 485.000",
+    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format"
+  }
+};
+
 const BookingForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -38,20 +65,14 @@ const BookingForm = () => {
   });
 
   useEffect(() => {
-    // Mock data untuk tour - sesuaikan dengan data dari TourDetail
-    const mockTour = {
-      id: 1,
-      title: "Eksplorasi Raja Ampat",
-      location: "Papua Barat, Indonesia",
-      duration: "5 Hari 4 Malam",
-      groupSize: "8-12 orang",
-      rating: 4.9,
-      reviews: 127,
-      price: "Rp 8.500.000",
-      originalPrice: "Rp 10.000.000",
-      image: "/placeholder.svg"
-    };
-    setTour(mockTour);
+    // Ambil data tour berdasarkan ID
+    const selectedTour = tourData[id as keyof typeof tourData];
+    if (selectedTour) {
+      setTour(selectedTour);
+    } else {
+      // Default ke tour pertama jika ID tidak ditemukan
+      setTour(tourData["1"]);
+    }
   }, [id]);
 
   const onSubmit = (data: BookingFormData) => {
