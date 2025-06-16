@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react';
-import { Calendar, MapPin, User, Search } from 'lucide-react';
+import { Calendar, User, Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -8,7 +10,19 @@ const HeroSection = () => {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [guests, setGuests] = useState('');
-  const [accommodation, setAccommodation] = useState('');
+  const navigate = useNavigate();
+
+  const handleCheckAvailability = () => {
+    // Create search parameters based on form data
+    const searchParams = new URLSearchParams();
+    
+    if (checkIn) searchParams.append('checkIn', checkIn);
+    if (checkOut) searchParams.append('checkOut', checkOut);
+    if (guests) searchParams.append('guests', guests);
+    
+    // Navigate to tour page with search parameters
+    navigate(`/tour?${searchParams.toString()}`);
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -41,7 +55,7 @@ const HeroSection = () => {
 
         {/* Booking Form with Enhanced Shadow */}
         <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl shadow-emerald-500/20 max-w-6xl mx-auto border border-white/20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
             {/* Check In */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 block text-left date-label-mobile">
@@ -86,31 +100,12 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Accommodations */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 block text-left">
-                Akomodasi
-              </label>
-              <div className="relative">
-                <Select value={accommodation} onValueChange={setAccommodation}>
-                  <SelectTrigger className="h-12 pl-10 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900">
-                    <SelectValue placeholder="Paket Wisata" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="hotel">Hotel</SelectItem>
-                    <SelectItem value="villa">Villa</SelectItem>
-                    <SelectItem value="resort">Resort</SelectItem>
-                    <SelectItem value="apartment">Apartemen</SelectItem>
-                    <SelectItem value="tour">Paket Wisata</SelectItem>
-                  </SelectContent>
-                </Select>
-                <MapPin className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-              </div>
-            </div>
-
             {/* Search Button */}
             <div className="lg:col-span-1">
-              <Button className="w-full h-12 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-emerald-500/25 flex items-center justify-center space-x-2">
+              <Button 
+                onClick={handleCheckAvailability}
+                className="w-full h-12 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-emerald-500/25 flex items-center justify-center space-x-2"
+              >
                 <Search className="w-5 h-5" />
                 <span>CEK KETERSEDIAAN</span>
               </Button>
