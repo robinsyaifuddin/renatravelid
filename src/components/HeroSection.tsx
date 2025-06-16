@@ -12,7 +12,40 @@ const HeroSection = () => {
   const [guests, setGuests] = useState('');
   const navigate = useNavigate();
 
+  // Tour periods data yang sinkron dengan TourDetail
+  const tourPeriods = {
+    "Pulau Tidung Adventure": {
+      months: ["Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November"],
+      period: "Maret - November"
+    },
+    "Pulau Pramuka Eksplorasi": {
+      months: ["April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober"],
+      period: "April - Oktober"
+    }
+  };
+
   const handleCheckAvailability = () => {
+    // Validate if selected dates match available tour periods
+    if (checkIn && checkOut) {
+      const startDate = new Date(checkIn);
+      const endDate = new Date(checkOut);
+      
+      // Get month names
+      const startMonth = startDate.toLocaleString('id-ID', { month: 'long' });
+      const endMonth = endDate.toLocaleString('id-ID', { month: 'long' });
+      
+      console.log(`Searching tours for period: ${startMonth} - ${endMonth}`);
+      
+      // Find matching tours based on period
+      const availableTours = Object.entries(tourPeriods).filter(([tourName, data]) => {
+        return data.months.some(month => 
+          month === startMonth || month === endMonth
+        );
+      });
+      
+      console.log('Available tours:', availableTours);
+    }
+
     // Create search parameters based on form data
     const searchParams = new URLSearchParams();
     
@@ -62,7 +95,13 @@ const HeroSection = () => {
                 Tanggal Masuk
               </label>
               <div className="relative">
-                <Input type="date" value={checkIn} onChange={e => setCheckIn(e.target.value)} className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900" placeholder="Pilih Tanggal" />
+                <Input 
+                  type="date" 
+                  value={checkIn} 
+                  onChange={e => setCheckIn(e.target.value)} 
+                  className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900" 
+                  placeholder="Pilih Tanggal" 
+                />
                 <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
               </div>
             </div>
@@ -73,7 +112,13 @@ const HeroSection = () => {
                 Tanggal Keluar
               </label>
               <div className="relative">
-                <Input type="date" value={checkOut} onChange={e => setCheckOut(e.target.value)} className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900" placeholder="Pilih Tanggal" />
+                <Input 
+                  type="date" 
+                  value={checkOut} 
+                  onChange={e => setCheckOut(e.target.value)} 
+                  className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900" 
+                  placeholder="Pilih Tanggal" 
+                />
                 <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
               </div>
             </div>
@@ -109,6 +154,19 @@ const HeroSection = () => {
                 <Search className="w-5 h-5" />
                 <span>CEK KETERSEDIAAN</span>
               </Button>
+            </div>
+          </div>
+
+          {/* Tour Periods Info */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <p className="text-sm text-gray-600 mb-3 font-medium">Periode Tour Tersedia:</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              {Object.entries(tourPeriods).map(([tourName, data]) => (
+                <div key={tourName} className="flex items-center justify-between bg-emerald-50 rounded-lg p-3">
+                  <span className="font-medium text-emerald-800">{tourName}</span>
+                  <span className="text-emerald-600">{data.period}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

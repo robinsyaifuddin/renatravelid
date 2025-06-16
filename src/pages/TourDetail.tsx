@@ -12,10 +12,14 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { format } from "date-fns";
+import { id } from "date-fns/locale";
 import Autoplay from "embla-carousel-autoplay";
 
 const TourDetail = () => {
-  const { id } = useParams();
+  const { id: tourId } = useParams();
   const navigate = useNavigate();
 
   // Tour data dengan informasi lengkap untuk semua destinasi RenaTravel.id
@@ -30,7 +34,8 @@ const TourDetail = () => {
       reviews: 142,
       price: "Rp 450.000",
       originalPrice: "Rp 550.000",
-      difficulty: "Mudah",
+      availablePeriod: "Maret - November",
+      availableMonths: ["Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November"],
       minAge: "5 tahun",
       images: [
         "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format",
@@ -132,7 +137,8 @@ const TourDetail = () => {
       reviews: 98,
       price: "Rp 385.000",
       originalPrice: "Rp 485.000",
-      difficulty: "Mudah",
+      availablePeriod: "April - Oktober",
+      availableMonths: ["April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober"],
       minAge: "8 tahun",
       images: [
         "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
@@ -227,9 +233,11 @@ const TourDetail = () => {
     }
   };
 
-  const tour = tours[id as keyof typeof tours] || tours["1"];
+  const tour = tours[tourId as keyof typeof tours] || tours["1"];
   const [api, setApi] = useState<CarouselApi>()
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+  const [showCalendar, setShowCalendar] = useState(false);
 
   useEffect(() => {
     if (!api) {
@@ -254,7 +262,14 @@ const TourDetail = () => {
   };
 
   const handleBookNow = () => {
-    navigate(`/booking/${id}`);
+    navigate(`/booking/${tourId}`);
+  };
+
+  // Function to check if date is available for this tour
+  const isDateAvailable = (date: Date) => {
+    const month = format(date, "MMMM", { locale: id });
+    const monthName = month.charAt(0).toUpperCase() + month.slice(1);
+    return tour.availableMonths.includes(monthName);
   };
 
   return (
@@ -401,13 +416,13 @@ const TourDetail = () => {
                 </div>
               </div>
 
-              {/* Difficulty & Age Info */}
+              {/* Period & Age Info */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center space-x-2 p-3 bg-blue-50 rounded-lg">
-                  <Shield className="w-5 h-5 text-blue-600" />
+                <div className="flex items-center space-x-2 p-3 bg-emerald-50 rounded-lg">
+                  <Calendar className="w-5 h-5 text-emerald-600" />
                   <div>
-                    <div className="text-sm text-gray-600">Tingkat Kesulitan</div>
-                    <div className="font-semibold text-blue-600">{tour.difficulty}</div>
+                    <div className="text-sm text-gray-600">Periode Tour</div>
+                    <div className="font-semibold text-emerald-600">{tour.availablePeriod}</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2 p-3 bg-green-50 rounded-lg">
@@ -417,6 +432,39 @@ const TourDetail = () => {
                     <div className="font-semibold text-green-600">{tour.minAge}</div>
                   </div>
                 </div>
+              </div>
+
+              {/* Tour Calendar */}
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-800 mb-3 flex items-center">
+                  <Calendar className="w-5 h-5 mr-2 text-emerald-500" />
+                  Kalender Tour
+                </h3>
+                <Popover open={showCalendar} onOpenChange={setShowCalendar}>
+                  <PopoverTrigger asChild>
+                    <Button variant="outline" className="w-full justify-start text-left font-normal">
+                      <Calendar className="mr-2 h-4 w-4" />
+                      {selectedDate ? format(selectedDate, "dd MMMM yyyy", { locale: id }) : "Pilih tanggal tour"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <CalendarComponent
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={setSelectedDate}
+                      disabled={(date) => {
+                        return date < new Date() || !isDateAvailable(date);
+                      }}
+                      initialFocus
+                      className="pointer-events-auto"
+                    />
+                    <div className="p-3 border-t">
+                      <p className="text-xs text-gray-500">
+                        Tour tersedia: {tour.availablePeriod}
+                      </p>
+                    </div>
+                  </PopoverContent>
+                </Popover>
               </div>
 
               <div className="space-y-3">
