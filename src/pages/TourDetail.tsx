@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -11,198 +10,82 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
 import Autoplay from "embla-carousel-autoplay";
-
 const TourDetail = () => {
-  const { id: tourId } = useParams();
+  const {
+    id: tourId
+  } = useParams();
   const navigate = useNavigate();
 
-  // Updated tour data based on provided information
+  // Tour data dengan informasi lengkap untuk semua destinasi RenaTravel.id
   const tours = {
     "1": {
       id: 1,
-      title: "TWA Papandayan",
-      location: "Garut, Jawa Barat",
-      duration: "ONE DAY TRIP",
-      groupSize: "Minimal 5 orang",
+      title: "Pulau Tidung Adventure",
+      location: "Kepulauan Seribu, Jakarta",
+      duration: "2 Hari 1 Malam",
+      groupSize: "15-25 orang",
       rating: 4.8,
       reviews: 142,
-      price: "Rp 425.000",
-      originalPrice: "Rp 525.000",
-      availablePeriod: "Juli - September",
-      availableMonths: ["Juli", "Agustus", "September"],
-      minAge: "12 tahun",
-      images: [
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&h=600&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop&auto=format"
-      ],
-      description: "Gunung Papandayan adalah destinasi pendakian ramah pemula yang berlokasi di Garut, Jawa Barat, dengan ketinggian sekitar 2.665 mdpl. Gunung ini dikenal karena jalurnya yang relatif mudah, pemandangan alam yang spektakuler, serta fasilitas yang cocok untuk camping santai, healing trip, maupun edukasi alam.",
-      highlights: ["Kawah Putih yang menakjubkan", "Hutan Mati dengan pemandangan unik", "Pondok Saladah untuk istirahat", "Danau Biru yang memukau", "Jalur pendakian ramah pemula", "Pemandangan alam spektakuler"],
-      facilities: ["Transportasi AC PP", "BBM, TOL dan Parkir", "Souvenir", "Makan 1x", "Air mineral", "Snack", "Simaksi", "Dokumentasi", "Tour leader", "Asuransi", "P3K Standart"],
-      itinerary: [
-        {
-          day: 1,
-          title: "Hari Pertama - Keberangkatan",
-          activities: [
-            "21.00 - Meeting Point di Plaza Semanggi",
-            "22.00 - Keberangkatan dari Plaza Semanggi",
-            "22.30 - Keberangkatan dari RS UKU Cawang",
-            "23.00 - Keberangkatan dari Hotel Ammarossa Bekasi",
-            "23.30 - Keberangkatan dari Pollux Mall Cikarang",
-            "23.50 - Keberangkatan dari Indomaret Exit Tol Karawang Barat"
-          ]
-        },
-        {
-          day: 2,
-          title: "Hari Kedua - Eksplorasi Papandayan",
-          activities: [
-            "02.00 - Keberangkatan dari Exit tol Cileunyi",
-            "04.30 - Tiba di camp Papandayan, sarapan dan persiapan",
-            "06.00 - Mulai explore Gunung Papandayan (Kawah, Danau Biru, Hutan Mati, Pondok Saladah)",
-            "13.30 - Tiba kembali di Camp Papandayan, bersih-bersih",
-            "15.00 - Perjalanan pulang menuju meeting point awal"
-          ]
-        }
-      ],
-      included: ["Transportasi AC PP", "BBM, TOL dan Parkir", "Souvenir", "Makan 1x", "Air mineral", "Snack", "Simaksi", "Dokumentasi", "Tour leader", "Asuransi", "P3K Standart"],
-      notIncluded: ["Makan di luar program", "Perbekalan (cemilan/minum) selama trekking", "Tipping guide"],
-      requirements: ["Minimal 5 orang peserta", "Kondisi fisik sehat", "Membawa pakaian hangat", "Sepatu trekking", "Obat-obatan pribadi"],
-      cancellationPolicy: ["DP minimal 50% dan pelunasan H-3 sebelum keberangkatan", "DP tidak dapat dikembalikan jika pembatalan dari peserta", "Trip dapat batal jika cuaca buruk", "Peserta wajib mematuhi aturan destinasi"],
-      availableDates: [
-        "Juli: 5, 12, 19, 26",
-        "Agustus: 2, 9, 16, 23, 30", 
-        "September: 6, 13, 20, 27"
-      ]
+      price: "Rp 450.000",
+      originalPrice: "Rp 550.000",
+      availablePeriod: "Maret - November",
+      availableMonths: ["Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November"],
+      minAge: "5 tahun",
+      images: ["https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format", "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format", "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&h=600&fit=crop&auto=format", "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop&auto=format"],
+      description: "Pulau Tidung adalah destinasi wisata favorit di Kepulauan Seribu yang terkenal dengan Jembatan Cinta dan keindahan lautnya. Pulau ini menawarkan pengalaman snorkeling yang menakjubkan dengan terumbu karang yang masih terjaga. Nikmati suasana pantai yang tenang, air laut yang jernih, dan aktivitas menyenangkan seperti bersepeda keliling pulau. Cocok untuk liburan keluarga, honeymoon, atau gathering bersama teman.",
+      highlights: ["Snorkeling di spot terbaik dengan visibility tinggi", "Jembatan Cinta yang ikonik untuk foto Instagram", "Bersepeda keliling pulau dengan pemandangan indah", "Sunset viewing di pantai barat pulau", "Interaksi dengan penduduk lokal yang ramah", "Makan seafood segar hasil tangkapan nelayan"],
+      facilities: ["Transportasi AC Jakarta - Marina Ancol PP", "Kapal cepat menuju Pulau Tidung", "Homestay bersih dengan AC", "Sepeda untuk keliling pulau", "Peralatan snorkeling lengkap", "Life jacket dan safety equipment", "Guide lokal berpengalaman", "Dokumentasi foto underwater"],
+      itinerary: [{
+        day: 1,
+        title: "Perjalanan & Eksplorasi Pulau",
+        activities: ["06.00 - Meeting point di Marina Ancol", "07.00 - Berangkat dengan kapal cepat", "09.00 - Tiba di Pulau Tidung & check-in homestay", "10.00 - Bersepeda keliling pulau & Jembatan Cinta", "12.00 - Makan siang seafood lokal", "14.00 - Snorkeling di spot terbaik", "16.00 - Free time & sunset viewing", "19.00 - BBQ dinner di tepi pantai"]
+      }, {
+        day: 2,
+        title: "Aktivitas Laut & Kembali",
+        activities: ["06.00 - Sunrise viewing (optional)", "07.00 - Sarapan pagi", "08.00 - Snorkeling session kedua", "10.00 - Eksplorasi pantai & foto session", "12.00 - Makan siang & packing", "14.00 - Check-out & persiapan pulang", "15.00 - Perjalanan kembali ke Marina Ancol", "17.00 - Tiba di Jakarta"]
+      }],
+      included: ["Transportasi AC Jakarta - Marina Ancol PP", "Tiket kapal cepat PP Pulau Tidung", "Akomodasi homestay 1 malam (AC, kamar mandi dalam)", "Makan 3x (1x lunch, 1x dinner BBQ, 1x breakfast)", "Sepeda untuk keliling pulau", "Peralatan snorkeling & life jacket", "Guide lokal berpengalaman", "Dokumentasi foto", "Retribusi pulau & parkir", "Asuransi perjalanan"],
+      notIncluded: ["Pengeluaran pribadi", "Tips guide & crew", "Makanan & minuman tambahan", "Sewa GoPro (Rp 100k/hari)", "Aktivitas tambahan di luar paket"],
+      requirements: ["Usia minimal 5 tahun (anak di bawah 10 tahun wajib didampingi)", "Kondisi fisik sehat", "Membawa pakaian renang & ganti", "Sunblock & topi", "Obat-obatan pribadi jika ada", "KTP/identitas diri"],
+      cancellationPolicy: ["Pembatalan H-7: refund 100%", "Pembatalan H-3: refund 50%", "Pembatalan H-1: refund 25%", "No show: tidak ada refund", "Force majeure: refund 100%"]
     },
     "2": {
       id: 2,
-      title: "Wisuba Baduy",
-      location: "Kabupaten Lebak, Banten",
-      duration: "2D 1N",
-      groupSize: "Minimal 7 orang",
+      title: "Pulau Pramuka Eksplorasi",
+      location: "Kepulauan Seribu, Jakarta",
+      duration: "2 Hari 1 Malam",
+      groupSize: "10-20 orang",
       rating: 4.7,
       reviews: 98,
-      price: "Rp 250.000",
-      originalPrice: "Rp 350.000",
-      availablePeriod: "Juni - Agustus",
-      availableMonths: ["Juni", "Juli", "Agustus"],
-      minAge: "10 tahun",
-      images: [
-        "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=600&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format"
-      ],
-      description: "Wisuba Baduy merupakan destinasi wisata budaya yang berlokasi di wilayah Baduy, Kabupaten Lebak, Banten. Tempat ini mengusung konsep wisata edukatif berbasis budaya lokal yang mengangkat kehidupan masyarakat Suku Baduy sebagai inti daya tariknya.",
-      highlights: ["Jelajah kampung adat Baduy Luar dan Dalam", "Upacara budaya simbolik", "Workshop kerajinan tradisional", "Interaksi langsung dengan warga lokal", "Jembatan akar yang unik", "Pengalaman menginap di homestay lokal"],
-      facilities: ["Transportasi Lokal PP", "Souvenir", "Makan 2x", "Homestay Lokal", "Snack", "Simaksi", "Dokumentasi", "Tour leader", "Guide Lokal", "Asuransi"],
-      itinerary: [
-        {
-          day: 1,
-          title: "Hari Pertama - Perjalanan ke Baduy",
-          activities: [
-            "07.00 - Meeting Point di ST. Rangkasbitung",
-            "08.00 - Keberangkatan menuju Terminal Ciboleger",
-            "09.15 - Sampai di Terminal Ciboleger & persiapan trekking",
-            "09.30 - Trekking menuju Baduy Luar & Jembatan Akar",
-            "11.30 - Sampai di Jembatan Akar & ishoma",
-            "12.30 - Trekking menuju Baduy Dalam",
-            "15.00 - Sampai di Homestay Lokal & istirahat",
-            "19.00 - Makan malam, makrab dan diskusi kehidupan Baduy"
-          ]
-        },
-        {
-          day: 2,
-          title: "Hari Kedua - Eksplorasi dan Kembali",
-          activities: [
-            "05.00 - Bangun, menikmati hawa pagi Baduy Dalam",
-            "07.00 - Sarapan dan dipandu melihat perkampungan",
-            "10.00 - Trekking dari Baduy Dalam menuju Terminal Ciboleger",
-            "14.00 - Tiba di Terminal Ciboleger, istirahat",
-            "15.00 - Perjalanan menuju ST. Rangkasbitung"
-          ]
-        }
-      ],
-      included: ["Transportasi Lokal PP", "Souvenir", "Makan 2x", "Homestay Lokal", "Snack", "Simaksi", "Dokumentasi", "Tour leader", "Guide Lokal", "Asuransi"],
-      notIncluded: ["Makan di luar program", "Perbekalan selama trekking", "Tipping guide"],
-      requirements: ["Minimal 7 orang peserta", "Kondisi fisik baik untuk trekking", "Pakaian sopan sesuai adat", "Sepatu trekking", "Respect terhadap budaya lokal"],
-      cancellationPolicy: ["DP minimal 50% dan pelunasan H-3 sebelum keberangkatan", "DP tidak dapat dikembalikan jika pembatalan dari peserta", "Trip dapat batal jika cuaca buruk", "Peserta wajib mematuhi aturan adat"],
-      availableDates: [
-        "Juni: 21, 28",
-        "Juli: 5, 12, 19, 26",
-        "Agustus: 2, 9, 16, 23, 30"
-      ]
-    },
-    "3": {
-      id: 3,
-      title: "Pulau Harapan",
-      location: "Kepulauan Seribu, Jakarta",
-      duration: "2D 1N",
-      groupSize: "Minimal 7 orang",
-      rating: 4.9,
-      reviews: 203,
-      price: "Rp 430.000",
-      originalPrice: "Rp 530.000",
-      availablePeriod: "Juli - Desember",
-      availableMonths: ["Juli", "Agustus", "September", "Oktober", "November", "Desember"],
+      price: "Rp 385.000",
+      originalPrice: "Rp 485.000",
+      availablePeriod: "April - Oktober",
+      availableMonths: ["April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober"],
       minAge: "8 tahun",
-      images: [
-        "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&h=600&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop&auto=format"
-      ],
-      description: "Pulau Harapan adalah kombinasi unik antara destinasi wisata bahari, pusat konservasi lingkungan, dan komunitas lokal yang ramah. Menawarkan kemudahan akses dari Jakarta, suasana alam yang tenang, serta aktivitas edukatif.",
-      highlights: ["Snorkeling di Pulau Macan", "Wisata ke Pulau Dolphin", "Sunset di Pulau Bulat", "Taman Mangrove", "Penangkaran Penyu", "BBQ di tepi pantai"],
-      facilities: ["Kapal Feri PP", "Asuransi penyebrangan", "Homestay AC", "Makan 3x", "Barbeque", "Air mineral", "Kapal penjelajah pulau", "Alat snorkeling", "Pelampung", "Asuransi", "Dokumentasi", "Tour Guide", "Tiket penangkaran penyu"],
-      itinerary: [
-        {
-          day: 1,
-          title: "Hari Pertama - Perjalanan dan Eksplorasi",
-          activities: [
-            "06.00 - Berkumpul di Pelabuhan Kali Adem, Muara Angke",
-            "07.00 - Perjalanan ke Pulau Harapan",
-            "11.00 - Tiba di Pulau Harapan, check-in homestay",
-            "13.00 - Snorkeling di Pulau Macan/Putri/Bira, wisata Pulau Dolphin",
-            "17.00 - Kembali ke Pulau Harapan untuk mandi",
-            "19.00 - Makan malam dan bakar ikan"
-          ]
-        },
-        {
-          day: 2,
-          title: "Hari Kedua - Sunrise dan Kembali",
-          activities: [
-            "05.30 - Menikmati Sunrise di Pulau Harapan",
-            "07.00 - Mandi, coffee break, packing",
-            "08.00 - Check out homestay",
-            "09.00 - Explore Taman Mangrove & Penangkaran Penyu",
-            "10.30 - Tiba di dermaga Pulau Harapan",
-            "11.00 - Perjalanan menuju Pelabuhan Kaliadem"
-          ]
-        }
-      ],
-      included: ["Kapal Feri PP", "Asuransi penyebrangan", "Homestay AC", "Makan 3x", "Barbeque", "Air mineral", "Kapal penjelajah pulau", "Alat snorkeling", "Pelampung", "Asuransi", "Dokumentasi", "Tour Guide", "Tiket penangkaran penyu"],
-      notIncluded: ["Kebutuhan dan obat-obatan pribadi", "Tip guide & crew"],
-      requirements: ["Minimal 7 orang peserta", "Bisa berenang", "Pakaian renang", "Sunblock", "Obat pribadi"],
-      cancellationPolicy: ["DP minimal 50% dan pelunasan H-3 sebelum keberangkatan", "DP tidak dapat dikembalikan jika pembatalan dari peserta", "Trip dapat batal jika cuaca buruk"],
-      availableDates: [
-        "Juli: 5-6, 12-13, 19-20, 26-27",
-        "Agustus: 2-3, 9-10, 16-17, 23-24, 30-31",
-        "September: 6-7, 13-14, 20-21, 27-28",
-        "Oktober: 4-5, 11-12, 18-19, 25-26",
-        "November: 1-2, 8-9, 15-16, 22-23, 29-30",
-        "Desember: 3-4, 10-11, 17-18, 24-25, 31-1"
-      ]
+      images: ["https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format", "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format", "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&h=600&fit=crop&auto=format", "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop&auto=format"],
+      description: "Pulau Pramuka adalah ibu kota administratif Kepulauan Seribu yang menawarkan wisata edukasi dan konservasi yang menarik. Pulau ini terkenal dengan penangkaran penyu sisik, wisata mangrove, dan aktivitas snorkeling yang mengedukasi. Cocok untuk wisata keluarga yang ingin memberikan pengalaman belajar sambil berlibur.",
+      highlights: ["Penangkaran penyu sisik dan pelepasan tukik", "Wisata mangrove dengan perahu tradisional", "Snorkeling di area konservasi terumbu karang", "Edukasi ekosistem laut dan konservasi", "Eksplorasi pulau dengan sepeda", "Interaksi dengan masyarakat lokal"],
+      facilities: ["Transportasi AC Jakarta - Muara Angke PP", "Kapal menuju Pulau Pramuka", "Homestay nyaman dengan fasilitas lengkap", "Perahu untuk wisata mangrove", "Peralatan snorkeling", "Sepeda keliling pulau", "Guide edukasi konservasi", "Dokumentasi kegiatan"],
+      itinerary: [{
+        day: 1,
+        title: "Edukasi Konservasi & Eksplorasi",
+        activities: ["06.30 - Meeting point di Muara Angke", "07.30 - Berangkat dengan kapal", "09.30 - Tiba di Pulau Pramuka & check-in", "10.30 - Kunjungan penangkaran penyu sisik", "12.00 - Makan siang", "14.00 - Wisata mangrove dengan perahu", "16.00 - Bersepeda keliling pulau", "18.00 - Sunset & makan malam"]
+      }, {
+        day: 2,
+        title: "Snorkeling & Pelepasan Tukik",
+        activities: ["06.00 - Sarapan pagi", "07.00 - Snorkeling di area konservasi", "09.00 - Pelepasan tukik (jika musim)", "10.30 - Eksplorasi pantai & foto", "12.00 - Makan siang & packing", "13.30 - Check-out & persiapan pulang", "14.00 - Perjalanan kembali", "16.00 - Tiba di Muara Angke"]
+      }],
+      included: ["Transportasi AC Jakarta - Muara Angke PP", "Tiket kapal PP Pulau Pramuka", "Akomodasi homestay 1 malam", "Makan 3x sesuai program", "Tiket masuk penangkaran penyu", "Wisata mangrove dengan perahu", "Sepeda keliling pulau", "Peralatan snorkeling", "Guide edukasi", "Dokumentasi", "Asuransi perjalanan"],
+      notIncluded: ["Pengeluaran pribadi", "Tips guide", "Makanan tambahan", "Oleh-oleh", "Aktivitas di luar paket"],
+      requirements: ["Usia minimal 8 tahun", "Kondisi fisik sehat", "Pakaian renang & ganti", "Sunblock & topi", "Kamera underwater (optional)", "Obat pribadi jika perlu"],
+      cancellationPolicy: ["Pembatalan H-7: refund 100%", "Pembatalan H-3: refund 50%", "Pembatalan H-1: refund 25%", "No show: tidak ada refund", "Cuaca buruk: reschedule gratis"]
     }
   };
-
   const tour = tours[tourId as keyof typeof tours] || tours["1"];
   const [api, setApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
-
   useEffect(() => {
     if (!api) {
       return;
@@ -216,25 +99,23 @@ const TourDetail = () => {
       api.off("select", onSelect);
     };
   }, [api]);
-
   const handleThumbnailClick = (index: number) => {
     if (!api) return;
     api.scrollTo(index);
   };
-
   const handleBookNow = () => {
     navigate(`/booking/${tourId}`);
   };
 
   // Function to check if date is available for this tour
   const isDateAvailable = (date: Date) => {
-    const month = format(date, "MMMM", { locale: id });
+    const month = format(date, "MMMM", {
+      locale: id
+    });
     const monthName = month.charAt(0).toUpperCase() + month.slice(1);
     return tour.availableMonths.includes(monthName);
   };
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
       
       {/* Breadcrumb */}
@@ -261,38 +142,28 @@ const TourDetail = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Image Gallery */}
             <div className="space-y-4">
-              <Carousel setApi={setApi} plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]} className="w-full relative">
+               <Carousel setApi={setApi} plugins={[Autoplay({
+              delay: 3000,
+              stopOnInteraction: true
+            })]} className="w-full relative">
                 <CarouselContent>
-                  {tour.images.map((image, index) => (
-                    <CarouselItem key={index}>
+                  {tour.images.map((image, index) => <CarouselItem key={index}>
                       <div className="aspect-video rounded-xl overflow-hidden">
                         <img src={image} alt={`${tour.title} ${index + 1}`} className="w-full h-full object-cover" />
                       </div>
-                    </CarouselItem>
-                  ))}
+                    </CarouselItem>)}
                 </CarouselContent>
                 <CarouselPrevious className="absolute left-4 bg-white/50 hover:bg-white/80 text-gray-800 border-none" />
                 <CarouselNext className="absolute right-4 bg-white/50 hover:bg-white/80 text-gray-800 border-none" />
               </Carousel>
 
               <div className="grid grid-cols-4 gap-4">
-                {tour.images.map((image, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    className={`aspect-video rounded-lg overflow-hidden ring-2 transition 
+                {tour.images.map((image, index) => <button key={index} type="button" className={`aspect-video rounded-lg overflow-hidden ring-2 transition 
                       ${selectedIndex === index ? 'ring-emerald-500' : 'ring-transparent hover:ring-emerald-200'}
-                    `}
-                    onClick={() => handleThumbnailClick(index)}
-                  >
-                    <img 
-                      src={image} 
-                      alt={`${tour.title} ${index + 1}`} 
-                      className={`w-full h-full object-cover transition-transform duration-300 
-                        ${selectedIndex === index ? 'scale-105' : 'hover:scale-105'}`} 
-                    />
-                  </button>
-                ))}
+                    `} aria-label={`Tampilkan gambar ke-${index + 1}`} onClick={() => handleThumbnailClick(index)}>
+                    <img src={image} alt={`${tour.title} ${index + 1}`} className={`w-full h-full object-cover transition-transform duration-300 
+                        ${selectedIndex === index ? 'scale-105' : 'hover:scale-105'}`} />
+                  </button>)}
               </div>
             </div>
 
@@ -306,12 +177,7 @@ const TourDetail = () => {
                     <span className="text-gray-600">{tour.location}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className={`w-4 h-4 ${i < Math.floor(tour.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
-                      />
-                    ))}
+                    {[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < Math.floor(tour.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />)}
                     <span className="text-sm font-medium ml-1">{tour.rating}</span>
                     <span className="text-gray-500 text-sm">({tour.reviews} ulasan)</span>
                   </div>
@@ -341,9 +207,7 @@ const TourDetail = () => {
                   <div className="text-center sm:text-left">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3">
                       <span className="text-2xl sm:text-3xl font-bold text-emerald-600">{tour.price}</span>
-                      {tour.originalPrice && (
-                        <span className="text-lg sm:text-xl text-gray-500 line-through mt-1 sm:mt-0">{tour.originalPrice}</span>
-                      )}
+                      {tour.originalPrice && <span className="text-lg sm:text-xl text-gray-500 line-through mt-1 sm:mt-0">{tour.originalPrice}</span>}
                     </div>
                     <span className="text-sm sm:text-base text-gray-600 block mt-1">per orang</span>
                   </div>
@@ -354,6 +218,52 @@ const TourDetail = () => {
                     <div className="text-xs sm:text-sm text-gray-500">Promo terbatas!</div>
                   </div>
                 </div>
+              </div>
+
+              {/* Period & Age Info */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex items-center space-x-2 p-3 bg-emerald-50 rounded-lg">
+                  <Calendar className="w-5 h-5 text-emerald-600" />
+                  <div>
+                    <div className="text-sm text-gray-600">Periode Tour</div>
+                    <div className="font-semibold text-emerald-600">{tour.availablePeriod}</div>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2 p-3 bg-green-50 rounded-lg">
+                  <Users className="w-5 h-5 text-green-600" />
+                  <div>
+                    <div className="text-sm text-gray-600">Usia Minimal</div>
+                    <div className="font-semibold text-green-600">{tour.minAge}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tour Calendar */}
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-800 mb-3 flex items-center">
+                  <Calendar className="w-5 h-5 mr-2 text-emerald-500" />
+                  Kalender Tour
+                </h3>
+                <Popover open={showCalendar} onOpenChange={setShowCalendar}>
+                  <PopoverTrigger asChild>
+                    <Button variant="outline" className="w-full justify-start text-left font-normal">
+                      <Calendar className="mr-2 h-4 w-4" />
+                      {selectedDate ? format(selectedDate, "dd MMMM yyyy", {
+                      locale: id
+                    }) : "Pilih tanggal tour"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <CalendarComponent mode="single" selected={selectedDate} onSelect={setSelectedDate} disabled={date => {
+                    return date < new Date() || !isDateAvailable(date);
+                  }} initialFocus className="pointer-events-auto" />
+                    <div className="p-3 border-t">
+                      <p className="text-xs text-gray-500">
+                        Tour tersedia: {tour.availablePeriod}
+                      </p>
+                    </div>
+                  </PopoverContent>
+                </Popover>
               </div>
 
               <div className="space-y-3">
@@ -378,7 +288,7 @@ const TourDetail = () => {
                 </div>
                 <div className="p-4">
                   <Clock className="w-8 h-8 text-emerald-500 mx-auto mb-2" />
-                  <div className="text-sm font-medium">24/7 Support</div>
+                  
                 </div>
               </div>
             </div>
@@ -386,71 +296,8 @@ const TourDetail = () => {
         </div>
       </section>
 
-      {/* Tour Details Below Gallery */}
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            {/* Period & Age Info */}
-            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-2xl border border-emerald-100">
-              <div className="flex items-center space-x-3 mb-4">
-                <Calendar className="w-6 h-6 text-emerald-600" />
-                <h3 className="text-lg font-semibold text-gray-800">Periode Tour</h3>
-              </div>
-              <div className="text-emerald-700 font-medium text-lg mb-2">{tour.availablePeriod}</div>
-              <div className="text-sm text-gray-600">
-                <div className="font-medium mb-2">Tanggal Tersedia:</div>
-                {tour.availableDates?.map((date, index) => (
-                  <div key={index} className="text-emerald-600 font-medium">{date}</div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100">
-              <div className="flex items-center space-x-3 mb-4">
-                <Users className="w-6 h-6 text-blue-600" />
-                <h3 className="text-lg font-semibold text-gray-800">Usia Minimal</h3>
-              </div>
-              <div className="text-blue-700 font-medium text-2xl">{tour.minAge}</div>
-              <div className="text-sm text-gray-600 mt-2">
-                Sesuai untuk keluarga dan pemula
-              </div>
-            </div>
-
-            {/* Tour Calendar */}
-            <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
-              <h3 className="font-semibold text-gray-800 mb-4 flex items-center">
-                <Calendar className="w-5 h-5 mr-2 text-emerald-500" />
-                Kalender Tour
-              </h3>
-              <Popover open={showCalendar} onOpenChange={setShowCalendar}>
-                <PopoverTrigger asChild>
-                  <Button variant="outline" className="w-full justify-start text-left font-normal border-emerald-200 hover:bg-emerald-50">
-                    <Calendar className="mr-2 h-4 w-4 text-emerald-500" />
-                    {selectedDate ? format(selectedDate, "dd MMMM yyyy", { locale: id }) : "Pilih tanggal tour"}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <CalendarComponent 
-                    mode="single" 
-                    selected={selectedDate} 
-                    onSelect={setSelectedDate}
-                    disabled={(date) => {
-                      return date < new Date() || !isDateAvailable(date);
-                    }}
-                    initialFocus 
-                    className="pointer-events-auto" 
-                  />
-                  <div className="p-3 border-t bg-emerald-50">
-                    <p className="text-xs text-emerald-700 font-medium">
-                      Tour tersedia: {tour.availablePeriod}
-                    </p>
-                  </div>
-                </PopoverContent>
-              </Popover>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Content Tabs */}
+      
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
@@ -469,8 +316,6 @@ const TourDetail = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default TourDetail;

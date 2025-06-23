@@ -8,146 +8,42 @@ const TourGrid = () => {
   const tours = [
     {
       id: 1,
-      title: "TWA Papandayan",
-      location: "Garut, Jawa Barat",
-      duration: "ONE DAY TRIP",
-      groupSize: "Minimal 5 orang",
+      title: "Pulau Tidung Adventure",
+      location: "Kepulauan Seribu, Jakarta",
+      duration: "2 Hari 1 Malam",
+      groupSize: "15-25 orang",
       rating: 4.8,
       reviews: 142,
-      price: "Rp 425.000",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&auto=format",
-      category: "Pegunungan",
-      period: "Juli - Sep"
+      price: "Rp 450.000",
+      image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format",
+      category: "Pantai",
+      difficulty: "Mudah"
     },
     {
       id: 2,
-      title: "Wisuba Baduy",
-      location: "Kabupaten Lebak, Banten",
-      duration: "2D 1N",
-      groupSize: "Minimal 7 orang",
+      title: "Pulau Pramuka Eksplorasi",
+      location: "Kepulauan Seribu, Jakarta",
+      duration: "2 Hari 1 Malam", 
+      groupSize: "10-20 orang",
       rating: 4.7,
       reviews: 98,
-      price: "Rp 250.000",
-      image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop&auto=format",
-      category: "Budaya",
-      period: "Juni - Ags"
+      price: "Rp 385.000",
+      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
+      category: "Alam",
+      difficulty: "Mudah"
     },
     {
       id: 3,
-      title: "Pulau Harapan",
-      location: "Kepulauan Seribu, Jakarta",
-      duration: "2D 1N",
-      groupSize: "Minimal 7 orang",
+      title: "Gunung Prau Sunrise",
+      location: "Wonosobo, Jawa Tengah",
+      duration: "2 Hari 1 Malam",
+      groupSize: "8-15 orang", 
       rating: 4.9,
       reviews: 203,
-      price: "Rp 430.000",
-      image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format",
-      category: "Pantai",
-      period: "Juli - Des"
-    },
-    {
-      id: 4,
-      title: "Pulau Pramuka",
-      location: "Kepulauan Seribu, Jakarta",
-      duration: "2D 1N",
-      groupSize: "Minimal 7 orang",
-      rating: 4.8,
-      reviews: 156,
-      price: "Rp 430.000",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
-      category: "Pantai",
-      period: "Juli - Des"
-    },
-    {
-      id: 5,
-      title: "Pulau Tidung",
-      location: "Kepulauan Seribu, Jakarta",
-      duration: "2D 1N",
-      groupSize: "Minimal 7 orang",
-      rating: 4.7,
-      reviews: 189,
-      price: "Rp 430.000",
-      image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&h=600&fit=crop&auto=format",
-      category: "Pantai",
-      period: "Juli - Des"
-    },
-    {
-      id: 6,
-      title: "Geopark Ciletuh",
-      location: "Sukabumi, Jawa Barat",
-      duration: "ONE DAY TRIP",
-      groupSize: "Minimal 7 orang",
-      rating: 4.6,
-      reviews: 134,
-      price: "Rp 300.000",
-      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop&auto=format",
-      category: "Geopark",
-      period: "Juli - Des"
-    },
-    {
-      id: 7,
-      title: "Ujung Genteng",
-      location: "Sukabumi, Jawa Barat",
-      duration: "ONE DAY TRIP",
-      groupSize: "Minimal 7 orang",
-      rating: 4.5,
-      reviews: 167,
-      price: "Rp 375.000",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&auto=format",
-      category: "Pantai",
-      period: "Juli - Des"
-    },
-    {
-      id: 8,
-      title: "Dieng",
-      location: "Wonosobo, Jawa Tengah",
-      duration: "3D 2N",
-      groupSize: "Minimal 7 orang",
-      rating: 4.9,
-      reviews: 245,
-      price: "Rp 775.000",
+      price: "Rp 325.000",
       image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&auto=format",
       category: "Pegunungan",
-      period: "Juli - Des"
-    },
-    {
-      id: 9,
-      title: "Pulau Peucang",
-      location: "Ujung Kulon, Banten",
-      duration: "3D 2N",
-      groupSize: "Minimal 7 orang",
-      rating: 4.8,
-      reviews: 123,
-      price: "Rp 775.000",
-      image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format",
-      category: "Konservasi",
-      period: "Juli - Des"
-    },
-    {
-      id: 10,
-      title: "Pulau Sebesi",
-      location: "Lampung Selatan",
-      duration: "3D 2N",
-      groupSize: "Minimal 7 orang",
-      rating: 4.7,
-      reviews: 156,
-      price: "Rp 775.000",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
-      category: "Pulau",
-      period: "Juli - Des"
-    },
-    {
-      id: 11,
-      title: "Pulau Pahawang",
-      location: "Pesawaran, Lampung",
-      duration: "3D 2N",
-      groupSize: "Minimal 7 orang",
-      rating: 4.6,
-      reviews: 178,
-      price: "Rp 775.000",
-      image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&h=600&fit=crop&auto=format",
-      category: "Pantai",
-      period: "Juli - Des"
+      difficulty: "Sedang"
     }
   ];
 
@@ -183,7 +79,7 @@ const TourGrid = () => {
                 </div>
                 <div className="absolute top-4 right-4">
                   <span className="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {tour.period}
+                    {tour.difficulty}
                   </span>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
