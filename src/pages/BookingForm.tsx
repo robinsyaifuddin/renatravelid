@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -19,31 +20,128 @@ interface BookingFormData {
   emergencyPhone: string;
 }
 
-// Tour data yang sesuai dengan TourDetail
+// Complete tour data for all 12 tours
 const tourData = {
   "1": {
     id: 1,
-    title: "Pulau Tidung Adventure",
-    location: "Kepulauan Seribu, Jakarta",
-    duration: "2 Hari 1 Malam",
-    groupSize: "15-25 orang",
+    title: "TWA Papandayan",
+    location: "Garut, Jawa Barat",
+    duration: "ONE DAY TRIP",
+    groupSize: "Min 5 orang",
     rating: 4.8,
     reviews: 142,
-    price: "Rp 450.000",
-    originalPrice: "Rp 550.000",
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format"
+    price: "Rp 425.000",
+    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&auto=format"
   },
   "2": {
     id: 2,
-    title: "Pulau Pramuka Eksplorasi",
-    location: "Kepulauan Seribu, Jakarta",
-    duration: "2 Hari 1 Malam",
-    groupSize: "10-20 orang",
+    title: "WISUBA BADUY",
+    location: "Kabupaten Lebak, Banten",
+    duration: "2D 1N",
+    groupSize: "Min 7 orang",
     rating: 4.7,
     reviews: 98,
-    price: "Rp 385.000",
-    originalPrice: "Rp 485.000",
+    price: "Rp 250.000",
+    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&h=600&fit=crop&auto=format"
+  },
+  "3": {
+    id: 3,
+    title: "Pulau Harapan",
+    location: "Kepulauan Seribu, Jakarta",
+    duration: "2D 1N",
+    groupSize: "Min 7 orang",
+    rating: 4.8,
+    reviews: 156,
+    price: "Rp 430.000",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format"
+  },
+  "4": {
+    id: 4,
+    title: "Pulau Pramuka",
+    location: "Kepulauan Seribu, Jakarta",
+    duration: "2D 1N",
+    groupSize: "Min 7 orang",
+    rating: 4.7,
+    reviews: 134,
+    price: "Rp 430.000",
     image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format"
+  },
+  "5": {
+    id: 5,
+    title: "Pulau Tidung",
+    location: "Kepulauan Seribu, Jakarta",
+    duration: "2D 1N",
+    groupSize: "Min 7 orang",
+    rating: 4.9,
+    reviews: 187,
+    price: "Rp 430.000",
+    image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&h=600&fit=crop&auto=format"
+  },
+  "6": {
+    id: 6,
+    title: "Geopark Ciletuh",
+    location: "Sukabumi, Jawa Barat",
+    duration: "ONE DAY TRIP",
+    groupSize: "Min 7 orang",
+    rating: 4.6,
+    reviews: 89,
+    price: "Rp 300.000",
+    image: "https://images.unsplash.com/photo-1439886183900-e79ec0057170?w=800&h=600&fit=crop&auto=format"
+  },
+  "7": {
+    id: 7,
+    title: "Ujung Genteng",
+    location: "Sukabumi, Jawa Barat",
+    duration: "2D 1N",
+    groupSize: "Min 7 orang",
+    rating: 4.5,
+    reviews: 73,
+    price: "Rp 375.000",
+    image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=800&h=600&fit=crop&auto=format"
+  },
+  "8": {
+    id: 8,
+    title: "Dieng",
+    location: "Wonosobo, Jawa Tengah",
+    duration: "3D 2N",
+    groupSize: "Min 7 orang",
+    rating: 4.9,
+    reviews: 234,
+    price: "Rp 775.000",
+    image: "https://images.unsplash.com/photo-1517022812141-23620dba5c23?w=800&h=600&fit=crop&auto=format"
+  },
+  "9": {
+    id: 9,
+    title: "Pulau Peucang",
+    location: "Ujung Kulon, Banten",
+    duration: "3D 2N",
+    groupSize: "Min 7 orang",
+    rating: 4.8,
+    reviews: 112,
+    price: "Rp 775.000",
+    image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&h=600&fit=crop&auto=format"
+  },
+  "10": {
+    id: 10,
+    title: "Pulau Sebesi",
+    location: "Lampung Selatan",
+    duration: "3D 2N",
+    groupSize: "Min 7 orang",
+    rating: 4.7,
+    reviews: 95,
+    price: "Rp 775.000",
+    image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop&auto=format"
+  },
+  "11": {
+    id: 11,
+    title: "Pulau Pahawang",
+    location: "Pesawaran, Lampung",
+    duration: "3D 2N",
+    groupSize: "Min 7 orang",
+    rating: 4.8,
+    reviews: 156,
+    price: "Rp 775.000",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format"
   }
 };
 
@@ -65,18 +163,18 @@ const BookingForm = () => {
   });
 
   useEffect(() => {
-    // Ambil data tour berdasarkan ID
+    // Get tour data based on ID
     const selectedTour = tourData[id as keyof typeof tourData];
     if (selectedTour) {
       setTour(selectedTour);
     } else {
-      // Default ke tour pertama jika ID tidak ditemukan
+      // Default to first tour if ID not found
       setTour(tourData["1"]);
     }
   }, [id]);
 
   const onSubmit = (data: BookingFormData) => {
-    // Simpan data booking ke localStorage untuk digunakan di halaman payment
+    // Save booking data to localStorage for use in payment page
     const bookingData = {
       tour,
       customer: data,
@@ -126,9 +224,6 @@ const BookingForm = () => {
                 </div>
                 <div className="mt-4">
                   <span className="text-2xl font-bold text-emerald-600">{tour.price}</span>
-                  {tour.originalPrice && (
-                    <span className="text-lg text-gray-500 line-through ml-2">{tour.originalPrice}</span>
-                  )}
                   <span className="text-gray-600 ml-2">per orang</span>
                 </div>
               </div>
