@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Star, MapPin, Calendar, Users, CheckCircle, Phone, MessageCircle, ArrowLeft, Clock, Shield, Award, AlertTriangle } from 'lucide-react';
+import { Star, MapPin, Calendar, Users, CheckCircle, Phone, MessageCircle, ArrowLeft, Clock, Shield, Award, AlertTriangle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import {
   Carousel,
   CarouselContent,
@@ -32,6 +32,23 @@ const TourDetail = () => {
     navigate('/tour');
     return null;
   }
+
+  // Get next recommended tour
+  const getNextRecommendedTour = () => {
+    const tourKeys = Object.keys(tourData);
+    const currentIndex = tourKeys.indexOf(tourId as string);
+    
+    // If current tour is the last one, recommend the first tour
+    const nextIndex = currentIndex === tourKeys.length - 1 ? 0 : currentIndex + 1;
+    const nextTourId = tourKeys[nextIndex];
+    
+    return {
+      id: nextTourId,
+      ...tourData[nextTourId as keyof typeof tourData]
+    };
+  };
+
+  const nextTour = getNextRecommendedTour();
 
   const [api, setApi] = useState<CarouselApi>()
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -565,6 +582,89 @@ const TourDetail = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recommended Next Destination */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                Destinasi Selanjutnya yang Direkomendasikan
+              </h2>
+              <p className="text-gray-600">Lanjutkan petualangan Anda dengan destinasi menarik lainnya</p>
+            </div>
+            
+            <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <div className="aspect-video md:aspect-square overflow-hidden">
+                  <img
+                    src={nextTour.image}
+                    alt={nextTour.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-6 md:p-8 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 group-hover:text-emerald-600 transition-colors">
+                        {nextTour.title}
+                      </h3>
+                      <div className="flex items-center space-x-2 text-gray-600 mb-4">
+                        <MapPin className="w-4 h-4 text-emerald-500" />
+                        <span className="text-sm">{nextTour.location}</span>
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                      {nextTour.description}
+                    </p>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex items-center space-x-2">
+                        <Calendar className="w-4 h-4 text-emerald-500" />
+                        <span className="text-sm text-gray-600">{nextTour.duration}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Users className="w-4 h-4 text-emerald-500" />
+                        <span className="text-sm text-gray-600">{nextTour.groupSize}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`w-4 h-4 ${
+                              i < Math.floor(nextTour.rating)
+                                ? 'text-yellow-400 fill-current'
+                                : 'text-gray-300'
+                            }`}
+                          />
+                        ))}
+                        <span className="text-sm font-medium ml-1">{nextTour.rating}</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-lg font-bold text-emerald-600">{nextTour.price}</span>
+                        <div className="text-xs text-gray-500">per orang</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 pt-6 border-t border-gray-100">
+                    <Link to={`/tour/${nextTour.id}`}>
+                      <Button className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:from-emerald-600 hover:to-teal-600 group-hover:shadow-lg transition-all duration-300">
+                        Lihat Detail Tour
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
