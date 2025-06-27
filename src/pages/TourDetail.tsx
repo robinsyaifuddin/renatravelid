@@ -568,7 +568,7 @@ const TourDetail = () => {
             <Button onClick={handleBookNow} className="w-full bg-white text-white-600 py-4 text-lg font-semibold hover:bg-gray-100">
               Pesan Sekarang
             </Button>
-            <Button variant="outline" className="w-full border-white text-emerald py-4 text-lg font-semibold hover:bg-white hover:text-emerald-600">
+            <Button variant="outline" className="w-full border-emerald text-emerald py-4 text-lg font-semibold hover:bg-white hover:text-emerald-600">
               Konsultasi Gratis
             </Button>
           </div>
