@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -14,6 +15,17 @@ const Footer = () => {
   };
 
   const supportLinks = ['Pusat Bantuan', 'Informasi Keamanan', 'Opsi Pembatalan', 'Ulasan Pelanggan', 'Syarat & Ketentuan'];
+
+  // TikTok icon component since it's not available in lucide-react
+  const TikTokIcon = ({ className }: { className?: string }) => (
+    <svg 
+      viewBox="0 0 24 24" 
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+    </svg>
+  );
 
   return (
     <footer className="bg-emerald-900 text-white">
@@ -92,24 +104,26 @@ const Footer = () => {
               </Button>
             </form>
 
-            {/* Social Media dengan warna background teal putih awal, emerald putih saat diklik */}
+            {/* Social Media - Only Instagram and TikTok */}
             <div className="mt-8">
               <h4 className="text-lg font-semibold mb-4">Ikuti Kami</h4>
               <div className="flex space-x-4">
-                {[
-                  { Icon: Facebook, href: '#', specificHover: 'hover:bg-blue-600' },
-                  { Icon: Instagram, href: '#', specificHover: 'hover:bg-pink-600' },
-                  { Icon: Twitter, href: '#', specificHover: 'hover:bg-blue-400' },
-                  { Icon: Youtube, href: '#', specificHover: 'hover:bg-red-600' }
-                ].map(({ Icon, href, specificHover }, index) => (
-                  <a 
-                    key={index} 
-                    href={href} 
-                    className={`w-10 h-10 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center hover:bg-emerald-100 hover:text-emerald-600 active:bg-emerald-200 active:text-emerald-700 transition-all duration-200 transform hover:scale-110 ${specificHover}`}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                ))}
+                <a 
+                  href="https://www.instagram.com/renatravel.id" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center hover:bg-pink-600 hover:text-white active:bg-pink-700 transition-all duration-200 transform hover:scale-110"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a 
+                  href="https://www.tiktok.com/@rena_travel" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center hover:bg-black hover:text-white active:bg-gray-800 transition-all duration-200 transform hover:scale-110"
+                >
+                  <TikTokIcon className="w-5 h-5" />
+                </a>
               </div>
             </div>
           </div>

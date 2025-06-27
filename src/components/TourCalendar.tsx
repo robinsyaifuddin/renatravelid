@@ -7,32 +7,68 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Users, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import { format, addMonths, subMonths } from "date-fns";
 import { id } from "date-fns/locale";
+import { tourData } from '@/data/tourData';
 
 const TourCalendar = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
-  // Sample tour data with availability
-  const tourSchedule = [
-    {
-      id: 1,
-      title: "Pulau Tidung Adventure",
-      dates: ["2024-03-15", "2024-03-22", "2024-04-05", "2024-04-19", "2024-05-03"],
-      duration: "2D1N",
-      price: "Rp 450.000",
-      availableSlots: 8,
-      color: "bg-emerald-500"
-    },
-    {
-      id: 2, 
-      title: "Pulau Pramuka Eksplorasi",
-      dates: ["2024-04-12", "2024-04-26", "2024-05-10", "2024-05-24"],
-      duration: "2D1N", 
-      price: "Rp 385.000",
-      availableSlots: 5,
-      color: "bg-blue-500"
-    }
-  ];
+  // Generate tour schedule from tourData with synchronized departure dates
+  const generateTourSchedule = () => {
+    const tours = Object.entries(tourData);
+    const schedule = [];
+
+    tours.forEach(([id, tour], index) => {
+      // Generate departure dates based on tour category and data
+      let departureDates = [];
+      const currentYear = new Date().getFullYear();
+      
+      if (tour.category === "Pantai") {
+        departureDates = [
+          `${currentYear}-07-05`, `${currentYear}-07-12`, `${currentYear}-07-19`, `${currentYear}-07-26`,
+          `${currentYear}-08-02`, `${currentYear}-08-09`, `${currentYear}-08-16`, `${currentYear}-08-23`, `${currentYear}-08-30`,
+          `${currentYear}-09-06`, `${currentYear}-09-13`, `${currentYear}-09-20`, `${currentYear}-09-27`
+        ];
+      } else if (tour.category === "Pegunungan") {
+        departureDates = [
+          `${currentYear}-07-07`, `${currentYear}-07-14`, `${currentYear}-07-21`, `${currentYear}-07-28`,
+          `${currentYear}-08-04`, `${currentYear}-08-11`, `${currentYear}-08-18`, `${currentYear}-08-25`,
+          `${currentYear}-09-01`, `${currentYear}-09-08`, `${currentYear}-09-15`, `${currentYear}-09-22`, `${currentYear}-09-29`
+        ];
+      } else if (tour.category === "Budaya") {
+        departureDates = [
+          `${currentYear}-06-08`, `${currentYear}-06-15`, `${currentYear}-06-22`, `${currentYear}-06-29`,
+          `${currentYear}-07-06`, `${currentYear}-07-13`, `${currentYear}-07-20`, `${currentYear}-07-27`,
+          `${currentYear}-08-03`, `${currentYear}-08-10`, `${currentYear}-08-17`, `${currentYear}-08-24`, `${currentYear}-08-31`
+        ];
+      } else {
+        // Default dates for other categories
+        departureDates = [
+          `${currentYear}-07-05`, `${currentYear}-07-12`, `${currentYear}-07-19`, `${currentYear}-07-26`,
+          `${currentYear}-08-02`, `${currentYear}-08-09`, `${currentYear}-08-16`, `${currentYear}-08-23`,
+          `${currentYear}-09-06`, `${currentYear}-09-13`, `${currentYear}-09-20`, `${currentYear}-09-27`
+        ];
+      }
+
+      // Calculate available slots based on group size
+      const maxGroupSize = parseInt(tour.groupSize.split('-')[1] || tour.groupSize.split(' ')[0]) || 20;
+      const availableSlots = Math.floor(Math.random() * maxGroupSize) + 2;
+
+      schedule.push({
+        id: id,
+        title: tour.title,
+        dates: departureDates,
+        duration: tour.duration,
+        price: tour.price,
+        availableSlots: availableSlots,
+        color: index % 3 === 0 ? "bg-emerald-500" : index % 3 === 1 ? "bg-blue-500" : "bg-teal-500"
+      });
+    });
+
+    return schedule;
+  };
+
+  const tourSchedule = generateTourSchedule();
 
   // Get tours for selected date
   const getToursForDate = (date: Date) => {
@@ -200,52 +236,6 @@ const TourCalendar = () => {
                 )}
               </CardContent>
             </Card>
-          </div>
-
-          {/* Quick Tour Overview */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-              Tour Populer Bulan Ini
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {tourSchedule.map((tour) => (
-                <Card key={tour.id} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <h4 className="font-semibold text-gray-800 flex-1">{tour.title}</h4>
-                      <Badge className={`${tour.color} text-white`}>{tour.duration}</Badge>
-                    </div>
-                    
-                    <div className="text-sm text-gray-600 mb-4">
-                      <p>Keberangkatan berikutnya:</p>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {tour.dates.slice(0, 3).map((date) => (
-                          <Badge key={date} variant="outline" className="text-xs">
-                            {format(new Date(date), "dd MMM", { locale: id })}
-                          </Badge>
-                        ))}
-                        {tour.dates.length > 3 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{tour.dates.length - 3} lainnya
-                          </Badge>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <span className="text-xl font-bold text-emerald-600">{tour.price}</span>
-                      <Button 
-                        variant="outline" 
-                        size="sm"
-                        className="border-emerald-200 text-emerald-600 hover:bg-emerald-50"
-                      >
-                        Lihat Detail
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </div>
         </div>
       </div>

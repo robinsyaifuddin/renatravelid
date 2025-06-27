@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 import { tourData } from '@/data/tourData';
 
 const TourGrid = () => {
-  // Convert object to array and get top 3 destinations based on rating for homepage
-  const tours = Object.values(tourData);
-  const topDestinations = tours
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 3);
+  // Get specific destinations: TWA Pepandayan, Pulau Pecang, Wisuba Baduy
+  const specificDestinations = ['twa-papandayan', 'pulau-pecang', 'wisata-baduy'];
+  const topDestinations = specificDestinations.map(id => ({
+    id,
+    ...tourData[id as keyof typeof tourData]
+  })).filter(tour => tour.title); // Filter out any undefined tours
 
   return (
     <section className="py-16 bg-gray-50">
@@ -23,7 +24,7 @@ const TourGrid = () => {
           </p>
         </div>
 
-        {/* Tour Grid - Show only top 3 destinations */}
+        {/* Tour Grid - Show specific destinations */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {topDestinations.map((tour) => (
             <Link 
