@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useForm } from 'react-hook-form';
 import { Calendar, MapPin, Users, Clock, User, Mail, Phone, MessageCircle } from 'lucide-react';
 
@@ -15,6 +16,7 @@ interface BookingFormData {
   email: string;
   phone: string;
   participants: number;
+  departureDate: string;
   specialRequests: string;
   emergencyContact: string;
   emergencyPhone: string;
@@ -156,6 +158,7 @@ const BookingForm = () => {
       email: '',
       phone: '',
       participants: 1,
+      departureDate: '',
       specialRequests: '',
       emergencyContact: '',
       emergencyPhone: ''
@@ -186,9 +189,45 @@ const BookingForm = () => {
     navigate(`/payment/${id}`);
   };
 
+  // Generate departure date options based on tour schedule
+  const getDepartureDates = () => {
+    const dates = [];
+    const today = new Date();
+    
+    // Generate next 3 months of departure dates
+    for (let month = 0; month < 3; month++) {
+      const currentDate = new Date(today.getFullYear(), today.getMonth() + month, 1);
+      const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+      
+      // Add departure dates based on tour type
+      for (let day = 1; day <= lastDay; day++) {
+        const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+        
+        // Only add weekend dates (Saturday and Sunday) for most tours
+        if (date.getDay() === 0 || date.getDay() === 6) {
+          if (date >= today) {
+            dates.push({
+              value: date.toISOString().split('T')[0],
+              label: date.toLocaleDateString('id-ID', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })
+            });
+          }
+        }
+      }
+    }
+    
+    return dates.slice(0, 12); // Limit to 12 options
+  };
+
   if (!tour) {
     return <div>Loading...</div>;
   }
+
+  const departureDates = getDepartureDates();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -319,6 +358,35 @@ const BookingForm = () => {
                             onChange={(e) => field.onChange(parseInt(e.target.value))}
                           />
                         </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="departureDate"
+                    rules={{ required: "Tanggal keberangkatan wajib dipilih" }}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center space-x-2">
+                          <Calendar className="w-4 h-4" />
+                          <span>Tanggal Keberangkatan *</span>
+                        </FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Pilih tanggal keberangkatan" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {departureDates.map((date) => (
+                              <SelectItem key={date.value} value={date.value}>
+                                {date.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}

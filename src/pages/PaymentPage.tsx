@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -64,11 +65,22 @@ const PaymentPage = () => {
     }
   };
 
+  const formatDepartureDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('id-ID', { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  };
+
   const handleConfirmPayment = () => {
     if (!bookingData || !selectedPaymentMethod) return;
 
     const paymentMethod = paymentMethods.find(method => method.id === selectedPaymentMethod);
     const total = calculateTotal();
+    const departureDate = bookingData.customer.departureDate ? formatDepartureDate(bookingData.customer.departureDate) : 'Belum dipilih';
     
     const message = `Halo Admin Renatravel,
 
@@ -83,6 +95,7 @@ Saya ingin mengkonfirmasi pembayaran untuk booking berikut:
 • Destinasi: ${bookingData.tour.title}
 • Lokasi: ${bookingData.tour.location}
 • Durasi: ${bookingData.tour.duration}
+• Tanggal Keberangkatan: ${departureDate}
 • Jumlah Peserta: ${bookingData.customer.participants} orang
 
 💰 DETAIL PEMBAYARAN
@@ -222,6 +235,12 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                       <Users className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
                       <span>{bookingData.customer.participants} peserta</span>
                     </div>
+                    {bookingData.customer.departureDate && (
+                      <div className="flex items-center space-x-2 text-gray-600">
+                        <Calendar className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
+                        <span className="text-xs">{formatDepartureDate(bookingData.customer.departureDate)}</span>
+                      </div>
+                    )}
                     <div className="flex items-center space-x-2 text-gray-600">
                       <Calendar className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
                       <span>ID: {bookingData.bookingId}</span>

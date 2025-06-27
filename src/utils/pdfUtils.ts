@@ -1,5 +1,16 @@
 
 export const generateInvoicePDF = (bookingData: any, total: number) => {
+  const formatDepartureDate = (dateString: string) => {
+    if (!dateString) return 'Belum dipilih';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('id-ID', { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  };
+
   // Create HTML content for the invoice
   const invoiceHTML = `
     <!DOCTYPE html>
@@ -138,6 +149,7 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
           <div class="detail-row"><strong>Nama:</strong> ${bookingData.customer.fullName}</div>
           <div class="detail-row"><strong>Telepon:</strong> ${bookingData.customer.phone}</div>
           <div class="detail-row"><strong>Jumlah Peserta:</strong> ${bookingData.customer.participants} orang</div>
+          ${bookingData.customer.departureDate ? `<div class="detail-row"><strong>Tanggal Keberangkatan:</strong> ${formatDepartureDate(bookingData.customer.departureDate)}</div>` : ''}
         </div>
       </div>
 
