@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/carousel";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
 import { id } from "date-fns/locale";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -35,7 +35,6 @@ const TourDetail = () => {
       price: "Rp 425.000",
       availablePeriod: "Juli - September",
       availableMonths: ["Juli", "Agustus", "September"],
-      minAge: "12 tahun",
       images: [
         "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
@@ -130,7 +129,6 @@ const TourDetail = () => {
       price: "Rp 250.000",
       availablePeriod: "Juni - Agustus",
       availableMonths: ["Juni", "Juli", "Agustus"],
-      minAge: "10 tahun",
       images: [
         "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&h=600&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
@@ -219,7 +217,6 @@ const TourDetail = () => {
       price: "Rp 430.000",
       availablePeriod: "Juli - Desember",
       availableMonths: ["Juli", "Agustus", "September", "Oktober", "November", "Desember"],
-      minAge: "8 tahun",
       images: [
         "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
@@ -312,7 +309,6 @@ const TourDetail = () => {
       price: "Rp 430.000",
       availablePeriod: "Juli - Desember",
       availableMonths: ["Juli", "Agustus", "September", "Oktober", "November", "Desember"],
-      minAge: "8 tahun",
       images: [
         "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=800&h=600&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800&h=600&fit=crop&auto=format",
@@ -405,7 +401,6 @@ const TourDetail = () => {
       price: "Rp 775.000",
       availablePeriod: "Juli - Desember",
       availableMonths: ["Juli", "Agustus", "September", "Oktober", "November", "Desember"],
-      minAge: "10 tahun",
       images: [
         "https://images.unsplash.com/photo-1517022812141-23620dba5c23?w=800&h=600&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&auto=format",
@@ -533,11 +528,56 @@ const TourDetail = () => {
     navigate(`/booking/${tourId}`);
   };
 
-  // Function to check if date is available for this tour
+  // Function to parse departure dates and create available dates
+  const getAvailableDates = () => {
+    const availableDates: Date[] = [];
+    const currentYear = new Date().getFullYear();
+    
+    tour.departureDates?.forEach(dateRange => {
+      const [monthPart, datesPart] = dateRange.split(': ');
+      const monthName = monthPart.trim();
+      const dates = datesPart.split(', ');
+      
+      // Map month names to numbers
+      const monthMap: { [key: string]: number } = {
+        'JANUARI': 0, 'FEBRUARI': 1, 'MARET': 2, 'APRIL': 3, 'MEI': 4, 'JUNI': 5,
+        'JULI': 6, 'AGUSTUS': 7, 'SEP': 8, 'SEPTEMBER': 8, 'OKT': 9, 'OKTOBER': 9, 
+        'NOV': 10, 'NOVEMBER': 10, 'DES': 11, 'DESEMBER': 11
+      };
+      
+      const monthNumber = monthMap[monthName];
+      if (monthNumber !== undefined) {
+        dates.forEach(dateStr => {
+          const cleanDate = dateStr.trim();
+          // Handle date ranges like "5-6" or single dates like "5"
+          if (cleanDate.includes('-')) {
+            const [startDay, endDay] = cleanDate.split('-').map(d => parseInt(d.trim()));
+            if (!isNaN(startDay) && !isNaN(endDay)) {
+              for (let day = startDay; day <= endDay; day++) {
+                availableDates.push(new Date(currentYear, monthNumber, day));
+              }
+            }
+          } else {
+            const day = parseInt(cleanDate);
+            if (!isNaN(day)) {
+              availableDates.push(new Date(currentYear, monthNumber, day));
+            }
+          }
+        });
+      }
+    });
+    
+    return availableDates;
+  };
+
+  // Check if date is available for this tour
   const isDateAvailable = (date: Date) => {
-    const month = format(date, "MMMM", { locale: id });
-    const monthName = month.charAt(0).toUpperCase() + month.slice(1);
-    return tour.availableMonths?.includes(monthName) || false;
+    const availableDates = getAvailableDates();
+    return availableDates.some(availableDate => 
+      availableDate.getDate() === date.getDate() &&
+      availableDate.getMonth() === date.getMonth() &&
+      availableDate.getFullYear() === date.getFullYear()
+    );
   };
 
   return (
@@ -705,7 +745,7 @@ const TourDetail = () => {
         </div>
       </section>
 
-      {/* Tour Period, Age & Calendar Section */}
+      {/* Tour Period & Calendar Section */}
       <section className="py-12 bg-gradient-to-br from-emerald-50 to-teal-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -714,7 +754,7 @@ const TourDetail = () => {
               <p className="text-lg text-gray-600">Periode ketersediaan dan informasi penting untuk trip ini</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               {/* Period Info */}
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
@@ -741,31 +781,6 @@ const TourDetail = () => {
                           +{(tour.availableMonths?.length || 0) - 4} lainnya
                         </span>
                       )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Age Info */}
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-teal-600 to-emerald-600 p-6">
-                  <div className="flex items-center space-x-3 text-white">
-                    <Users className="w-8 h-8" />
-                    <div>
-                      <h3 className="text-xl font-bold">Usia Minimal</h3>
-                      <p className="text-teal-100">Persyaratan usia</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-teal-600 mb-2">{tour.minAge}</div>
-                    <p className="text-gray-600 mb-4">Usia minimum peserta</p>
-                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                      <p className="text-sm text-amber-700">
-                        <AlertTriangle className="w-4 h-4 inline mr-1" />
-                        Anak di bawah 10 tahun wajib didampingi
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -834,6 +849,9 @@ const TourDetail = () => {
                           <p className="text-sm text-gray-600 mb-2">
                             <Calendar className="w-4 h-4 inline mr-1" />
                             Tour tersedia: <span className="font-medium text-emerald-600">{tour.availablePeriod}</span>
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            Hanya tanggal yang tersedia dalam jadwal keberangkatan yang dapat dipilih
                           </p>
                         </div>
                       </PopoverContent>
