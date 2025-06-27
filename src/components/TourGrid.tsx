@@ -151,6 +151,11 @@ const TourGrid = () => {
     }
   ];
 
+  // Get top 3 destinations based on rating for homepage
+  const topDestinations = tours
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 3);
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -162,11 +167,12 @@ const TourGrid = () => {
           </p>
         </div>
 
-        {/* Tour Grid */}
+        {/* Tour Grid - Show only top 3 destinations */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {tours.map((tour) => (
-            <div
+          {topDestinations.map((tour) => (
+            <Link 
               key={tour.id}
+              to={`/tour/${tour.id}`}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group cursor-pointer"
             >
               {/* Image */}
@@ -238,19 +244,17 @@ const TourGrid = () => {
                     <span className="text-lg font-bold text-emerald-600">{tour.price}</span>
                     <div className="text-xs text-gray-500">per orang</div>
                   </div>
-                  <Link to={`/tour/${tour.id}`}>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-gray-300 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-200 group/btn"
-                    >
-                      <span>Detail</span>
-                      <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform duration-200" />
-                    </Button>
-                  </Link>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gray-300 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-200 group/btn"
+                  >
+                    <span>Detail</span>
+                    <ChevronRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                  </Button>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
