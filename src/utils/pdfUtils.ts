@@ -11,7 +11,7 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
     });
   };
 
-  // Create HTML content for the invoice
+  // Create HTML content for the invoice with consistent tour data
   const invoiceHTML = `
     <!DOCTYPE html>
     <html>
