@@ -116,48 +116,7 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Tim Profesional Kami</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Bertemu dengan orang-orang hebat di balik kesuksesan perjalanan wisata Anda
-            </p>
-          </div>
-          
-          {/* Desktop Grid View */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                <img src={member.image} alt={member.name} className="w-full h-64 object-cover" />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-1">{member.name}</h3>
-                  <p className="text-brand-600 font-medium mb-3">{member.position}</p>
-                  <p className="text-gray-600">{member.description}</p>
-                  <div className="flex mt-4">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />)}
-                  </div>
-                </div>
-              </div>)}
-          </div>
-
-          {/* Mobile Single Profile View - Centered */}
-          <div className="md:hidden">
-            <div className="max-w-sm mx-auto">
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <img src={team[0].image} alt={team[0].name} className="w-full h-64 object-cover" />
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-1">{team[0].name}</h3>
-                  <p className="text-brand-600 font-medium mb-3">{team[0].position}</p>
-                  <p className="text-gray-600 mb-4">{team[0].description}</p>
-                  <div className="flex justify-center">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />)}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Vision Mission */}
       <section className="py-20">
