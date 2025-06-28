@@ -16,7 +16,11 @@ const Blog = () => {
     { id: 'destinations', name: 'Destinasi Favorit' },
     { id: 'reviews', name: 'Ulasan & Review' },
     { id: 'culture', name: 'Budaya & Tradisi' },
-    { id: 'culinary', name: 'Kuliner Nusantara' }
+    { id: 'culinary', name: 'Kuliner Nusantara' },
+    { id: 'budgeting', name: 'Travel Budget' },
+    { id: 'health', name: 'Kesehatan Travel' },
+    { id: 'photography', name: 'Fotografi' },
+    { id: 'etiquette', name: 'Etika Travel' }
   ];
 
   const blogPosts = [
@@ -103,6 +107,104 @@ const Blog = () => {
       image: "/placeholder.svg",
       featured: true,
       content: "Gunung Rinjani adalah salah satu gunung tertinggi di Indonesia yang menawarkan pemandangan spektakuler. Namun, pendakian ini membutuhkan persiapan yang matang..."
+    },
+    {
+      id: 7,
+      title: "Travel Budgeting: Buat Trip Hemat Bareng RENATRAVEL.ID",
+      excerpt: "Liburan seru tidak harus menguras kantong! Pelajari tips budgeting untuk perjalanan hemat namun tetap menyenangkan dan berkesan.",
+      category: "budgeting",
+      author: "RENATRAVEL.ID",
+      date: "28 Juni 2025",
+      readTime: "7 menit",
+      views: 543,
+      comments: 19,
+      image: "/placeholder.svg",
+      featured: true,
+      content: "Liburan Seru Gak Harus Bikin Kantong Jebol! Mau liburan tapi tetap hemat? Bisa banget! Dengan sedikit perencanaan, kamu bisa menikmati perjalanan seru bareng RENATRAVEL.ID tanpa khawatir soal keuangan..."
+    },
+    {
+      id: 8,
+      title: "Tips Tetap Sehat & Fit Saat Traveling Bareng RENATRAVEL.ID",
+      excerpt: "Panduan lengkap menjaga kesehatan dan stamina selama perjalanan. Tips pola makan, istirahat, dan menjaga kebugaran tubuh saat traveling.",
+      category: "health",
+      author: "RENATRAVEL.ID",
+      date: "27 Juni 2025",
+      readTime: "6 menit",
+      views: 432,
+      comments: 14,
+      image: "/placeholder.svg",
+      featured: false,
+      content: "Liburan Seru = Badan Fit + Pikiran Fresh! Liburan itu menyenangkan, tapi juga bisa melelahkan kalau tubuhmu nggak dijaga. Bangun subuh buat sunrise, jalan kaki keliling destinasi..."
+    },
+    {
+      id: 9,
+      title: "Tips Foto Estetik Saat Trip Bareng RENATRAVEL.ID",
+      excerpt: "Buat liburanmu tidak hanya seru tapi juga Instagramable! Tips dan trik fotografi untuk menghasilkan foto-foto kece selama perjalanan.",
+      category: "photography",
+      author: "RENATRAVEL.ID",
+      date: "26 Juni 2025",
+      readTime: "5 menit",
+      views: 678,
+      comments: 23,
+      image: "/placeholder.svg",
+      featured: false,
+      content: "Biar Liburanmu Bukan Cuma Seru, Tapi Juga Instagramable! Liburan bareng RENATRAVEL.ID nggak lengkap tanpa foto-foto kece! Tapi kadang hasil foto nggak seindah aslinya, ya?"
+    },
+    {
+      id: 10,
+      title: "Etika & Kebiasaan yang Wajib Diterapkan Saat Ikut Trip Bareng RENATRAVEL.ID",
+      excerpt: "Panduan etika dan sikap yang perlu diterapkan saat traveling bersama rombongan. Tips menjadi traveler yang bertanggung jawab dan menyenangkan.",
+      category: "etiquette",
+      author: "RENATRAVEL.ID",
+      date: "25 Juni 2025",
+      readTime: "6 menit",
+      views: 389,
+      comments: 16,
+      image: "/placeholder.svg",
+      featured: false,
+      content: "Liburan bareng rombongan itu seru banget—bisa kenal orang baru, foto-foto rame-rame, dan saling bantu di jalan. Tapi supaya semua tetap nyaman dan happy, penting banget buat jaga etika..."
+    },
+    {
+      id: 11,
+      title: "Checklist Pra-Trip: Hal yang Wajib Kamu Lakukan Sebelum Ikut Trip Bareng RENATRAVEL.ID",
+      excerpt: "Panduan lengkap persiapan sebelum berangkat trip. Checklist penting yang harus dilakukan agar perjalanan lancar dan tidak ada yang terlewat.",
+      category: "tips",
+      author: "RENATRAVEL.ID",
+      date: "24 Juni 2025",
+      readTime: "8 menit",
+      views: 512,
+      comments: 21,
+      image: "/placeholder.svg",
+      featured: false,
+      content: "Jangan sampai udah sampai meeting point, baru sadar ada yang ketinggalan! Sebelum berangkat, yuk cek ulang semua persiapanmu dengan checklist pra-trip dari RENATRAVEL.ID..."
+    },
+    {
+      id: 12,
+      title: "Cara Dapat Teman Baru Saat Trip Bareng RENATRAVEL.ID",
+      excerpt: "Tips mudah dan natural untuk berkenalan dan berteman dengan peserta trip lain. Panduan membuat koneksi positif selama perjalanan.",
+      category: "tips",
+      author: "RENATRAVEL.ID",
+      date: "23 Juni 2025",
+      readTime: "6 menit",
+      views: 445,
+      comments: 18,
+      image: "/placeholder.svg",
+      featured: false,
+      content: "Liburan Seru Bukan Cuma Soal Tempat, Tapi Juga Soal Siapa yang Kamu Temui! Ikut trip, apalagi open trip bareng RENATRAVEL.ID, jadi kesempatan emas buat kenalan..."
+    },
+    {
+      id: 13,
+      title: "Cara Atasi Homesick Saat Trip Panjang Bareng RENATRAVEL.ID",
+      excerpt: "Tips mengatasi rasa rindu rumah saat traveling jangka panjang. Panduan menjaga mental health dan tetap menikmati perjalanan meski jauh dari rumah.",
+      category: "health",
+      author: "RENATRAVEL.ID",
+      date: "22 Juni 2025",
+      readTime: "7 menit",
+      views: 367,
+      comments: 12,
+      image: "/placeholder.svg",
+      featured: false,
+      content: "Rindu Rumah Itu Wajar, Tapi Jangan Sampai Ganggu Liburanmu! Ikut trip panjang, apalagi beberapa hari jauh dari rumah, bisa bikin sebagian orang merasa homesick atau kangen suasana rumah..."
     }
   ];
 
