@@ -70,7 +70,7 @@ const About = () => {
               <div className="text-gray-600">Destinasi</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-brand-600 mb-2">98%</div>
+              <div className="text-4xl font-bold text-brand-600 mb-2">100%</div>
               <div className="text-gray-600">Tingkat Kepuasan</div>
             </div>
           </div>
