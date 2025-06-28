@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -181,16 +180,11 @@ const Tour = () => {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-4 h-4 ${
-                            i < Math.floor(tour.rating)
-                              ? 'text-yellow-400 fill-current'
-                              : 'text-gray-300'
-                          }`}
+                          className="w-4 h-4 text-yellow-400 fill-current"
                         />
                       ))}
                     </div>
-                    <span className="text-sm font-medium">{tour.rating}</span>
-                    <span className="text-gray-500 text-sm">({tour.reviews} ulasan)</span>
+                    <span className="text-sm font-medium">5.0</span>
                   </div>
 
                   {/* Title */}
