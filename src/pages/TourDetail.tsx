@@ -11,7 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
 import { tourData } from '@/data/tourData';
-import { getPlaceholderImages } from '@/utils/imageUtils';
+import { getDestinationImages } from '@/utils/imageUtils';
 
 const TourDetail = () => {
   const { id: tourId } = useParams();
@@ -42,9 +42,8 @@ const TourDetail = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
 
-  // Get tour images - for now using placeholder images based on category
-  // You can replace these with actual Google Drive converted links
-  const tourImages = getPlaceholderImages(tour.category);
+  // Get tour images - use specific destination images or fallback to category placeholders
+  const tourImages = getDestinationImages(tourId as string);
 
   const generateDepartureDates = () => {
     const dates = ["JULI: 5, 12, 19, 26", "AGUSTUS: 2, 9, 16, 23, 30", "SEP: 6, 13, 20, 27"];

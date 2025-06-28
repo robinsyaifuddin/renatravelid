@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -5,6 +6,7 @@ import { Star, MapPin, Calendar, Users, ChevronRight, Filter, Search, Shield, Mo
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { tourData } from '@/data/tourData';
+import { getMainDestinationImage } from '@/utils/imageUtils';
 
 const Tour = () => {
   const [sortBy, setSortBy] = useState('popular');
@@ -155,7 +157,7 @@ const Tour = () => {
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
                   <img
-                    src={tour.image}
+                    src={getMainDestinationImage(tour.id.toString())}
                     alt={tour.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />

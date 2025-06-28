@@ -25,6 +25,24 @@ export const validateImageUrl = async (url: string): Promise<boolean> => {
   }
 };
 
+// Specific images for each destination from Google Drive
+export const destinationImages: { [key: string]: string[] } = {
+  '10': [ // Pulau Sebesi
+    'https://drive.google.com/uc?export=view&id=11ZyMCu7TnJnjNB60nlLZAUrzn0xFvJ2D', // Main image
+    'https://drive.google.com/uc?export=view&id=1ibjQDBFQiH7rz6LR37sTSAkBjL9eLDJh',
+    'https://drive.google.com/uc?export=view&id=1e6qmsPe4XQvLney2QHJKgCy-_oGEBTWF'
+  ]
+};
+
+export const getDestinationImages = (destinationId: string): string[] => {
+  return destinationImages[destinationId] || getPlaceholderImages('default');
+};
+
+export const getMainDestinationImage = (destinationId: string): string => {
+  const images = getDestinationImages(destinationId);
+  return images[0]; // Return the first image as main image
+};
+
 export const getPlaceholderImages = (category: string): string[] => {
   const placeholders = {
     'Pantai': [

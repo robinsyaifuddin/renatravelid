@@ -4,6 +4,7 @@ import { Star, MapPin, Calendar, Users, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { tourData } from '@/data/tourData';
+import { getMainDestinationImage } from '@/utils/imageUtils';
 
 const TourGrid = () => {
   // Get specific destinations: TWA Papandayan, Pulau Pecang, Wisata Baduy
@@ -30,7 +31,7 @@ const TourGrid = () => {
             <div key={tour.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
                 <img 
-                  src={tour.image} 
+                  src={getMainDestinationImage(tour.id)} 
                   alt={tour.title}
                   className="w-full h-64 object-cover"
                 />

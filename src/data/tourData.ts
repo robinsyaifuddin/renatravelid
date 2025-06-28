@@ -1,4 +1,3 @@
-
 export interface Tour {
   id: number;
   title: string;
@@ -584,7 +583,7 @@ export const tourData: { [key: string]: Tour } = {
     rating: 4.7,
     reviews: 95,
     price: "Rp 775.000",
-    image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&h=600&fit=crop&auto=format",
+    image: "https://drive.google.com/uc?export=view&id=11ZyMCu7TnJnjNB60nlLZAUrzn0xFvJ2D", // Updated with Google Drive main image
     category: "Pantai",
     difficulty: "Sedang",
     description: "Nikmati pesona Pulau Sebesi dengan pantai berpasir hitam vulkanik, air laut jernih, dan pemandangan Gunung Krakatau yang megah.",
