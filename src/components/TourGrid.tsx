@@ -73,7 +73,7 @@ const TourGrid = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="text-2xl font-bold text-emerald-600">
-                      Rp {tour.price.toLocaleString('id-ID')}
+                      Rp {tour.price.toLocaleString()}
                     </span>
                     <span className="text-gray-500 text-sm">/orang</span>
                   </div>
