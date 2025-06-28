@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -25,90 +26,6 @@ const Blog = () => {
 
   const blogPosts = [
     {
-      id: 1,
-      title: "10 Tips Hemat Liburan ke Bali untuk Backpacker",
-      excerpt: "Panduan lengkap untuk menikmati keindahan Bali dengan budget terbatas. Mulai dari transportasi, akomodasi, hingga kuliner murah meriah yang tetap nikmat dan berkesan.",
-      category: "tips",
-      author: "Ahmad Susanto",
-      date: "15 Maret 2024",
-      readTime: "5 menit",
-      views: 1234,
-      comments: 23,
-      image: "/placeholder.svg",
-      featured: true,
-      content: "Bali memang menjadi destinasi impian banyak orang. Namun, bukan berarti Anda harus menguras tabungan untuk menikmati keindahan Pulau Dewata ini. Dengan perencanaan yang tepat dan tips-tips jitu, Anda bisa berlibur hemat namun tetap berkesan..."
-    },
-    {
-      id: 2,
-      title: "Menjelajahi Keajaiban Raja Ampat: Surga Bawah Laut Indonesia",
-      excerpt: "Petualangan menakjubkan di Raja Ampat, Papua Barat. Temukan keanekaragaman hayati laut yang memukau dan spot diving terbaik dunia.",
-      category: "destinations",
-      author: "Sari Dewi",
-      date: "12 Maret 2024",
-      readTime: "8 menit",
-      views: 987,
-      comments: 15,
-      image: "/placeholder.svg",
-      featured: false,
-      content: "Raja Ampat, yang secara harfiah berarti 'Empat Raja', adalah surga bagi para penyelam dan pecinta alam bawah laut. Terletak di ujung barat laut Papua, kepulauan ini menawarkan keanekaragaman hayati laut yang tak tertandingi..."
-    },
-    {
-      id: 3,
-      title: "Review Lengkap: Borobudur Sunrise Tour Experience",
-      excerpt: "Pengalaman pribadi mengikuti tur sunrise di Candi Borobudur. Tips booking, harga, dan hal-hal yang perlu dipersiapkan.",
-      category: "reviews",
-      author: "Budi Hartono",
-      date: "10 Maret 2024",
-      readTime: "6 menit",
-      views: 756,
-      comments: 31,
-      image: "/placeholder.svg",
-      featured: false,
-      content: "Mengunjungi Candi Borobudur saat sunrise adalah pengalaman yang tak terlupakan. Namun, untuk mendapatkan pengalaman terbaik, ada beberapa hal yang perlu Anda ketahui sebelum booking..."
-    },
-    {
-      id: 4,
-      title: "Tradisi Nyepi di Bali: Pengalaman Spiritual yang Mendalam",
-      excerpt: "Mengenal lebih dekat tradisi Nyepi atau Hari Raya Saka di Bali. Filosofi, makna, dan pengalaman wisatawan selama Nyepi.",
-      category: "culture",
-      author: "Desi Ratnasari",
-      date: "8 Maret 2024",
-      readTime: "7 menit",
-      views: 645,
-      comments: 18,
-      image: "/placeholder.svg",
-      featured: false,
-      content: "Nyepi adalah salah satu tradisi paling unik di Bali yang jarang ditemukan di tempat lain. Hari Raya Saka ini tidak hanya tentang keheningan, tapi juga tentang refleksi diri dan kedamaian batin..."
-    },
-    {
-      id: 5,
-      title: "Kuliner Khas Yogyakarta yang Wajib Dicoba",
-      excerpt: "Panduan lengkap kuliner Jogja dari gudeg hingga bakpia. Rekomendasi tempat makan terbaik dan harga yang bersahabat.",
-      category: "culinary",
-      author: "Maya Sari",
-      date: "5 Maret 2024",
-      readTime: "4 menit",
-      views: 892,
-      comments: 27,
-      image: "/placeholder.svg",
-      featured: false,
-      content: "Yogyakarta tidak hanya terkenal sebagai kota budaya, tapi juga surga kuliner. Dari gudeg yang manis hingga bakpia yang legit, setiap sudut kota ini menyimpan cita rasa yang tak terlupakan..."
-    },
-    {
-      id: 6,
-      title: "Panduan Lengkap Mendaki Gunung Rinjani",
-      excerpt: "Persiapan fisik, mental, dan peralatan untuk mendaki Gunung Rinjani. Jalur pendakian, spot foto terbaik, dan tips keamanan.",
-      category: "tips",
-      author: "Rizky Pratama",
-      date: "3 Maret 2024",
-      readTime: "10 menit",
-      views: 1456,
-      comments: 42,
-      image: "/placeholder.svg",
-      featured: true,
-      content: "Gunung Rinjani adalah salah satu gunung tertinggi di Indonesia yang menawarkan pemandangan spektakuler. Namun, pendakian ini membutuhkan persiapan yang matang..."
-    },
-    {
       id: 7,
       title: "Travel Budgeting: Buat Trip Hemat Bareng RENATRAVEL.ID",
       excerpt: "Liburan seru tidak harus menguras kantong! Pelajari tips budgeting untuk perjalanan hemat namun tetap menyenangkan dan berkesan.",
@@ -119,7 +36,6 @@ const Blog = () => {
       views: 543,
       comments: 19,
       image: "/placeholder.svg",
-      featured: true,
       content: "Liburan Seru Gak Harus Bikin Kantong Jebol! Mau liburan tapi tetap hemat? Bisa banget! Dengan sedikit perencanaan, kamu bisa menikmati perjalanan seru bareng RENATRAVEL.ID tanpa khawatir soal keuangan..."
     },
     {
@@ -133,7 +49,6 @@ const Blog = () => {
       views: 432,
       comments: 14,
       image: "/placeholder.svg",
-      featured: false,
       content: "Liburan Seru = Badan Fit + Pikiran Fresh! Liburan itu menyenangkan, tapi juga bisa melelahkan kalau tubuhmu nggak dijaga. Bangun subuh buat sunrise, jalan kaki keliling destinasi..."
     },
     {
@@ -147,7 +62,6 @@ const Blog = () => {
       views: 678,
       comments: 23,
       image: "/placeholder.svg",
-      featured: false,
       content: "Biar Liburanmu Bukan Cuma Seru, Tapi Juga Instagramable! Liburan bareng RENATRAVEL.ID nggak lengkap tanpa foto-foto kece! Tapi kadang hasil foto nggak seindah aslinya, ya?"
     },
     {
@@ -161,7 +75,6 @@ const Blog = () => {
       views: 389,
       comments: 16,
       image: "/placeholder.svg",
-      featured: false,
       content: "Liburan bareng rombongan itu seru banget—bisa kenal orang baru, foto-foto rame-rame, dan saling bantu di jalan. Tapi supaya semua tetap nyaman dan happy, penting banget buat jaga etika..."
     },
     {
@@ -175,7 +88,6 @@ const Blog = () => {
       views: 512,
       comments: 21,
       image: "/placeholder.svg",
-      featured: false,
       content: "Jangan sampai udah sampai meeting point, baru sadar ada yang ketinggalan! Sebelum berangkat, yuk cek ulang semua persiapanmu dengan checklist pra-trip dari RENATRAVEL.ID..."
     },
     {
@@ -189,7 +101,6 @@ const Blog = () => {
       views: 445,
       comments: 18,
       image: "/placeholder.svg",
-      featured: false,
       content: "Liburan Seru Bukan Cuma Soal Tempat, Tapi Juga Soal Siapa yang Kamu Temui! Ikut trip, apalagi open trip bareng RENATRAVEL.ID, jadi kesempatan emas buat kenalan..."
     },
     {
@@ -203,7 +114,6 @@ const Blog = () => {
       views: 367,
       comments: 12,
       image: "/placeholder.svg",
-      featured: false,
       content: "Rindu Rumah Itu Wajar, Tapi Jangan Sampai Ganggu Liburanmu! Ikut trip panjang, apalagi beberapa hari jauh dari rumah, bisa bikin sebagian orang merasa homesick atau kangen suasana rumah..."
     }
   ];
@@ -215,7 +125,10 @@ const Blog = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const featuredPosts = blogPosts.filter(post => post.featured);
+  // Automatically select the 3 most recent articles as featured posts
+  const featuredPosts = blogPosts
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3);
 
   const handleReadMore = (postId: number) => {
     navigate(`/blog/${postId}`);
@@ -260,8 +173,8 @@ const Blog = () => {
       {featuredPosts.length > 0 && (
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Artikel Pilihan</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Artikel Terbaru</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {featuredPosts.map((post) => (
                 <div key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
                   <div className="relative">
@@ -271,7 +184,7 @@ const Blog = () => {
                       className="w-full h-48 object-cover"
                     />
                     <div className="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                      FEATURED
+                      TERBARU
                     </div>
                   </div>
                   <div className="p-6">
