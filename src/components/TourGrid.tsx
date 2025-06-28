@@ -31,7 +31,7 @@ const TourGrid = () => {
             <div key={tour.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
                 <img 
-                  src={getMainDestinationImage(tour.id)} 
+                  src={getMainDestinationImage(tour.id.toString())} 
                   alt={tour.title}
                   className="w-full h-64 object-cover"
                 />
