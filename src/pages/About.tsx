@@ -66,7 +66,7 @@ const About = () => {
               <div className="text-gray-600">Wisatawan Puas</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-brand-600 mb-2">200+</div>
+              <div className="text-4xl font-bold text-brand-600 mb-2">55</div>
               <div className="text-gray-600">Destinasi</div>
             </div>
             <div className="text-center">
