@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -12,6 +13,7 @@ import { format } from "date-fns";
 import { id } from "date-fns/locale";
 import Autoplay from "embla-carousel-autoplay";
 import { tourData } from '@/data/tourData';
+
 const TourDetail = () => {
   const {
     id: tourId
@@ -219,9 +221,8 @@ const TourDetail = () => {
                     <span className="text-gray-600">{tour.location}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    {[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < Math.floor(tour.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />)}
-                    <span className="text-sm font-medium ml-1">{tour.rating}</span>
-                    <span className="text-gray-500 text-sm">({tour.reviews} ulasan)</span>
+                    {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />)}
+                    <span className="text-sm font-medium ml-1">5.0</span>
                   </div>
                 </div>
               </div>
@@ -534,8 +535,8 @@ const TourDetail = () => {
                     
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-1">
-                        {[...Array(5)].map((_, i) => <Star key={i} className={`w-4 h-4 ${i < Math.floor(nextTour.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />)}
-                        <span className="text-sm font-medium ml-1">{nextTour.rating}</span>
+                        {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />)}
+                        <span className="text-sm font-medium ml-1">5.0</span>
                       </div>
                       <div className="text-right">
                         <span className="text-lg font-bold text-emerald-600">{nextTour.price}</span>
