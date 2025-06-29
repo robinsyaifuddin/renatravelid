@@ -16,6 +16,610 @@ const BlogDetail = () => {
 
   // Sample blog data - in real app, this would come from API
   const blogPosts = [
+    // Artikel baru yang ditambahkan dengan konten lengkap
+    {
+      id: 14,
+      title: "Yogyakarta: Kota Istimewa dengan Jutaan Cerita",
+      excerpt: "Yogyakarta atau Jogja bukan sekadar kota tujuan wisata – ia adalah kota dengan jiwa, tempat di mana warisan budaya, kearifan lokal, dan keindahan alam berpadu secara harmonis.",
+      category: "destinations",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "10 menit",
+      views: 892,
+      comments: 34,
+      likes: 156,
+      image: "/placeholder.svg",
+      featured: true,
+      content: `
+        <p>Yogyakarta atau Jogja bukan sekadar kota tujuan wisata – ia adalah kota dengan jiwa, tempat di mana warisan budaya, kearifan lokal, dan keindahan alam berpadu secara harmonis. Setiap sudut Jogja menyimpan cerita, dari jejak sejarah kerajaan hingga denyut kehidupan modern yang bersahabat.</p>
+        
+        <p>Tak heran jika Jogja dijuluki sebagai "Kota Istimewa". Kota ini selalu berhasil menarik hati siapa saja yang berkunjung. Baik kamu pecinta budaya, pemburu alam, penikmat kuliner, hingga penjelajah jalanan – Jogja punya tempat untuk semua.</p>
+        
+        <h3>Mengapa Harus Liburan ke Yogyakarta?</h3>
+        <p>Liburan ke Jogja bukan hanya tentang destinasi, tapi juga tentang pengalaman dan suasana. Jogja menawarkan:</p>
+        <ul>
+          <li>Keramahan warga lokal yang membuatmu serasa di rumah sendiri.</li>
+          <li>Akses mudah dan murah untuk menjelajahi berbagai tempat.</li>
+          <li>Kaya budaya dan sejarah, cocok untuk wisata edukatif.</li>
+          <li>Kuliner khas yang menggugah selera, dari yang manis hingga pedas menggoda.</li>
+          <li>Pilihan wisata lengkap: pegunungan, pantai, candi, hingga wisata kota.</li>
+        </ul>
+        
+        <h3>Destinasi Wajib Saat di Jogja</h3>
+        
+        <h4>1. Candi Prambanan</h4>
+        <p>Candi Hindu terbesar di Indonesia ini memukau dengan arsitektur tinggi menjulang dan relief yang menceritakan kisah Ramayana. Saat malam hari, kamu juga bisa menyaksikan pertunjukan Ramayana Ballet di area terbuka dengan latar candi yang megah.</p>
+        
+        <h4>2. Keraton Yogyakarta & Taman Sari</h4>
+        <p>Keraton adalah simbol kebesaran budaya Jawa. Di sini kamu bisa melihat kehidupan bangsawan secara langsung. Tak jauh dari situ, Taman Sari hadir sebagai bekas taman kerajaan yang memiliki lorong bawah tanah dan kolam pemandian eksotik.</p>
+        
+        <h4>3. Malioboro</h4>
+        <p>Surga bagi pemburu oleh-oleh dan penikmat suasana malam Jogja. Jalan Malioboro selalu hidup dengan deretan toko, pedagang kaki lima, seniman jalanan, hingga aroma makanan tradisional yang menggoda.</p>
+        
+        <h4>4. Pantai-Pantai di Gunungkidul</h4>
+        <p>Jogja juga punya garis pantai yang indah, terutama di wilayah Gunungkidul. Beberapa pantai favorit seperti:</p>
+        <ul>
+          <li>Pantai Indrayanti – dengan pasir putih bersih dan ombak tenang.</li>
+          <li>Pantai Timang – terkenal dengan gondola tradisional yang ekstrem.</li>
+          <li>Pantai Pok Tunggal – spot favorit untuk melihat sunset.</li>
+        </ul>
+        
+        <h3>Surga Kuliner Jogja</h3>
+        <p>Jogja tidak lengkap tanpa membicarakan makanannya. Kota ini kaya dengan kuliner khas yang menggoyang lidah:</p>
+        <ul>
+          <li>Gudeg – makanan khas Jogja berbahan nangka muda, disajikan dengan krecek dan telur.</li>
+          <li>Sate Klathak – sate kambing dengan tusukan besi dan bumbu minimalis, khas dari Imogiri.</li>
+          <li>Bakpia Pathok – camilan isi kacang hijau yang pas untuk oleh-oleh.</li>
+          <li>Angkringan – warung sederhana yang menjual nasi kucing, gorengan, kopi jos, dan jadi tempat nongkrong anak muda hingga seniman.</li>
+        </ul>
+        
+        <p>Jogja bukan kota yang bisa selesai dijelajahi dalam satu kali kunjungan. Ia menyimpan magnet yang selalu menarik kita kembali. Dari cerita sejarah yang membekas, senyum penduduk yang hangat, hingga suasana malam yang syahdu – Jogja selalu meninggalkan kesan mendalam di hati setiap pelancong.</p>
+      `
+    },
+    {
+      id: 15,
+      title: "Mengenal Budaya Suku Baduy: Warisan Leluhur di Tengah Arus Modernisasi",
+      excerpt: "Di tengah hiruk-pikuk dunia modern yang serba digital, masih ada satu kelompok masyarakat di Indonesia yang tetap setia menjaga warisan budaya leluhurnya tanpa terpengaruh oleh perubahan zaman.",
+      category: "culture",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "8 menit",
+      views: 567,
+      comments: 28,
+      likes: 89,
+      image: "/placeholder.svg",
+      featured: false,
+      content: `
+        <p>Di tengah hiruk-pikuk dunia modern yang serba digital, masih ada satu kelompok masyarakat di Indonesia yang tetap setia menjaga warisan budaya leluhurnya tanpa terpengaruh oleh perubahan zaman. Mereka adalah Suku Baduy, sebuah komunitas adat yang tinggal di wilayah pegunungan Kendeng, Kabupaten Lebak, Provinsi Banten.</p>
+        
+        <p>Suku Baduy terkenal karena komitmennya yang kuat terhadap kesederhanaan hidup, keseimbangan dengan alam, dan ketaatan pada adat leluhur. Budaya mereka bukan hanya unik, tetapi juga sarat makna dan filosofi hidup yang dalam.</p>
+        
+        <h3>Letak dan Pembagian Suku Baduy</h3>
+        <p>Suku Baduy terbagi menjadi dua kelompok utama:</p>
+        
+        <h4>1. Baduy Dalam</h4>
+        <ul>
+          <li>Tinggal di tiga kampung utama: Cibeo, Cikertawana, dan Cikeusik.</li>
+          <li>Menjunjung adat paling ketat, menolak segala bentuk teknologi dan modernisasi.</li>
+          <li>Tidak boleh menggunakan kendaraan, listrik, sabun kimia, atau pakaian berwarna cerah.</li>
+        </ul>
+        
+        <h4>2. Baduy Luar</h4>
+        <ul>
+          <li>Tinggal di wilayah yang lebih terbuka dan menerima pengaruh luar secara terbatas.</li>
+          <li>Sudah menggunakan pakaian modern dan menerima wisatawan, namun tetap menjaga nilai adat.</li>
+        </ul>
+        
+        <h3>Prinsip Hidup Masyarakat Baduy</h3>
+        <p>Masyarakat Baduy memegang teguh tiga prinsip utama yang menjadi landasan hidup mereka:</p>
+        
+        <h4>1. "Tidak Merusak Alam"</h4>
+        <p>Alam bagi mereka bukan hanya sumber kehidupan, tapi juga bagian dari kepercayaan. Hutan larangan (leuweung kolot) tidak boleh diganggu karena dianggap suci.</p>
+        
+        <h4>2. "Hirup Sauyunan" (Hidup Harmonis)</h4>
+        <p>Segala hal dijalani dengan kebersamaan dan saling tolong-menolong. Tidak ada egoisme atau individualisme.</p>
+        
+        <h4>3. "Mulih ka Asal" (Kembali ke Asal)</h4>
+        <p>Sebuah filosofi tentang menjaga kemurnian hidup, menjauh dari keserakahan, dan menjaga kesederhanaan seperti zaman dahulu.</p>
+        
+        <p>Budaya Suku Baduy adalah salah satu harta tak ternilai milik Indonesia. Di saat dunia sibuk mengejar kemajuan, mereka justru menunjukkan bahwa kebahagiaan bisa hadir dari kehidupan yang bersahaja dan penuh makna.</p>
+      `
+    },
+    {
+      id: 16,
+      title: "Geopark Ciletuh: Permata Alam Sukabumi yang Mendunia",
+      excerpt: "Tersembunyi di ujung barat daya Kabupaten Sukabumi, Jawa Barat, terdapat sebuah kawasan yang menyatukan keindahan alam, nilai geologis, serta kearifan lokal dalam satu ruang yang menakjubkan.",
+      category: "destinations",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "9 menit",
+      views: 723,
+      comments: 22,
+      likes: 98,
+      image: "/placeholder.svg",
+      featured: false,
+      content: `
+        <p>Tersembunyi di ujung barat daya Kabupaten Sukabumi, Jawa Barat, terdapat sebuah kawasan yang menyatukan keindahan alam, nilai geologis, serta kearifan lokal dalam satu ruang yang menakjubkan: Geopark Ciletuh. Kawasan ini bukan hanya destinasi wisata alam biasa, tetapi juga merupakan warisan bumi yang diakui oleh dunia.</p>
+        
+        <p>Pada tahun 2018, Geopark Ciletuh resmi ditetapkan sebagai UNESCO Global Geopark, menandakan bahwa kawasan ini memiliki nilai geologis dan budaya yang luar biasa dan perlu dilestarikan.</p>
+        
+        <h3>Apa Itu Geopark?</h3>
+        <p>Geopark (Taman Bumi) adalah kawasan yang memiliki keanekaragaman geologi (batuan, tanah, struktur bumi), biodiversitas (flora-fauna), dan kekayaan budaya, yang dikelola dengan prinsip konservasi, edukasi, dan pembangunan berkelanjutan.</p>
+        
+        <h3>Daya Tarik Geopark Ciletuh</h3>
+        
+        <h4>1. Formasi Batuan Tertua di Jawa Barat</h4>
+        <p>Geopark ini menyimpan formasi batuan purba yang diperkirakan berusia lebih dari 65 juta tahun, berasal dari zaman Mesozoikum. Ini menjadikan Ciletuh sebagai "buku terbuka" tentang sejarah pembentukan Pulau Jawa.</p>
+        
+        <h4>2. Pantai-Pantai Eksotis</h4>
+        <ul>
+          <li>Pantai Palangpang – gerbang utama kawasan geopark dengan pemandangan laut dan perbukitan batu.</li>
+          <li>Pantai Ujung Genteng – terkenal dengan pasir putih dan konservasi penyu.</li>
+          <li>Pantai Ombak Tujuh – surga bagi peselancar karena ombaknya yang menantang.</li>
+        </ul>
+        
+        <h4>3. Air Terjun (Curug) Menakjubkan</h4>
+        <ul>
+          <li>Curug Awang – dijuluki "Niagara mini", air terjun setinggi 40 meter yang spektakuler.</li>
+          <li>Curug Cimarinjung – dikelilingi tebing batu purba, cocok untuk spot fotografi alam.</li>
+          <li>Curug Sodong – air terjun kembar yang mudah diakses dari jalan utama.</li>
+        </ul>
+        
+        <h3>Prinsip Wisata Berkelanjutan di Geopark Ciletuh</h3>
+        <p>Mengunjungi Geopark Ciletuh berarti ikut menjaga dan menghormati bumi. Pengunjung dihimbau untuk:</p>
+        <ul>
+          <li>Tidak membuang sampah sembarangan</li>
+          <li>Menggunakan produk lokal</li>
+          <li>Menghormati budaya dan adat setempat</li>
+          <li>Mendukung pengelolaan wisata berbasis masyarakat</li>
+        </ul>
+        
+        <p>Geopark Ciletuh adalah bukti bahwa Indonesia memiliki kekayaan alam dan budaya yang luar biasa. Lebih dari sekadar tempat wisata, kawasan ini adalah pengingat tentang pentingnya menjaga bumi, memahami sejarah geologi, dan hidup berdampingan dengan alam.</p>
+      `
+    },
+    {
+      id: 17,
+      title: "Kepulauan Seribu: Surga Tropis di Pintu Gerbang Jakarta",
+      excerpt: "Siapa bilang untuk menikmati keindahan pulau tropis harus pergi jauh? Di sebelah utara Jakarta, hanya sekitar 1–2 jam perjalanan dengan kapal, tersembunyi gugusan pulau eksotis.",
+      category: "destinations",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "7 menit",
+      views: 645,
+      comments: 31,
+      likes: 87,
+      image: "/placeholder.svg",
+      featured: false,
+      content: `
+        <p>Siapa bilang untuk menikmati keindahan pulau tropis harus pergi jauh? Di sebelah utara Jakarta, hanya sekitar 1–2 jam perjalanan dengan kapal, tersembunyi gugusan pulau eksotis yang menawarkan pasir putih, laut biru jernih, dan suasana tenang yang menyegarkan: Kepulauan Seribu.</p>
+        
+        <p>Meski namanya "Seribu", jumlah pulau yang ada sebenarnya sekitar 110 pulau, dan hanya sebagian yang berhunipun atau dibuka untuk wisata. Namun keindahan dan keunikan yang ditawarkan benar-benar tak terhitung.</p>
+        
+        <h3>Kenapa Harus ke Kepulauan Seribu?</h3>
+        <p>Kepulauan Seribu adalah pilihan liburan sempurna bagi:</p>
+        <ul>
+          <li>Warga kota yang ingin liburan singkat tanpa harus cuti panjang</li>
+          <li>Pencinta laut dan snorkeling</li>
+          <li>Keluarga atau rombongan yang ingin suasana alam terbuka</li>
+          <li>Traveler yang mencari destinasi murah meriah dekat ibu kota</li>
+        </ul>
+        
+        <h3>Pulau-Pulau Favorit di Kepulauan Seribu</h3>
+        
+        <h4>1. Pulau Tidung</h4>
+        <ul>
+          <li>Terkenal dengan Jembatan Cinta yang menghubungkan Pulau Tidung Besar dan Kecil.</li>
+          <li>Aktivitas: snorkeling, banana boat, bersepeda keliling pulau.</li>
+          <li>Cocok untuk backpacker dan wisata keluarga.</li>
+        </ul>
+        
+        <h4>2. Pulau Pari</h4>
+        <ul>
+          <li>Dikenal dengan Pantai Pasir Perawan, airnya jernih dan tenang.</li>
+          <li>Banyak spot untuk snorkeling, diving, hingga paddle board.</li>
+          <li>Nuansanya tenang, cocok untuk short escape.</li>
+        </ul>
+        
+        <h4>3. Pulau Harapan</h4>
+        <ul>
+          <li>Destinasi populer untuk hopping island (jelajah pulau).</li>
+          <li>Dekat dengan beberapa pulau kecil berterumbu karang indah seperti Pulau Macan dan Pulau Gosong Perak.</li>
+          <li>Cocok untuk pecinta fotografi bawah laut.</li>
+        </ul>
+        
+        <h3>Aktivitas Wisata Menarik</h3>
+        <ul>
+          <li>🐠 Snorkeling & Diving – nikmati keindahan terumbu karang dan ikan-ikan tropis</li>
+          <li>🚤 Island Hopping – jelajahi pulau-pulau kecil dengan kapal tradisional</li>
+          <li>🐢 Konservasi Penyu & Mangrove – kegiatan edukatif dan ramah lingkungan</li>
+          <li>🚴 Bersepeda keliling pulau – banyak pulau menyediakan sepeda sewa</li>
+          <li>🌅 Sunset & Sunrise Hunting – suasana romantis dan tenang</li>
+        </ul>
+        
+        <p>Kepulauan Seribu adalah destinasi sempurna bagi siapa pun yang ingin menikmati alam tropis tanpa harus jauh-jauh dari Jakarta. Dengan laut biru, udara bersih, dan keramahan penduduk lokal, setiap pulau di Kepulauan Seribu menjanjikan pengalaman yang menyegarkan dan berkesan.</p>
+      `
+    },
+    {
+      id: 18,
+      title: "Dieng: Negeri di Atas Awan yang Penuh Pesona",
+      excerpt: "Terletak di dataran tinggi Jawa Tengah, tepatnya di perbatasan Kabupaten Wonosobo dan Banjarnegara, Dieng adalah destinasi wisata yang dijuluki 'Negeri di Atas Awan'.",
+      category: "destinations",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "8 menit",
+      views: 534,
+      comments: 19,
+      likes: 76,
+      image: "/placeholder.svg",
+      featured: false,
+      content: `
+        <p>Terletak di dataran tinggi Jawa Tengah, tepatnya di perbatasan Kabupaten Wonosobo dan Banjarnegara, Dieng adalah destinasi wisata yang dijuluki "Negeri di Atas Awan". Dengan ketinggian sekitar 2.000 meter di atas permukaan laut, udara di sini sejuk, segar, bahkan bisa mencapai titik beku saat musim kemarau.</p>
+        
+        <p>Namun, bukan hanya udaranya yang memikat. Dieng menyimpan kekayaan alam, budaya, dan sejarah yang menjadikannya salah satu destinasi paling istimewa di Indonesia.</p>
+        
+        <h3>Daya Tarik Utama Dieng</h3>
+        
+        <h4>1. Golden Sunrise Sikunir</h4>
+        <p>Salah satu sunrise terbaik di Indonesia! Dari Bukit Sikunir, kamu bisa melihat matahari terbit dengan latar pegunungan Sindoro, Sumbing, Merapi, hingga Merbabu. Pendakian singkat yang ringan tapi hasilnya luar biasa.</p>
+        
+        <h4>2. Kawah Sikidang</h4>
+        <p>Kawah aktif yang unik karena kawah utamanya sering berpindah-pindah tempat. Di sini kamu bisa melihat uap panas bumi dari dekat dan mencium aroma khas belerang.</p>
+        
+        <h4>3. Telaga Warna & Telaga Pengilon</h4>
+        <p>Dua danau bersebelahan dengan warna air yang bisa berubah-ubah karena kandungan sulfur. Legenda setempat menambah kesan mistis dan keindahan tempat ini.</p>
+        
+        <h4>4. Kompleks Candi Arjuna</h4>
+        <p>Situs peninggalan Hindu tertua di Jawa, dibangun sekitar abad ke-8 M. Tempat ini menyimpan nilai sejarah dan arsitektur yang luar biasa dengan suasana tenang dan eksotis.</p>
+        
+        <h3>Budaya & Kearifan Lokal</h3>
+        <p>Dieng juga terkenal dengan anak gimbal, yaitu anak-anak yang secara alami memiliki rambut gimbal sejak lahir. Masyarakat percaya mereka adalah anak pilihan yang mendapat berkah dari leluhur.</p>
+        
+        <p>Setiap tahun, digelar Dieng Culture Festival – acara budaya besar yang menghadirkan:</p>
+        <ul>
+          <li>Ruwatan anak gimbal</li>
+          <li>Jazz di atas awan</li>
+          <li>Pertunjukan seni tradisional</li>
+          <li>Penerbangan lampion</li>
+          <li>Kuliner khas Dieng</li>
+        </ul>
+        
+        <h3>Kuliner Khas Dieng</h3>
+        <ul>
+          <li>Mie Ongklok – mie rebus khas Wonosobo dengan kuah kental dan sayuran</li>
+          <li>Carica – buah khas Dieng, mirip pepaya kecil yang diolah menjadi manisan</li>
+          <li>Kentang Dieng & Purwaceng – hasil pertanian lokal yang terkenal enak dan berkhasiat</li>
+          <li>Tempe kemul & jagung bakar – camilan hangat saat kabut turun</li>
+        </ul>
+        
+        <p>Dieng adalah tempat di mana alam, budaya, dan spiritualitas bertemu dalam suasana yang magis. Setiap kabut yang menyelimuti, setiap candi yang berdiri megah, dan setiap senyuman warga lokal mengajak kita untuk merenung, menikmati, dan kembali ke alam.</p>
+      `
+    },
+    {
+      id: 19,
+      title: "Menjelajahi Keindahan Pegunungan Indonesia: Negeri Seribu Gunung",
+      excerpt: "Indonesia dikenal sebagai negara kepulauan, tapi tak hanya kaya laut—negeri ini juga dikenal sebagai 'Negeri Seribu Gunung' dengan ratusan pegunungan yang menakjubkan.",
+      category: "destinations",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "11 menit",
+      views: 789,
+      comments: 25,
+      likes: 103,
+      image: "/placeholder.svg",
+      featured: false,
+      content: `
+        <p>Indonesia dikenal sebagai negara kepulauan, tapi tak hanya kaya laut—negeri ini juga dikenal sebagai "Negeri Seribu Gunung". Membentang dari Sabang hingga Merauke, Indonesia memiliki ratusan pegunungan dan gunung berapi aktif maupun tidak aktif, yang menjadi bagian dari Cincin Api Pasifik (Ring of Fire).</p>
+        
+        <p>Pegunungan di Indonesia bukan hanya indah dipandang, tapi juga menyimpan nilai budaya, sejarah, spiritual, hingga sumber daya alam yang luar biasa.</p>
+        
+        <h3>Jenis Pegunungan di Indonesia</h3>
+        
+        <h4>1. Pegunungan Vulkanik (Gunung Api)</h4>
+        <ul>
+          <li>Terbentuk dari aktivitas letusan magma.</li>
+          <li>Contoh: Gunung Merapi, Gunung Bromo, Gunung Rinjani.</li>
+        </ul>
+        
+        <h4>2. Pegunungan Lipatan</h4>
+        <ul>
+          <li>Terbentuk dari pergerakan lempeng bumi yang saling menekan.</li>
+          <li>Contoh: Pegunungan Bukit Barisan (Sumatera), Pegunungan Sudirman (Papua).</li>
+        </ul>
+        
+        <h4>3. Pegunungan Datar</h4>
+        <ul>
+          <li>Berupa dataran tinggi yang terbentuk dari proses alam ribuan tahun.</li>
+          <li>Contoh: Pegunungan Dieng, Pegunungan Tengger.</li>
+        </ul>
+        
+        <h3>Pegunungan Terkenal di Indonesia</h3>
+        
+        <h4>1. Pegunungan Bukit Barisan (Sumatera)</h4>
+        <ul>
+          <li>Membentang dari Aceh hingga Lampung sepanjang 1.700 km.</li>
+          <li>Rumah bagi gunung-gunung tinggi seperti Gunung Kerinci (3.805 mdpl), yang merupakan gunung tertinggi di Sumatera dan gunung berapi tertinggi di Indonesia.</li>
+          <li>Wilayah ini memiliki banyak taman nasional, seperti Taman Nasional Kerinci Seblat.</li>
+        </ul>
+        
+        <h4>2. Pegunungan Jayawijaya (Papua)</h4>
+        <ul>
+          <li>Terdapat Puncak Jaya (Cartenz Pyramid), titik tertinggi di Indonesia dan Oseania (4.884 mdpl).</li>
+          <li>Satu-satunya tempat di Indonesia yang memiliki salju abadi, meski kini mulai mencair akibat perubahan iklim.</li>
+          <li>Menjadi tantangan utama bagi para pendaki dunia.</li>
+        </ul>
+        
+        <h4>3. Pegunungan Tengger (Jawa Timur)</h4>
+        <ul>
+          <li>Terkenal dengan Gunung Bromo, gunung api aktif dengan kaldera spektakuler.</li>
+          <li>Berada dalam Taman Nasional Bromo Tengger Semeru.</li>
+          <li>Suku Tengger mendiami kawasan ini dan memiliki tradisi unik seperti upacara Kasada.</li>
+        </ul>
+        
+        <h3>Pegunungan Favorit Pendaki di Indonesia</h3>
+        <ol>
+          <li>Gunung Semeru (3.676 mdpl) – Puncak Mahameru, tertinggi di Pulau Jawa.</li>
+          <li>Gunung Rinjani (3.726 mdpl) – Gunung tertinggi di NTB, dengan Danau Segara Anak di kawahnya.</li>
+          <li>Gunung Prau (2.565 mdpl) – Favorit pendaki pemula untuk menikmati sunrise terbaik di Dieng.</li>
+          <li>Gunung Gede-Pangrango – Cocok untuk pendaki dari Jakarta dan sekitarnya, terkenal dengan edelweiss dan air terjun Cibeureum.</li>
+          <li>Gunung Latimojong (Sulawesi Selatan) – Puncak Rantemario-nya adalah titik tertinggi di Sulawesi.</li>
+        </ol>
+        
+        <h3>Fungsi Pegunungan bagi Indonesia</h3>
+        <ul>
+          <li>Sumber air dan kehidupan bagi masyarakat sekitar.</li>
+          <li>Habitat flora dan fauna endemik, termasuk hutan hujan tropis.</li>
+          <li>Situs spiritual dan budaya, tempat meditasi, upacara adat, dan kepercayaan lokal.</li>
+          <li>Objek wisata alam untuk trekking, camping, dan ekowisata.</li>
+        </ul>
+        
+        <p>Pegunungan Indonesia adalah warisan alam yang luar biasa. Mereka bukan hanya menantang untuk didaki, tapi juga menyimpan keindahan, kehidupan, dan pelajaran tentang harmoni manusia dengan alam. Mendaki gunung bukan hanya soal mencapai puncak, tapi juga tentang menyatu dengan bumi dan mengenal diri sendiri.</p>
+      `
+    },
+    {
+      id: 20,
+      title: "Wisata Budaya di Indonesia: Menjelajahi Warisan Leluhur Nusantara",
+      excerpt: "Indonesia bukan hanya kaya akan alam, tetapi juga merupakan negara dengan kekayaan budaya yang sangat luar biasa. Dari Sabang hingga Merauke, setiap daerah memiliki tradisi yang unik.",
+      category: "culture",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "12 menit",
+      views: 678,
+      comments: 29,
+      likes: 94,
+      image: "/placeholder.svg",
+      featured: false,
+      content: `
+        <p>Indonesia bukan hanya kaya akan alam, tetapi juga merupakan negara dengan kekayaan budaya yang sangat luar biasa. Dari Sabang hingga Merauke, setiap daerah memiliki tradisi, adat istiadat, seni, dan kearifan lokal yang unik. Inilah yang menjadikan wisata budaya di Indonesia sebagai salah satu daya tarik utama bagi wisatawan lokal maupun mancanegara.</p>
+        
+        <p>Wisata budaya bukan sekadar menikmati pertunjukan seni atau melihat bangunan bersejarah, tapi juga tentang merasakan kehidupan, memahami makna, dan menghargai warisan leluhur yang telah hidup selama ratusan tahun.</p>
+        
+        <h3>Apa Itu Wisata Budaya?</h3>
+        <p>Wisata budaya adalah perjalanan yang berfokus pada kegiatan yang memperkenalkan pengunjung pada identitas budaya suatu masyarakat, termasuk:</p>
+        <ul>
+          <li>Upacara adat</li>
+          <li>Kesenian tradisional</li>
+          <li>Kerajinan lokal</li>
+          <li>Kuliner khas</li>
+          <li>Bahasa daerah</li>
+          <li>Arsitektur dan situs sejarah</li>
+        </ul>
+        
+        <h3>Contoh Wisata Budaya Populer di Indonesia</h3>
+        
+        <h4>1. Keraton Yogyakarta & Tradisi Jawa</h4>
+        <ul>
+          <li>Mengunjungi Keraton Ngayogyakarta Hadiningrat untuk belajar tentang budaya Jawa, seni tari, gamelan, dan batik.</li>
+          <li>Menyaksikan pertunjukan Sendratari Ramayana di Prambanan.</li>
+        </ul>
+        
+        <h4>2. Tana Toraja, Sulawesi Selatan</h4>
+        <ul>
+          <li>Wisata budaya yang penuh nilai spiritual dan unik, seperti upacara kematian Rambu Solo', rumah adat Tongkonan, dan makam di tebing batu.</li>
+          <li>Pengunjung dapat memahami cara masyarakat Toraja memaknai kematian dan hubungan dengan leluhur.</li>
+        </ul>
+        
+        <h4>3. Bali – Budaya Hindu yang Kuat</h4>
+        <p>Meski terkenal dengan pantai, Bali adalah pusat wisata budaya: dari upacara keagamaan di pura, tari Kecak di Uluwatu, hingga seni lukis dan ukir di Ubud.</p>
+        
+        <h4>4. Suku Baduy, Banten</h4>
+        <ul>
+          <li>Wisata budaya yang mengajak untuk hidup sederhana tanpa listrik dan teknologi.</li>
+          <li>Pengunjung bisa berinteraksi langsung dengan masyarakat adat yang masih menjaga kepercayaan Sunda Wiwitan.</li>
+        </ul>
+        
+        <h4>5. Kampung Naga, Tasikmalaya</h4>
+        <p>Perkampungan adat Sunda yang masih mempertahankan tata kehidupan tradisional, arsitektur bambu, dan sistem gotong royong.</p>
+        
+        <h4>6. Wamena dan Festival Lembah Baliem, Papua</h4>
+        <ul>
+          <li>Festival budaya tahunan yang menampilkan perang-perangan antar suku Dani, Yali, dan Lani.</li>
+          <li>Pengalaman luar biasa melihat adat Papua yang masih hidup dan kuat.</li>
+        </ul>
+        
+        <h3>Manfaat Wisata Budaya</h3>
+        <ul>
+          <li>📚 Edukasi: Mengenalkan sejarah, adat istiadat, dan nilai-nilai luhur bangsa.</li>
+          <li>🌱 Pelestarian Budaya: Membantu menjaga budaya lokal agar tetap hidup dan dihargai.</li>
+          <li>💼 Pemberdayaan Ekonomi Lokal: Memberi penghasilan pada pengrajin, seniman, dan pemandu lokal.</li>
+          <li>🤝 Interaksi Sosial: Membangun toleransi dan pemahaman antarbudaya.</li>
+        </ul>
+        
+        <h3>Tips Berwisata Budaya</h3>
+        <ul>
+          <li>Hormati adat dan norma setempat</li>
+          <li>Gunakan jasa pemandu lokal untuk pengalaman yang lebih mendalam</li>
+          <li>Beli produk kerajinan asli sebagai bentuk dukungan</li>
+          <li>Jangan hanya mengambil foto – ambil juga pelajaran dari nilai-nilainya</li>
+          <li>Ikut serta dalam kegiatan, bukan sekadar menonton</li>
+        </ul>
+        
+        <p>Wisata budaya di Indonesia adalah cara terbaik untuk mengenal identitas bangsa. Setiap daerah punya cerita, setiap tarian punya makna, dan setiap tradisi punya akar sejarah yang dalam. Dengan berwisata budaya, kita tidak hanya jalan-jalan, tapi juga ikut merawat dan membanggakan kekayaan leluhur kita.</p>
+      `
+    },
+    {
+      id: 21,
+      title: "Kuliner Indonesia: Cita Rasa Nusantara yang Mendunia",
+      excerpt: "Indonesia bukan hanya kaya akan budaya dan alam, tetapi juga surganya kuliner lezat dan penuh rempah. Dari Sabang hingga Merauke, setiap daerah memiliki makanan khas yang menggugah selera.",
+      category: "culinary",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "9 menit",
+      views: 856,
+      comments: 42,
+      likes: 128,
+      image: "/placeholder.svg",
+      featured: false,
+      content: `
+        <p>Indonesia bukan hanya kaya akan budaya dan alam, tetapi juga surganya kuliner lezat dan penuh rempah. Dari Sabang hingga Merauke, setiap daerah memiliki makanan khas dengan cita rasa, cerita, dan sejarahnya sendiri. Tak heran jika kuliner Indonesia menjadi salah satu daya tarik wisata terbesar bagi wisatawan lokal maupun mancanegara.</p>
+        
+        <p>Makanan Indonesia bukan hanya sekadar pemenuh perut, tapi juga wujud kearifan lokal, identitas budaya, dan simbol kebersamaan.</p>
+        
+        <h3>Apa yang Membuat Kuliner Indonesia Istimewa?</h3>
+        
+        <h4>1. Bumbu dan Rempah yang Kaya</h4>
+        <p>Indonesia dikenal sebagai negeri rempah. Bumbu seperti kunyit, lengkuas, jahe, kemiri, sereh, dan cabai menciptakan rasa khas yang tidak ditemukan di tempat lain.</p>
+        
+        <h4>2. Pengaruh Budaya Beragam</h4>
+        <p>Kuliner Indonesia dipengaruhi oleh berbagai budaya seperti India, Arab, Cina, Belanda, hingga lokal adat suku-suku Nusantara, sehingga menghasilkan kekayaan rasa yang unik.</p>
+        
+        <h4>3. Teknik Masak Tradisional</h4>
+        <p>Dari dibakar di atas arang, ditumis, digulai, hingga dikukus dalam daun, teknik memasak Indonesia sangat variatif dan autentik.</p>
+        
+        <h3>Kuliner Khas dari Berbagai Daerah</h3>
+        
+        <h4>1. Rendang (Sumatera Barat)</h4>
+        <ul>
+          <li>Masakan daging sapi dengan santan dan rempah khas Minang.</li>
+          <li>Pernah dinobatkan sebagai makanan terenak di dunia oleh CNN Travel.</li>
+        </ul>
+        
+        <h4>2. Gudeg (Yogyakarta)</h4>
+        <ul>
+          <li>Olahan nangka muda yang dimasak lama dengan gula jawa dan santan.</li>
+          <li>Rasa manis legit, biasanya disajikan dengan ayam, telur, dan sambal krecek.</li>
+        </ul>
+        
+        <h4>3. Pempek (Palembang)</h4>
+        <p>Makanan khas berbahan dasar ikan tenggiri dan sagu, disajikan dengan kuah cuko pedas-manis-asam.</p>
+        
+        <h4>4. Rawon (Jawa Timur)</h4>
+        <p>Sup daging berkuah hitam pekat dari kluwek. Aromatik dan kaya rasa!</p>
+        
+        <h4>5. Coto Makassar (Sulawesi Selatan)</h4>
+        <p>Sup khas Makassar dari jeroan sapi dengan bumbu kacang dan rempah-rempah.</p>
+        
+        <h4>6. Papeda (Papua dan Maluku)</h4>
+        <p>Bubur sagu lengket disajikan dengan ikan kuah kuning. Makanan pokok masyarakat timur Indonesia.</p>
+        
+        <h4>7. Ayam Betutu (Bali)</h4>
+        <p>Ayam utuh yang diisi bumbu khas Bali, dibungkus daun pisang dan dimasak dalam waktu lama.</p>
+        
+        <h3>Jajanan Khas & Street Food yang Wajib Dicoba</h3>
+        <ul>
+          <li>Siomay Bandung</li>
+          <li>Sate Madura</li>
+          <li>Bakso Malang</li>
+          <li>Nasi Goreng Jawa</li>
+          <li>Martabak Manis dan Telur</li>
+          <li>Es Cendol & Es Teler</li>
+        </ul>
+        <p>Street food Indonesia terkenal karena murah, enak, dan mudah ditemukan di hampir setiap sudut kota.</p>
+        
+        <h3>Kuliner Tradisional & Kue Khas</h3>
+        <p>Indonesia juga punya kue-kue tradisional yang unik:</p>
+        <ul>
+          <li>Klepon (bola ketan isi gula merah)</li>
+          <li>Lemper (ketan isi ayam dibungkus daun pisang)</li>
+          <li>Nagasi, Wajik, Kue Putu, hingga Lapis Legit</li>
+        </ul>
+        <p>Biasanya disajikan saat acara adat atau perayaan tertentu, setiap kue punya makna dan cerita.</p>
+        
+        <h3>Kuliner Indonesia di Mata Dunia</h3>
+        <p>Makanan Indonesia semakin dikenal secara global:</p>
+        <ul>
+          <li>Rendang, nasi goreng, dan sate sering masuk daftar makanan terenak dunia.</li>
+          <li>Banyak restoran Indonesia berdiri di luar negeri, dari Belanda, Australia, hingga Amerika.</li>
+          <li>Program diplomasi kuliner juga aktif mengenalkan masakan Indonesia ke dunia.</li>
+        </ul>
+        
+        <p>Kuliner Indonesia adalah warisan budaya yang hidup, berkembang, dan menjadi jati diri bangsa. Lewat makanan, kita bisa mengenal sejarah, filosofi hidup, hingga keragaman Indonesia. Maka dari itu, menjaga dan mempromosikan kuliner Nusantara sama dengan melestarikan budaya kita sendiri.</p>
+      `
+    },
+    {
+      id: 22,
+      title: "Barang Bawaan Wajib Saat Ikut Trip Travel bersama RENATRAVEL.ID",
+      excerpt: "Ikut trip bareng RENATRAVEL.ID? Siap-siap buat liburan yang seru, praktis, dan penuh pengalaman baru! Tapi sebelum berangkat, penting banget untuk menyiapkan barang bawaan yang tepat.",
+      category: "tips",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "6 menit",
+      views: 743,
+      comments: 35,
+      likes: 89,
+      image: "/placeholder.svg",
+      featured: false,
+      content: `
+        <p>Ikut trip bareng RENATRAVEL.ID? Siap-siap buat liburan yang seru, praktis, dan penuh pengalaman baru! Tapi sebelum berangkat, penting banget untuk menyiapkan barang bawaan yang tepat supaya perjalananmu makin nyaman dan nggak ribet.</p>
+        
+        <p>Ingat, liburan yang menyenangkan dimulai dari packing yang cerdas!</p>
+        
+        <h3>1. Dokumen Penting</h3>
+        <p>Walaupun kebanyakan trip domestik, tetap siapkan:</p>
+        <ul>
+          <li>KTP/Identitas – untuk check-in kapal, hotel, atau registrasi</li>
+          <li>Kartu vaksin atau aplikasi PeduliLindungi (jika dibutuhkan)</li>
+          <li>Booking confirmation dari admin RENATRAVEL.ID (simpan di HP)</li>
+        </ul>
+        
+        <h3>2. Pakaian Nyaman Sesuai Destinasi</h3>
+        <p>Pastikan kamu tahu lokasi dan cuacanya:</p>
+        <ul>
+          <li>Kaos/celana ringan untuk aktivitas outdoor</li>
+          <li>Jaket atau sweater untuk destinasi dingin seperti Bromo atau Dieng</li>
+          <li>Pakaian renang untuk trip ke pantai/pulau</li>
+          <li>Baju ganti secukupnya (jangan berlebihan)</li>
+          <li>Sandal/sepatu nyaman untuk jalan kaki</li>
+        </ul>
+        <p>💡 Tips: Pilih pakaian yang cepat kering dan mudah dilipat agar tidak memakan tempat.</p>
+        
+        <h3>3. Peralatan Pribadi</h3>
+        <p>Walau RENATRAVEL.ID menyediakan fasilitas, sebaiknya tetap bawa perlengkapan pribadi:</p>
+        <ul>
+          <li>Sikat gigi, sabun, sampo, tisu basah</li>
+          <li>Handuk kecil</li>
+          <li>Sunblock & lip balm (penting untuk trip laut/gunung)</li>
+          <li>Obat pribadi (jangan lupa ya!)</li>
+        </ul>
+        
+        <h3>4. Perlengkapan Tambahan yang Berguna</h3>
+        <ul>
+          <li>Powerbank & charger</li>
+          <li>Headlamp/senter kecil (kalau trip camping atau sunrise)</li>
+          <li>Dry bag/plastik kresek untuk baju basah</li>
+          <li>Botol minum isi ulang</li>
+          <li>Topi/kacamata hitam</li>
+        </ul>
+        
+        <h3>5. Barang Opsional Sesuai Kebutuhan</h3>
+        <ul>
+          <li>Uang tunai secukupnya (beberapa pulau/area belum ada ATM)</li>
+          <li>Kamera underwater/GoPro (kalau snorkeling)</li>
+          <li>Camilan ringan</li>
+          <li>Buku kecil atau headset buat hiburan saat perjalanan</li>
+        </ul>
+        
+        <h3>🚫 Jangan Bawa Ini:</h3>
+        <ul>
+          <li>Barang elektronik berlebihan</li>
+          <li>Perhiasan atau barang berharga</li>
+          <li>Tas besar yang bikin repot</li>
+          <li>Sampah plastik sekali pakai – bantu jaga lingkungan ya!</li>
+        </ul>
+        
+        <p><strong>Bawa barang secukupnya, bukan sebanyaknya. Fokus liburan, bukan ribet ngurus bawaan!</strong></p>
+      `
+    },
+    // Artikel lama tetap ada
     {
       id: 1,
       title: "10 Tips Hemat Liburan ke Bali untuk Backpacker",

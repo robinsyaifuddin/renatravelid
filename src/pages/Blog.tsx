@@ -25,6 +25,125 @@ const Blog = () => {
   ];
 
   const blogPosts = [
+    // Artikel baru yang ditambahkan
+    {
+      id: 14,
+      title: "Yogyakarta: Kota Istimewa dengan Jutaan Cerita",
+      excerpt: "Yogyakarta atau Jogja bukan sekadar kota tujuan wisata – ia adalah kota dengan jiwa, tempat di mana warisan budaya, kearifan lokal, dan keindahan alam berpadu secara harmonis.",
+      category: "destinations",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "10 menit",
+      views: 892,
+      comments: 34,
+      image: "/placeholder.svg",
+      content: "Yogyakarta atau Jogja bukan sekadar kota tujuan wisata – ia adalah kota dengan jiwa, tempat di mana warisan budaya, kearifan lokal, dan keindahan alam berpadu secara harmonis..."
+    },
+    {
+      id: 15,
+      title: "Mengenal Budaya Suku Baduy: Warisan Leluhur di Tengah Arus Modernisasi",
+      excerpt: "Di tengah hiruk-pikuk dunia modern yang serba digital, masih ada satu kelompok masyarakat di Indonesia yang tetap setia menjaga warisan budaya leluhurnya tanpa terpengaruh oleh perubahan zaman.",
+      category: "culture",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "8 menit",
+      views: 567,
+      comments: 28,
+      image: "/placeholder.svg",
+      content: "Di tengah hiruk-pikuk dunia modern yang serba digital, masih ada satu kelompok masyarakat di Indonesia yang tetap setia menjaga warisan budaya leluhurnya..."
+    },
+    {
+      id: 16,
+      title: "Geopark Ciletuh: Permata Alam Sukabumi yang Mendunia",
+      excerpt: "Tersembunyi di ujung barat daya Kabupaten Sukabumi, Jawa Barat, terdapat sebuah kawasan yang menyatukan keindahan alam, nilai geologis, serta kearifan lokal dalam satu ruang yang menakjubkan.",
+      category: "destinations",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "9 menit",
+      views: 723,
+      comments: 22,
+      image: "/placeholder.svg",
+      content: "Tersembunyi di ujung barat daya Kabupaten Sukabumi, Jawa Barat, terdapat sebuah kawasan yang menyatukan keindahan alam, nilai geologis, serta kearifan lokal..."
+    },
+    {
+      id: 17,
+      title: "Kepulauan Seribu: Surga Tropis di Pintu Gerbang Jakarta",
+      excerpt: "Siapa bilang untuk menikmati keindahan pulau tropis harus pergi jauh? Di sebelah utara Jakarta, hanya sekitar 1–2 jam perjalanan dengan kapal, tersembunyi gugusan pulau eksotis.",
+      category: "destinations",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "7 menit",
+      views: 645,
+      comments: 31,
+      image: "/placeholder.svg",
+      content: "Siapa bilang untuk menikmati keindahan pulau tropis harus pergi jauh? Di sebelah utara Jakarta, hanya sekitar 1–2 jam perjalanan dengan kapal..."
+    },
+    {
+      id: 18,
+      title: "Dieng: Negeri di Atas Awan yang Penuh Pesona",
+      excerpt: "Terletak di dataran tinggi Jawa Tengah, tepatnya di perbatasan Kabupaten Wonosobo dan Banjarnegara, Dieng adalah destinasi wisata yang dijuluki 'Negeri di Atas Awan'.",
+      category: "destinations",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "8 menit",
+      views: 534,
+      comments: 19,
+      image: "/placeholder.svg",
+      content: "Terletak di dataran tinggi Jawa Tengah, tepatnya di perbatasan Kabupaten Wonosobo dan Banjarnegara, Dieng adalah destinasi wisata yang dijuluki 'Negeri di Atas Awan'..."
+    },
+    {
+      id: 19,
+      title: "Menjelajahi Keindahan Pegunungan Indonesia: Negeri Seribu Gunung",
+      excerpt: "Indonesia dikenal sebagai negara kepulauan, tapi tak hanya kaya laut—negeri ini juga dikenal sebagai 'Negeri Seribu Gunung' dengan ratusan pegunungan yang menakjubkan.",
+      category: "destinations",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "11 menit",
+      views: 789,
+      comments: 25,
+      image: "/placeholder.svg",
+      content: "Indonesia dikenal sebagai negara kepulauan, tapi tak hanya kaya laut—negeri ini juga dikenal sebagai 'Negeri Seribu Gunung'..."
+    },
+    {
+      id: 20,
+      title: "Wisata Budaya di Indonesia: Menjelajahi Warisan Leluhur Nusantara",
+      excerpt: "Indonesia bukan hanya kaya akan alam, tetapi juga merupakan negara dengan kekayaan budaya yang sangat luar biasa. Dari Sabang hingga Merauke, setiap daerah memiliki tradisi yang unik.",
+      category: "culture",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "12 menit",
+      views: 678,
+      comments: 29,
+      image: "/placeholder.svg",
+      content: "Indonesia bukan hanya kaya akan alam, tetapi juga merupakan negara dengan kekayaan budaya yang sangat luar biasa..."
+    },
+    {
+      id: 21,
+      title: "Kuliner Indonesia: Cita Rasa Nusantara yang Mendunia",
+      excerpt: "Indonesia bukan hanya kaya akan budaya dan alam, tetapi juga surganya kuliner lezat dan penuh rempah. Dari Sabang hingga Merauke, setiap daerah memiliki makanan khas yang menggugah selera.",
+      category: "culinary",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "9 menit",
+      views: 856,
+      comments: 42,
+      image: "/placeholder.svg",
+      content: "Indonesia bukan hanya kaya akan budaya dan alam, tetapi juga surganya kuliner lezat dan penuh rempah..."
+    },
+    {
+      id: 22,
+      title: "Barang Bawaan Wajib Saat Ikut Trip Travel bersama RENATRAVEL.ID",
+      excerpt: "Ikut trip bareng RENATRAVEL.ID? Siap-siap buat liburan yang seru, praktis, dan penuh pengalaman baru! Tapi sebelum berangkat, penting banget untuk menyiapkan barang bawaan yang tepat.",
+      category: "tips",
+      author: "RENATRAVEL.ID",
+      date: "29 Juni 2025",
+      readTime: "6 menit",
+      views: 743,
+      comments: 35,
+      image: "/placeholder.svg",
+      content: "Ikut trip bareng RENATRAVEL.ID? Siap-siap buat liburan yang seru, praktis, dan penuh pengalaman baru!..."
+    },
+    // ... Artikel lama tetap ada
     {
       id: 7,
       title: "Travel Budgeting: Buat Trip Hemat Bareng RENATRAVEL.ID",
