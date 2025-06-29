@@ -14,9 +14,9 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
+        <GalleryShowcase />
         <TourGrid />
         <TourCalendar />
-        <GalleryShowcase />
         <SupportSection />
       </main>
       <Footer />
