@@ -2,17 +2,23 @@
 import React from 'react';
 import { Star, MapPin, Calendar, Users, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { tourData } from '@/data/tourData';
 import { getMainDestinationImage } from '@/utils/imageUtils';
 
 const TourGrid = () => {
+  const navigate = useNavigate();
+  
   // Get specific destinations: TWA Papandayan, Pulau Pecang, Wisata Baduy
   const specificDestinations = ['twa-papandayan', 'pulau-pecang', 'wisata-baduy'];
   const topDestinations = specificDestinations.map(id => ({
     id,
     ...tourData[id as keyof typeof tourData]
   })).filter(tour => tour.title); // Filter out any undefined tours
+
+  const handleBookNow = (tourId: string) => {
+    navigate(`/tour/${tourId}`);
+  };
 
   return (
     <section className="py-16 bg-gray-50">
@@ -78,12 +84,13 @@ const TourGrid = () => {
                     </span>
                     <span className="text-gray-500 text-sm">/orang</span>
                   </div>
-                  <Link to={`/tour/${tour.id}`}>
-                    <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
-                      Lihat Detail
-                      <ChevronRight className="w-4 h-4 ml-1" />
-                    </Button>
-                  </Link>
+                  <Button 
+                    onClick={() => handleBookNow(tour.id)}
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  >
+                    Lihat Detail
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </Button>
                 </div>
               </div>
             </div>
