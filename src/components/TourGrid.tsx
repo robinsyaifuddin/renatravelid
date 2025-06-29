@@ -85,7 +85,7 @@ const TourGrid = () => {
                     <span className="text-gray-500 text-sm">/orang</span>
                   </div>
                   <Button 
-                    onClick={() => handleBookNow(tour.id)}
+                    onClick={() => handleBookNow(tour.id.toString())}
                     className="bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
                   >
                     Lihat Detail
