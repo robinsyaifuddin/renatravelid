@@ -66,11 +66,47 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Ensure font rendering is consistent across all devices */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    /* Enhanced font rendering for consistency across devices */
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   }
+}
+
+/* Enhanced mobile font consistency */
+* {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* Force consistent font weights across all devices */
+.font-bold, 
+strong, 
+b,
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.font-semibold {
+  font-weight: 600 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.font-medium {
+  font-weight: 500 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.font-normal {
+  font-weight: 400 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
 /* 3D Transform Utilities */
@@ -186,54 +222,26 @@
   }
 }
 
-/* Mobile font preservation and optimization */
+/* Enhanced mobile optimization */
 @media (max-width: 768px) {
+  /* Force font consistency on mobile webkit browsers */
   * {
-    /* Force font weight preservation on mobile */
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
-    font-weight: inherit !important;
-    font-style: inherit !important;
+    text-rendering: optimizeLegibility !important;
+    font-synthesis: none !important;
   }
   
-  /* Ensure bold text stays bold on mobile */
-  .font-bold, 
-  b, 
-  strong,
-  [class*="font-bold"],
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 700 !important;
-    -webkit-font-smoothing: antialiased !important;
-  }
-  
-  /* Ensure medium font weight is preserved */
-  .font-medium,
-  [class*="font-medium"] {
-    font-weight: 500 !important;
-    -webkit-font-smoothing: antialiased !important;
-  }
-  
-  /* Ensure semibold font weight is preserved */
-  .font-semibold,
-  [class*="font-semibold"] {
-    font-weight: 600 !important;
-    -webkit-font-smoothing: antialiased !important;
-  }
-  
-  /* Ensure regular font weight is preserved */
-  .font-normal,
-  [class*="font-normal"] {
-    font-weight: 400 !important;
-    -webkit-font-smoothing: antialiased !important;
-  }
-  
-  /* Prevent font weight changes on mobile webkit browsers */
+  /* Prevent font weight changes on mobile */
   input, 
   button, 
   textarea, 
-  select {
+  select,
+  label {
     -webkit-appearance: none !important;
     font-weight: inherit !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
   }
   
   /* Enhanced mobile touch targets for 3D elements */
@@ -252,15 +260,40 @@
     transform: translateY(-1px);
     box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
   }
-}
-
-/* Date label specific styles for mobile visibility */
-@media (max-width: 768px) {
+  
+  /* Fix date label visibility on mobile */
   .date-label-mobile {
-    color: #000000 !important;
+    color: #1f2937 !important;
     font-weight: 600 !important;
     -webkit-font-smoothing: antialiased !important;
-    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+    -moz-osx-font-smoothing: grayscale !important;
+    text-shadow: none !important;
+    background-color: transparent !important;
+  }
+  
+  /* Fix form input contrast on mobile */
+  input[type="date"],
+  input[type="text"],
+  select {
+    color: #1f2937 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+  }
+  
+  /* Ensure placeholder text is visible */
+  input::placeholder,
+  select::placeholder {
+    color: #6b7280 !important;
+    opacity: 1 !important;
+  }
+  
+  /* Fix select dropdown styling */
+  select option {
+    color: #1f2937 !important;
+    background-color: #ffffff !important;
   }
 }
 
@@ -304,4 +337,24 @@ a[href*="lovable.dev/projects"],
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
+}
+
+/* Enhanced form styling for better mobile visibility */
+.booking-form input,
+.booking-form select,
+.booking-form label {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.booking-form label {
+  color: #374151 !important;
+  font-weight: 600 !important;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+  outline: 2px solid #10b981 !important;
+  outline-offset: 2px !important;
+  border-color: #10b981 !important;
 }

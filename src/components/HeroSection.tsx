@@ -1,9 +1,11 @@
+
 import React, { useState } from 'react';
 import { Calendar, User, Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
 const HeroSection = () => {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
@@ -21,6 +23,7 @@ const HeroSection = () => {
       period: "April - Oktober"
     }
   };
+
   const handleCheckAvailability = () => {
     // Validate if selected dates match available tour periods
     if (checkIn && checkOut) {
@@ -52,12 +55,17 @@ const HeroSection = () => {
     // Navigate to tour page with search parameters
     navigate(`/tour?${searchParams.toString()}`);
   };
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay and Shadow Effect */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat shadow-2xl md:shadow-[0_35px_80px_rgba(13,148,136,0.4)] shadow-[0_20px_50px_rgba(13,148,136,0.3)]" style={{
-      backgroundImage: `url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')`,
-      filter: 'drop-shadow(0 25px 60px rgba(5,150,105,0.25)) drop-shadow(0 10px 30px rgba(13,148,136,0.35))'
-    }}>
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat shadow-2xl md:shadow-[0_35px_80px_rgba(13,148,136,0.4)] shadow-[0_20px_50px_rgba(13,148,136,0.3)]" 
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')`,
+          filter: 'drop-shadow(0 25px 60px rgba(5,150,105,0.25)) drop-shadow(0 10px 30px rgba(13,148,136,0.35))'
+        }}
+      >
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
         
@@ -77,64 +85,76 @@ const HeroSection = () => {
           Temukan destinasi menakjubkan dan ciptakan kenangan tak terlupakan dengan pengalaman wisata terpilih kami
         </p>
 
-        {/* Booking Form with Enhanced Shadow */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl shadow-emerald-500/20 max-w-6xl mx-auto border border-white/20">
+        {/* Booking Form with Enhanced Shadow and Mobile Optimization */}
+        <div className="booking-form bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl shadow-emerald-500/20 max-w-6xl mx-auto border border-white/20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
             {/* Check In */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 block text-left date-label-mobile">
+              <label className="text-sm font-semibold text-gray-800 block text-left">
                 Tanggal Masuk
               </label>
               <div className="relative">
-                <Input type="date" value={checkIn} onChange={e => setCheckIn(e.target.value)} className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900" placeholder="Pilih Tanggal" />
-                <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                <Input 
+                  type="date" 
+                  value={checkIn} 
+                  onChange={(e) => setCheckIn(e.target.value)} 
+                  className="pl-10 h-12 border-2 border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500 text-gray-900 bg-white font-medium" 
+                  placeholder="Pilih Tanggal" 
+                />
+                <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
               </div>
             </div>
 
             {/* Check Out */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 block text-left date-label-mobile">
+              <label className="text-sm font-semibold text-gray-800 block text-left">
                 Tanggal Keluar
               </label>
               <div className="relative">
-                <Input type="date" value={checkOut} onChange={e => setCheckOut(e.target.value)} className="pl-10 h-12 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900" placeholder="Pilih Tanggal" />
-                <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                <Input 
+                  type="date" 
+                  value={checkOut} 
+                  onChange={(e) => setCheckOut(e.target.value)} 
+                  className="pl-10 h-12 border-2 border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500 text-gray-900 bg-white font-medium" 
+                  placeholder="Pilih Tanggal" 
+                />
+                <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
               </div>
             </div>
 
             {/* Guests */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 block text-left">
+              <label className="text-sm font-semibold text-gray-800 block text-left">
                 Tamu
               </label>
               <div className="relative">
                 <Select value={guests} onValueChange={setGuests}>
-                  <SelectTrigger className="h-12 pl-10 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 text-gray-900">
+                  <SelectTrigger className="h-12 pl-10 border-2 border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500 text-gray-900 bg-white font-medium">
                     <SelectValue placeholder="2 Orang Dewasa" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1">1 Orang Dewasa</SelectItem>
-                    <SelectItem value="2">2 Orang Dewasa</SelectItem>
-                    <SelectItem value="3">3 Orang Dewasa</SelectItem>
-                    <SelectItem value="4">4 Orang Dewasa</SelectItem>
-                    <SelectItem value="5">5+ Orang Dewasa</SelectItem>
+                  <SelectContent className="bg-white border-2 border-gray-200 shadow-lg z-50">
+                    <SelectItem value="1" className="text-gray-900 hover:bg-gray-100">1 Orang Dewasa</SelectItem>
+                    <SelectItem value="2" className="text-gray-900 hover:bg-gray-100">2 Orang Dewasa</SelectItem>
+                    <SelectItem value="3" className="text-gray-900 hover:bg-gray-100">3 Orang Dewasa</SelectItem>
+                    <SelectItem value="4" className="text-gray-900 hover:bg-gray-100">4 Orang Dewasa</SelectItem>
+                    <SelectItem value="5" className="text-gray-900 hover:bg-gray-100">5+ Orang Dewasa</SelectItem>
                   </SelectContent>
                 </Select>
-                <User className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                <User className="absolute left-3 top-3 w-5 h-5 text-gray-500 pointer-events-none" />
               </div>
             </div>
 
             {/* Search Button */}
             <div className="lg:col-span-1">
-              <Button onClick={handleCheckAvailability} className="w-full h-12 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-emerald-500/25 flex items-center justify-center space-x-2">
+              <Button 
+                onClick={handleCheckAvailability} 
+                className="w-full h-12 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-emerald-500/25 flex items-center justify-center space-x-2"
+              >
                 <Search className="w-5 h-5" />
-                <span>CEK KETERSEDIAAN</span>
+                <span className="font-semibold">CEK KETERSEDIAAN</span>
               </Button>
             </div>
           </div>
-
-          {/* Tour Periods Info */}
-          
         </div>
 
         {/* Scroll Indicator with Enhanced Shadow */}
@@ -144,6 +164,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;
