@@ -1,9 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import TourImageGallery from '@/components/TourImageGallery';
-import { Star, MapPin, Calendar, Users, CheckCircle, Phone, MessageCircle, ArrowLeft, Clock, Shield, Award, AlertTriangle, ArrowRight } from 'lucide-react';
+import { Star, MapPin, Calendar, Users, CheckCircle, Phone, MessageCircle, ArrowLeft, Clock, Shield, Award, AlertTriangle, ArrowRight, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
@@ -46,14 +47,7 @@ const TourDetail = () => {
   const tourImages = getDestinationImages(tourId as string);
 
   const generateDepartureDates = () => {
-    const dates = ["JULI: 5, 12, 19, 26", "AGUSTUS: 2, 9, 16, 23, 30", "SEP: 6, 13, 20, 27"];
-    if (tour.category === "Pantai") {
-      return ["JULI: 5-6, 12-13, 19-20, 26-27", "AGUSTUS: 2-3, 9-10, 16-17, 23-24, 30-31", "SEP: 6-7, 13-14, 20-21, 27-28"];
-    }
-    if (tour.duration === "3D 2N") {
-      return ["JULI: 4-6, 11-13, 18-20, 25-27", "AGUSTUS: 1-3, 8-10, 15-17, 22-24, 29-31", "SEP: 5-7, 12-14, 19-21, 26-28"];
-    }
-    return dates;
+    return tour.departureDates || ["JULI: 5, 12, 19, 26", "AGUSTUS: 2, 9, 16, 23, 30", "SEP: 6, 13, 20, 27"];
   };
 
   const getAvailableDates = () => {
@@ -164,7 +158,7 @@ const TourDetail = () => {
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                     ))}
-                    <span className="text-sm font-medium ml-1">5.0</span>
+                    <span className="text-sm font-medium ml-1">{tour.rating}</span>
                   </div>
                 </div>
               </div>
@@ -188,7 +182,7 @@ const TourDetail = () => {
 
               <div className="border-t border-b border-gray-200 py-6">
                 <div className="text-center">
-                  <span className="text-3xl font-bold text-emerald-600">{tour.price}</span>
+                  <span className="text-3xl font-bold text-emerald-600">Rp {tour.price.toLocaleString()}</span>
                   <span className="text-gray-600 ml-2">per orang</span>
                 </div>
               </div>
@@ -223,7 +217,6 @@ const TourDetail = () => {
         </div>
       </section>
 
-      
       {/* Tour Period & Calendar Section */}
       <section className="py-12 bg-gradient-to-br from-emerald-50 to-teal-50">
         <div className="container mx-auto px-4">
@@ -232,6 +225,31 @@ const TourDetail = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Informasi Tour & Jadwal</h2>
               <p className="text-lg text-gray-600">Periode ketersediaan dan informasi penting untuk trip ini</p>
             </div>
+
+            {/* Meeting Points Section */}
+            {tour.meetingPoints && tour.meetingPoints.length > 0 && (
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+                <div className="bg-gradient-to-r from-blue-600 to-emerald-600 p-6">
+                  <div className="flex items-center space-x-3 text-white">
+                    <MapPin className="w-8 h-8" />
+                    <div>
+                      <h3 className="text-xl font-bold">Meeting Point</h3>
+                      <p className="text-blue-100">Lokasi berkumpul</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="space-y-3">
+                    {tour.meetingPoints.map((point, index) => (
+                      <div key={index} className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
+                        <MapPin className="w-5 h-5 text-blue-600" />
+                        <span className="text-gray-700">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
@@ -372,6 +390,21 @@ const TourDetail = () => {
                 <p className="text-gray-600 leading-relaxed text-sm md:text-base">{tour.description}</p>
               </div>
 
+              {/* Destinations Section */}
+              {tour.destinations && tour.destinations.length > 0 && (
+                <div className="p-4 md:p-8 bg-blue-50">
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Destinasi Wisata</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                    {tour.destinations.map((destination, index) => (
+                      <div key={index} className="flex items-start space-x-3">
+                        <MapPin className="w-4 h-4 md:w-5 md:h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700 text-sm md:text-base leading-relaxed">{destination}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="p-4 md:p-8 bg-gray-50">
                 <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Highlight Tour</h2>
                 <div className="grid grid-cols-1 gap-3 md:gap-4">
@@ -440,6 +473,24 @@ const TourDetail = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Cancellation Policy Section */}
+              {tour.cancellationPolicy && tour.cancellationPolicy.length > 0 && (
+                <div className="p-4 md:p-8 bg-yellow-50">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-800 flex items-center mb-4">
+                    <Info className="w-5 h-5 md:w-6 md:h-6 text-yellow-600 mr-2" />
+                    Syarat & Ketentuan
+                  </h3>
+                  <div className="space-y-2 md:space-y-3">
+                    {tour.cancellationPolicy.map((policy, index) => (
+                      <div key={index} className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-yellow-600 rounded-full flex-shrink-0 mt-2"></div>
+                        <span className="text-gray-700 text-xs md:text-sm leading-relaxed">{policy}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -493,10 +544,10 @@ const TourDetail = () => {
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                         ))}
-                        <span className="text-sm font-medium ml-1">5.0</span>
+                        <span className="text-sm font-medium ml-1">{nextTour.rating}</span>
                       </div>
                       <div className="text-right">
-                        <span className="text-lg font-bold text-emerald-600">{nextTour.price}</span>
+                        <span className="text-lg font-bold text-emerald-600">Rp {nextTour.price.toLocaleString()}</span>
                         <div className="text-xs text-gray-500">per orang</div>
                       </div>
                     </div>
