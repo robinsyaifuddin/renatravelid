@@ -36,9 +36,13 @@ const Tour = () => {
   const sortedTours = [...filteredTours].sort((a, b) => {
     switch (sortBy) {
       case 'price-low':
-        return parseFloat(a.price.replace(/[^\d]/g, '')) - parseFloat(b.price.replace(/[^\d]/g, ''));
+        return typeof a.price === 'number' && typeof b.price === 'number' 
+          ? a.price - b.price 
+          : parseFloat(a.price.toString().replace(/[^\d]/g, '')) - parseFloat(b.price.toString().replace(/[^\d]/g, ''));
       case 'price-high':
-        return parseFloat(b.price.replace(/[^\d]/g, '')) - parseFloat(a.price.replace(/[^\d]/g, ''));
+        return typeof a.price === 'number' && typeof b.price === 'number' 
+          ? b.price - a.price 
+          : parseFloat(b.price.toString().replace(/[^\d]/g, '')) - parseFloat(a.price.toString().replace(/[^\d]/g, ''));
       case 'rating':
         return b.rating - a.rating;
       default: // popular
