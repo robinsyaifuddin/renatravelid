@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -163,19 +162,13 @@ const TourDetail = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              {/* Removed group size section - only showing duration */}
+              <div className="grid grid-cols-1 gap-4">
                 <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
                   <Calendar className="w-6 h-6 text-emerald-500" />
                   <div>
                     <div className="text-sm text-gray-600">Durasi</div>
                     <div className="font-semibold">{tour.duration}</div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
-                  <Users className="w-6 h-6 text-emerald-500" />
-                  <div>
-                    <div className="text-sm text-gray-600">Grup Size</div>
-                    <div className="font-semibold">{tour.groupSize}</div>
                   </div>
                 </div>
               </div>
@@ -217,7 +210,7 @@ const TourDetail = () => {
         </div>
       </section>
 
-      {/* Tour Period & Calendar Section */}
+      {/* Tour Period & Calendar Section - removed group size section */}
       <section className="py-12 bg-gradient-to-br from-emerald-50 to-teal-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -251,7 +244,8 @@ const TourDetail = () => {
               </div>
             )}
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {/* Only showing period tour section, group size section removed */}
+            <div className="grid grid-cols-1 gap-8 mb-12">
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
                   <div className="flex items-center space-x-3 text-white">
@@ -277,30 +271,6 @@ const TourDetail = () => {
                           +{getAvailableMonths().length - 4} lainnya
                         </span>
                       )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-600 to-emerald-600 p-6">
-                  <div className="flex items-center space-x-3 text-white">
-                    <Users className="w-8 h-8" />
-                    <div>
-                      <h3 className="text-xl font-bold">Ukuran Grup</h3>
-                      <p className="text-blue-100">Jumlah peserta</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600 mb-2">{tour.groupSize}</div>
-                    <p className="text-gray-600 mb-4">Jumlah minimal peserta</p>
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                      <p className="text-sm text-green-700">
-                        <CheckCircle className="w-4 h-4 inline mr-1" />
-                        Grup terorganisir untuk pengalaman optimal
-                      </p>
                     </div>
                   </div>
                 </div>

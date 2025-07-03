@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -190,7 +189,7 @@ const Tour = () => {
                         />
                       ))}
                     </div>
-                    <span className="text-sm font-medium">5.0</span>
+                    <span className="text-sm font-medium">{tour.rating}</span>
                   </div>
 
                   {/* Title */}
@@ -207,22 +206,18 @@ const Tour = () => {
                     <span className="text-sm">{tour.location}</span>
                   </div>
 
-                  {/* Details */}
-                  <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
+                  {/* Details - removed group size */}
+                  <div className="flex items-center justify-start text-sm text-gray-600 mb-4">
                     <div className="flex items-center space-x-1">
                       <Calendar className="w-4 h-4" />
                       <span>{tour.duration}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Users className="w-4 h-4" />
-                      <span>{tour.groupSize}</span>
                     </div>
                   </div>
 
                   {/* Price and Button */}
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <span className="text-lg font-bold text-emerald-600">{tour.price}</span>
+                      <span className="text-lg font-bold text-emerald-600">Rp {tour.price.toLocaleString()}</span>
                       <div className="text-xs text-gray-500">per orang</div>
                     </div>
                   </div>

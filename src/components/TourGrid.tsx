@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { tourData } from '@/data/tourData';
 import { getMainDestinationImage } from '@/utils/imageUtils';
+
 const TourGrid = () => {
   // Get specific destinations: TWA Papandayan, Pulau Pecang, Wisata Baduy
   const specificDestinations = ['twa-papandayan', 'pulau-pecang', 'wisata-baduy'];
@@ -12,17 +13,18 @@ const TourGrid = () => {
     ...tourData[id as keyof typeof tourData]
   })).filter(tour => tour.title); // Filter out any undefined tours
 
-  return <section className="py-16 bg-gray-50">
+  return (
+    <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Destinasi Terbaik
           </h2>
-          
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {topDestinations.map(tour => <div key={tour.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          {topDestinations.map(tour => (
+            <div key={tour.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
                 <img src={getMainDestinationImage(tour.id.toString())} alt={tour.title} className="w-full h-64 object-cover" />
                 <div className="absolute top-4 left-4">
@@ -46,14 +48,11 @@ const TourGrid = () => {
                   <span className="text-sm">{tour.location}</span>
                 </div>
 
-                <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
+                {/* Removed group size, only showing duration */}
+                <div className="flex items-center justify-start text-sm text-gray-600 mb-4">
                   <div className="flex items-center">
                     <Calendar className="w-4 h-4 mr-1" />
                     <span>{tour.duration}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Users className="w-4 h-4 mr-1" />
-                    <span>{tour.groupSize}</span>
                   </div>
                 </div>
 
@@ -76,9 +75,12 @@ const TourGrid = () => {
                   </Link>
                 </div>
               </div>
-            </div>)}
+            </div>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default TourGrid;
