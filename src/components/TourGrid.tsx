@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Star, MapPin, Calendar, Users, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -35,7 +36,7 @@ const TourGrid = () => {
                 <div className="absolute top-4 right-4">
                   <div className="bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center space-x-1">
                     <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                    <span className="text-sm font-medium">{tour.rating}</span>
+                    <span className="text-sm font-medium">5.0</span>
                   </div>
                 </div>
               </div>

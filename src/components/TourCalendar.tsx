@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
@@ -12,45 +13,89 @@ const TourCalendar = () => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
-  // Generate tour schedule from tourData with synchronized departure dates
+  // Generate tour schedule from actual tourData with synchronized departure dates
   const generateTourSchedule = () => {
     const tours = Object.entries(tourData);
     const schedule = [];
 
-    tours.forEach(([id, tour], index) => {
-      // Generate departure dates based on tour category and data
+    tours.forEach(([id, tour]) => {
+      // Parse actual departure dates from the tour data
       let departureDates = [];
       const currentYear = new Date().getFullYear();
       
-      if (tour.category === "Pantai") {
-        departureDates = [
-          `${currentYear}-07-05`, `${currentYear}-07-12`, `${currentYear}-07-19`, `${currentYear}-07-26`,
-          `${currentYear}-08-02`, `${currentYear}-08-09`, `${currentYear}-08-16`, `${currentYear}-08-23`, `${currentYear}-08-30`,
-          `${currentYear}-09-06`, `${currentYear}-09-13`, `${currentYear}-09-20`, `${currentYear}-09-27`
-        ];
-      } else if (tour.category === "Pegunungan") {
-        departureDates = [
-          `${currentYear}-07-07`, `${currentYear}-07-14`, `${currentYear}-07-21`, `${currentYear}-07-28`,
-          `${currentYear}-08-04`, `${currentYear}-08-11`, `${currentYear}-08-18`, `${currentYear}-08-25`,
-          `${currentYear}-09-01`, `${currentYear}-09-08`, `${currentYear}-09-15`, `${currentYear}-09-22`, `${currentYear}-09-29`
-        ];
-      } else if (tour.category === "Budaya") {
-        departureDates = [
-          `${currentYear}-06-08`, `${currentYear}-06-15`, `${currentYear}-06-22`, `${currentYear}-06-29`,
-          `${currentYear}-07-06`, `${currentYear}-07-13`, `${currentYear}-07-20`, `${currentYear}-07-27`,
-          `${currentYear}-08-03`, `${currentYear}-08-10`, `${currentYear}-08-17`, `${currentYear}-08-24`, `${currentYear}-08-31`
-        ];
-      } else {
-        // Default dates for other categories
-        departureDates = [
-          `${currentYear}-07-05`, `${currentYear}-07-12`, `${currentYear}-07-19`, `${currentYear}-07-26`,
-          `${currentYear}-08-02`, `${currentYear}-08-09`, `${currentYear}-08-16`, `${currentYear}-08-23`,
-          `${currentYear}-09-06`, `${currentYear}-09-13`, `${currentYear}-09-20`, `${currentYear}-09-27`
-        ];
+      if (tour.departureDates && tour.departureDates.length > 0) {
+        // Extract dates from the departureDates array
+        tour.departureDates.forEach(dateStr => {
+          // Parse dates like "JULI: 5, 12, 19, 26" or "JULI: 5-6, 12-13" etc.
+          const parts = dateStr.split(':');
+          if (parts.length === 2) {
+            const monthStr = parts[0].trim();
+            const dates = parts[1].trim().split(',');
+            
+            // Map month names to numbers
+            const monthMap: { [key: string]: string } = {
+              'JUNI': '06', 'JULI': '07', 'AGUSTUS': '08', 'SEP': '09', 
+              'OKT': '10', 'NOV': '11', 'DES': '12'
+            };
+            
+            const monthNum = monthMap[monthStr];
+            if (monthNum) {
+              dates.forEach(date => {
+                const cleanDate = date.trim();
+                // Handle single dates or date ranges
+                if (cleanDate.includes('-')) {
+                  // For multi-day tours, use the first date
+                  const firstDate = cleanDate.split('-')[0];
+                  if (firstDate.length <= 2) {
+                    departureDates.push(`${currentYear}-${monthNum}-${firstDate.padStart(2, '0')}`);
+                  }
+                } else if (cleanDate.length <= 2) {
+                  departureDates.push(`${currentYear}-${monthNum}-${cleanDate.padStart(2, '0')}`);
+                }
+              });
+            }
+          }
+        });
       }
 
-      // Calculate available slots with a default range
-      const availableSlots = Math.floor(Math.random() * 18) + 2; // Random between 2-20
+      // If no valid dates parsed, use default schedule
+      if (departureDates.length === 0) {
+        if (tour.category === "Pantai") {
+          departureDates = [
+            `${currentYear}-07-05`, `${currentYear}-07-12`, `${currentYear}-07-19`, `${currentYear}-07-26`,
+            `${currentYear}-08-02`, `${currentYear}-08-09`, `${currentYear}-08-16`, `${currentYear}-08-23`, `${currentYear}-08-30`,
+            `${currentYear}-09-06`, `${currentYear}-09-13`, `${currentYear}-09-20`, `${currentYear}-09-27`
+          ];
+        } else if (tour.category === "Pegunungan") {
+          departureDates = [
+            `${currentYear}-07-07`, `${currentYear}-07-14`, `${currentYear}-07-21`, `${currentYear}-07-28`,
+            `${currentYear}-08-04`, `${currentYear}-08-11`, `${currentYear}-08-18`, `${currentYear}-08-25`,
+            `${currentYear}-09-01`, `${currentYear}-09-08`, `${currentYear}-09-15`, `${currentYear}-09-22`, `${currentYear}-09-29`
+          ];
+        } else if (tour.category === "Budaya") {
+          departureDates = [
+            `${currentYear}-06-08`, `${currentYear}-06-15`, `${currentYear}-06-22`, `${currentYear}-06-29`,
+            `${currentYear}-07-06`, `${currentYear}-07-13`, `${currentYear}-07-20`, `${currentYear}-07-27`,
+            `${currentYear}-08-03`, `${currentYear}-08-10`, `${currentYear}-08-17`, `${currentYear}-08-24`, `${currentYear}-08-31`
+          ];
+        } else {
+          departureDates = [
+            `${currentYear}-07-05`, `${currentYear}-07-12`, `${currentYear}-07-19`, `${currentYear}-07-26`,
+            `${currentYear}-08-02`, `${currentYear}-08-09`, `${currentYear}-08-16`, `${currentYear}-08-23`,
+            `${currentYear}-09-06`, `${currentYear}-09-13`, `${currentYear}-09-20`, `${currentYear}-09-27`
+          ];
+        }
+      }
+
+      // Calculate available slots with a range based on tour type
+      let availableSlots;
+      if (tour.duration.includes('ONE DAY')) {
+        availableSlots = Math.floor(Math.random() * 15) + 10; // 10-25 for day trips
+      } else if (tour.duration.includes('2D')) {
+        availableSlots = Math.floor(Math.random() * 10) + 5; // 5-15 for 2-day trips
+      } else {
+        availableSlots = Math.floor(Math.random() * 8) + 2; // 2-10 for longer trips
+      }
 
       schedule.push({
         id: id,
@@ -59,7 +104,8 @@ const TourCalendar = () => {
         duration: tour.duration,
         price: tour.price,
         availableSlots: availableSlots,
-        color: index % 3 === 0 ? "bg-emerald-500" : index % 3 === 1 ? "bg-blue-500" : "bg-teal-500"
+        category: tour.category,
+        location: tour.location
       });
     });
 
@@ -190,6 +236,11 @@ const TourCalendar = () => {
                           <div className="flex items-start justify-between mb-3">
                             <h4 className="font-semibold text-gray-800 flex-1">{tour.title}</h4>
                             <Badge variant="secondary" className="ml-2">{tour.duration}</Badge>
+                          </div>
+                          
+                          <div className="flex items-center text-gray-600 mb-3">
+                            <MapPin className="w-4 h-4 mr-2" />
+                            <span className="text-sm">{tour.location}</span>
                           </div>
                           
                           <div className="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-4">
