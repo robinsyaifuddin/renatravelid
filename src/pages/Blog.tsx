@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Calendar, User, Eye, MessageCircle, Search, Filter, ArrowRight } from 'lucide-react';
+import { Calendar, User, Eye, MessageCircle, Search, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const Blog = () => {
   const navigate = useNavigate();
@@ -351,28 +351,26 @@ const Blog = () => {
         </section>
       )}
 
-      {/* Category Filter */}
-      <section className="py-8 bg-white sticky top-[88px] z-40 border-b">
+      {/* Category Filter - Updated to Dropdown */}
+      <section className="py-8 bg-white border-b">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center space-x-2 flex-wrap">
-              <Filter className="w-5 h-5 text-gray-600" />
-              <span className="text-gray-600 font-medium">Kategori:</span>
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`px-4 py-2 rounded-full transition-colors duration-200 ${
-                    activeCategory === category.id
-                      ? 'bg-emerald-600 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600'
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center space-x-4 w-full sm:w-auto">
+              <span className="text-gray-600 font-medium whitespace-nowrap">Filter Kategori:</span>
+              <Select value={activeCategory} onValueChange={setActiveCategory}>
+                <SelectTrigger className="w-full sm:w-64 bg-white border-gray-200">
+                  <SelectValue placeholder="Pilih kategori" />
+                </SelectTrigger>
+                <SelectContent className="bg-white border-gray-200 shadow-lg">
+                  {categories.map((category) => (
+                    <SelectItem key={category.id} value={category.id} className="hover:bg-emerald-50">
+                      {category.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
-            <div className="text-gray-600">
+            <div className="text-gray-600 text-sm">
               {filteredPosts.length} artikel ditemukan
             </div>
           </div>
