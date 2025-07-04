@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
@@ -50,9 +49,8 @@ const TourCalendar = () => {
         ];
       }
 
-      // Calculate available slots based on group size
-      const maxGroupSize = parseInt(tour.groupSize.split('-')[1] || tour.groupSize.split(' ')[0]) || 20;
-      const availableSlots = Math.floor(Math.random() * maxGroupSize) + 2;
+      // Calculate available slots with a default range
+      const availableSlots = Math.floor(Math.random() * 18) + 2; // Random between 2-20
 
       schedule.push({
         id: id,
@@ -207,7 +205,7 @@ const TourCalendar = () => {
 
                           <div className="flex items-center justify-between">
                             <div>
-                              <span className="text-2xl font-bold text-emerald-600">{tour.price}</span>
+                              <span className="text-2xl font-bold text-emerald-600">Rp {tour.price.toLocaleString()}</span>
                               <span className="text-gray-500 text-sm ml-2">per orang</span>
                             </div>
                             <Button 

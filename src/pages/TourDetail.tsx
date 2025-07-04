@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -162,7 +163,7 @@ const TourDetail = () => {
                 </div>
               </div>
 
-              {/* Removed group size section - only showing duration */}
+              {/* Only showing duration */}
               <div className="grid grid-cols-1 gap-4">
                 <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
                   <Calendar className="w-6 h-6 text-emerald-500" />
@@ -210,7 +211,7 @@ const TourDetail = () => {
         </div>
       </section>
 
-      {/* Tour Period & Calendar Section - removed group size section */}
+      {/* Tour Period & Calendar Section */}
       <section className="py-12 bg-gradient-to-br from-emerald-50 to-teal-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -244,7 +245,7 @@ const TourDetail = () => {
               </div>
             )}
 
-            {/* Only showing period tour section, group size section removed */}
+            {/* Only showing period tour section */}
             <div className="grid grid-cols-1 gap-8 mb-12">
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
@@ -498,14 +499,10 @@ const TourDetail = () => {
                       {nextTour.description}
                     </p>
                     
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4">
                       <div className="flex items-center space-x-2">
                         <Calendar className="w-4 h-4 text-emerald-500" />
                         <span className="text-sm text-gray-600">{nextTour.duration}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Users className="w-4 h-4 text-emerald-500" />
-                        <span className="text-sm text-gray-600">{nextTour.groupSize}</span>
                       </div>
                     </div>
                     
