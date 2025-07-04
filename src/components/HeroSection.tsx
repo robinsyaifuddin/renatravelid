@@ -98,10 +98,13 @@ const HeroSection = () => {
                   type="date" 
                   value={checkIn} 
                   onChange={(e) => setCheckIn(e.target.value)} 
-                  className="pl-10 h-12 border-2 border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500 text-gray-900 bg-white font-medium" 
-                  placeholder="Pilih Tanggal" 
+                  className="pl-10 h-12 border-2 border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500 text-gray-900 bg-white font-medium [&::-webkit-calendar-picker-indicator]:text-gray-900 [&::-webkit-calendar-picker-indicator]:opacity-100 [&::-webkit-datetime-edit]:text-gray-900 [&::-webkit-datetime-edit-fields-wrapper]:text-gray-900 [&::-webkit-datetime-edit-text]:text-gray-900 [&::-webkit-datetime-edit-month-field]:text-gray-900 [&::-webkit-datetime-edit-day-field]:text-gray-900 [&::-webkit-datetime-edit-year-field]:text-gray-900" 
+                  placeholder="Pilih Tanggal"
+                  style={{
+                    colorScheme: 'light'
+                  }}
                 />
-                <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
+                <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-500 pointer-events-none" />
               </div>
             </div>
 
@@ -115,10 +118,13 @@ const HeroSection = () => {
                   type="date" 
                   value={checkOut} 
                   onChange={(e) => setCheckOut(e.target.value)} 
-                  className="pl-10 h-12 border-2 border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500 text-gray-900 bg-white font-medium" 
-                  placeholder="Pilih Tanggal" 
+                  className="pl-10 h-12 border-2 border-gray-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500 text-gray-900 bg-white font-medium [&::-webkit-calendar-picker-indicator]:text-gray-900 [&::-webkit-calendar-picker-indicator]:opacity-100 [&::-webkit-datetime-edit]:text-gray-900 [&::-webkit-datetime-edit-fields-wrapper]:text-gray-900 [&::-webkit-datetime-edit-text]:text-gray-900 [&::-webkit-datetime-edit-month-field]:text-gray-900 [&::-webkit-datetime-edit-day-field]:text-gray-900 [&::-webkit-datetime-edit-year-field]:text-gray-900" 
+                  placeholder="Pilih Tanggal"
+                  style={{
+                    colorScheme: 'light'
+                  }}
                 />
-                <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-500" />
+                <Calendar className="absolute left-3 top-3 w-5 h-5 text-gray-500 pointer-events-none" />
               </div>
             </div>
 

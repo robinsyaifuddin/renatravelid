@@ -109,6 +109,45 @@ h1, h2, h3, h4, h5, h6 {
   -moz-osx-font-smoothing: grayscale !important;
 }
 
+/* Enhanced Date Input Styling - Critical for Mobile and Desktop Visibility */
+input[type="date"] {
+  color: #1f2937 !important;
+  background-color: #ffffff !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  color-scheme: light !important;
+}
+
+/* Date Input Webkit Styling for Better Visibility */
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #1f2937 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  font-weight: 500 !important;
+}
+
+/* Calendar Picker Indicator Styling */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #1f2937 !important;
+  opacity: 1 !important;
+  background: none !important;
+  cursor: pointer !important;
+  filter: invert(0.2) !important;
+}
+
+/* Firefox Date Input Styling */
+input[type="date"]::-moz-calendar-picker-indicator {
+  color: #1f2937 !important;
+  opacity: 1 !important;
+  background: none !important;
+}
+
 /* 3D Transform Utilities */
 @layer utilities {
   .perspective-1000 {
@@ -222,7 +261,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Enhanced mobile optimization */
+/* Enhanced mobile optimization for date inputs */
 @media (max-width: 768px) {
   /* Force font consistency on mobile webkit browsers */
   * {
@@ -242,6 +281,40 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: inherit !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
+  }
+  
+  /* Enhanced mobile date input visibility */
+  input[type="date"] {
+    color: #1f2937 !important;
+    background-color: #ffffff !important;
+    -webkit-text-fill-color: #1f2937 !important;
+    font-size: 16px !important; /* Prevent zoom on iOS */
+    line-height: 1.5 !important;
+  }
+  
+  /* Mobile specific date field styling */
+  input[type="date"]::-webkit-datetime-edit,
+  input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+  input[type="date"]::-webkit-datetime-edit-text,
+  input[type="date"]::-webkit-datetime-edit-month-field,
+  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    color: #1f2937 !important;
+    -webkit-text-fill-color: #1f2937 !important;
+    background-color: transparent !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+  }
+  
+  /* Mobile calendar indicator */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #1f2937 !important;
+    opacity: 1 !important;
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23374151'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e") !important;
+    background-size: 20px 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    cursor: pointer !important;
   }
   
   /* Enhanced mobile touch targets for 3D elements */
@@ -357,4 +430,12 @@ a[href*="lovable.dev/projects"],
   outline: 2px solid #10b981 !important;
   outline-offset: 2px !important;
   border-color: #10b981 !important;
+}
+
+/* Force date input text visibility across all browsers */
+.booking-form input[type="date"] {
+  color: #1f2937 !important;
+  -webkit-text-fill-color: #1f2937 !important;
+  background-color: #ffffff !important;
+  color-scheme: light !important;
 }
