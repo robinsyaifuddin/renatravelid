@@ -2,14 +2,14 @@
 // Destination image mappings with real URLs
 const destinationImages = {
   'geopark-ciletuh': [
-    'https://images.app.goo.gl/PSeNLg2Tkq7wZFXeA',
-    'https://images.app.goo.gl/ew7SaTyBaMj6BDBT7',
-    'https://images.app.goo.gl/dW9PHE7sdzrfQd3Y8'
+    'https://omnispace.blob.core.windows.net/strapi-prod/2023-03-30/14_Melihat_Keindahan_Geopark_Ciletuh_di_Sukabumi_ee2bc9e397.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzJqMPTOc4xxHKu7KnIijfC9Zc8cDim-VOB_lHlYgUepvrECgX7J5mtWycFpnesHbv3MA&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDTDV1BXxYq5TSsNtjDp9NzsLgIe6_lJ4jZ_pYwzPyxZOHckttKA6o20cWmCny4CYsojM&usqp=CAU'
   ],
   'twa-papandayan': [
-    'https://images.app.goo.gl/F186jqSpMb1ArdfW9',
-    'https://images.app.goo.gl/MXuVXJRo5efsnBso6',
-    'https://images.app.goo.gl/H34C6Re5iJCRwAVp8'
+    'https://www.jelajahgarut.com/wp-content/uploads/2017/11/13392842_1620599381589304_918540633_n.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuzbNutwU45SVHSa-8PvzSW96E-wYaTfmcUJXeq8jQi_e_jadCBBqDMdP-9thbCt_hf6k&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlyZ72JPZHqo3QA5YymjTNO95o7dkgE8uCOpymQxI_jFL3TZYWSYnTx5o0z2xALLXntBc&usqp=CAU'
   ],
   'wisata-baduy': [
     'https://images.app.goo.gl/aa6xerBVkkq8mt7N7',
