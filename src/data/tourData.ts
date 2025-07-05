@@ -10,7 +10,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 245,
     difficulty: 'Mudah',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/F186jqSpMb1ArdfW9',
     destinations: [
       'Kawah Putih',
       'Hutan Mati', 
@@ -101,7 +101,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 189,
     difficulty: 'Sedang',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/aa6xerBVkkq8mt7N7',
     destinations: [
       'Baduy Luar',
       'Baduy Dalam'
@@ -188,7 +188,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 312,
     difficulty: 'Mudah',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/mybEbYUN9WyvE5f8A',
     destinations: [
       'Pulau Macan',
       'Pulau Dolphin',
@@ -279,7 +279,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 278,
     difficulty: 'Mudah',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/XxXR6FKnS3PKbLSXA',
     destinations: [
       'Penangkaran penyu & Taman Nasional',
       'Pulau air, pulau gosong petrick dan pulau semak daun',
@@ -370,7 +370,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 456,
     difficulty: 'Mudah',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/jv2fLeoiV4bAPTrDA',
     destinations: [
       'Snorkeling Di Pulau Tidung Kecil & Besar',
       'Jembatan Cinta',
@@ -463,7 +463,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 167,
     difficulty: 'Sedang',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/PSeNLg2Tkq7wZFXeA',
     destinations: [
       'Pantai Palampang',
       'Puncak Darma',
@@ -553,7 +553,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 203,
     difficulty: 'Mudah',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/LFSNmUPUcGuerRuM9',
     destinations: [
       'Curug Cikaso',
       'Pantai Karang Gantungan',
@@ -651,7 +651,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 389,
     difficulty: 'Sedang',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/eKLmUPRB1J1GDDpv6',
     destinations: [
       'Tuk Bimalukar',
       'Dieng Plateu Theater',
@@ -758,7 +758,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 156,
     difficulty: 'Menantang',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/2YtKZk3Evd5JEhTj9',
     destinations: [
       'Pohon Kiara',
       'Karang Copong',
@@ -862,7 +862,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 134,
     difficulty: 'Menantang',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/QHPzqEjGWZdimhay8',
     destinations: [
       'Sabaku Kecil',
       'Snorkeling Di Spot Geligi Dan Cemara',
@@ -973,7 +973,7 @@ export const tourData = {
     rating: 5.0,
     reviews: 198,
     difficulty: 'Mudah',
-    image: '/placeholder.svg',
+    image: 'https://images.app.goo.gl/mauMbhgradvNMzBY6',
     destinations: [
       'Pulau Kelagian Kecil',
       'Spot Snorkeling Cukuh Bedil',
