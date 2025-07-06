@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -8,7 +7,6 @@ import { generateInvoicePDF } from '@/utils/pdfUtils';
 import { 
   Download, 
   Banknote, 
-  QrCode, 
   MessageCircle,
   CheckCircle,
   MapPin,
@@ -71,14 +69,6 @@ const PaymentPage = () => {
         number: '081295735703',
         accountName: 'RENDY KURNIAWAN'
       }
-    },
-    {
-      id: 'qris',
-      name: 'QRIS',
-      icon: QrCode,
-      details: {
-        note: 'Scan QR Code untuk pembayaran instant'
-      }
     }
   ];
 
@@ -122,8 +112,6 @@ const PaymentPage = () => {
       paymentDetails = `• Nomor GoPay: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
     } else if (selectedPaymentMethod === 'shopeepay') {
       paymentDetails = `• Nomor ShopeePay: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
-    } else if (selectedPaymentMethod === 'qris') {
-      paymentDetails = `• Scan QR Code yang tersedia`;
     }
 
     const message = `Halo Admin Renatravel,
@@ -195,7 +183,6 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                             {(method.id === 'dana' || method.id === 'gopay' || method.id === 'shopeepay') && (
                               <>Nomor: {method.details.number}</>
                             )}
-                            {method.id === 'qris' && method.details.note}
                           </p>
                         </div>
                         {selectedPaymentMethod === method.id && (
@@ -228,20 +215,6 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                       )}
                       <p className="font-medium mt-2">Total: Rp {total.toLocaleString('id-ID')}</p>
                     </div>
-                  </div>
-                )}
-
-                {selectedPaymentMethod === 'qris' && (
-                  <div className="mt-4 md:mt-6 p-3 md:p-4 bg-purple-50 border border-purple-200 rounded-lg text-center">
-                    <h4 className="font-semibold text-purple-800 mb-3 md:mb-4 text-sm md:text-base">Scan QR Code</h4>
-                    <div className="w-32 h-32 md:w-48 md:h-48 bg-white border mx-auto rounded-lg flex items-center justify-center overflow-hidden">
-                      <img 
-                        src="/lovable-uploads/c688c126-ba00-4009-8b64-92dcd9d7489e.png" 
-                        alt="QR Code Pembayaran" 
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <p className="text-xs md:text-sm text-purple-700 mt-2">Scan dengan aplikasi banking atau e-wallet</p>
                   </div>
                 )}
               </div>

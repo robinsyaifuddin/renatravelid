@@ -1,4 +1,3 @@
-
 export const generateInvoicePDF = (bookingData: any, total: number, selectedPaymentMethod?: any) => {
   const formatDepartureDate = (dateString: string) => {
     if (!dateString) return 'Belum dipilih';
@@ -47,11 +46,6 @@ export const generateInvoicePDF = (bookingData: any, total: number, selectedPaym
       paymentDetails = `
         <div class="detail-row"><strong>Nomor ShopeePay:</strong> ${selectedPaymentMethod.details.number}</div>
         <div class="detail-row"><strong>Atas Nama:</strong> ${selectedPaymentMethod.details.accountName}</div>
-      `;
-    } else if (selectedPaymentMethod.id === 'qris') {
-      paymentDetails = `
-        <div class="detail-row"><strong>Metode:</strong> Scan QR Code</div>
-        <div class="detail-row"><strong>Catatan:</strong> Gunakan aplikasi banking atau e-wallet untuk scan QR Code</div>
       `;
     }
 
