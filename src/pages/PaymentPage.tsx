@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -14,7 +15,8 @@ import {
   Clock,
   Calendar,
   Smartphone,
-  CreditCard
+  CreditCard,
+  AlertCircle
 } from 'lucide-react';
 
 const PaymentPage = () => {
@@ -22,13 +24,31 @@ const PaymentPage = () => {
   const navigate = useNavigate();
   const [bookingData, setBookingData] = useState<any>(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const storedData = localStorage.getItem('bookingData');
-    if (storedData) {
-      setBookingData(JSON.parse(storedData));
-    } else {
-      navigate(`/tour/${id}`);
+    try {
+      console.log('Loading booking data from localStorage...');
+      const storedData = localStorage.getItem('bookingData');
+      
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        console.log('Booking data loaded:', parsedData);
+        setBookingData(parsedData);
+        setError(null);
+      } else {
+        console.log('No booking data found, redirecting to tour page');
+        setError('Data booking tidak ditemukan');
+        setTimeout(() => {
+          navigate(`/tour/${id || ''}`);
+        }, 2000);
+      }
+    } catch (err) {
+      console.error('Error loading booking data:', err);
+      setError('Terjadi kesalahan saat memuat data booking');
+    } finally {
+      setIsLoading(false);
     }
   }, [id, navigate]);
 
@@ -73,76 +93,150 @@ const PaymentPage = () => {
   ];
 
   const calculateTotal = () => {
-    if (!bookingData) return 0;
-    const pricePerPerson = parseInt(bookingData.tour.price.replace(/[^\d]/g, ''));
-    return pricePerPerson * bookingData.customer.participants;
+    if (!bookingData?.tour?.price || !bookingData?.customer?.participants) {
+      console.log('Missing data for calculation:', { 
+        price: bookingData?.tour?.price, 
+        participants: bookingData?.customer?.participants 
+      });
+      return 0;
+    }
+    
+    try {
+      const pricePerPerson = parseInt(bookingData.tour.price.replace(/[^\d]/g, ''));
+      const total = pricePerPerson * bookingData.customer.participants;
+      console.log('Calculated total:', total);
+      return total;
+    } catch (err) {
+      console.error('Error calculating total:', err);
+      return 0;
+    }
   };
 
   const handleDownloadInvoice = () => {
-    if (bookingData) {
+    if (!bookingData) {
+      console.error('No booking data available for invoice');
+      return;
+    }
+    
+    try {
       const selectedMethod = paymentMethods.find(method => method.id === selectedPaymentMethod);
-      generateInvoicePDF(bookingData, calculateTotal(), selectedMethod);
+      const total = calculateTotal();
+      console.log('Generating invoice with:', { bookingData, total, selectedMethod });
+      generateInvoicePDF(bookingData, total, selectedMethod);
+    } catch (err) {
+      console.error('Error generating invoice:', err);
+      setError('Gagal membuat invoice');
     }
   };
 
   const formatDepartureDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('id-ID', { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
+    if (!dateString) return 'Belum dipilih';
+    
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('id-ID', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+    } catch (err) {
+      console.error('Error formatting date:', err);
+      return 'Format tanggal tidak valid';
+    }
   };
 
   const handleConfirmPayment = () => {
-    if (!bookingData || !selectedPaymentMethod) return;
-
-    const paymentMethod = paymentMethods.find(method => method.id === selectedPaymentMethod);
-    const total = calculateTotal();
-    const departureDate = bookingData.customer.departureDate ? formatDepartureDate(bookingData.customer.departureDate) : 'Belum dipilih';
-    
-    let paymentDetails = '';
-    
-    if (selectedPaymentMethod === 'transfer') {
-      paymentDetails = `• Bank: ${paymentMethod?.details.bank}\n• No. Rekening: ${paymentMethod?.details.accountNumber}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
-    } else if (selectedPaymentMethod === 'dana') {
-      paymentDetails = `• Nomor DANA: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
-    } else if (selectedPaymentMethod === 'gopay') {
-      paymentDetails = `• Nomor GoPay: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
-    } else if (selectedPaymentMethod === 'shopeepay') {
-      paymentDetails = `• Nomor ShopeePay: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
+    if (!bookingData || !selectedPaymentMethod) {
+      console.log('Missing data for payment confirmation');
+      return;
     }
 
-    const message = `Halo Admin Renatravel,
+    try {
+      const paymentMethod = paymentMethods.find(method => method.id === selectedPaymentMethod);
+      const total = calculateTotal();
+      const departureDate = bookingData.customer?.departureDate ? formatDepartureDate(bookingData.customer.departureDate) : 'Belum dipilih';
+      
+      let paymentDetails = '';
+      
+      if (selectedPaymentMethod === 'transfer') {
+        paymentDetails = `• Bank: ${paymentMethod?.details.bank}\n• No. Rekening: ${paymentMethod?.details.accountNumber}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
+      } else if (selectedPaymentMethod === 'dana') {
+        paymentDetails = `• Nomor DANA: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
+      } else if (selectedPaymentMethod === 'gopay') {
+        paymentDetails = `• Nomor GoPay: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
+      } else if (selectedPaymentMethod === 'shopeepay') {
+        paymentDetails = `• Nomor ShopeePay: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
+      }
+
+      const message = `Halo Admin Renatravel,
 
 Saya ingin mengkonfirmasi pembayaran untuk booking berikut:
 
 📋 DETAIL BOOKING
-• ID Booking: ${bookingData.bookingId}
-• Nama: ${bookingData.customer.fullName}
-• Telepon: ${bookingData.customer.phone}
+• ID Booking: ${bookingData.bookingId || 'N/A'}
+• Nama: ${bookingData.customer?.fullName || 'N/A'}
+• Telepon: ${bookingData.customer?.phone || 'N/A'}
 
 🏝️ DETAIL TOUR
-• Destinasi: ${bookingData.tour.title}
-• Lokasi: ${bookingData.tour.location}
-• Durasi: ${bookingData.tour.duration}
+• Destinasi: ${bookingData.tour?.title || 'N/A'}
+• Lokasi: ${bookingData.tour?.location || 'N/A'}
+• Durasi: ${bookingData.tour?.duration || 'N/A'}
 • Tanggal Keberangkatan: ${departureDate}
-• Jumlah Peserta: ${bookingData.customer.participants} orang
+• Jumlah Peserta: ${bookingData.customer?.participants || 0} orang
 
 💰 DETAIL PEMBAYARAN
 • Total: Rp ${total.toLocaleString('id-ID')}
-• Metode: ${paymentMethod?.name}
+• Metode: ${paymentMethod?.name || 'N/A'}
 ${paymentDetails}
 
 Mohon konfirmasi pembayaran ini. Terima kasih!`;
 
-    const whatsappUrl = `https://wa.me/6281316029038?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+      const whatsappUrl = `https://wa.me/6281316029038?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    } catch (err) {
+      console.error('Error sending WhatsApp message:', err);
+      setError('Gagal membuka WhatsApp');
+    }
   };
 
-  if (!bookingData) {
-    return <div>Loading...</div>;
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Header />
+        <div className="container mx-auto px-4 py-8 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">Memuat data pembayaran...</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Error state
+  if (error || !bookingData) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Header />
+        <div className="container mx-auto px-4 py-8 flex items-center justify-center">
+          <div className="text-center bg-white rounded-xl shadow-lg p-8 max-w-md">
+            <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+            <h2 className="text-xl font-bold text-gray-800 mb-2">Terjadi Kesalahan</h2>
+            <p className="text-gray-600 mb-4">{error || 'Data booking tidak ditemukan'}</p>
+            <Button 
+              onClick={() => navigate('/tour')}
+              className="bg-emerald-500 hover:bg-emerald-600 text-white"
+            >
+              Kembali ke Tour
+            </Button>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
   }
 
   const total = calculateTotal();
@@ -173,14 +267,14 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                       onClick={() => setSelectedPaymentMethod(method.id)}
                     >
                       <div className="flex items-center space-x-3">
-                        <method.icon className="w-5 h-5 md:w-6 md:h-6 text-emerald-600" />
+                        <method.icon className="w-5 h-5 md:w-6 md:h-6 text-emerald-600 flex-shrink-0" />
                         <div className="flex-1 min-w-0">
                           <h3 className="font-semibold text-gray-800 text-sm md:text-base">{method.name}</h3>
                           <p className="text-xs md:text-sm text-gray-600 truncate">
-                            {method.id === 'transfer' && (
+                            {method.id === 'transfer' && method.details && (
                               <>Bank: {method.details.bank} - {method.details.accountNumber}</>
                             )}
-                            {(method.id === 'dana' || method.id === 'gopay' || method.id === 'shopeepay') && (
+                            {(method.id === 'dana' || method.id === 'gopay' || method.id === 'shopeepay') && method.details && (
                               <>Nomor: {method.details.number}</>
                             )}
                           </p>
@@ -248,28 +342,36 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                 
                 <div className="space-y-4">
                   <div>
-                    <img 
-                      src={bookingData.tour.image} 
-                      alt={bookingData.tour.title}
-                      className="w-full h-24 md:h-32 object-cover rounded-lg mb-3"
-                    />
-                    <h4 className="font-semibold text-gray-800 text-sm md:text-base">{bookingData.tour.title}</h4>
+                    {bookingData.tour?.image && (
+                      <img 
+                        src={bookingData.tour.image} 
+                        alt={bookingData.tour?.title || 'Tour Image'}
+                        className="w-full h-24 md:h-32 object-cover rounded-lg mb-3"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/placeholder.svg';
+                        }}
+                      />
+                    )}
+                    <h4 className="font-semibold text-gray-800 text-sm md:text-base">
+                      {bookingData.tour?.title || 'Judul Tour Tidak Tersedia'}
+                    </h4>
                   </div>
 
                   <div className="space-y-2 text-xs md:text-sm">
                     <div className="flex items-center space-x-2 text-gray-600">
                       <MapPin className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
-                      <span className="truncate">{bookingData.tour.location}</span>
+                      <span className="truncate">{bookingData.tour?.location || 'Lokasi tidak tersedia'}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-gray-600">
                       <Clock className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
-                      <span>{bookingData.tour.duration}</span>
+                      <span>{bookingData.tour?.duration || 'Durasi tidak tersedia'}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-gray-600">
                       <Users className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
-                      <span>{bookingData.customer.participants} peserta</span>
+                      <span>{bookingData.customer?.participants || 0} peserta</span>
                     </div>
-                    {bookingData.customer.departureDate && (
+                    {bookingData.customer?.departureDate && (
                       <div className="flex items-center space-x-2 text-gray-600">
                         <Calendar className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
                         <span className="text-xs">{formatDepartureDate(bookingData.customer.departureDate)}</span>
@@ -277,18 +379,18 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                     )}
                     <div className="flex items-center space-x-2 text-gray-600">
                       <Calendar className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
-                      <span>ID: {bookingData.bookingId}</span>
+                      <span>ID: {bookingData.bookingId || 'ID tidak tersedia'}</span>
                     </div>
                   </div>
 
                   <div className="border-t pt-4">
                     <div className="flex justify-between items-center mb-2 text-xs md:text-sm">
                       <span className="text-gray-600">Harga per orang</span>
-                      <span>{bookingData.tour.price}</span>
+                      <span>{bookingData.tour?.price || 'Rp 0'}</span>
                     </div>
                     <div className="flex justify-between items-center mb-2 text-xs md:text-sm">
                       <span className="text-gray-600">Jumlah peserta</span>
-                      <span>{bookingData.customer.participants} orang</span>
+                      <span>{bookingData.customer?.participants || 0} orang</span>
                     </div>
                     <div className="flex justify-between items-center font-bold text-base md:text-lg border-t pt-2">
                       <span>Total</span>
@@ -303,11 +405,11 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                 <div className="space-y-2 text-xs md:text-sm">
                   <div className="flex flex-col sm:flex-row">
                     <span className="text-gray-600 sm:w-16">Nama:</span>
-                    <span className="font-medium break-words">{bookingData.customer.fullName}</span>
+                    <span className="font-medium break-words">{bookingData.customer?.fullName || 'Nama tidak tersedia'}</span>
                   </div>
                   <div className="flex flex-col sm:flex-row">
                     <span className="text-gray-600 sm:w-16">Telepon:</span>
-                    <span>{bookingData.customer.phone}</span>
+                    <span>{bookingData.customer?.phone || 'Telepon tidak tersedia'}</span>
                   </div>
                 </div>
               </div>
