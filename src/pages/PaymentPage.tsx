@@ -14,7 +14,9 @@ import {
   MapPin,
   Users,
   Clock,
-  Calendar
+  Calendar,
+  Smartphone,
+  CreditCard
 } from 'lucide-react';
 
 const PaymentPage = () => {
@@ -35,11 +37,38 @@ const PaymentPage = () => {
   const paymentMethods = [
     {
       id: 'transfer',
-      name: 'Transfer Bank',
+      name: 'Transfer Bank Mandiri',
       icon: Banknote,
       details: {
         bank: 'Bank Mandiri',
         accountNumber: '1200013152082',
+        accountName: 'RENDY KURNIAWAN'
+      }
+    },
+    {
+      id: 'dana',
+      name: 'DANA',
+      icon: Smartphone,
+      details: {
+        number: '081295735703',
+        accountName: 'RENDY KURNIAWAN'
+      }
+    },
+    {
+      id: 'gopay',
+      name: 'GoPay',
+      icon: Smartphone,
+      details: {
+        number: '081295735703',
+        accountName: 'RENDY KURNIAWAN'
+      }
+    },
+    {
+      id: 'shopeepay',
+      name: 'ShopeePay',
+      icon: CreditCard,
+      details: {
+        number: '081295735703',
         accountName: 'RENDY KURNIAWAN'
       }
     },
@@ -61,7 +90,8 @@ const PaymentPage = () => {
 
   const handleDownloadInvoice = () => {
     if (bookingData) {
-      generateInvoicePDF(bookingData, calculateTotal());
+      const selectedMethod = paymentMethods.find(method => method.id === selectedPaymentMethod);
+      generateInvoicePDF(bookingData, calculateTotal(), selectedMethod);
     }
   };
 
@@ -82,6 +112,20 @@ const PaymentPage = () => {
     const total = calculateTotal();
     const departureDate = bookingData.customer.departureDate ? formatDepartureDate(bookingData.customer.departureDate) : 'Belum dipilih';
     
+    let paymentDetails = '';
+    
+    if (selectedPaymentMethod === 'transfer') {
+      paymentDetails = `• Bank: ${paymentMethod?.details.bank}\n• No. Rekening: ${paymentMethod?.details.accountNumber}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
+    } else if (selectedPaymentMethod === 'dana') {
+      paymentDetails = `• Nomor DANA: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
+    } else if (selectedPaymentMethod === 'gopay') {
+      paymentDetails = `• Nomor GoPay: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
+    } else if (selectedPaymentMethod === 'shopeepay') {
+      paymentDetails = `• Nomor ShopeePay: ${paymentMethod?.details.number}\n• Atas Nama: ${paymentMethod?.details.accountName}`;
+    } else if (selectedPaymentMethod === 'qris') {
+      paymentDetails = `• Scan QR Code yang tersedia`;
+    }
+
     const message = `Halo Admin Renatravel,
 
 Saya ingin mengkonfirmasi pembayaran untuk booking berikut:
@@ -101,7 +145,7 @@ Saya ingin mengkonfirmasi pembayaran untuk booking berikut:
 💰 DETAIL PEMBAYARAN
 • Total: Rp ${total.toLocaleString('id-ID')}
 • Metode: ${paymentMethod?.name}
-${selectedPaymentMethod === 'transfer' ? `• Bank: ${paymentMethod?.details.bank}\n• No. Rekening: ${paymentMethod?.details.accountNumber}` : ''}
+${paymentDetails}
 
 Mohon konfirmasi pembayaran ini. Terima kasih!`;
 
@@ -114,7 +158,7 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
   }
 
   const total = calculateTotal();
-  const transferDetails = paymentMethods.find(m => m.id === 'transfer')?.details;
+  const selectedMethodDetails = paymentMethods.find(m => m.id === selectedPaymentMethod)?.details;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -148,7 +192,10 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                             {method.id === 'transfer' && (
                               <>Bank: {method.details.bank} - {method.details.accountNumber}</>
                             )}
-                            {method.id !== 'transfer' && method.details.note}
+                            {(method.id === 'dana' || method.id === 'gopay' || method.id === 'shopeepay') && (
+                              <>Nomor: {method.details.number}</>
+                            )}
+                            {method.id === 'qris' && method.details.note}
                           </p>
                         </div>
                         {selectedPaymentMethod === method.id && (
@@ -159,13 +206,26 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                   ))}
                 </div>
 
-                {selectedPaymentMethod === 'transfer' && transferDetails && (
+                {/* Payment Details Display */}
+                {selectedPaymentMethod && selectedMethodDetails && (
                   <div className="mt-4 md:mt-6 p-3 md:p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <h4 className="font-semibold text-blue-800 mb-2 text-sm md:text-base">Informasi Transfer Bank</h4>
+                    <h4 className="font-semibold text-blue-800 mb-2 text-sm md:text-base">
+                      Informasi {paymentMethods.find(m => m.id === selectedPaymentMethod)?.name}
+                    </h4>
                     <div className="space-y-1 text-xs md:text-sm text-blue-700">
-                      <p>Bank: {transferDetails.bank}</p>
-                      <p>No. Rekening: {transferDetails.accountNumber}</p>
-                      <p>Atas Nama: {transferDetails.accountName}</p>
+                      {selectedPaymentMethod === 'transfer' && (
+                        <>
+                          <p>Bank: {selectedMethodDetails.bank}</p>
+                          <p>No. Rekening: {selectedMethodDetails.accountNumber}</p>
+                          <p>Atas Nama: {selectedMethodDetails.accountName}</p>
+                        </>
+                      )}
+                      {(selectedPaymentMethod === 'dana' || selectedPaymentMethod === 'gopay' || selectedPaymentMethod === 'shopeepay') && (
+                        <>
+                          <p>Nomor: {selectedMethodDetails.number}</p>
+                          <p>Atas Nama: {selectedMethodDetails.accountName}</p>
+                        </>
+                      )}
                       <p className="font-medium mt-2">Total: Rp {total.toLocaleString('id-ID')}</p>
                     </div>
                   </div>
@@ -191,6 +251,7 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                   onClick={handleDownloadInvoice}
                   variant="outline"
                   className="flex-1 text-sm md:text-base py-2 md:py-3"
+                  disabled={!selectedPaymentMethod}
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Invoice

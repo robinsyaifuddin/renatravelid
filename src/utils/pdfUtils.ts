@@ -1,5 +1,5 @@
 
-export const generateInvoicePDF = (bookingData: any, total: number) => {
+export const generateInvoicePDF = (bookingData: any, total: number, selectedPaymentMethod?: any) => {
   const formatDepartureDate = (dateString: string) => {
     if (!dateString) return 'Belum dipilih';
     const date = new Date(dateString);
@@ -9,6 +9,59 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
       month: 'long', 
       day: 'numeric' 
     });
+  };
+
+  // Generate payment information based on selected method
+  const getPaymentInfo = () => {
+    if (!selectedPaymentMethod) {
+      return `
+        <div class="payment-info">
+          <div class="section-title">Informasi Pembayaran</div>
+          <div class="detail-row"><strong>Bank:</strong> Bank Mandiri</div>
+          <div class="detail-row"><strong>No. Rekening:</strong> 1200013152082</div>
+          <div class="detail-row"><strong>Atas Nama:</strong> RENDY KURNIAWAN</div>
+          <div class="detail-row"><strong>Total yang harus dibayar:</strong> <strong>Rp ${total.toLocaleString('id-ID')}</strong></div>
+        </div>
+      `;
+    }
+
+    let paymentDetails = '';
+    
+    if (selectedPaymentMethod.id === 'transfer') {
+      paymentDetails = `
+        <div class="detail-row"><strong>Bank:</strong> ${selectedPaymentMethod.details.bank}</div>
+        <div class="detail-row"><strong>No. Rekening:</strong> ${selectedPaymentMethod.details.accountNumber}</div>
+        <div class="detail-row"><strong>Atas Nama:</strong> ${selectedPaymentMethod.details.accountName}</div>
+      `;
+    } else if (selectedPaymentMethod.id === 'dana') {
+      paymentDetails = `
+        <div class="detail-row"><strong>Nomor DANA:</strong> ${selectedPaymentMethod.details.number}</div>
+        <div class="detail-row"><strong>Atas Nama:</strong> ${selectedPaymentMethod.details.accountName}</div>
+      `;
+    } else if (selectedPaymentMethod.id === 'gopay') {
+      paymentDetails = `
+        <div class="detail-row"><strong>Nomor GoPay:</strong> ${selectedPaymentMethod.details.number}</div>
+        <div class="detail-row"><strong>Atas Nama:</strong> ${selectedPaymentMethod.details.accountName}</div>
+      `;
+    } else if (selectedPaymentMethod.id === 'shopeepay') {
+      paymentDetails = `
+        <div class="detail-row"><strong>Nomor ShopeePay:</strong> ${selectedPaymentMethod.details.number}</div>
+        <div class="detail-row"><strong>Atas Nama:</strong> ${selectedPaymentMethod.details.accountName}</div>
+      `;
+    } else if (selectedPaymentMethod.id === 'qris') {
+      paymentDetails = `
+        <div class="detail-row"><strong>Metode:</strong> Scan QR Code</div>
+        <div class="detail-row"><strong>Catatan:</strong> Gunakan aplikasi banking atau e-wallet untuk scan QR Code</div>
+      `;
+    }
+
+    return `
+      <div class="payment-info">
+        <div class="section-title">Informasi Pembayaran - ${selectedPaymentMethod.name}</div>
+        ${paymentDetails}
+        <div class="detail-row"><strong>Total yang harus dibayar:</strong> <strong>Rp ${total.toLocaleString('id-ID')}</strong></div>
+      </div>
+    `;
   };
 
   // Create HTML content for the invoice with consistent tour data
@@ -185,13 +238,7 @@ export const generateInvoicePDF = (bookingData: any, total: number) => {
         </tbody>
       </table>
 
-      <div class="payment-info">
-        <div class="section-title">Informasi Pembayaran</div>
-        <div class="detail-row"><strong>Bank:</strong> Bank Mandiri</div>
-        <div class="detail-row"><strong>No. Rekening:</strong> 1200013152082</div>
-        <div class="detail-row"><strong>Atas Nama:</strong> RENDY KURNIAWAN</div>
-        <div class="detail-row"><strong>Total yang harus dibayar:</strong> <strong>Rp ${total.toLocaleString('id-ID')}</strong></div>
-      </div>
+      ${getPaymentInfo()}
 
       <div class="footer">
         <p><strong>Renatravel.id</strong></p>
