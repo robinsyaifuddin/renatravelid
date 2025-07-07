@@ -347,7 +347,7 @@ const TourDetail = () => {
 
               {/* Destinations Section */}
               {tour.destinations && tour.destinations.length > 0 && <div className="p-4 md:p-8 bg-blue-50">
-                  <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">High</h2>
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Highlight Tour</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                     {tour.destinations.map((destination, index) => <div key={index} className="flex items-start space-x-3">
                         <MapPin className="w-4 h-4 md:w-5 md:h-5 text-blue-500 flex-shrink-0 mt-0.5" />
