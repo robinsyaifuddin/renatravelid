@@ -48,7 +48,7 @@ const HeroSection = () => {
               <div className="text-xs sm:text-sm md:text-base text-gray-300">Wisatawan Puas</div>
             </div>
             <div className="text-center">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-teal-400">55+</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-teal-400">55</div>
               <div className="text-xs sm:text-sm md:text-base text-gray-300">Destinasi Pilihan</div>
             </div>
             <div className="text-center">
