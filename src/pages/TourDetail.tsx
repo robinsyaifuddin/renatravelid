@@ -376,18 +376,6 @@ const TourDetail = () => {
                 </div>
               )}
 
-              <div className="p-4 md:p-8 bg-gray-50">
-                <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Highlight Tour</h2>
-                <div className="grid grid-cols-1 gap-3 md:gap-4">
-                  {tour.highlights?.map((highlight, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-sm md:text-base leading-relaxed">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               <div className="p-4 md:p-8">
                 <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Itinerary Lengkap</h2>
                 <div className="space-y-4 md:space-y-6">
