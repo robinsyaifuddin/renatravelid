@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -13,9 +12,10 @@ import { format } from "date-fns";
 import { id } from "date-fns/locale";
 import { tourData } from '@/data/tourData';
 import { getDestinationImages } from '@/utils/imageUtils';
-
 const TourDetail = () => {
-  const { id: tourId } = useParams();
+  const {
+    id: tourId
+  } = useParams();
   const navigate = useNavigate();
 
   // Get tour data from centralized source
@@ -38,18 +38,15 @@ const TourDetail = () => {
       ...tourData[nextTourId as keyof typeof tourData]
     };
   };
-
   const nextTour = getNextRecommendedTour();
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
 
   // Get tour images - use specific destination images or fallback to category placeholders
   const tourImages = getDestinationImages(tourId as string);
-
   const generateDepartureDates = () => {
     return tour.departureDates || ["JULI: 5, 12, 19, 26", "AGUSTUS: 2, 9, 16, 23, 30", "SEP: 6, 13, 20, 27"];
   };
-
   const getAvailableDates = () => {
     const availableDates: Date[] = [];
     const currentYear = new Date().getFullYear();
@@ -58,11 +55,25 @@ const TourDetail = () => {
       const [monthPart, datesPart] = dateRange.split(': ');
       const monthName = monthPart.trim();
       const dates = datesPart.split(', ');
-
-      const monthMap: { [key: string]: number; } = {
-        'JANUARI': 0, 'FEBRUARI': 1, 'MARET': 2, 'APRIL': 3, 'MEI': 4, 'JUNI': 5,
-        'JULI': 6, 'AGUSTUS': 7, 'SEP': 8, 'SEPTEMBER': 8, 'OKT': 9, 'OKTOBER': 9,
-        'NOV': 10, 'NOVEMBER': 10, 'DES': 11, 'DESEMBER': 11
+      const monthMap: {
+        [key: string]: number;
+      } = {
+        'JANUARI': 0,
+        'FEBRUARI': 1,
+        'MARET': 2,
+        'APRIL': 3,
+        'MEI': 4,
+        'JUNI': 5,
+        'JULI': 6,
+        'AGUSTUS': 7,
+        'SEP': 8,
+        'SEPTEMBER': 8,
+        'OKT': 9,
+        'OKTOBER': 9,
+        'NOV': 10,
+        'NOVEMBER': 10,
+        'DES': 11,
+        'DESEMBER': 11
       };
       const monthNumber = monthMap[monthName];
       if (monthNumber !== undefined) {
@@ -86,36 +97,26 @@ const TourDetail = () => {
     });
     return availableDates;
   };
-
   const isDateAvailable = (date: Date) => {
     const availableDates = getAvailableDates();
-    return availableDates.some(availableDate => 
-      availableDate.getDate() === date.getDate() && 
-      availableDate.getMonth() === date.getMonth() && 
-      availableDate.getFullYear() === date.getFullYear()
-    );
+    return availableDates.some(availableDate => availableDate.getDate() === date.getDate() && availableDate.getMonth() === date.getMonth() && availableDate.getFullYear() === date.getFullYear());
   };
-
   const getAvailablePeriod = () => {
     if (tour.category === "Pantai") return "Juli - Desember";
     if (tour.category === "Pegunungan") return "Juli - September";
     if (tour.category === "Budaya") return "Juni - Agustus";
     return "Juli - September";
   };
-
   const getAvailableMonths = () => {
     if (tour.category === "Pantai") return ["Juli", "Agustus", "September", "Oktober", "November", "Desember"];
     if (tour.category === "Pegunungan") return ["Juli", "Agustus", "September"];
     if (tour.category === "Budaya") return ["Juni", "Juli", "Agustus"];
     return ["Juli", "Agustus", "September"];
   };
-
   const handleBookNow = () => {
     navigate(`/booking/${tourId}`);
   };
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
       
       {/* Breadcrumb */}
@@ -155,9 +156,7 @@ const TourDetail = () => {
                     <span className="text-gray-600">{tour.location}</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                    ))}
+                    {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />)}
                     <span className="text-sm font-medium ml-1">{tour.rating}</span>
                   </div>
                 </div>
@@ -221,8 +220,7 @@ const TourDetail = () => {
             </div>
 
             {/* Meeting Points Section */}
-            {tour.meetingPoints && tour.meetingPoints.length > 0 && (
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+            {tour.meetingPoints && tour.meetingPoints.length > 0 && <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
                 <div className="bg-gradient-to-r from-blue-600 to-emerald-600 p-6">
                   <div className="flex items-center space-x-3 text-white">
                     <MapPin className="w-8 h-8" />
@@ -234,16 +232,13 @@ const TourDetail = () => {
                 </div>
                 <div className="p-6">
                   <div className="space-y-3">
-                    {tour.meetingPoints.map((point, index) => (
-                      <div key={index} className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
+                    {tour.meetingPoints.map((point, index) => <div key={index} className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
                         <MapPin className="w-5 h-5 text-blue-600" />
                         <span className="text-gray-700">{point}</span>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </div>
-              </div>
-            )}
+              </div>}
 
             {/* Only showing period tour section */}
             <div className="grid grid-cols-1 gap-8 mb-12">
@@ -262,16 +257,12 @@ const TourDetail = () => {
                     <div className="text-2xl font-bold text-emerald-600 mb-2">{getAvailablePeriod()}</div>
                     <p className="text-gray-600 mb-4">Tour tersedia pada bulan-bulan ini</p>
                     <div className="flex flex-wrap gap-2 justify-center">
-                      {getAvailableMonths().slice(0, 4).map(month => (
-                        <span key={month} className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
+                      {getAvailableMonths().slice(0, 4).map(month => <span key={month} className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
                           {month}
-                        </span>
-                      ))}
-                      {getAvailableMonths().length > 4 && (
-                        <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
+                        </span>)}
+                      {getAvailableMonths().length > 4 && <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">
                           +{getAvailableMonths().length - 4} lainnya
-                        </span>
-                      )}
+                        </span>}
                     </div>
                   </div>
                 </div>
@@ -296,18 +287,13 @@ const TourDetail = () => {
                       <PopoverTrigger asChild>
                         <Button variant="outline" className="w-full justify-start text-left font-normal h-14 text-lg border-2 border-emerald-200 hover:border-emerald-300">
                           <Calendar className="mr-3 h-5 w-5 text-emerald-500" />
-                          {selectedDate ? format(selectedDate, "dd MMMM yyyy", { locale: id }) : "Pilih tanggal tour"}
+                          {selectedDate ? format(selectedDate, "dd MMMM yyyy", {
+                          locale: id
+                        }) : "Pilih tanggal tour"}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0" align="start">
-                        <CalendarComponent 
-                          mode="single" 
-                          selected={selectedDate} 
-                          onSelect={setSelectedDate} 
-                          disabled={date => date < new Date() || !isDateAvailable(date)} 
-                          initialFocus 
-                          className="pointer-events-auto" 
-                        />
+                        <CalendarComponent mode="single" selected={selectedDate} onSelect={setSelectedDate} disabled={date => date < new Date() || !isDateAvailable(date)} initialFocus className="pointer-events-auto" />
                         <div className="p-4 border-t bg-gray-50">
                           <p className="text-sm text-gray-600 mb-2">
                             <Calendar className="w-4 h-4 inline mr-1" />
@@ -324,11 +310,9 @@ const TourDetail = () => {
                   <div>
                     <h4 className="text-lg font-semibold text-gray-800 mb-4">Tanggal Keberangkatan</h4>
                     <div className="space-y-2">
-                      {generateDepartureDates().map((dateRange, index) => (
-                        <div key={index} className="bg-emerald-50 border border-emerald-200 rounded-lg p-3">
+                      {generateDepartureDates().map((dateRange, index) => <div key={index} className="bg-emerald-50 border border-emerald-200 rounded-lg p-3">
                           <p className="text-sm text-emerald-700 font-medium">{dateRange}</p>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </div>
                 </div>
@@ -362,41 +346,33 @@ const TourDetail = () => {
               </div>
 
               {/* Destinations Section */}
-              {tour.destinations && tour.destinations.length > 0 && (
-                <div className="p-4 md:p-8 bg-blue-50">
-                  <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Destinasi Wisata</h2>
+              {tour.destinations && tour.destinations.length > 0 && <div className="p-4 md:p-8 bg-blue-50">
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">High</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-                    {tour.destinations.map((destination, index) => (
-                      <div key={index} className="flex items-start space-x-3">
+                    {tour.destinations.map((destination, index) => <div key={index} className="flex items-start space-x-3">
                         <MapPin className="w-4 h-4 md:w-5 md:h-5 text-blue-500 flex-shrink-0 mt-0.5" />
                         <span className="text-gray-700 text-sm md:text-base leading-relaxed">{destination}</span>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
-                </div>
-              )}
+                </div>}
 
               <div className="p-4 md:p-8">
                 <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Itinerary Lengkap</h2>
                 <div className="space-y-4 md:space-y-6">
-                  {tour.itinerary?.map((day, index) => (
-                    <div key={index} className="flex space-x-3 md:space-x-4">
+                  {tour.itinerary?.map((day, index) => <div key={index} className="flex space-x-3 md:space-x-4">
                       <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-emerald-100 rounded-full flex items-center justify-center">
                         <span className="text-emerald-600 font-bold text-sm md:text-base">{day.day}</span>
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-gray-800 mb-2 text-sm md:text-base">Hari {day.day}: {day.title}</h3>
                         <ul className="space-y-1 md:space-y-2">
-                          {day.activities.map((activity, actIndex) => (
-                            <li key={actIndex} className="text-gray-600 text-xs md:text-sm flex items-start space-x-2">
+                          {day.activities.map((activity, actIndex) => <li key={actIndex} className="text-gray-600 text-xs md:text-sm flex items-start space-x-2">
                               <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-emerald-500 rounded-full flex-shrink-0 mt-1.5 md:mt-2"></div>
                               <span className="leading-relaxed">{activity}</span>
-                            </li>
-                          ))}
+                            </li>)}
                         </ul>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
 
@@ -408,12 +384,10 @@ const TourDetail = () => {
                       Termasuk dalam Paket
                     </h3>
                     <div className="space-y-2 md:space-y-3">
-                      {tour.included?.map((item, index) => (
-                        <div key={index} className="flex items-start space-x-3">
+                      {tour.included?.map((item, index) => <div key={index} className="flex items-start space-x-3">
                           <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 flex-shrink-0 mt-0.5" />
                           <span className="text-gray-700 text-xs md:text-sm leading-relaxed">{item}</span>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </div>
                   <div className="space-y-4">
@@ -422,34 +396,28 @@ const TourDetail = () => {
                       Tidak Termasuk
                     </h3>
                     <div className="space-y-2 md:space-y-3">
-                      {tour.notIncluded?.map((item, index) => (
-                        <div key={index} className="flex items-start space-x-3">
+                      {tour.notIncluded?.map((item, index) => <div key={index} className="flex items-start space-x-3">
                           <div className="w-4 h-4 md:w-5 md:h-5 border-2 border-red-300 rounded-full flex-shrink-0 mt-0.5"></div>
                           <span className="text-gray-700 text-xs md:text-sm leading-relaxed">{item}</span>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Cancellation Policy Section */}
-              {tour.cancellationPolicy && tour.cancellationPolicy.length > 0 && (
-                <div className="p-4 md:p-8 bg-yellow-50">
+              {tour.cancellationPolicy && tour.cancellationPolicy.length > 0 && <div className="p-4 md:p-8 bg-yellow-50">
                   <h3 className="text-lg md:text-xl font-bold text-gray-800 flex items-center mb-4">
                     <Info className="w-5 h-5 md:w-6 md:h-6 text-yellow-600 mr-2" />
                     Syarat & Ketentuan
                   </h3>
                   <div className="space-y-2 md:space-y-3">
-                    {tour.cancellationPolicy.map((policy, index) => (
-                      <div key={index} className="flex items-start space-x-3">
+                    {tour.cancellationPolicy.map((policy, index) => <div key={index} className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-yellow-600 rounded-full flex-shrink-0 mt-2"></div>
                         <span className="text-gray-700 text-xs md:text-sm leading-relaxed">{policy}</span>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
-                </div>
-              )}
+                </div>}
             </div>
           </div>
         </div>
@@ -496,9 +464,7 @@ const TourDetail = () => {
                     
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                        ))}
+                        {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />)}
                         <span className="text-sm font-medium ml-1">{nextTour.rating}</span>
                       </div>
                       <div className="text-right">
@@ -537,8 +503,6 @@ const TourDetail = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default TourDetail;
