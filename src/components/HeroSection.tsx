@@ -44,11 +44,11 @@ const HeroSection = () => {
           {/* Professional Stats */}
           <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto py-6 sm:py-8">
             <div className="text-center">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-emerald-400">500+</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-emerald-400">10K+</div>
               <div className="text-xs sm:text-sm md:text-base text-gray-300">Wisatawan Puas</div>
             </div>
             <div className="text-center">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-teal-400">50+</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-teal-400">55+</div>
               <div className="text-xs sm:text-sm md:text-base text-gray-300">Destinasi Pilihan</div>
             </div>
             <div className="text-center">
