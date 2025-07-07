@@ -200,7 +200,7 @@ const GalleryShowcase = () => {
               
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-gray-600">
                 <span className="flex items-center">✓ Video Destinasi Tersedia</span>
-                <span className="flex items-center">✓ Rating Terbaik 4.8+</span>
+                <span className="flex items-center">✓ Rating Terbaik </span>
               </div>
             </div>
           </div>
