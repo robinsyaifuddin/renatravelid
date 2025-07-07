@@ -7,8 +7,8 @@ import { tourData } from '@/data/tourData';
 import { getMainDestinationImage } from '@/utils/imageUtils';
 
 const TourGrid = () => {
-  // Get specific destinations: TWA Papandayan, Pulau Pecang, Wisata Baduy
-  const specificDestinations = ['twa-papandayan', 'pulau-pecang', 'wisata-baduy'];
+  // Get specific destinations: TWA Papandayan, Pulau Peucang, Wisata Baduy
+  const specificDestinations = ['twa-papandayan', 'pulau-peucang', 'wisata-baduy'];
   const topDestinations = specificDestinations.map(id => ({
     id,
     ...tourData[id as keyof typeof tourData]

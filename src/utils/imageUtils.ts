@@ -12,49 +12,49 @@ const destinationImages = {
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlyZ72JPZHqo3QA5YymjTNO95o7dkgE8uCOpymQxI_jFL3TZYWSYnTx5o0z2xALLXntBc&usqp=CAU'
   ],
   'wisata-baduy': [
-    'https://images.app.goo.gl/aa6xerBVkkq8mt7N7',
-    'https://images.app.goo.gl/boKpGrEFLjAU43BaA',
-    'https://images.app.goo.gl/hhAqG6DyC8tvdNcbA'
+    'https://www.goersapp.com/blog/wp-content/uploads/2025/02/Mengenal-Suku-Baduy-Cara-Berkunjung-dan-Aturannya.webp',
+    'https://asset.kompas.com/crops/GGGdru8q1Q0XeKnfjGHCRL3lG5Q=/23x82:987x725/1200x800/data/photo/2018/02/18/1404978252.jpg',
+    'https://inforadar.disway.id/upload/ff720afa34a549bd7d204d27b054e452.jpg'
   ],
   'pulau-harapan': [
-    'https://images.app.goo.gl/mybEbYUN9WyvE5f8A',
-    'https://images.app.goo.gl/V37UdLWupCeSzH9t9',
-    'https://images.app.goo.gl/kLofj7iurHXEfiqy6'
+    'https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit19201280gsm/events/2024/12/16/d5f8d80b-aa9e-42f2-bac6-08da753ebee2-1734293591419-76ea11891a0a974fd1acb2ecd1374ed8.jpg',
+    'https://wisatapulauharapan.com/wp-content/uploads/2018/08/water-sport-snorkling-pulau-harapan.jpeg',
+    'https://visitpulauseribu.co.id/wp-content/uploads/2022/10/pulau-harapan-1.jpg'
   ],
   'pulau-tidung': [
-    'https://images.app.goo.gl/jv2fLeoiV4bAPTrDA',
-    'https://images.app.goo.gl/JD6dRHsoFr8jgNBk8',
-    'https://images.app.goo.gl/pdcVoSupamYerF7s8'
+    'https://visitpulauseribu.co.id/wp-content/uploads/2024/10/Spot-Wisata-Pulau-Tidung-Kepulauan-Seribu.jpeg',
+    'https://dinowisata.com/wp-content/uploads/2020/03/Objek-Wisata-Jembatan-Cinta-Pulau-Tidung-@ayu.rtn12.jpg',
+    'https://www.tourkepulauanseribu.com/assets/images/paket/pulau_tidung___tidung_island_-_kepulauan_seribu_7a9c1.jpg'
   ],
   'pulau-pramuka': [
-    'https://images.app.goo.gl/XxXR6FKnS3PKbLSXA',
-    'https://images.app.goo.gl/9UHRcgqFcPRoDHRK7',
-    'https://images.app.goo.gl/hecyhUugdz6HfAYT7'
+    'https://www.brenggo-id.com/wp-content/uploads/2023/03/27.-5-Hal-Menarik-Untuk-Liburan-di-Pulau-Pramuka-Kepulauan-Seribu-1.jpg',
+    'https://putrapulauseribu.com/wp-content/uploads/2021/11/pulau-air-jakarta.jpg',
+    'https://tidunglagoon.com/wp-content/uploads/2024/07/shutterstock_1095696137_2.jpg'
   ],
   'ujung-genteng': [
-    'https://images.app.goo.gl/LFSNmUPUcGuerRuM9',
-    'https://images.app.goo.gl/mUD1CEEBKMBpv3Xz9',
-    'https://images.app.goo.gl/VXCLuW4ez8brkmxQ6'
+    'https://static.promediateknologi.id/crop/0x265:1080x980/750x500/webp/photo/2022/12/11/3710596500.jpg',
+    'https://cnc-magazine.oramiland.com/parenting/images/ujung-genteng_3RYxAFf.width-800.format-webp.webp',
+    'https://img.okezone.com/content/2022/06/08/549/2607590-liburan-ke-ujung-genteng-jangan-lewatkan-5-poin-penting-ini-ya-YUXaQ4YlkS.JPG'
   ],
   'pulau-peucang': [
-    'https://images.app.goo.gl/2YtKZk3Evd5JEhTj9',
-    'https://images.app.goo.gl/H1jabZBQCfiwwtMQ8',
-    'https://images.app.goo.gl/PxT7ArBM6TthETkH7'
+    'https://tebakkata.com/ujungkulon/upload/file_menu/2.jpg',
+    'https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit19201280gsm/events/2020/09/09/02bd01d8-8ed9-4d28-9f52-1bc421b898f1-1599653592828-fcbe2d8019c4a26234a4cbea0e6dbac8.jpg',
+    'https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit19201280gsm/events/2020/09/09/ac9a323b-c00a-4662-8ec7-7c8ddc00e212-1599653580734-44728e2d38a4c18f90eadc79d681ed7c.jpg'
   ],
   'dieng': [
-    'https://images.app.goo.gl/eKLmUPRB1J1GDDpv6',
-    'https://images.app.goo.gl/g2ZU3bGx2pfTRM1t6',
-    'https://images.app.goo.gl/dQZzWVumJVnR38NW7'
+    'https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/961/2025/05/05/kurcilbersaudara-20250505-0001-948810530.jpg',
+    'https://cityhyangdiengtour.com/wp-content/uploads/2016/06/tempat-wisata-dieng.jpg',
+    'https://asset.kompas.com/crops/qO62aZmeVZf4U70Jn-A5E9L-_r8=/0x0:0x0/750x500/data/photo/2021/11/10/618b2344e2870.jpg'
   ],
   'pulau-sebesi': [
-    'https://images.app.goo.gl/QHPzqEjGWZdimhay8',
-    'https://images.app.goo.gl/axNsKm7RZBpXseAB8',
-    'https://images.app.goo.gl/8L1CLEj8WFexrNX9A'
+    'https://lampungnewspaper.disway.id/upload/254ef0a68c6e84e79ee2f8d191beb15d.jpg',
+    'https://www.brenggo-id.com/wp-content/uploads/2022/06/open-trip-pulau-sebesi-lampung-brenggo-tour.jpg',
+    'https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/583/2024/01/13/Picsart_24-01-13_12-17-53-779-3211170143.jpg'
   ],
   'pulau-pahawang': [
-    'https://images.app.goo.gl/mauMbhgradvNMzBY6',
-    'https://images.app.goo.gl/FEB6CUySTfq5EwYt7',
-    'https://images.app.goo.gl/DLN83NVmifEobtPw5'
+    'https://awsimages.detik.net.id/community/media/visual/2023/05/11/pulau-pahawang-lampung_169.jpeg?w=1200',
+    'https://wisatalampung.id/blog/wp-content/uploads/2022/08/3dd21e66-68c5-42ad-9b6d-aaa48710cd50-Copy.jpg',
+    'https://assets.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/04/17/Potensi-Wisata-Pantai-Desa-Wisata-Pulau-Pahawang-Provinsi-Lampung-639487989.jpg'
   ]
 };
 
