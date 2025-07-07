@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { generateInvoicePDF } from '@/utils/pdfUtils';
+import { getMainDestinationImage } from '@/utils/imageUtils';
 import { 
   Download, 
   Banknote, 
@@ -102,10 +103,20 @@ const PaymentPage = () => {
     }
     
     try {
-      const pricePerPerson = parseInt(bookingData.tour.price.replace(/[^\d]/g, ''));
-      const total = pricePerPerson * bookingData.customer.participants;
-      console.log('Calculated total:', total);
-      return total;
+      // Extract numeric value from price string more reliably
+      const priceString = bookingData.tour.price.toString();
+      const pricePerPerson = parseInt(priceString.replace(/[^\d]/g, ''));
+      const participants = parseInt(bookingData.customer.participants.toString()) || 1;
+      const total = pricePerPerson * participants;
+      
+      console.log('Price calculation:', {
+        priceString,
+        pricePerPerson,
+        participants,
+        total
+      });
+      
+      return isNaN(total) ? 0 : total;
     } catch (err) {
       console.error('Error calculating total:', err);
       return 0;
@@ -241,6 +252,7 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
 
   const total = calculateTotal();
   const selectedMethodDetails = paymentMethods.find(m => m.id === selectedPaymentMethod)?.details;
+  const mainImage = getMainDestinationImage(bookingData.tour?.id || '1');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -342,17 +354,15 @@ Mohon konfirmasi pembayaran ini. Terima kasih!`;
                 
                 <div className="space-y-4">
                   <div>
-                    {bookingData.tour?.image && (
-                      <img 
-                        src={bookingData.tour.image} 
-                        alt={bookingData.tour?.title || 'Tour Image'}
-                        className="w-full h-24 md:h-32 object-cover rounded-lg mb-3"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = '/placeholder.svg';
-                        }}
-                      />
-                    )}
+                    <img 
+                      src={mainImage} 
+                      alt={bookingData.tour?.title || 'Tour Image'}
+                      className="w-full h-24 md:h-32 object-cover rounded-lg mb-3"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/placeholder.svg';
+                      }}
+                    />
                     <h4 className="font-semibold text-gray-800 text-sm md:text-base">
                       {bookingData.tour?.title || 'Judul Tour Tidak Tersedia'}
                     </h4>

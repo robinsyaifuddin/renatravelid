@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -11,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useForm } from 'react-hook-form';
 import { Calendar, MapPin, Users, Clock, User, Mail, Phone, MessageCircle } from 'lucide-react';
 import { tourData } from '@/data/tourData';
+import { getMainDestinationImage } from '@/utils/imageUtils';
 
 interface BookingFormData {
   fullName: string;
@@ -104,6 +104,7 @@ const BookingForm = () => {
   }
 
   const departureDates = getDepartureDates();
+  const mainImage = getMainDestinationImage(tour.id || '1');
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -116,9 +117,13 @@ const BookingForm = () => {
             <div className="flex flex-col md:flex-row gap-6">
               <div className="md:w-1/3">
                 <img 
-                  src={tour.image} 
+                  src={mainImage} 
                   alt={tour.title}
                   className="w-full h-48 object-cover rounded-lg"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/placeholder.svg';
+                  }}
                 />
               </div>
               <div className="md:w-2/3">
