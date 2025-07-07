@@ -32,48 +32,48 @@ const HeroSection = () => {
       {/* Content Container */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         {/* Main Content */}
-        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
+        <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 md:space-y-10">
           {/* Hero Title */}
-          <div className="space-y-2 sm:space-y-3 md:space-y-4">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-              <span className="block mb-1 sm:mb-2">Jelajahi Tempat</span>
+          <div className="space-y-3 sm:space-y-4 md:space-y-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight">
+              <span className="block mb-2 sm:mb-3 md:mb-4">Jelajahi Tempat</span>
               <span className="block bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
                 Impianmu
               </span>
             </h1>
             
-            <div className="w-12 sm:w-16 md:w-20 lg:w-24 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full"></div>
+            <div className="w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full"></div>
           </div>
 
           {/* Subtitle */}
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-light px-2 sm:px-4 md:px-0">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-gray-200 max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto leading-relaxed font-light px-2 sm:px-4 md:px-0">
             Temukan destinasi menakjubkan dan ciptakan kenangan tak terlupakan dengan pengalaman wisata terpilih kami
           </p>
 
           {/* Professional Stats */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto py-4 sm:py-6 md:py-8">
+          <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-4xl mx-auto py-6 sm:py-8 md:py-10">
             <div className="text-center">
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-emerald-400">10K+</div>
-              <div className="text-xs sm:text-sm md:text-base text-gray-300">Wisatawan Puas</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-emerald-400">10K+</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 mt-1 sm:mt-2">Wisatawan Puas</div>
             </div>
             <div className="text-center">
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-teal-400">55</div>
-              <div className="text-xs sm:text-sm md:text-base text-gray-300">Destinasi Pilihan</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-teal-400">55</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 mt-1 sm:mt-2">Destinasi Pilihan</div>
             </div>
             <div className="text-center">
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-emerald-300">5★</div>
-              <div className="text-xs sm:text-sm md:text-base text-gray-300">Rating Pelayanan</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-emerald-300">5★</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 mt-1 sm:mt-2">Rating Pelayanan</div>
             </div>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-xs sm:max-w-sm md:max-w-md mx-auto px-2 sm:px-4 md:px-0">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto px-2 sm:px-4 md:px-0">
             <Button 
               onClick={handleConsultation} 
               size="lg" 
-              className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-xs sm:text-sm md:text-base rounded-xl shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300"
+              className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold px-6 sm:px-8 md:px-10 lg:px-12 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg lg:text-xl rounded-xl shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300"
             >
-              <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" />
+              <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3" />
               Konsultasi Sekarang
             </Button>
             
@@ -81,9 +81,9 @@ const HeroSection = () => {
               onClick={handleAboutUs} 
               variant="outline" 
               size="lg" 
-              className="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/50 font-semibold px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-xs sm:text-sm md:text-base rounded-xl transition-all duration-300"
+              className="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/50 font-semibold px-6 sm:px-8 md:px-10 lg:px-12 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg lg:text-xl rounded-xl transition-all duration-300"
             >
-              <Info className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 mr-1.5 sm:mr-2" />
+              <Info className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3" />
               Tentang Kami
             </Button>
           </div>
