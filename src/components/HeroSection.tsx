@@ -1,29 +1,20 @@
-
 import React from 'react';
 import { MessageSquare, Info } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-
 const HeroSection = () => {
   const navigate = useNavigate();
-
   const handleConsultation = () => {
     navigate('/kontak');
   };
-
   const handleAboutUs = () => {
     navigate('/tentang');
   };
-
-  return (
-    <section className="relative min-h-[85vh] sm:min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-[85vh] sm:min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Enhanced Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 sm:scale-100" 
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')`
-        }}
-      >
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 sm:scale-100" style={{
+      backgroundImage: `url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')`
+    }}>
         {/* Professional Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-emerald-900/30"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -46,7 +37,7 @@ const HeroSection = () => {
           </div>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-gray-200 max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto leading-relaxed font-light px-2 sm:px-4 md:px-0">
+          <p className="text-lg sm:text-xl md:text-1xl lg:text-3xl xl:text-4xl text-gray-200 max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto leading-relaxed font-light px-2 sm:px-4 md:px-0">
             Temukan destinasi menakjubkan dan ciptakan kenangan tak terlupakan dengan pengalaman wisata terpilih kami
           </p>
 
@@ -68,29 +59,18 @@ const HeroSection = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto px-2 sm:px-4 md:px-0">
-            <Button 
-              onClick={handleConsultation} 
-              size="lg" 
-              className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold px-6 sm:px-8 md:px-10 lg:px-12 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg lg:text-xl rounded-xl shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300"
-            >
+            <Button onClick={handleConsultation} size="lg" className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold px-6 sm:px-8 md:px-10 lg:px-12 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg lg:text-xl rounded-xl shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300">
               <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3" />
               Konsultasi Sekarang
             </Button>
             
-            <Button 
-              onClick={handleAboutUs} 
-              variant="outline" 
-              size="lg" 
-              className="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/50 font-semibold px-6 sm:px-8 md:px-10 lg:px-12 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg lg:text-xl rounded-xl transition-all duration-300"
-            >
+            <Button onClick={handleAboutUs} variant="outline" size="lg" className="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/50 font-semibold px-6 sm:px-8 md:px-10 lg:px-12 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg lg:text-xl rounded-xl transition-all duration-300">
               <Info className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3" />
               Tentang Kami
             </Button>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
